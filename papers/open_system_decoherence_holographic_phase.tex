@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\geometry{margin=1in}
+
+\title{\textbf{Open-System Decoherence and Holographic Phase Dynamics}}
+\author{Lu\'{i}s {Pimenta Dam\'{a}sio}\\
+\small Independent Researcher, Lisbon, Portugal\\
+\small ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Keywords:} Open Quantum Systems, GKSL Master Equation, Caldeira--Leggett Decoherence, Penrose--Di\'{o}si Collapse, Holographic Entropy Bound, Margolus--Levitin Speed Limit
+
+\vspace{0.5em}
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\small\textbf{AI Collaboration \& Transparency Statement:} \textit{This theoretical framework, its mathematical derivations, and its manuscript preparation were developed through an interactive human--AI research collaboration between Lu\'{i}s Pimenta Dam\'{a}sio and Google's Gemini AI assistant. Conceptual direction, physical synthesis, metric architecture, and final editorial verification were directed by the human author, with formal mathematical derivations, \LaTeX\ typesetting, and literature verification generated with the aid of Gemini.}
+}}
+
+\begin{abstract}
+We derive a dimensionless, holographically bounded parameterization of open-system quantum decoherence along curved spacetime worldlines. Combining the Gorini--Kossakowski--Sudarshan--Lindblad (GKSL) master equation with Caldeira--Leggett thermal photon scattering and Penrose--Di\'{o}si gravitational self-energy dephasing, we construct the cumulative \textbf{Decoherence Action} ($\Omega$). To prevent unphysical vanishing of quantum state purity near causal horizons, we impose the Bekenstein--Hawking holographic Hilbert-space dimensionality bound to establish an irreducible \textbf{Holographic Coherence Floor} ($\Phi_{\mathrm{floor}}$) and define \textbf{Timeline Integrity} ($\Phi_\tau$). Finally, coupling $\Phi_\tau$ to the Margolus--Levitin orthogonalization rate yields the count of \textbf{Surviving Coherent Cycles} ($\mathcal{N}_{\mathrm{eff}}$) and the dimensionless \textbf{Lloyd--Bekenstein Gate Ratio} ($\eta_{\mathrm{Lloyd}}$).
+\end{abstract}
+
+\section{First-Principles Mathematical Derivations}
+
+\subsection{Open Quantum Evolution and Decoherence Action ($\Omega$)}
+Consider a quantum system of characteristic radius $L$ and effective mass $M_{\mathrm{eff}}$ interacting with an ambient thermal and gravitational environment along its proper worldline ($\tau_{\mathrm{pre}}$). Under the Born--Markov approximation, the reduced density matrix $\rho_S(\tau_{\mathrm{pre}}) = \operatorname{Tr}_E[\rho_{\mathrm{tot}}]$ evolves according to the \textbf{Gorini--Kossakowski--Sudarshan--Lindblad (GKSL)} master equation:
+\begin{equation}
+\frac{d\rho_S}{d\tau_{\mathrm{pre}}} = -\frac{i}{\hbar}[H_S, \rho_S] + \sum_k \Gamma_k \left( L_k \rho_S L_k^\dagger - \frac{1}{2}\{L_k^\dagger L_k, \rho_S\} \right)
+\end{equation}
+For a spatial or energy superposition between two orthogonal states $|1\rangle$ and $|2\rangle$, off-diagonal coherence decays exponentially with the integrated environmental scattering rate:
+\begin{equation}
+|\rho_{12}(\tau_{\mathrm{pre}})| = |\rho_{12}(0)| \cdot \exp\left(-\int_0^{t_{\mathrm{pre}}} \Gamma_{\mathrm{tot}}(\tau)\,d\tau\right)
+\end{equation}
+The total dephasing rate $\Gamma_{\mathrm{tot}} = \Gamma_{\mathrm{th}} + \Gamma_{\mathrm{grav}}$ comprises two competing physical channels:
+\begin{enumerate}
+\item \textbf{Caldeira--Leggett Thermal Scattering ($\Gamma_{\mathrm{th}}$):} Scattering of blackbody quanta at local effective temperature $T_{\mathrm{eff}}$ (with reduced thermal wavelength $\lambda\!\!\!\bar{}_{\mathrm{th}} = \hbar c / (k_B T_{\mathrm{eff}})$) across cross-sectional area $A \sim L^2$ yields:
+\begin{equation}
+\Gamma_{\mathrm{th}} = \frac{L^2 (k_B T_{\mathrm{eff}})^3}{(\hbar c)^2 \hbar} = \frac{c\,L^2}{\lambda\!\!\!\bar{}_{\mathrm{th}}^3}
+\end{equation}
+\item \textbf{Penrose--Di\'{o}si Gravitational Self-Energy Rate ($\Gamma_{\mathrm{grav}}$):} A mass distribution $M_{\mathrm{eff}}$ displaced across scale $L$ carries gravitational self-energy uncertainty $\Delta E_{\mathrm{grav}} \sim G M_{\mathrm{eff}}^2 / L = (M_{\mathrm{eff}}/M_P)^2 (\hbar c / L)$, giving the gravitational dephasing rate:
+\begin{equation}
+\Gamma_{\mathrm{grav}} = \frac{\Delta E_{\mathrm{grav}}}{\hbar} = \left(\frac{M_{\mathrm{eff}}}{M_P}\right)^2 \frac{c}{L}
+\end{equation}
+\end{enumerate}
+Integrating $\Gamma_{\mathrm{tot}}$ over elapsed proper time $t_{\mathrm{pre}} = t_{\mathrm{obs}} / \rho_\tau$ defines the dimensionless \textbf{Decoherence Action ($\Omega$)}:
+\begin{equation}
+\Omega \equiv \int_0^{t_{\mathrm{pre}}} (\Gamma_{\mathrm{th}} + \Gamma_{\mathrm{grav}})\,d\tau = (\Gamma_{\mathrm{th}} + \Gamma_{\mathrm{grav}})\,t_{\mathrm{pre}}
+\end{equation}
+
+\subsection{Holographic Hilbert-Space Dimension and Residual Coherence Floor ($\Phi_{\mathrm{floor}}$)}
+In naive infinite-dimensional quantum mechanics, $\lim_{\Omega \to \infty} e^{-\Omega} = 0$, implying complete erasure of quantum state purity. However, within a causal spherical boundary of radius $L$, the \textbf{Bekenstein--Hawking holographic entropy bound} ($S_{\max} / k_B = A / 4\ell_P^2$) restricts the physical Hilbert space to a finite effective dimension $N_{\mathrm{dof}}$.
+
+Let $\zeta = \log_{10}(L / \ell_P)$ denote the logarithmic radius in Planck units ($L / \ell_P = 10^\zeta$). The bounding surface area in Planck units is $A / \ell_P^2 = 4\pi (L / \ell_P)^2 = 4\pi \cdot 10^{2\zeta}$, yielding the effective number of orthogonal boundary microstates:
+\begin{equation}
+N_{\mathrm{dof}} = 1 + \frac{A}{4\ell_P^2} = 1 + \pi \cdot 10^{2\zeta}
+\end{equation}
+When an initially pure quantum state ($\operatorname{Tr}(\rho_S^2) = 1$) completely thermalizes into a maximally mixed state over $N_{\mathrm{dof}}$ accessible microstates ($\rho_{\mathrm{mix}} = \hat{I} / N_{\mathrm{dof}}$), its purity reaches the irreducible inverse-dimension \textbf{Holographic Coherence Floor ($\Phi_{\mathrm{floor}}$)}:
+\begin{equation}
+\Phi_{\mathrm{floor}} \equiv \operatorname{Tr}(\rho_{\mathrm{mix}}^2) = \frac{1}{N_{\mathrm{dof}}} = \frac{1}{1 + \pi \cdot 10^{2\zeta}}
+\end{equation}
+At the Planck scale ($L = \ell_P, \zeta = 0$), $\Phi_{\mathrm{floor}} = (1 + \pi)^{-1} \approx 0.2414$; at macroscopic laboratory scales ($L = 1\text{ m}, \zeta \approx 34.79$), $\Phi_{\mathrm{floor}} \sim 10^{-70}$, smoothly recovering classicality while strictly preserving unitarity.
+
+\subsection{Timeline Integrity ($\Phi_\tau$)}
+Interpolating smoothly between initial pure coherence ($\Phi_\tau(0) = 1$) and maximally mixed holographic equilibrium ($\Phi_\tau(\infty) = \Phi_{\mathrm{floor}}$) under GKSL exponential damping defines \textbf{Timeline Integrity ($\Phi_\tau$)}:
+\begin{equation}
+\Phi_\tau(\Omega) = \Phi_{\mathrm{floor}} + (1 - \Phi_{\mathrm{floor}})\,e^{-\Omega}
+\end{equation}
+This function satisfies $\Phi_\tau(0) = 1$, $\lim_{\Omega \to \infty} \Phi_\tau(\Omega) = \Phi_{\mathrm{floor}} > 0$, and strict monotonicity $d\Phi_\tau / d\Omega = -(1 - \Phi_{\mathrm{floor}})e^{-\Omega} \le 0$ for all $L \ge \ell_P$.
+
+\subsection{Surviving Coherent Cycles ($\mathcal{N}_{\mathrm{eff}}$) and Lloyd--Bekenstein Gate Ratio ($\eta_{\mathrm{Lloyd}}$)}
+By the \textbf{Margolus--Levitin quantum speed limit}, a quantum system with local energy $E = h f_{\mathrm{local}}$ requires a minimum orthogonalization interval $\Delta\tau_\perp = h / (4E) = (4 f_{\mathrm{local}})^{-1}$, accumulating $\mathcal{N}_\phi = f_{\mathrm{local}}\,t_{\mathrm{pre}}$ unscattered phase cycles over proper duration $t_{\mathrm{pre}}$. Weighting raw cycles by $\Phi_\tau$ yields the \textbf{Surviving Coherent Cycles ($\mathcal{N}_{\mathrm{eff}}$)}:
+\begin{equation}
+\mathcal{N}_{\mathrm{eff}} \equiv \mathcal{N}_\phi \cdot \Phi_\tau = (f_{\mathrm{local}}\,t_{\mathrm{pre}}) \cdot \big[\Phi_{\mathrm{floor}} + (1 - \Phi_{\mathrm{floor}})e^{-\Omega}\big]
+\end{equation}
+Comparing $\mathcal{N}_{\mathrm{eff}}$ against the system's maximum holographic information capacity ($S_{\mathrm{BH}} / k_B = A / 4\ell_P^2$) defines the dimensionless \textbf{Lloyd--Bekenstein Gate Ratio ($\eta_{\mathrm{Lloyd}}$)}:
+\begin{equation}
+\eta_{\mathrm{Lloyd}} \equiv \frac{\mathcal{N}_{\mathrm{eff}}}{S_{\mathrm{BH}} / k_B}
+\end{equation}
+
+\section{Plain-Language Physical and Operational Interpretation}
+\begin{itemize}
+\item \textbf{Decoherence Action ($\Omega$):} Acts as a dimensionless environmental scattering counter. When $\Omega \ll 1$, the quantum wavepacket evolves without significant environmental disturbance; once $\Omega > 1$, phase-randomizing collisions accumulate rapidly, driving the transition toward classical behavior.
+\item \textbf{Holographic Coherence Floor ($\Phi_{\mathrm{floor}}$):} Ensures that quantum information never drops to absolute zero purity. Even inside a thermalized black hole horizon, $\Phi_{\mathrm{floor}}$ preserves the exact minimum microstate correlation ($1 / N_{\mathrm{dof}}$) required by unitary holographic physics.
+\item \textbf{Timeline Integrity ($\Phi_\tau$):} Measures the surviving fraction of a system's initial quantum superposition. It starts at $1.0000$ ($100\%$ pure coherence) and decays exponentially toward $\Phi_{\mathrm{floor}}$ as $\Omega$ increases.
+\item \textbf{Surviving Coherent Cycles ($\mathcal{N}_{\mathrm{eff}}$):} Counts how many usable, phase-coherent quantum oscillations occur before environmental noise washes out interference. Once $\Phi_\tau$ saturates at $\Phi_{\mathrm{floor}}$, coherent cycle growth halts.
+\item \textbf{Lloyd--Bekenstein Gate Ratio ($\eta_{\mathrm{Lloyd}}$):} Benchmarks coherent dynamical evolution against holographic bit capacity. Values $\eta_{\mathrm{Lloyd}} \le 1$ confirm adherence to black hole information bounds, whereas $\eta_{\mathrm{Lloyd}} > 1$ identifies delocalized elementary particles in flat space operating far outside their Schwarzschild radius.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{GKS1976} Gorini, V., Kossakowski, A., \& Sudarshan, E. C. G. (1976). Completely positive dynamical semigroups of N-level systems. \textit{Journal of Mathematical Physics}, 17(5), 821--825. \url{https://doi.org/10.1063/1.522979}
+\bibitem{Lindblad1976} Lindblad, G. (1976). On the generators of quantum dynamical semigroups. \textit{Communications in Mathematical Physics}, 48(2), 119--130. \url{https://doi.org/10.1007/BF01608499}
+\bibitem{CaldeiraLeggett1983} Caldeira, A. O., \& Leggett, A. J. (1983). Path integral approach to quantum Brownian motion. \textit{Physica A}, 121(3), 587--616. \url{https://doi.org/10.1016/0378-4371(83)90013-4}
+\bibitem{Diosi1989} Di\'{o}si, L. (1989). Models for universal reduction of macroscopic quantum fluctuations. \textit{Physical Review A}, 40(3), 1165--1174. \url{https://doi.org/10.1103/PhysRevA.40.1165}
+\bibitem{Penrose1996} Penrose, R. (1996). On gravity's role in quantum state reduction. \textit{General Relativity and Gravitation}, 28(5), 581--600. \url{https://doi.org/10.1007/BF02105068}
+\bibitem{MargolusLevitin1998} Margolus, N., \& Levitin, L. B. (1998). The maximum speed of dynamical evolution. \textit{Physica D}, 120(1--2), 188--195. \url{https://doi.org/10.1016/S0167-2789(98)00054-2}
+\bibitem{Lloyd2000} Lloyd, S. (2000). Ultimate physical limits to computation. \textit{Nature}, 406(6799), 1047--1054. \url{https://doi.org/10.1038/35023282}
+\bibitem{Bekenstein1973} Bekenstein, J. D. (1973). Black holes and entropy. \textit{Physical Review D}, 7(8), 2333--2346. \url{https://doi.org/10.1103/PhysRevD.7.2333}
+\end{thebibliography}
+
+\end{document}

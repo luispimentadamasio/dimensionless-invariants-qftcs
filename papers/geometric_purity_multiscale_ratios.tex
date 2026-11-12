@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\geometry{margin=1in}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    urlcolor=blue!70!black,
+    citecolor=blue!70!black
+}
+
+\title{\textbf{Geometric Purity and Multi-Scale Diagnostic Ratios}}
+\author{Luís {Pimenta Damásio}\thanks{Independent Researcher, Lisbon, Portugal. ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+To analyze physical systems spanning over one hundred orders of magnitude without losing structural clarity in raw dimensional units, we construct four dimensionless diagnostic invariants: \textbf{Weyl Conformal Purity} ($\chi$), the \textbf{Gravity-to-Thermal Decoherence Crossover Ratio} ($\mathcal{R}_{\mathrm{DP}}$), \textbf{Penrose--Zel'dovich Rotational Extraction Gain} ($\mathcal{E}_{\mathrm{Penrose}}$), and the \textbf{Semiclassical Breakdown Index} ($\Xi_{\mathrm{QG}}$). Derived from the Seeley--DeWitt $a_4$ trace anomaly, Buckingham-$\Pi$ dimensional analysis, Novikov--Thorne binding energies, and the $L_\infty$ Chebyshev supremum norm, these metrics separate geometric vacuum polarization from environmental noise while establishing strict epistemic boundaries for semiclassical gravity.
+\end{abstract}
+
+\noindent\textbf{Keywords:} Weyl trace anomaly, Penrose--Diósi collapse, Buckingham-$\Pi$ theorem, Novikov--Thorne efficiency, Semiclassical breakdown, Dimensionless invariants
+
+\vspace{0.8em}
+\begin{mdframed}[backgroundcolor=gray!8,linecolor=gray!40,linewidth=1pt]
+\small\noindent\textbf{AI Collaboration \& Transparency Statement:} \emph{This theoretical framework, its mathematical derivations, and its manuscript preparation were developed through an interactive human--AI research collaboration between Luís Pimenta Damásio and Google's Gemini AI assistant. Conceptual direction, physical synthesis, metric architecture, and final editorial verification were directed by the human author, with formal mathematical derivations, \LaTeX\ typesetting, and literature verification generated with the aid of Gemini.}
+\end{mdframed}
+\vspace{0.5em}
+
+\section{First-Principles Mathematical Derivations}
+
+\subsection{Weyl Conformal Purity ($\chi$) via Seeley--DeWitt Trace Anomaly}
+In classical massless field theory, the stress-energy tensor is traceless ($T^\mu_{\;\mu} = 0$) due to invariance under local Weyl rescalings ($g_{\mu\nu} \to \Omega^2(x) g_{\mu\nu}$). In curved spacetime, quantum vacuum fluctuations break this symmetry, generating the \textbf{Weyl Conformal Trace Anomaly} ($\langle \hat{T}^\mu_{\;\mu} \rangle_{\mathrm{ren}}$) governed by the one-loop Seeley--DeWitt $a_4$ heat-kernel coefficient:
+\begin{equation}
+\mathcal{A}_W \equiv \frac{\langle \hat{T}^\mu_{\;\mu} \rangle_{\mathrm{ren}}}{\rho_{\mathrm{vac,ref}}} = \frac{\mathcal{C}_{\mathrm{clamped}}^2}{60\pi^2}
+\end{equation}
+where $\mathcal{C}_{\mathrm{clamped}} = \min(\mathcal{C}_{\mathrm{hor}}, \mathcal{C}_{\mathrm{eff}})$ bounds the dimensionless compactness at the Kerr--Newman horizon $\mathcal{C}_{\mathrm{hor}} = 2 / (1 + \sqrt{1 - a_*^2 - Q_*^2})$. Normalizing $\mathcal{A}_W \ge 0$ by the characteristic one-loop phase-space factor ($60$) yields the bounded \textbf{Weyl Conformal Purity}:
+\begin{equation}
+\chi \equiv \frac{1}{1 + 60\,\mathcal{A}_W} = \frac{1}{1 + \mathcal{C}_{\mathrm{clamped}}^2 / \pi^2} \in (0, 1]
+\end{equation}
+\begin{itemize}
+    \item \textbf{Minkowski Limit ($\mathcal{C}_{\mathrm{clamped}} = 0$):} $\mathcal{A}_W = 0 \implies \chi = 1.0000$.
+    \item \textbf{Schwarzschild Horizon ($\mathcal{C}_{\mathrm{clamped}} = 1$):} $\chi = \pi^2 / (\pi^2 + 1) \approx 0.9080$.
+    \item \textbf{Extremal Kerr--Newman Horizon ($\mathcal{C}_{\mathrm{clamped}} \to 2$):} $\chi = \pi^2 / (\pi^2 + 4) \approx 0.7116$.
+\end{itemize}
+
+\subsection{Gravity-to-Thermal Crossover Ratio ($\mathcal{R}_{\mathrm{DP}}$) via Buckingham-$\Pi$ Scaling}
+Comparing the Penrose--Diósi gravitational self-energy collapse rate $\Gamma_{\mathrm{grav}} = (M_{\mathrm{eff}} / M_P)^2 (c / L)$ against the Caldeira--Leggett thermal photon scattering rate $\Gamma_{\mathrm{th}} = L^2 (k_B T_{\mathrm{eff}})^3 / (\hbar^3 c^2)$ eliminates time units completely, forming a dimensionless Buckingham-$\Pi$ group:
+\begin{equation}
+\mathcal{R}_{\mathrm{DP}} \equiv \frac{\Gamma_{\mathrm{grav}}}{\Gamma_{\mathrm{th}}} = \left(\frac{M_{\mathrm{eff}}}{M_P}\right)^2 \frac{\hbar^2 c^3}{L^3 (k_B T_{\mathrm{eff}})^3} = \left(\frac{M_{\mathrm{eff}}}{M_P}\right)^2 \left(\frac{\bar{\lambda}_{\mathrm{th}}}{L}\right)^3
+\end{equation}
+where $\bar{\lambda}_{\mathrm{th}} = \hbar c / (k_B T_{\mathrm{eff}})$ is the reduced thermal wavelength. The critical crossover $\mathcal{R}_{\mathrm{DP}} = 1$ occurs along the mesoscopic mass-temperature boundary $M_{\mathrm{eff}} / M_P = (L / \bar{\lambda}_{\mathrm{th}})^{3/2}$.
+
+\subsection{Penrose--Zel'dovich Rotational Extraction Gain ($\mathcal{E}_{\mathrm{Penrose}}$)}
+To quantify rotational energy extraction from a spinning Kerr--Newman ergosphere at polar angle $\theta$, we combine three dimensionless physical factors:
+\begin{enumerate}
+    \item \textbf{Zel'dovich--Starobinsky Superradiant Wave Gain:} $\mathcal{G}_{\mathrm{SR}} = \max(0, 1 - f_{\mathrm{local}} / f_H)$, where $f_H = c a_* / (4\pi r_+)$ is the horizon angular frequency.
+    \item \textbf{Polar Ergosphere Coupling:} $\sin^2\theta$, reflecting the vanishing of ergosphere thickness along the rotation axis ($\theta = 0^\circ$) and peak frame-dragging at the equator ($\theta = 90^\circ$).
+    \item \textbf{Novikov--Thorne Radiative Binding Efficiency:} $\eta_{\mathrm{NT}}(r_{\mathrm{ISCO}}) = 1 - \sqrt{1 - 2r_g / (3 r_{\mathrm{ISCO}})}$, ranging from $5.72\%$ (Schwarzschild) to $42.26\%$ (extremal Kerr).
+\end{enumerate}
+Taking their product defines the \textbf{Penrose--Zel'dovich Extraction Gain}:
+\begin{equation}
+\mathcal{E}_{\mathrm{Penrose}}(\theta) \equiv \max\left(0,\; 1 - \frac{f_{\mathrm{local}}}{f_H}\right) \cdot \sin^2\theta \cdot \eta_{\mathrm{NT}}(r_{\mathrm{ISCO}})
+\end{equation}
+
+\subsection{Semiclassical Breakdown Index ($\Xi_{\mathrm{QG}}$) via $L_\infty$ Supremum Norm}
+Semiclassical Einstein gravity ($G_{\mu\nu} = \frac{8\pi G}{c^4} \langle \hat{T}_{\mu\nu} \rangle_{\mathrm{ren}}$) holds only while four independent dimensionless ratios remain strictly below unity:
+\begin{itemize}
+    \item \textbf{Minimal Planck Length Cutoff:} $\Pi_1 = \ell_P / L$
+    \item \textbf{Stretched-Horizon Membrane Cutoff:} $\Pi_2 = 10^{-6} / N^2(\theta)$
+    \item \textbf{Sub-Extremal Cosmic Censorship Cutoff:} $\Pi_3 = (a_*^2 + Q_*^2) / 0.9998$
+    \item \textbf{Planck Thermal Foam Ceiling:} $\Pi_4 = T_{\mathrm{eff}} / T_P$
+\end{itemize}
+Taking the $L_\infty$ (Chebyshev) supremum norm defines the \textbf{Semiclassical Breakdown Index}:
+\begin{equation}
+\Xi_{\mathrm{QG}} \equiv \big\|(\Pi_1, \Pi_2, \Pi_3, \Pi_4)\big\|_\infty = \max\left(\frac{\ell_P}{L},\; \frac{10^{-6}}{N^2(\theta)},\; \frac{a_*^2 + Q_*^2}{0.9998},\; \frac{T_{\mathrm{eff}}}{T_P}\right)
+\end{equation}
+
+\section{Plain-Language Physical \& Operational Guide}
+
+\begin{itemize}
+    \item \textbf{Weyl Conformal Purity ($\chi$):} Measures how severely spacetime curvature warps the quantum vacuum even at absolute zero and zero elapsed time. It equals $1.0000$ in flat space and drops toward $0.908$ at a Schwarzschild horizon or $0.712$ at an extremal Kerr--Newman horizon.
+    \item \textbf{Gravity-to-Thermal Crossover ($\mathcal{R}_{\mathrm{DP}}$):} Acts as a dimensionless tug-of-war gauge between environmental thermal decoherence ($\mathcal{R}_{\mathrm{DP}} < 1$) and Penrose--Diósi gravitational self-energy collapse ($\mathcal{R}_{\mathrm{DP}} > 1$), with $\mathcal{R}_{\mathrm{DP}} = 1$ marking the exact quantum-to-classical mesoscopic threshold.
+    \item \textbf{Penrose--Zel'dovich Extraction Gain ($\mathcal{E}_{\mathrm{Penrose}}$):} Expresses the net fractional energy extractable from a rotating ergosphere at latitude $\theta$, vanishing identically along the spin axis ($\theta = 0^\circ$) and above the superradiant frequency cutoff ($f_{\mathrm{local}} \ge f_H$).
+    \item \textbf{Semiclassical Breakdown Index ($\Xi_{\mathrm{QG}}$):} Serves as a continuous epistemic boundary monitor. Because it uses the supremum ($\max$) norm, $\Xi_{\mathrm{QG}} \to 1.0000$ the instant \emph{any single} semiclassical assumption reaches its physical breakdown wall.
+\end{itemize}
+
+\section*{Acknowledgments}
+The author gratefully acknowledges Google's Gemini AI assistant for collaborative support in symbolic derivation checks, dimensional consistency auditing, \LaTeX\ typesetting, and literature verification.
+
+\begin{thebibliography}{9}
+\bibitem{DeWitt1965} DeWitt, B. S. (1965). \emph{Dynamical Theory of Groups and Fields}. Gordon and Breach.
+\bibitem{NovikovThorne1973} Novikov, I. D., \& Thorne, K. S. (1973). Astrophysics of Black Holes. In \emph{Black Holes (Les Astres Occlus)}, eds. C. DeWitt \& B. S. DeWitt, Gordon and Breach, pp. 343--450.
+\bibitem{Zeldovich1971} Zel'dovich, Ya. B. (1971). Generation of Waves by a Rotating Body. \emph{JETP Letters}, 14, 180--181.
+\bibitem{Diosi1989} Diósi, L. (1989). Models for universal reduction of macroscopic quantum fluctuations. \emph{Physical Review A}, 40(3), 1165--1174. \href{https://doi.org/10.1103/PhysRevA.40.1165}{doi:10.1103/PhysRevA.40.1165}
+\bibitem{Penrose1996} Penrose, R. (1996). On Gravity's Role in Quantum State Reduction. \emph{General Relativity and Gravitation}, 28(5), 581--600. \href{https://doi.org/10.1007/BF02105068}{doi:10.1007/BF02105068}
+\bibitem{Thorne1986} Thorne, K. S., Price, R. H., \& MacDonald, D. A. (1986). \emph{Black Holes: The Membrane Paradigm}. Yale University Press.
+\end{thebibliography}
+
+\end{document}
