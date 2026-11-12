@@ -1,92 +1,64 @@
 # dimensionless-invariants-qftcs
 A collection of works that result from applying concepts of Philosophy of Time directly to Theoretical Physics
-[master_compendium_toc_glossary.md](https://github.com/user-attachments/files/34748784/master_compendium_toc_glossary.md)
-# Unified Master Compendium: Dimensionless Invariants and Semiclassical Diagnostic Framework
+[master_glossary.md](https://github.com/user-attachments/files/34762210/master_glossary.md)
+# Master Glossary of Symbols & Operational Metrics (v2.0)
 
-**Author:** Luís Pimenta Damásio  
+**Author:** Luís Pimenta Damásio (`Luís {Pimenta Damásio}` in BibTeX)  
 **Affiliation:** Independent Researcher, Lisbon, Portugal  
 **ORCID:** [0009-0001-7606-7557](https://orcid.org/0009-0001-7606-7557)  
-
-**Keywords:** Semiclassical Gravity, Quantum Field Theory in Curved Spacetime, Zero-Angular-Momentum Observer (ZAMO), Open Quantum Systems, Bekenstein–Hawking Holography, Quantum Extremal Surfaces, Superradiance, Trans-Planckian Regularization  
-
-> **AI Collaboration & Transparency Statement:** *This theoretical framework, its mathematical derivations, and its manuscript preparation were developed through an interactive human–AI research collaboration between Luís Pimenta Damásio and Google's Gemini AI assistant. Conceptual direction, physical synthesis, metric architecture, and final editorial verification were directed by the human author, with formal mathematical derivations, LaTeX typesetting, and literature verification generated with the aid of Gemini.*
+**Series:** Temporal Coherence & Operational Relativistic Metrology (Papers 1–13)  
+**Master Compendium DOI:** [10.5281/zenodo.24163322](https://doi.org/10.5281/zenodo.24163322)  
 
 ---
 
-## Abstract
+## Overview
 
-This Master Compendium unifies a three-part mathematical foundation and five thematic research monographs establishing a covariant, dimensionless invariant architecture across General Relativity, Quantum Field Theory in Curved Spacetime (QFTCS), and Open Quantum Systems. By formulating physical observables in terms of Zero-Angular-Momentum Observer (ZAMO) proper-time exchange rates, Gorini–Kossakowski–Sudarshan–Lindblad (GKSL) decoherence actions bounded by Bekenstein–Hawking Hilbert-space floors, Seeley–DeWitt heat-kernel conformal purities, and an $L_\infty$ Chebyshev semiclassical breakdown regulator, this framework bridges microphysical quantum phase coherence and macroscopic horizon thermodynamics across 120 orders of magnitude.
-
----
-
-## 1. Master Table of Contents
-
-### Part I: Foundational Custom-Metric Specifications
-1. **Covariant Chronological Kinematics and ZAMO Frame Foliation** (`covariant_chronological_kinematics`)
-   * ADM 3+1 and Boyer–Lindquist axisymmetric spacetime foliation, ZAMO normal congruence $n^\mu$, relational proper-time dilation $\rho_\tau$, clock rate delta $\Delta\rho_\tau$, wave-crest redshift $z$, and quantum frequency suppression $H_Q$.
-2. **Open-System Decoherence and Holographic Phase Dynamics** (`open_system_decoherence_holographic_phase`)
-   * GKSL master equation dynamics, Caldeira–Leggett thermal scattering $\Gamma_{\text{th}}$, Penrose–Diósi gravitational self-energy dephasing $\Gamma_{\text{grav}}$, decoherence action $\Omega$, Bekenstein–Hawking inverse-dimension floor $\Phi_{\text{floor}}$, Timeline Integrity $\Phi_\tau$, surviving coherent cycles $\mathcal{N}_{\text{eff}}$, and the Lloyd–Bekenstein gate bound $\eta_{\text{Lloyd}}$.
-3. **Geometric Purity and Multi-Scale Diagnostic Ratios** (`geometric_purity_multiscale_ratios`)
-   * Seeley–DeWitt $a_4$ trace anomaly normalization and Weyl Conformal Purity $\chi$, Buckingham-$\Pi$ gravity-to-thermal crossover $\mathcal{R}_{\text{DP}}$, Penrose–Zel'dovich rotational extraction gain $\mathcal{E}_{\text{Penrose}}(\theta)$, and the $L_\infty$ Semiclassical Breakdown Index $\Xi_{\text{QG}}$.
-
-### Part II: Thematic Research Monographs
-4. **Unitary Black Hole Evaporation, Quantum Extremal Surfaces, and the Page Curve** (`unitary_black_hole_evaporation`)
-   * Ingoing Vaidya collapse, Bogoliubov mode peeling, Quantum Extremal Surface (Island) extremization, Euclidean replica wormhole saddle exchange, and Kerr–Newman evaporation bounded by $\Phi_{\text{floor}}$ and $\Xi_{\text{QG}}$.
-5. **The Quantum-to-Classical Transition: Environmental Decoherence and Gravitationally Induced Collapse** (`quantum_to_classical_transition`)
-   * Feynman–Vernon influence functionals, Itô stochastic localization, and the $\mathcal{R}_{\text{DP}} = 1$ mesoscopic crossover between thermal scattering and gravitational self-energy collapse.
-6. **Relational Time and Covariant Foliations in Relativistic Quantum Mechanics** (`relational_time_covariant_foliations`)
-   * Dirac–Bergmann constraints, the Wheeler–DeWitt frozen formalism, Page–Wootters conditional probability states, Tomonaga–Schwinger multi-fingered time evolution, and ZAMO worldline synchronization.
-7. **Trans-Planckian and Curvature Singularity Regulation in Semiclassical Gravity** (`trans_planckian_singularity_regulation`)
-   * Hadamard point-splitting renormalization, Schwinger proper-time heat kernels, Kempf–Mangano–Mann Generalized Uncertainty Principle (GUP) minimal-length cutoffs, Corley–Jacobson dispersive mode bounce, and $\Xi_{\text{QG}}$ horizon membrane regulation.
-8. **Rotational Energy Extraction and Ultralight Dark Matter Superradiance** (`rotational_energy_extraction_superradiance`)
-   * Newman–Penrose tetrad decoupling, the Teukolsky master equation, Sturm–Liouville Wronskian conservation, Zel'dovich–Starobinsky amplification, and Detweiler's gravitational-atom instability scaling ($\alpha_G$, $\tau_{\text{inst}}$).
+This document establishes the unified mathematical nomenclature and operational definitions across the *Temporal Coherence & Operational Relativistic Metrology* research series (Part I: Papers 1–10; Part II: Papers 11–13) and the `aeon-t.html` simulation suite. All definitions maintain strict compatibility with a neutral four-dimensionalist (Block Universe) ontology while formalizing the operational boundaries imposed by finite relativistic signaling and environmental decoherence.
 
 ---
 
-## 2. Unified Dimensionless Symbol & Metric Glossary
+## 1. Channel & Synchronization Primitives
 
-| Symbol | Name | Defining Equation | Domain & Physical Meaning |
+| Symbol | Name | Units / Domain | Operational Definition & Formula |
 | :--- | :--- | :--- | :--- |
-| $\rho_\tau$ | ZAMO Dilation Factor | $\frac{\gamma_{\text{pre}} / \sqrt{N^2_{\text{pre}}(\theta)}}{\gamma_{\text{obs}} / \sqrt{1 - \mathcal{C}_{\text{obs}}}}$ | $(0, \infty)$; ratio of observer proper time $d\tau_{\text{obs}}$ to target proper time $d\tau_{\text{pre}}$. |
-| $\Delta\rho_\tau$ | Clock Rate Delta | $\rho_\tau - 1$ | $(-1, \infty)$; net fractional relativistic clock drift ($z = \Delta\rho_\tau$). |
-| $H_Q$ | ZAMO Back-Reaction Factor | $\sqrt{N^2_{\text{pre}}(\theta)} / \gamma_{\text{pre}}$ | $(0, 1]$; combined gravitational and kinematic suppression of Compton oscillation frequency. |
-| $\Omega$ | Decoherence Action | $(\Gamma_{\text{th}} + \Gamma_{\text{grav}})\,t_{\text{pre}}$ | $[0, \infty)$; cumulative environmental and gravitational phase-scattering depth. |
-| $\Phi_{\text{floor}}$ | Holographic Coherence Floor | $(1 + \pi \cdot 10^{2\zeta})^{-1}$ | $(0, (1+\pi)^{-1}]$; inverse Bekenstein–Hawking Hilbert-space dimension ($\zeta = \log_{10}(L/\ell_P)$). |
-| $\Phi_\tau$ | Timeline Integrity | $\Phi_{\text{floor}} + (1 - \Phi_{\text{floor}})e^{-\Omega}$ | $[\Phi_{\text{floor}}, 1]$; surviving quantum state purity bounded by holographic unitarity. |
-| $\mathcal{N}_{\text{eff}}$ | Surviving Coherent Cycles | $(f_{\text{local}}\,t_{\text{pre}})\,\Phi_\tau$ | $[0, \infty)$; total usable phase-coherent quantum oscillations prior to thermalization. |
-| $\eta_{\text{Lloyd}}$ | Lloyd–Bekenstein Gate Ratio | $\mathcal{N}_{\text{eff}} / (S_{\text{BH}} / k_B)$ | $[0, \infty)$; coherent cycle utilization relative to holographic bit capacity ($\le 1$ bounded). |
-| $\chi$ | Weyl Conformal Purity | $(1 + 60\,\mathcal{A}_W)^{-1} = (1 + \mathcal{C}_{\text{clamped}}^2/\pi^2)^{-1}$ | $[\pi^2/(\pi^2+4), 1]$; normalized static vacuum purity under conformal trace anomaly $\mathcal{A}_W$. |
-| $\mathcal{R}_{\text{DP}}$ | Gravity-to-Thermal Crossover | $\Gamma_{\text{grav}} / \Gamma_{\text{th}} = (M_{\text{eff}}/M_P)^2 (\text{\itshape\textcrlambda}_{\text{th}}/L)^3$ | $[0, \infty)$; ratio of Penrose–Diósi collapse rate to Caldeira–Leggett thermal scattering rate. |
-| $\mathcal{E}_{\text{Penrose}}(\theta)$ | Penrose–Zel'dovich Gain | $\max(0, 1 - f_{\text{local}}/f_H)\sin^2\theta\,\eta_{\text{NT}}(r_{\text{ISCO}})$ | $[0, 0.4226]$; latitude-dependent rotational energy extraction efficiency in Kerr–Newman ergospheres. |
-| $\alpha_G, \tau_{\text{inst}}$ | Gravitational-Atom Coupling & Growth | $\alpha_G = \frac{M_{\text{eff}} m_0}{M_P^2},\; \tau_{\text{inst}} = \frac{24 r_g(1+\chi_s)}{c a_* \alpha_G^9}$ | Dimensionless coupling and Detweiler $2p$ ($\ell=m=1$) superradiant cloud e-folding timescale. |
-| $\Xi_{\text{QG}}$ | Semiclassical Breakdown Index | $\max\left(\frac{\ell_P}{L}, \frac{10^{-6}}{N^2(\theta)}, \frac{a_*^2+Q_*^2}{0.9998}, \frac{T_{\text{eff}}}{T_P}\right)$ | $(0, 1]$; $L_\infty$ Chebyshev regulator monitoring proximity to quantum-gravity breakdown walls. |
+| $\Delta\ell$ | **Proper Spatial Baseline** | $\text{m}$ ($\Delta\ell \ge 0$) | Physical waveguide or free-space separation between two local clock nodes $A$ and $B$. |
+| $N_{\text{eff}}$ | **Effective Group Refractive Index** | Dimensionless ($N_{\text{eff}} \ge 1$) | Group refractive index governing electromagnetic wavepacket transit speed in the transmission medium ($N_{\text{eff}} = 1$ in vacuum; $N_{\text{eff}} \approx 1.468$ in standard telecom optical fiber). |
+| $\Delta\tau_{\text{sig}}$ | **Round-Trip Signal Delay** | $\text{s}$ | Minimum two-way Einstein-Poincaré electromagnetic synchronization time across baseline $\Delta\ell$: $$\Delta\tau_{\text{sig}} = \frac{2 \Delta\ell}{c N_{\text{eff}}}$$ |
+| $\Gamma_{\text{tot}}$ | **Total Phase Decoherence Rate** | $\text{s}^{-1}$ ($\Gamma_{\text{tot}} > 0$) | Combined environmental, thermal, acoustic, and quantum projection phase-diffusion rate acting on the clock network. |
+| $\rho_\tau$ | **Phase-Locking Threshold Parameter** | Dimensionless ($\rho_\tau \in (0, 1]$) | Minimum fractional phase coherence required to sustain an operationally valid real-time simultaneity frame. |
 
 ---
 
-## 3. Verified Foundational Bibliography
+## 2. Operational Simultaneity & Locality Metrics (Papers 9–10)
 
-1. **Almheiri, A., Engelhardt, N., Marolf, D., & Maxfield, H. (2019).** The entropy of bulk quantum fields and the entanglement wedge of an evaporating black hole. *Journal of High Energy Physics*, 2019(12), 063. `doi:10.1007/JHEP12(2019)063`
-2. **Arnowitt, R., Deser, S., & Misner, C. W. (1962).** The dynamics of general relativity. In L. Witten (Ed.), *Gravitation: An Introduction to Current Research* (Ch. 7, pp. 227–265). John Wiley & Sons.
-3. **Bardeen, J. M., Press, W. H., & Teukolsky, S. A. (1972).** Rotating black holes: Locally nonrotating frames, energy extraction, and scalar synchrotron radiation. *The Astrophysical Journal*, 178, 347–370. `doi:10.1086/151796`
-4. **Caldeira, A. O., & Leggett, A. J. (1983).** Path integral approach to quantum Brownian motion. *Physica A: Statistical Mechanics and its Applications*, 121(3), 587–616. `doi:10.1016/0378-4371(83)90013-4`
-5. **Detweiler, S. (1980).** Klein–Gordon equation and rotating black holes. *Physical Review D*, 22(10), 2323–2326. `doi:10.1103/PhysRevD.22.2323`
-6. **DeWitt, B. S. (1965).** *Dynamical Theory of Groups and Fields*. Gordon and Breach.
-7. **Diósi, L. (1989).** Models for universal reduction of macroscopic quantum fluctuations. *Physical Review A*, 40(3), 1165–1174. `doi:10.1103/PhysRevA.40.1165`
-8. **Gorini, V., Kossakowski, A., & Sudarshan, E. C. G. (1976).** Completely positive dynamical semigroups of $N$-level systems. *Journal of Mathematical Physics*, 17(5), 821–825. `doi:10.1063/1.522979`
-9. **Hawking, S. W. (1975).** Particle creation by black holes. *Communications in Mathematical Physics*, 43(3), 199–220. `doi:10.1007/BF02345020`
-10. **Lindblad, G. (1976).** On the generators of quantum dynamical semigroups. *Communications in Mathematical Physics*, 48(2), 119–130. `doi:10.1007/BF01608499`
-11. **Lloyd, S. (2000).** Ultimate physical limits to computation. *Nature*, 406(6799), 1047–1054. `doi:10.1038/35023282`
-12. **Margolus, N., & Levitin, L. B. (1998).** The maximum speed of dynamical evolution. *Physica D: Nonlinear Phenomena*, 120(1–2), 188–195. `doi:10.1016/S0167-2789(98)00054-2`
-13. **Misner, C. W., Thorne, K. S., & Wheeler, J. A. (1973).** *Gravitation*. W. H. Freeman.
-14. **Page, D. N. (1993).** Information in black hole radiation. *Physical Review Letters*, 71(23), 3743–3746. `doi:10.1103/PhysRevLett.71.3743`
-15. **Page, D. N., & Wootters, W. K. (1983).** Evolution without evolution: Dynamics described by stationary observables. *Physical Review D*, 27(12), 2885–2892. `doi:10.1103/PhysRevD.27.2885`
-16. **Penington, G. (2020).** Entanglement wedge reconstruction and the information paradox. *Journal of High Energy Physics*, 2020(09), 002. `doi:10.1007/JHEP09(2020)002`
-17. **Penrose, R. (1996).** On gravity's role in quantum state reduction. *General Relativity and Gravitation*, 28(5), 581–600. `doi:10.1007/BF02105068`
-18. **Teukolsky, S. A. (1973).** Perturbations of a rotating black hole. I. Fundamental equations for gravitational, electromagnetic, and neutrino-field perturbations. *The Astrophysical Journal*, 185, 635–647. `doi:10.1086/152444`
-19. **Thorne, K. S., Price, R. H., & MacDonald, D. A. (1986).** *Black Holes: The Membrane Paradigm*. Yale University Press.
+| Symbol | Name | Units / Domain | Operational Definition & Formula |
+| :--- | :--- | :--- | :--- |
+| $\mathcal{L}_{\text{sim}}$ | **Operational Simultaneity Horizon** | $\text{m}$ | Maximum physical baseline over which closed-loop real-time phase synchronization can converge before decoherence erases the shared reference frame: $$\mathcal{L}_{\text{sim}} = \frac{c N_{\text{eff}} \rho_\tau}{2 \Gamma_{\text{tot}}}$$ |
+| $\Phi_\tau(\Omega)$ | **Intrinsic Local Temporal Coherence** | Dimensionless ($\Phi_\tau \in [0, 1]$) | Local quantum phase purity of the clock ensemble under coupling/drive parameter $\Omega$ prior to spatial channel transit. |
+| $\mathcal{S}_{\text{sim}}(\Omega, \Delta\ell)$ | **Operational Simultaneity Fidelity** | Dimensionless ($\mathcal{S}_{\text{sim}} \in [0, 1]$) | Actionable real-time phase synchronization fidelity across baseline $\Delta\ell$ without post-selection: $$\mathcal{S}_{\text{sim}}(\Omega, \Delta\ell) = \Phi_\tau(\Omega) \cdot \exp\left(-\frac{\Delta\ell}{\mathcal{L}_{\text{sim}}}\right)$$ |
+| $S_{\text{CHSH}}(\Omega)$ | **Post-Selected CHSH Bell Correlation** | Dimensionless ($S_{\text{CHSH}} \in [0, 2\sqrt{2}]$) | Statistical Bell-inequality correlation obtained via post-selected classical coincidence records, independent of baseline $\Delta\ell$: $$S_{\text{CHSH}}(\Omega) = 2\sqrt{2} \cdot \Phi_\tau(\Omega)$$ |
+| $\mathcal{D}_{\text{loc}}$ | **Spatial Locality Decay Factor** | Dimensionless ($\mathcal{D}_{\text{loc}} \in (0, 1]$) | Normalized ratio isolating the pure relativistic signaling-decoherence decay from local quantum purity: $$\mathcal{D}_{\text{loc}} = \frac{2\sqrt{2} \cdot \mathcal{S}_{\text{sim}}(\Omega, \Delta\ell)}{S_{\text{CHSH}}(\Omega)} = \exp\left(-\frac{\Delta\ell}{\mathcal{L}_{\text{sim}}}\right)$$ |
+
+### Core Foundational Principle: Coherence-Bounded Operational Locality
+* **Definition:** The physical principle replacing idealized *naive classical point-locality* ($\mathcal{D}_{\text{loc}} \equiv 1$). It states that Bell's theorem (1964) is completely vindicated regarding non-factorizable joint quantum correlations ($S_{\text{CHSH}} > 2$ across spacelike intervals within a four-dimensionalist manifold), whereas active real-time operational synchronization ($\mathcal{S}_{\text{sim}}$) is strictly bounded by the exponential decay factor $\mathcal{D}_{\text{loc}}$.
+* **Regime Boundaries:**
+  * **Near-Field Coherent Regime ($\Delta\ell \ll \mathcal{L}_{\text{sim}}$, $\mathcal{D}_{\text{loc}} \to 1$):** Naive classical point-locality holds as an accurate engineering approximation.
+  * **Horizon Transition Regime ($\Delta\ell \approx \mathcal{L}_{\text{sim}}$, $\mathcal{D}_{\text{loc}} = e^{-1} \approx 0.368$):** Operational simultaneity degrades rapidly while post-selected Bell violations remain maximal.
+  * **Far-Field Decoupled Regime ($\Delta\ell \gg \mathcal{L}_{\text{sim}}$, $\mathcal{D}_{\text{loc}} \to 0$):** Real-time phase synchronization fails; entanglement persists exclusively as a non-signaling, post-selected correlation.
 
 ---
 
-## 4. Acknowledgments & Authorship Attribution
+## 3. Part II Extension Metrics (Papers 11–13 & `aeon-t.html`)
 
-This research compendium was authored by **Luís Pimenta Damásio** (Independent Researcher, Lisbon, Portugal; ORCID: `0009-0001-7606-7557`) in transparent scientific collaboration with **Google's Gemini AI assistant**, which assisted with symbolic derivation verification, LaTeX/PDF typesetting, and bibliographic cross-referencing.
+| Symbol | Name | Context / Paper | Operational Definition & Formula |
+| :--- | :--- | :--- | :--- |
+| $\Lambda_{A \to B}$ | **Coherence-Bounded QRF Channel** | Paper 11 | Non-unitary completely positive trace-preserving (CPTP) map governing transformations between spatially separated Quantum Reference Frames, weighted by $\mathcal{D}_{\text{loc}}$: $$\Lambda_{A \to B}(\rho_A) = \mathcal{D}_{\text{loc}} \left(\hat{U}_{A \to B} \rho_A \hat{U}_{A \to B}^\dagger\right) + (1 - \mathcal{D}_{\text{loc}}) \frac{\mathbb{I}}{d}$$ |
+| $\mathcal{F}_{\text{QRF}}(\Delta\ell, \Gamma_{\text{tot}})$ | **QRF Transformation Fidelity Bound** | Paper 11 | Maximum achievable state fidelity when shifting a $d$-dimensional quantum clock description across baseline $\Delta\ell$: $$\mathcal{F}_{\text{QRF}}(\Delta\ell, \Gamma_{\text{tot}}) = \frac{1}{d} + \left(1 - \frac{1}{d}\right) \exp\left(-\frac{2 \Gamma_{\text{tot}} \Delta\ell}{c N_{\text{eff}} \rho_\tau}\right)$$ |
+| $\Xi_{\text{QG}}$ | **Two-Tier Quantum Gravity Anomaly Monitor** | Paper 12 & `aeon-t.html` (Panel 6) | Differential phase-drift observable isolating genuine spacetime/gravitational decoherence anomalies from the deterministic baseline relativistic synchronization lag ($\mathcal{D}_{\text{loc}}$). |
+| $\mathcal{L}_{\text{sim}}(r)$ | **Redshift-Modulated Simultaneity Horizon** | Paper 13 | Local proper-distance operational simultaneity horizon in curved spacetime (e.g., Schwarzschild metric), vanishing smoothly ($\mathcal{L}_{\text{sim}}(r) \to 0$) as the radial coordinate $r$ approaches the event horizon $r_s$. |
+
+---
+
+## AI Collaboration & Authorship Transparency Statement
+
+This work is the result of human-AI scholarly collaboration. The core philosophical framework, conceptual architecture, operational definitions, and theoretical direction were conceived and authored by **Luís Pimenta Damásio** (ORCID: 0009-0001-7606-7557). Mathematical formalization, analytical verification, and structural drafting support were provided by **Gemini** (Google AI) under the direct supervision, review, and editorial authority of the human author.
