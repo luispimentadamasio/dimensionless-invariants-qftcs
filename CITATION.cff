@@ -1,0 +1,1 @@
+You can configure your repository's citation metadata and documentation by adding a CITATION.cff file with your project details, author information, and DOI (such as 10.5281/zenodo.24163322), alongside updating your README.md with badges, an overview of the archive structure, and licensing details.
