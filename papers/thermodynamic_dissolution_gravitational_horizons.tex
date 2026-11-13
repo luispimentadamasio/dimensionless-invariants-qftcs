@@ -1,0 +1,186 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\geometry{margin=1in}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdftitle={Thermodynamic Dissolution of Operational Simultaneity Across Gravitational Horizons and Galactic Timing Arrays},
+    pdfauthor={Luís Pimenta Damásio}
+}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\title{\textbf{Thermodynamic Dissolution of Operational Simultaneity Across Gravitational Horizons and Galactic Timing Arrays}}
+
+\author{
+    Luís {Pimenta Damásio}\thanks{ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}. Master Compendium DOI: \href{https://doi.org/10.5281/zenodo.24163322}{10.5281/zenodo.24163322}.}\\
+    \textit{Independent Researcher, Lisbon, Portugal}
+}
+
+\date{November 13, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Debates surrounding black hole horizons and relativistic astrophysics frequently treat the event horizon ($r = r_s$) as an abrupt, discontinuous geometric boundary where classical simultaneity and quantum state descriptions break down, motivating ad-hoc postulates such as Black Hole Complementarity. Conversely, on galactic scales, Pulsar Timing Arrays (PTAs) correlate millisecond pulsar signals across kiloparsec baselines as if constructing a unified cosmic clock network. In this paper, we extend the \textit{Coherence-Bounded Operational Locality} formalism and the Operational Simultaneity Horizon ($\mathcal{L}_{\mathrm{sim}}$) to curved Schwarzschild spacetimes and astrophysical timing networks. We derive the \textbf{Redshift-Modulated Operational Simultaneity Horizon} $\mathcal{L}_{\mathrm{sim}}(r) = \mathcal{L}_{\mathrm{sim},\infty}\sqrt{1 - r_s/r}$ and prove that for any non-zero proper separation $\Delta\ell > 0$ and phase decoherence rate $\Gamma_{\mathrm{tot}} > 0$, the Spatial Locality Decay Factor $\mathcal{D}_{\mathrm{loc}}(r)$ vanishes smoothly at a critical pre-horizon radius $r_{\mathrm{diss}} > r_s$. Consequently, operational simultaneity dissolves thermodynamically \textit{before} any geometric event horizon or singularity is encountered, dissolving cross-horizon cloning paradoxes within a neutral four-dimensionalist ontology. Finally, we demonstrate that galactic Pulsar Timing Arrays operate deep within the asymptotic far-field regime ($\Delta\ell \sim \mathrm{kpc} \gg \mathcal{L}_{\mathrm{sim}}$, $\mathcal{D}_{\mathrm{loc}} \to 0$), establishing that cosmic time synchronization is structurally restricted to post-selected classical coincidence records rather than active operational simultaneity.
+\end{abstract}
+
+\section{Introduction: Beyond Sharp Geometric Horizons}
+
+In standard general relativity and quantum field theory in curved spacetime, the Schwarzschild event horizon at radius $r_s = 2GM/c^2$ marks the null hypersurface beyond which future-directed causal curves cannot escape to null infinity. When analyzing quantum entanglement and observer frames across this boundary, theoretical physics has historically treated the transition from exterior operational observability to interior causal isolation as a sharp geometric discontinuity. This abruptness lies at the root of the Black Hole Information Paradox and motivates Black Hole Complementarity, which posits that infalling and distant observers hold mutually exclusive yet internally consistent descriptions separated precisely at $r = r_s$.
+
+Within a neutral four-dimensionalist or Block Universe ontology, all spacetime events—interior and exterior—occupy fixed geometric coordinates on the Lorentzian manifold. However, as established in Papers 9--12 of this series \cite{damasio_compendium}, \textit{operational simultaneity} is not a passive geometric coordinate label; it is an active metrological capacity sustained by two-way Einstein--Poincaré electromagnetic synchronization against environmental phase decoherence $\Gamma_{\mathrm{tot}}$.
+
+In this capstone installment of Part~II, we demonstrate that gravitational time dilation and spatial baseline scaling replace sharp geometric paradoxes with a smooth, continuous thermodynamic boundary. Whether approaching a black hole horizon ($r \to r_s^+$) or spanning kiloparsec baselines across a galactic Pulsar Timing Array ($\Delta\ell \to \infty$), the Spatial Locality Decay Factor $\mathcal{D}_{\mathrm{loc}}$ drives active operational simultaneity continuously to zero well outside any singular hypersurface.
+
+\section{Redshift-Modulated Operational Simultaneity Horizon}
+
+Consider a static, spherically symmetric Schwarzschild spacetime with line element in standard Droste--Schwarzschild coordinates $(t, r, \theta, \phi)$:
+\begin{equation}
+ds^2 = -\left(1 - \frac{r_s}{r}\right) c^2 dt^2 + \left(1 - \frac{r_s}{r}\right)^{-1} dr^2 + r^2 \left(d\theta^2 + \sin^2\theta\, d\phi^2\right),
+\end{equation}
+where $r > r_s$. Let two stationary quantum optical clock nodes $A$ and $B$ be positioned near radial coordinate $r$ and separated by a local proper spatial baseline $\Delta\ell$, with local effective refractive index $N_{\mathrm{eff}}$ and target phase-locking threshold $\rho_\tau \in (0, 1]$.
+
+\subsection{Gravitational Redshift and Round-Trip Delay}
+
+For a static shell observer at radial coordinate $r$, proper time $d\tau_{\mathrm{shell}}$ is related to asymptotic coordinate time $dt$ by the gravitational lapse function $\alpha(r) = \sqrt{1 - r_s/r}$:
+\begin{equation}
+d\tau_{\mathrm{shell}}(r) = \sqrt{1 - \frac{r_s}{r}}\, dt.
+\end{equation}
+When an electromagnetic synchronization pulse propagates across a local proper baseline $\Delta\ell$ and returns to close an Einstein--Poincaré feedback loop referenced to an asymptotic or exterior metrology frame (or across a radial gradient where coordinate signal transit scales with $\alpha(r)^{-1}$), the effective round-trip synchronization delay $\Delta\tau_{\mathrm{sig}}(r)$ dilates inversely with the lapse function:
+\begin{equation}
+\Delta\tau_{\mathrm{sig}}(r) = \frac{2 \Delta\ell}{c N_{\mathrm{eff}} \sqrt{1 - r_s/r}}.
+\end{equation}
+
+\begin{definition}[Redshift-Modulated Operational Simultaneity Horizon]
+Let $\mathcal{L}_{\mathrm{sim},\infty} = \frac{c N_{\mathrm{eff}} \rho_\tau}{2 \Gamma_{\mathrm{tot}}}$ denote the flat-spacetime asymptotic Operational Simultaneity Horizon for total local phase decoherence rate $\Gamma_{\mathrm{tot}} > 0$. The local \textbf{Redshift-Modulated Operational Simultaneity Horizon} $\mathcal{L}_{\mathrm{sim}}(r)$ at radial coordinate $r > r_s$ is defined by setting $\Delta\tau_{\mathrm{sig}}(r) = \rho_\tau / \Gamma_{\mathrm{tot}}$:
+\begin{equation}
+\mathcal{L}_{\mathrm{sim}}(r) = \frac{c N_{\mathrm{eff}} \rho_\tau}{2 \Gamma_{\mathrm{tot}}} \sqrt{1 - \frac{r_s}{r}} = \mathcal{L}_{\mathrm{sim},\infty} \sqrt{1 - \frac{r_s}{r}}.
+\label{eq:Lsim_r}
+\end{equation}
+\end{definition}
+
+Equation~\eqref{eq:Lsim_r} reveals that the operational horizon shrinks monotonically as $r \to r_s^+$, vanishing continuously at the Schwarzschild radius ($\lim_{r \to r_s^+} \mathcal{L}_{\mathrm{sim}}(r) = 0$) even if the flat-space horizon $\mathcal{L}_{\mathrm{sim},\infty}$ is arbitrarily large.
+
+\subsection{Pre-Horizon Thermodynamic Dissolution}
+
+Substituting $\mathcal{L}_{\mathrm{sim}}(r)$ into the Operational Simultaneity Fidelity $\mathcal{S}_{\mathrm{sim}}$ and the Spatial Locality Decay Factor $\mathcal{D}_{\mathrm{loc}}$ yields the curved-spacetime locality profile:
+\begin{equation}
+\mathcal{S}_{\mathrm{sim}}(\Omega, \Delta\ell, r) = \Phi_\tau(\Omega) \cdot \exp\left(-\frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim},\infty} \sqrt{1 - r_s/r}}\right),
+\end{equation}
+\begin{equation}
+\mathcal{D}_{\mathrm{loc}}(\Delta\ell, r) = \exp\left(-\frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim},\infty} \sqrt{1 - r_s/r}}\right) = \exp\left(-\frac{2 \Gamma_{\mathrm{tot}} \Delta\ell}{c N_{\mathrm{eff}} \rho_\tau \sqrt{1 - r_s/r}}\right).
+\label{eq:Dloc_r}
+\end{equation}
+
+\begin{theorem}[Pre-Horizon Dissolution of Operational Simultaneity]
+For any bipartite clock network with finite proper baseline $\Delta\ell > 0$, non-zero phase decoherence rate $\Gamma_{\mathrm{tot}} > 0$, and operational fidelity threshold $\epsilon \in (0, 1)$, operational simultaneity ($\mathcal{D}_{\mathrm{loc}}(\Delta\ell, r) \ge \epsilon$) terminates strictly outside the event horizon at a critical dissolution radius $r_{\mathrm{diss}} > r_s$ given by:
+\begin{equation}
+r_{\mathrm{diss}} = \frac{r_s}{1 - \left(\frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim},\infty} \ln(1/\epsilon)}\right)^2},
+\label{eq:rdiss}
+\end{equation}
+provided $\Delta\ell < \mathcal{L}_{\mathrm{sim},\infty} \ln(1/\epsilon)$ (otherwise $\mathcal{D}_{\mathrm{loc}} < \epsilon$ everywhere).
+\end{theorem}
+
+\begin{proof}
+Setting $\mathcal{D}_{\mathrm{loc}}(\Delta\ell, r_{\mathrm{diss}}) = \epsilon$ in Eq.~\eqref{eq:Dloc_r} gives:
+\begin{equation}
+\frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim},\infty} \sqrt{1 - r_s/r_{\mathrm{diss}}}} = \ln\left(\frac{1}{\epsilon}\right).
+\end{equation}
+Rearranging for the lapse function yields $\sqrt{1 - r_s/r_{\mathrm{diss}}} = \frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim},\infty} \ln(1/\epsilon)} \equiv \beta$. Since $\Delta\ell > 0$ and $\Gamma_{\mathrm{tot}} > 0$, we have $\beta > 0$. For $\beta < 1$, squaring both sides gives $1 - r_s/r_{\mathrm{diss}} = \beta^2 \in (0, 1)$, which solves uniquely to $r_{\mathrm{diss}} = r_s / (1 - \beta^2) > r_s$. Because $\mathcal{D}_{\mathrm{loc}}(\Delta\ell, r)$ is strictly increasing in $r$ for $r > r_s$, $\mathcal{D}_{\mathrm{loc}}(\Delta\ell, r) < \epsilon$ for all $r \in (r_s, r_{\mathrm{diss}})$.
+\end{proof}
+
+\begin{corollary}[Resolution of Operational Horizon Complementarity]
+No physical observer network with finite spatial extent $\Delta\ell > 0$ and non-zero thermal/quantum decoherence $\Gamma_{\mathrm{tot}} > 0$ can maintain a joint operational simultaneity frame across $r = r_s$. Operational coordination dissolves smoothly into decoupled local patches ($\mathcal{D}_{\mathrm{loc}} \to 0$) across a finite shell $r \in (r_s, r_{\mathrm{diss}}]$ outside the event horizon, preventing any operational verification of quantum no-cloning violations without invoking discontinuous horizon boundary rules.
+\end{corollary}
+
+\section{Galactic-Scale Limit: Pulsar Timing Arrays (PTAs)}
+
+At the opposite astrophysical extreme—weak gravitational fields ($r \gg r_s$) paired with immense spatial baselines ($\Delta\ell \sim 1\text{--}10\text{ kpc}$)—Pulsar Timing Arrays (such as NANOGrav, EPTA, and PPTA) monitor ensembles of millisecond pulsars to detect nanohertz gravitational waves \cite{agazie2023}.
+
+\subsection{Asymptotic Far-Field Classification}
+
+For a typical millisecond pulsar at baseline $\Delta\ell = 1\text{ kpc} \approx 3.086 \times 10^{19}\text{ m}$ in the interstellar medium ($N_{\mathrm{eff}} \approx 1$), the round-trip electromagnetic signal delay is:
+\begin{equation}
+\Delta\tau_{\mathrm{sig}} = \frac{2 \Delta\ell}{c} \approx 2.06 \times 10^{11}\text{ s} \approx 6,520\text{ years}.
+\end{equation}
+Even for the most stable millisecond pulsars, rotational spin-down noise, interstellar medium (ISM) plasma dispersion fluctuations, and terrestrial atomic clock drift yield an effective composite phase decoherence rate $\Gamma_{\mathrm{tot}} \gtrsim 10^{-9}\text{ s}^{-1}$ over multi-year observation campaigns. With $\rho_\tau = 0.5$, the Operational Simultaneity Horizon is bounded by:
+\begin{equation}
+\mathcal{L}_{\mathrm{sim}} = \frac{c \rho_\tau}{2 \Gamma_{\mathrm{tot}}} \lesssim 7.5 \times 10^{16}\text{ m} \approx 2.4\text{ pc}.
+\end{equation}
+Consequently, the dimensionless ratio $\Delta\ell / \mathcal{L}_{\mathrm{sim}} \gtrsim 410$, driving the Spatial Locality Decay Factor to:
+\begin{equation}
+\mathcal{D}_{\mathrm{loc}} = \exp\left(-\frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim}}}\right) \lesssim e^{-410} \approx 10^{-178} \to 0.
+\end{equation}
+
+\subsection{Post-Selected Cosmic Time vs. Operational Simultaneity}
+
+This result clarifies the exact metrological status of galactic-scale timing networks, summarized in Table~\ref{tab:astrophysical_regimes}:
+
+\begin{table}[h!]
+\centering
+\caption{Astrophysical and Laboratory Regimes of Coherence-Bounded Operational Locality}
+\label{tab:astrophysical_regimes}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Physical Regime} & \textbf{Characteristic Scale} & \textbf{$\mathcal{D}_{\mathrm{loc}}$ Behavior} & \textbf{Metrological Mode} \\
+\midrule
+Local Laboratory Clock & $\Delta\ell \ll \mathcal{L}_{\mathrm{sim},\infty}$, $r \gg r_s$ & $\mathcal{D}_{\mathrm{loc}} \to 1$ & Active real-time phase locking ($\mathcal{S}_{\mathrm{sim}} \approx \Phi_\tau$) \\
+Near-Horizon Shell & $\Delta\ell > 0$, $r \to r_{\mathrm{diss}}^+$ & $\mathcal{D}_{\mathrm{loc}} \to \epsilon \to 0$ & Smooth thermodynamic decoupling before $r = r_s$ \\
+Black Hole Event Horizon & $r = r_s$, $\mathcal{L}_{\mathrm{sim}}(r_s) = 0$ & $\mathcal{D}_{\mathrm{loc}} = 0$ & Complete breakdown of operational simultaneity \\
+Pulsar Timing Array (PTA) & $\Delta\ell \sim \mathrm{kpc} \gg \mathcal{L}_{\mathrm{sim}}$ & $\mathcal{D}_{\mathrm{loc}} \to 0$ & Post-selected statistical correlation ($S_{\mathrm{CHSH}}$-type) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Just as post-selected CHSH Bell correlations ($S_{\mathrm{CHSH}} = 2\sqrt{2}\Phi_\tau$) persist across spacelike separations when local time-tagged records are compared classically after the fact, Pulsar Timing Arrays extract genuine quadrupolar Hellings--Downs gravitational wave correlations entirely via **post-selected classical timestamp reconstruction** at Earth-based observatories. No active real-time "cosmic now" is established across the galaxy; rather, galactic simultaneity is a retrospective four-dimensionalist data synthesis operating strictly in the $\mathcal{D}_{\mathrm{loc}} \to 0$ post-selection regime.
+
+\section{Philosophical Synthesis: Four-Dimensionalism and Operational Horizons}
+
+Across Papers 9 through 13, the Coherence-Bounded Operational Locality framework establishes a unified philosophical reconciliation between relativistic spacetime ontology and quantum-thermodynamic measurement theory. Within a neutral four-dimensionalist Block Universe, geometric structures—light cones, worldlines, Bell-correlated measurement events, and Schwarzschild horizons—remain invariant features of the spacetime manifold.
+
+What dissolves at $r_{\mathrm{diss}} > r_s$ and at $\Delta\ell \gg \mathcal{L}_{\mathrm{sim}}$ is not spacetime geometry itself, but the idealized classical fiction of an instantaneous, zero-noise, globally synchronized present. By grounding simultaneity in the finite physical parameters $(c, N_{\mathrm{eff}}, \rho_\tau, \Gamma_{\mathrm{tot}}, r_s)$, operational horizons emerge naturally wherever signal propagation latency outpaces thermodynamic coherence.
+
+\section{Conclusion}
+
+We have demonstrated that the Operational Simultaneity Horizon $\mathcal{L}_{\mathrm{sim}}$ and Spatial Locality Decay Factor $\mathcal{D}_{\mathrm{loc}}$ provide a continuous, non-singular resolution to two extreme regimes of relativistic physics. Near a Schwarzschild black hole, gravitational time dilation compresses $\mathcal{L}_{\mathrm{sim}}(r) = \mathcal{L}_{\mathrm{sim},\infty}\sqrt{1 - r_s/r}$, causing operational simultaneity to dissolve thermodynamically at $r_{\mathrm{diss}} > r_s$ prior to the event horizon. Across kiloparsec Pulsar Timing Arrays, $\mathcal{D}_{\mathrm{loc}} \to 0$ proves that galactic timekeeping functions exclusively as a post-selected classical correlation network rather than an active simultaneity frame.
+
+\section*{AI Collaboration \& Authorship Transparency Statement}
+
+This work is the result of human-AI scholarly collaboration. The core philosophical framework, conceptual architecture, operational definitions, and theoretical direction were conceived and authored by \textbf{Luís Pimenta Damásio} (ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}). Mathematical formalization, analytical verification, and LaTeX structural drafting support were provided by \textbf{Gemini} (Google AI) under the direct supervision, review, and editorial authority of the human author.
+
+\begin{thebibliography}{9}
+\bibitem{damasio_compendium}
+Luís {Pimenta Damásio},
+\textit{Temporal Coherence \& Operational Relativistic Metrology: Master Compendium (Papers 1--13)},
+Zenodo, 2026. DOI: \href{https://doi.org/10.5281/zenodo.24163322}{10.5281/zenodo.24163322}.
+
+\bibitem{susskind1993}
+L. Susskind, L. Thorlacius, and J. Uglum,
+``The stretched horizon and black hole complementarity,''
+\textit{Physical Review D}, vol. 48, no. 8, pp. 3743--3761, 1993.
+
+\bibitem{agazie2023}
+G. Agazie et al. (NANOGrav Collaboration),
+``The NANOGrav 15 yr Data Set: Evidence for a Gravitational-wave Background,''
+\textit{The Astrophysical Journal Letters}, vol. 951, no. 1, L8, 2023.
+\end{thebibliography}
+
+\end{document}
