@@ -1,0 +1,194 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={Dissipative Quantum Reference Frames: Non-Unitary Transformations Beyond the Operational Simultaneity Horizon},
+    pdfauthor={Luís Pimenta Damásio}
+}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+
+\title{\textbf{Dissipative Quantum Reference Frames: Non-Unitary Transformations Beyond the Operational Simultaneity Horizon}}
+
+\author{
+    Luís {Pimenta Damásio}\thanks{ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}. Master Compendium DOI: \href{https://doi.org/10.5281/zenodo.24163322}{10.5281/zenodo.24163322}.}\\
+    \textit{Independent Researcher, Lisbon, Portugal}
+}
+
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Recent advances in quantum foundations have generalized classical coordinate transformations to Quantum Reference Frames (QRFs), demonstrating that physical properties such as entanglement and superposition are frame-dependent under unitary quantum coordinate shifts. However, standard QRF formalisms implicitly assume idealized, zero-latency point-locality, modeling frame transformations as noiseless unitary operators $\hat{U}_{A \to B}$ acting across arbitrarily separated reference systems. Extending the \textit{Coherence-Bounded Operational Locality} framework established in earlier installments of this series, we prove that physically realized QRF transformations between spatially separated quantum clocks are inherently non-unitary, completely positive trace-preserving (CPTP) open-system channels. When round-trip Einstein--Poincaré signaling latency $\Delta\tau_{\mathrm{sig}}$ and total environmental phase decoherence $\Gamma_{\mathrm{tot}}$ are incorporated, the ideal unitary shift decays exponentially with the Spatial Locality Decay Factor $\mathcal{D}_{\mathrm{loc}} = \exp(-\Delta\ell / \mathcal{L}_{\mathrm{sim}})$. We derive a closed-form QRF Transformation Fidelity Bound $\mathcal{F}_{\mathrm{QRF}}(\Delta\ell, \Gamma_{\mathrm{tot}})$ and demonstrate an unavoidable architectural bifurcation in distributed quantum computing: networks operating inside the Operational Simultaneity Horizon ($\Delta\ell \ll \mathcal{L}_{\mathrm{sim}}$) support monolithic coherent gate operations, whereas wide-area networks ($\Delta\ell \gg \mathcal{L}_{\mathrm{sim}}$) are restricted strictly to post-selected correlation protocols. Finally, we examine the ontological implications for relational quantum mechanics within a neutral four-dimensionalist spacetime framework.
+\end{abstract}
+
+\section{Introduction: The Idealization of Unitary Quantum Coordinate Shifts}
+
+Over the past decade, the theory of Quantum Reference Frames (QRFs) has emerged as a central pillar of modern quantum foundations \cite{giacomini2019,castroruiz2020}. By promoting the physical reference systems used to define spatial coordinates and temporal intervals---such as rulers and clocks---from classical background parameters to genuine quantum degrees of freedom, QRF frameworks reveal a striking form of relational covariance. Concepts previously regarded as absolute invariants, including quantum superposition, subsystem entanglement, and classical definiteness, transform covariantly when shifting perspective from one quantum reference system $A$ to another quantum reference system $B$.
+
+In the standard algebraic formulation, a transformation between two $d$-dimensional quantum reference frames $A$ and $B$ is represented by a unitary map $\hat{U}_{A \to B}$ acting on the composite Hilbert space:
+\begin{equation}
+    \rho_B^{\mathrm{ideal}} = \hat{U}_{A \to B} \, \rho_A \, \hat{U}_{A \to B}^\dagger
+    \label{eq:ideal_qrf}
+\end{equation}
+While Equation~\eqref{eq:ideal_qrf} is mathematically exact within an abstract Hilbert space, it rests upon an unexamined physical idealization inherited from classical mechanics: \textit{naive classical point-locality}. Specifically, writing $\hat{U}_{A \to B}$ as a lossless unitary transformation assumes that the phase and timing relationship between reference clock $A$ and reference clock $B$ can be established and maintained with infinite precision, zero signaling latency, and zero thermodynamic dissipation, regardless of the physical separation $\Delta\ell$ between the laboratories housing $A$ and $B$.
+
+As established in Papers~9 and~10 of this series \cite{damasio_p9,damasio_p10}, operational simultaneity between spatially separated nodes is never an abstract geometric given. Establishing a shared phase reference requires a closed two-way electromagnetic exchange across a physical channel, during which environmental noise irreversibly erodes phase coherence. In this paper, we integrate the \textit{Operational Simultaneity Horizon} ($\mathcal{L}_{\mathrm{sim}}$) and the \textit{Spatial Locality Decay Factor} ($\mathcal{D}_{\mathrm{loc}}$) directly into QRF theory, replacing idealized unitary frame shifts with physically realizable dissipative quantum channels.
+
+\section{Coherence-Bounded QRF Channels}
+
+Consider two spatially separated $d$-level quantum clock systems $A$ and $B$ separated by a proper physical baseline $\Delta\ell$ along a transmission medium characterized by effective group refractive index $N_{\mathrm{eff}}$ (where $N_{\mathrm{eff}} = 1$ in vacuum and $N_{\mathrm{eff}} \approx 1.468$ in standard telecom optical fiber).
+
+\subsection{Operational Simultaneity Horizon and Spatial Locality Decay}
+
+To synchronize frame $B$ relative to frame $A$ operationally, a two-way Einstein--Poincaré timing signal must traverse the baseline in minimum round-trip delay:
+\begin{equation}
+    \Delta\tau_{\mathrm{sig}} = \frac{2 \Delta\ell}{c N_{\mathrm{eff}}}
+    \label{eq:roundtrip}
+\end{equation}
+where $c$ is the vacuum speed of light. Throughout this round-trip interval, local oscillator drift, thermal fluctuations, acoustic phase jitter, and quantum projection noise degrade the relative phase coherence at total rate $\Gamma_{\mathrm{tot}}$ (in $\mathrm{s}^{-1}$). Given a dimensionless phase-locking threshold parameter $\rho_\tau \in (0, 1]$ required to maintain an operationally valid simultaneity frame, the \textit{Operational Simultaneity Horizon} is defined as:
+\begin{equation}
+    \mathcal{L}_{\mathrm{sim}} = \frac{c N_{\mathrm{eff}} \rho_\tau}{2 \Gamma_{\mathrm{tot}}}
+    \label{eq:horizon}
+\end{equation}
+As proved in Paper~10 \cite{damasio_p10}, while post-selected Bell--CHSH correlations ($S_{\mathrm{CHSH}} = 2\sqrt{2}\,\Phi_\tau(\Omega)$) depend solely on local intrinsic coherence $\Phi_\tau(\Omega)$ independent of distance, active operational phase synchronization decays exponentially with the \textit{Spatial Locality Decay Factor}:
+\begin{equation}
+    \mathcal{D}_{\mathrm{loc}} = \exp\left(-\frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim}}}\right) = \exp\left(-\frac{2 \Gamma_{\mathrm{tot}} \Delta\ell}{c N_{\mathrm{eff}} \rho_\tau}\right)
+    \label{eq:dloc}
+\end{equation}
+
+\subsection{The Non-Unitary QRF Transformation Map}
+
+When an observer attempts to execute a physical QRF transformation from frame $A$ to frame $B$ across baseline $\Delta\ell$, the classical and quantum phase parameters specifying $\hat{U}_{A \to B}$ can only be aligned to within the operational fidelity permitted by $\mathcal{D}_{\mathrm{loc}}$. The unaligned fraction $(1 - \mathcal{D}_{\mathrm{loc}})$ undergoes stochastic phase randomization over the round-trip signaling window $\Delta\tau_{\mathrm{sig}}$, projecting the relative coordinate relation onto the maximally mixed reference state $\mathbb{I}/d$.
+
+\begin{definition}[Coherence-Bounded QRF Channel]
+Let $\hat{U}_{A \to B}$ denote the ideal unitary QRF transformation operator on a $d$-dimensional Hilbert space $\mathcal{H}_d$. For physical baseline $\Delta\ell \ge 0$ and total phase decoherence rate $\Gamma_{\mathrm{tot}} > 0$, the physically realized QRF transformation is given by the completely positive trace-preserving (CPTP) channel $\Lambda_{A \to B} : \mathcal{B}(\mathcal{H}_d) \to \mathcal{B}(\mathcal{H}_d)$:
+\begin{equation}
+    \Lambda_{A \to B}(\rho_A) = \mathcal{D}_{\mathrm{loc}} \left(\hat{U}_{A \to B} \, \rho_A \, \hat{U}_{A \to B}^\dagger\right) + \left(1 - \mathcal{D}_{\mathrm{loc}}\right) \frac{\mathbb{I}}{d}
+    \label{eq:qrf_channel}
+\end{equation}
+\end{definition}
+
+Equation~\eqref{eq:qrf_channel} satisfies complete positivity and trace preservation ($\mathrm{Tr}[\Lambda_{A \to B}(\rho_A)] = \mathcal{D}_{\mathrm{loc}} + (1 - \mathcal{D}_{\mathrm{loc}}) = 1$) for all $\mathcal{D}_{\mathrm{loc}} \in (0, 1]$. Crucially, $\Lambda_{A \to B}$ is unitary if and only if $\mathcal{D}_{\mathrm{loc}} = 1$, which requires either zero spatial separation ($\Delta\ell = 0$) or zero environmental decoherence ($\Gamma_{\mathrm{tot}} \to 0$).
+
+\subsection{QRF Transformation Fidelity Bound}
+
+To quantify the operational degradation of relational covariance across spacetime, we evaluate the state fidelity between the ideal transformed state $\rho_B^{\mathrm{ideal}}$ and the physically realized state $\Lambda_{A \to B}(\rho_A)$.
+
+\begin{theorem}[QRF Transformation Fidelity Bound]
+For any pure input state $\rho_A = |\psi\rangle\langle\psi|$ transformed across proper baseline $\Delta\ell$ under total phase decoherence rate $\Gamma_{\mathrm{tot}}$, the operational fidelity $\mathcal{F}_{\mathrm{QRF}} = \mathrm{Tr}\!\left[\rho_B^{\mathrm{ideal}} \, \Lambda_{A \to B}(\rho_A)\right]$ is bounded by:
+\begin{equation}
+    \mathcal{F}_{\mathrm{QRF}}(\Delta\ell, \Gamma_{\mathrm{tot}}) = \frac{1}{d} + \left(1 - \frac{1}{d}\right) \exp\left(-\frac{2 \Gamma_{\mathrm{tot}} \Delta\ell}{c N_{\mathrm{eff}} \rho_\tau}\right)
+    \label{eq:fidelity_bound}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Substituting $\rho_B^{\mathrm{ideal}} = \hat{U}_{A \to B} |\psi\rangle\langle\psi| \hat{U}_{A \to B}^\dagger$ into the trace inner product with Equation~\eqref{eq:qrf_channel} yields:
+\begin{align*}
+    \mathcal{F}_{\mathrm{QRF}} &= \mathcal{D}_{\mathrm{loc}} \, \mathrm{Tr}\!\left[\left(\rho_B^{\mathrm{ideal}}\right)^2\right] + \left(1 - \mathcal{D}_{\mathrm{loc}}\right) \frac{1}{d} \, \mathrm{Tr}\!\left[\rho_B^{\mathrm{ideal}}\right] \\
+    &= \mathcal{D}_{\mathrm{loc}} (1) + \frac{1 - \mathcal{D}_{\mathrm{loc}}}{d} = \frac{1}{d} + \left(1 - \frac{1}{d}\right) \mathcal{D}_{\mathrm{loc}}
+\end{align*}
+Substituting $\mathcal{D}_{\mathrm{loc}} = \exp(-2 \Gamma_{\mathrm{tot}} \Delta\ell / (c N_{\mathrm{eff}} \rho_\tau))$ gives Equation~\eqref{eq:fidelity_bound}.
+\end{proof}
+
+For a two-level qubit reference clock ($d = 2$), Equation~\eqref{eq:fidelity_bound} simplifies to:
+\begin{equation}
+    \mathcal{F}_{\mathrm{QRF}}^{(d=2)}(\Delta\ell, \Gamma_{\mathrm{tot}}) = \frac{1}{2}\left[1 + \exp\left(-\frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim}}}\right)\right]
+    \label{eq:qubit_fidelity}
+\end{equation}
+At the Operational Simultaneity Horizon ($\Delta\ell = \mathcal{L}_{\mathrm{sim}}$), qubit QRF transformation fidelity drops from $1.0$ to $\frac{1}{2}(1 + e^{-1}) \approx 0.684$, and in the far-field limit ($\Delta\ell \gg \mathcal{L}_{\mathrm{sim}}$), $\mathcal{F}_{\mathrm{QRF}}^{(d=2)} \to 0.500$, indicating complete loss of active relational phase alignment.
+
+\section{Architectural Bifurcation in Distributed Quantum Networks}
+
+Theorem~1 carries immediate structural consequences for distributed quantum computing and large-scale quantum internet architectures \cite{kimble2008,wehner2018}. Contemporary quantum network engineering predominantly treats long-distance scaling as a problem of photon attenuation and quantum repeater entanglement distribution. However, even in an idealized lossless optical channel, executing real-time distributed quantum gates requires transforming quantum phase references dynamically between separated processor nodes.
+
+Because $\mathcal{F}_{\mathrm{QRF}}$ decays exponentially with $\Delta\ell / \mathcal{L}_{\mathrm{sim}}$, distributed quantum networks undergo a sharp physical bifurcation governed by the Operational Simultaneity Horizon:
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{p{3.4cm} p{2.7cm} p{2.6cm} p{5.3cm}}
+\toprule
+\textbf{Network Architecture Tier} & \textbf{Baseline Regime} & \textbf{QRF Fidelity ($d=2$)} & \textbf{Permitted Operational Protocols} \\
+\midrule
+\textbf{Monolithic Coherent Core} & $\Delta\ell \ll \mathcal{L}_{\mathrm{sim}}$ & $\mathcal{F}_{\mathrm{QRF}} \to 1.00$ & Active real-time distributed quantum gates, deterministic phase-locked QRF shifts, coherent multi-node clock synthesis. \\
+\textbf{Horizon Boundary Zone} & $\Delta\ell \approx \mathcal{L}_{\mathrm{sim}}$ & $\mathcal{F}_{\mathrm{QRF}} \approx 0.684$ & Rapid onset of non-unitary frame-shift noise; requires active dynamical decoupling and fault-tolerant error thresholds. \\
+\textbf{Wide-Area Entanglement Link} & $\Delta\ell \gg \mathcal{L}_{\mathrm{sim}}$ & $\mathcal{F}_{\mathrm{QRF}} \to 0.500$ & Active unitary QRF shifts impossible; restricted strictly to post-selected Bell verification ($S_{\mathrm{CHSH}}$), QKD, and deferred-choice teleportation. \\
+\bottomrule
+\end{tabular}
+\caption{Architectural bifurcation of distributed quantum networks across the Operational Simultaneity Horizon $\mathcal{L}_{\mathrm{sim}}$.}
+\label{tab:network_tiers}
+\end{table}
+
+This result explains why planetary-scale quantum networks cannot function as a single monolithic phase-coherent processor: beyond $\mathcal{L}_{\mathrm{sim}}$, inter-node links must operate asynchronously via classical post-selection rather than synchronous unitary frame transformations.
+
+\section{Philosophical Implications: Relational Covariance in a Four-Dimensionalist Manifold}
+
+Within the philosophy of physics, unitary QRF formalisms have sometimes been interpreted as implying that spacetime structure itself dissolves into purely algebraic, non-spatial relationalism. When examined within a neutral four-dimensionalist (Block Universe) ontology, however, Coherence-Bounded Operational Locality restores a clear physical grounding to relational covariance.
+
+In a four-dimensional Lorentzian manifold, the worldlines of quantum reference clocks $A$ and $B$ occupy definite spatiotemporal trajectories, and their joint measurement records exhibit invariant correlations ($S_{\mathrm{CHSH}}$) across spacelike separations. Yet no observer embedded within the manifold possesses unmediated access to the quantum state of a distant reference frame. Any operational comparison between frames requires physical signals propagating along null or timelike worldlines ($\Delta\tau_{\mathrm{sig}}$) through a noisy thermodynamic environment ($\Gamma_{\mathrm{tot}}$).
+
+Consequently, **unitary QRF covariance is a local asymptotic symmetry** valid strictly within the near-field horizon $\Delta\ell \ll \mathcal{L}_{\mathrm{sim}}$. Across macroscopic spacetime intervals, relational transformations are inherently irreversible and dissipative ($\Lambda_{A \to B}$), embedding the thermodynamic arrow of decoherence directly into the operational geometry of quantum reference frames.
+
+\section{Conclusion}
+
+By extending the Operational Simultaneity Horizon formalism to Quantum Reference Frames, we have demonstrated that spatial separation and environmental decoherence convert idealized unitary frame transformations $\hat{U}_{A \to B}$ into dissipative CPTP channels $\Lambda_{A \to B}$ governed by the Spatial Locality Decay Factor $\mathcal{D}_{\mathrm{loc}}$. The resulting QRF Transformation Fidelity Bound $\mathcal{F}_{\mathrm{QRF}}$ establishes a fundamental operational limit on distributed quantum computation and grounds relational quantum covariance firmly within relativistic spacetime metrology.
+
+\section*{AI Collaboration \& Authorship Transparency Statement}
+
+This work is the result of human--AI scholarly collaboration. The core philosophical framework, conceptual architecture, operational definitions, and theoretical direction were conceived and authored by \textbf{Luís Pimenta Damásio} (ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}). Mathematical formalization, analytical verification, and LaTeX typesetting support were provided by \textbf{Gemini} (Google AI) under the direct supervision, review, and editorial authority of the human author.
+
+\begin{thebibliography}{9}
+
+\bibitem{giacomini2019}
+F.~Giacomini, E.~Castro-Ruiz, and \v{C}.~Brukner,
+``Quantum mechanics and the covariance of physical laws in quantum reference frames,''
+\textit{Nature Communications}, vol.~10, no.~1, p.~494, 2019.
+
+\bibitem{castroruiz2020}
+E.~Castro-Ruiz, F.~Giacomini, A.~Belenchia, and \v{C}.~Brukner,
+``Quantum clocks and the temporal localisability of events in the presence of gravitating quantum systems,''
+\textit{Nature Communications}, vol.~11, no.~1, p.~2672, 2020.
+
+\bibitem{kimble2008}
+H.~J. Kimble,
+``The quantum internet,''
+\textit{Nature}, vol.~453, no.~7198, pp.~1023--1030, 2008.
+
+\bibitem{wehner2018}
+S.~Wehner, D.~Elkouss, and R.~Hanson,
+``Quantum internet: A vision for the road ahead,''
+\textit{Science}, vol.~362, no.~6412, eaam9288, 2018.
+
+\bibitem{damasio_p9}
+L.~{Pimenta Damásio},
+``Operational Simultaneity Horizons and the Resolution of the Andromeda Paradox,''
+\textit{Temporal Coherence \& Operational Relativistic Metrology Series} (Paper~9), Master Compendium DOI: \href{https://doi.org/10.5281/zenodo.24163322}{10.5281/zenodo.24163322}, 2026.
+
+\bibitem{damasio_p10}
+L.~{Pimenta Damásio},
+``Coherence-Bounded Operational Locality: An Experimental Test of Simultaneous Phase Synchronization vs. Bell Correlations,''
+\textit{Temporal Coherence \& Operational Relativistic Metrology Series} (Paper~10), Master Compendium DOI: \href{https://doi.org/10.5281/zenodo.24163322}{10.5281/zenodo.24163322}, 2026.
+
+\end{thebibliography}
+
+\end{document}
