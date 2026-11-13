@@ -1,0 +1,146 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{criterion}{Discrimination Criterion}
+
+\title{\textbf{Null-Hypothesis Calibration for Long-Baseline Quantum Gravity Interferometry: Separating Relativistic Synchronization Lag from $\Xi_{\mathrm{QG}}$ Anomalies}}
+
+\author{
+  Lu\'{i}s {Pimenta Dam\'{a}sio}\thanks{Independent Researcher, Lisbon, Portugal. ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}. Master Compendium DOI: \href{https://doi.org/10.5281/zenodo.24163322}{10.5281/zenodo.24163322}.}
+}
+
+\date{November 13, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Next-generation long-baseline atom interferometers (such as MAGIS-100, AION, and MIGA) and macroscopic quantum superposition experiments seek to detect subtle phase decoherence or entanglement signatures indicative of quantum gravity, spacetime foam, or gravitational collapse models. However, operating coherent quantum sensors across spatial baselines $\Delta\ell$ ranging from tens of meters to kilometers introduces unavoidable round-trip electromagnetic synchronization latency $\Delta\tau_{\mathrm{sig}}$ coupled to technical phase diffusion $\Gamma_{\mathrm{tot}}$. Using the Coherence-Bounded Operational Locality framework, we show that standard relativistic synchronization lag produces a deterministic, exponential decay in interferometric contrast governed by the Spatial Locality Decay Factor $\mathcal{D}_{\mathrm{loc}} = \exp(-\Delta\ell / \mathcal{L}_{\mathrm{sim}})$. Without accounting for this baseline roll-off, conventional environmental noise mimics anomalous gravitational decoherence, risking false-positive claims of new physics. We derive the exact Classical Synchronization Null-Hypothesis Visibility curve $V_{\mathrm{null}}(\Omega, \Delta\ell)$ and formalize a Two-Tier Quantum Gravity Anomaly Monitor ($\Xi_{\mathrm{QG}}$) capable of isolating genuine spacetime-induced phase anomalies via orthogonal noise-sweep invariance tests.
+\end{abstract}
+
+\section{Introduction: The False-Positive Hazard in Quantum Gravity Phenomenology}
+
+Experimental tests at the interface of quantum mechanics and general relativity have entered an era of unprecedented precision. Vertical and horizontal long-baseline atom interferometers---including MAGIS-100 ($100\text{ m}$), AION ($10\text{ m}$ to $1\text{ km}$), and MIGA ($150\text{ m}$)---alongside magnetically levitated nanoparticle interferometers, aim to probe ultralight dark matter, mid-band gravitational waves, and fundamental gravitational decoherence models (such as Di\'{o}si--Penrose collapse or stochastic spacetime foam).
+
+In all such experiments, the primary empirical observable is a differential interferometric phase shift or fringe visibility reduction accumulated across separated interrogation zones. Because these zones must share a common local oscillator or laser phase reference across a proper baseline $\Delta\ell$, real-time phase locking is bounded by the round-trip electromagnetic signal delay:
+\begin{equation}
+\Delta\tau_{\mathrm{sig}} = \frac{2\Delta\ell}{c N_{\mathrm{eff}}},
+\end{equation}
+where $c$ is the speed of light in vacuum and $N_{\mathrm{eff}}$ is the effective group refractive index of the synchronization link.
+
+As established in Papers 9 and 10 of this series, closed-loop phase synchronization across $\Delta\ell$ is bounded by the Operational Simultaneity Horizon:
+\begin{equation}
+\mathcal{L}_{\mathrm{sim}} = \frac{c N_{\mathrm{eff}} \rho_{\tau}}{2\Gamma_{\mathrm{tot}}},
+\end{equation}
+where $\Gamma_{\mathrm{tot}}$ is the total environmental and technical phase decoherence rate and $\rho_{\tau} \in (0, 1]$ is the phase-locking threshold parameter. When $\Delta\ell$ becomes non-negligible relative to $\mathcal{L}_{\mathrm{sim}}$, synchronization lag induces an exponential loss of operational phase fidelity even in flat Minkowski spacetime without any quantum-gravitational coupling.
+
+\section{The Classical Synchronization Null-Hypothesis Visibility}
+
+Consider a long-baseline differential interferometer with intrinsic local temporal coherence $\Phi_{\tau}(\Omega) \in [0, 1]$, where $\Omega$ parametrizes the interrogation Rabi frequency and pulse sequence.
+
+\begin{definition}[Classical Synchronization Null-Hypothesis Visibility]
+In the absence of exotic gravitational decoherence or spacetime fluctuations ($\Xi_{\mathrm{QG}} \equiv 0$), the maximum operationally achievable interferometric fringe visibility across proper baseline $\Delta\ell$ under technical phase-diffusion rate $\Gamma_{\mathrm{tot}}$ is bounded by the Operational Simultaneity Fidelity:
+\begin{equation}
+V_{\mathrm{null}}(\Omega, \Delta\ell) = \mathcal{S}_{\mathrm{sim}}(\Omega, \Delta\ell) = \Phi_{\tau}(\Omega)\,\mathcal{D}_{\mathrm{loc}} = \Phi_{\tau}(\Omega)\exp\!\left(-\frac{2\Gamma_{\mathrm{tot}}\Delta\ell}{c N_{\mathrm{eff}}\rho_{\tau}}\right).
+\end{equation}
+\end{definition}
+
+Because $V_{\mathrm{null}}$ scales exponentially with the product $\Gamma_{\mathrm{tot}}\Delta\ell$, upgrading an apparatus from a $10\text{ m}$ prototype to a $1\text{ km}$ facility amplifies synchronization-induced visibility loss by two orders of magnitude in the exponent for a fixed laser linewidth $\Gamma_{\mathrm{tot}}$. Treating this deterministic roll-off as an anomalous excess noise floor creates a direct false-positive hazard for quantum gravity searches.
+
+\section{The Two-Tier Quantum Gravity Anomaly Monitor ($\Xi_{\mathrm{QG}}$)}
+
+To separate standard relativistic synchronization lag from genuine quantum-gravitational phenomena, we decompose the total observed visibility $V_{\mathrm{obs}}(\Omega, \Delta\ell)$ into multiplicative null-hypothesis and anomalous attenuation factors:
+\begin{equation}
+V_{\mathrm{obs}}(\Omega, \Delta\ell) = V_{\mathrm{null}}(\Omega, \Delta\ell)\cdot\exp\!\left(-\Xi_{\mathrm{QG}}(\Delta\ell, M_{\mathrm{eff}})\right),
+\end{equation}
+where $M_{\mathrm{eff}}$ denotes the effective gravitational source mass or spacetime curvature coupling scale.
+
+\begin{theorem}[Log-Ratio Isolation of $\Xi_{\mathrm{QG}}$]
+Given a calibrated baseline measurement of intrinsic coherence $\Phi_{\tau}(\Omega)$ and active operational visibility $V_{\mathrm{obs}}(\Omega, \Delta\ell)$, the dimensionless Quantum Gravity Anomaly Monitor $\Xi_{\mathrm{QG}}$ is uniquely isolated by the log-ratio estimator:
+\begin{equation}
+\Xi_{\mathrm{QG}} = \ln\!\left(\frac{V_{\mathrm{null}}(\Omega, \Delta\ell)}{V_{\mathrm{obs}}(\Omega, \Delta\ell)}\right) = \ln\!\left(\frac{\Phi_{\tau}(\Omega)}{V_{\mathrm{obs}}(\Omega, \Delta\ell)}\right) - \frac{2\Gamma_{\mathrm{tot}}\Delta\ell}{c N_{\mathrm{eff}}\rho_{\tau}}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Taking the natural logarithm of $V_{\mathrm{obs}} = \Phi_{\tau}(\Omega)\exp(-\Delta\ell / \mathcal{L}_{\mathrm{sim}})\exp(-\Xi_{\mathrm{QG}})$ yields $\ln V_{\mathrm{obs}} = \ln \Phi_{\tau}(\Omega) - \Delta\ell/\mathcal{L}_{\mathrm{sim}} - \Xi_{\mathrm{QG}}$. Substituting $\mathcal{L}_{\mathrm{sim}} = (c N_{\mathrm{eff}}\rho_{\tau})/(2\Gamma_{\mathrm{tot}})$ and solving for $\Xi_{\mathrm{QG}}$ immediately gives the stated identity.
+\end{proof}
+
+\subsection{Two-Tier Architecture in the \texttt{aeon-t.html} Diagnostic Engine}
+
+In operational metrology (implemented directly in Panel 6 of the \texttt{aeon-t.html} simulator), $\Xi_{\mathrm{QG}}$ is evaluated across two distinct validation tiers to suppress statistical fluctuations and systematic drift:
+
+\begin{table}[h!]
+\centering
+\caption{Two-Tier Quantum Gravity Anomaly Monitor ($\Xi_{\mathrm{QG}}$) Classification Thresholds.}
+\label{tab:xi_tiers}
+\vspace{0.5em}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Diagnostic Tier} & \textbf{Quantitative Condition} & \textbf{Physical Interpretation} & \textbf{Experimental Action} \\ \midrule
+\textbf{Nominal Null Regime} & $\Xi_{\mathrm{QG}} \le \sigma_{\mathrm{cal}}$ & Visibility loss fully explained by $\mathcal{D}_{\mathrm{loc}}$. & No anomaly; standard metrology. \\
+\textbf{Tier-1 Advisory Watch} & $\sigma_{\mathrm{cal}} < \Xi_{\mathrm{QG}} < 3\sigma_{\mathrm{cal}}$ & Mild excess phase drift beyond $V_{\mathrm{null}}$. & Run orthogonal $\Gamma_{\mathrm{tot}}$ noise sweep. \\
+\textbf{Tier-2 Anomaly Alert} & $\Xi_{\mathrm{QG}} \ge 3\sigma_{\mathrm{cal}}$ (invariant) & Statistically significant non-classical excess. & Candidate spacetime/QG signal. \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Orthogonal Noise-Sweep Invariance Protocol}
+
+Even if $\Gamma_{\mathrm{tot}}$ is imperfectly known a priori, genuine gravitational decoherence can be cleanly separated from relativistic synchronization lag by injecting controlled technical phase noise $\Gamma_{\mathrm{inj}}$ into the synchronization link such that $\Gamma_{\mathrm{tot}} \to \Gamma_{0} + \Gamma_{\mathrm{inj}}$.
+
+\begin{criterion}[Orthogonal Noise-Sweep Invariance]
+Differentiating $\ln V_{\mathrm{obs}}$ with respect to injected noise $\Gamma_{\mathrm{inj}}$ yields:
+\begin{equation}
+\frac{\partial \ln V_{\mathrm{obs}}}{\partial \Gamma_{\mathrm{inj}}} = -\frac{2\Delta\ell}{c N_{\mathrm{eff}}\rho_{\tau}} - \frac{\partial \Xi_{\mathrm{QG}}}{\partial \Gamma_{\mathrm{inj}}}.
+\end{equation}
+\begin{enumerate}
+    \item If the observed visibility deficit is purely an artifact of relativistic synchronization lag, $\Xi_{\mathrm{QG}} = 0$ and the log-visibility slope equals exactly $-2\Delta\ell / (c N_{\mathrm{eff}}\rho_{\tau})$.
+    \item If a genuine gravitational or spacetime-foam decoherence mechanism is present ($\Xi_{\mathrm{QG}} > 0$) that is independent of electromagnetic link noise ($\partial \Xi_{\mathrm{QG}} / \partial \Gamma_{\mathrm{inj}} = 0$), the plot of $\ln V_{\mathrm{obs}}$ versus $\Gamma_{\mathrm{inj}}$ exhibits a rigid vertical offset $-\Xi_{\mathrm{QG}}$ while preserving the exact theoretical slope $-2\Delta\ell / (c N_{\mathrm{eff}}\rho_{\tau})$.
+\end{enumerate}
+\end{criterion}
+
+This orthogonal sweep eliminates the need for absolute zero-noise calibration: the slope empirically measures $2\Delta\ell / (c N_{\mathrm{eff}}\rho_{\tau})$ in situ, while the zero-noise intercept isolates $\Xi_{\mathrm{QG}}$.
+
+\section{Philosophical Implications for Relativistic Metrology}
+
+Within a neutral four-dimensionalist ontology, spacetime geometry and matter fields form a unified Lorentzian manifold. Attempts to detect quantum-gravitational fluctuations via interferometry do not probe an absolute external time parameter; rather, they compare proper-time intervals accumulated along separated timelike worldlines via null electromagnetic exchange. By anchoring experimental claims to $V_{\mathrm{null}}$ and $\Xi_{\mathrm{QG}}$, physicists avoid misinterpreting the finite operational boundaries of relativistic signaling as ontological breakdowns of classical spacetime.
+
+\section{Conclusion}
+
+As quantum interferometry scales to hundred-meter and kilometer baselines, relativistic synchronization lag becomes a dominant systematic effect. The Classical Synchronization Null-Hypothesis Visibility $V_{\mathrm{null}}$ and the Two-Tier Quantum Gravity Anomaly Monitor $\Xi_{\mathrm{QG}}$ provide a rigorous, model-independent calibration standard that protects next-generation quantum gravity experiments from false-positive decoherence claims.
+
+\section*{AI Collaboration \& Authorship Transparency Statement}
+
+This work is the result of human-AI scholarly collaboration. The core philosophical framework, conceptual architecture, operational definitions, and theoretical direction were conceived and authored by \textbf{Lu\'{i}s Pimenta Dam\'{a}sio} (ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}). Mathematical formalization, LaTeX typesetting, and structural drafting support were provided by \textbf{Gemini} (Google AI) under the direct supervision, review, and editorial authority of the human author.
+
+\begin{thebibliography}{9}
+
+\bibitem{damasio2026compendium}
+L.~{Pimenta Dam\'{a}sio}, \emph{Temporal Coherence \& Operational Relativistic Metrology: Master Compendium (Papers 1--8)}, Zenodo, 2026. DOI: \href{https://doi.org/10.5281/zenodo.24163322}{10.5281/zenodo.24163322}.
+
+\bibitem{damasio2026paper10}
+L.~{Pimenta Dam\'{a}sio}, \emph{Coherence-Bounded Operational Locality: An Experimental Test of Simultaneous Phase Synchronization vs. Bell Correlations}, Paper 10 in Temporal Coherence \& Operational Relativistic Metrology, 2026.
+
+\bibitem{abe2021magis}
+M.~Abe et al., \emph{Matter-wave Atomic Gradiometer Interferometric Sensor (MAGIS-100)}, Quantum Science and Technology \textbf{6}, 044003 (2021).
+
+\bibitem{badurina2020aion}
+L.~Badurina et al., \emph{AION: An Atom Interferometer Observatory and Network}, Journal of Cosmology and Astroparticle Physics \textbf{2020}(05), 011 (2020).
+
+\bibitem{bose2017spin}
+S.~Bose et al., \emph{Spin Entanglement Witness for Quantum Gravity}, Physical Review Letters \textbf{119}, 240401 (2017).
+
+\end{thebibliography}
+
+\end{document}
