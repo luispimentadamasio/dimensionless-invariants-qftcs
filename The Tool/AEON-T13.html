@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEON-Tμν: Covariant Kerr–Newman QFTCS &amp; Semiclassical Back-Reaction Observatory</title>
+    <style>
+        body { margin: 0; padding: 15px; background: #0a0d16; color: #f1f5f9; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+        .grid-master { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 1920px; }
+        .control-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-items: start; }
+        .col-stack { display: flex; flex-direction: column; gap: 14px; justify-content: flex-start; }
+        .panel { background: #121824; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px; justify-content: flex-start; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        .group { background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.03); }
+        .dual-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .lbl { font-size: 0.78rem; font-weight: bold; display: flex; justify-content: space-between; margin-bottom: 5px; font-family: monospace; }
+        .sub-lbl { font-size: 0.68rem; color: #94a3b8; font-family: monospace; margin-top: 4px; line-height: 1.25; }
+        input[type=range] { width: 100%; cursor: pointer; accent-color: #00d2ff; }
+        select { width: 100%; background: #0f1322; color: #00d2ff; border: 1px solid rgba(0, 210, 255, 0.25); padding: 6px 8px; border-radius: 4px; font-family: monospace; font-size: 0.76rem; cursor: pointer; outline: none; font-weight: bold; }
+        select:hover, select:focus { border-color: #00ff87; }
+        .out-box { background: #000; padding: 11px; border-radius: 6px; text-align: center; border: 1px solid #1e293b; font-family: monospace; }
+        .big-val { font-size: 1.48rem; color: #00ff87; font-weight: bold; }
+.scroll { max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 4px; }
+        .btn { background: #1e293b; border: 1px solid #334155; color: #f1f5f9; padding: 8px 10px; border-radius: 5px; cursor: pointer; font-size: 0.77rem; text-align: left; display: flex; justify-content: space-between; align-items: center; transition: 0.15s; flex-shrink: 0; }
+        .btn:hover { background: #283548; }
+        .btn.active { background: #00d2ff; color: #0a0d16; font-weight: bold; }
+        .profiler-box { background: #0f1322; border: 1px solid #1e293b; border-radius: 6px; padding: 11px; font-family: monospace; font-size: 0.78rem; display: flex; flex-direction: column; gap: 6px; transition: border-color 0.2s; }
+        .qft-card { background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(189, 0, 255, 0.18); border-radius: 6px; padding: 8px 10px; display: flex; flex-direction: column; gap: 3px; }
+        .inv-card { background: rgba(0, 0, 0, 0.34); border: 1px solid rgba(255, 183, 3, 0.18); border-radius: 6px; padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; }
+        .formula-line { font-size: 0.64rem; color: #94a3b8; font-family: monospace; background: rgba(255,255,255,0.025); padding: 2px 5px; border-radius: 3px; }
+        .dual-track { position: relative; background: linear-gradient(90deg, rgba(0,210,255,0.28) 0%, rgba(148,163,184,0.12) 50%, rgba(189,0,255,0.28) 100%); height: 6px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.06); margin: 2px 0; }
+        .dual-marker { position: absolute; top: -3px; width: 4px; height: 10px; border-radius: 2px; transform: translateX(-50%); box-shadow: 0 0 6px currentColor; transition: left 0.15s ease; }
+        .qg-mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 2px; }
+        .qg-cell { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; padding: 3px 4px; text-align: center; font-size: 0.61rem; }
+        .qft-desc { font-size: 0.66rem; color: #64748b; line-height: 1.3; font-family: sans-serif; }
+        .prof-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+        .prof-lbl { font-weight: bold; color: #94a3b8; font-size: 0.75rem; }
+        .prof-val { font-weight: bold; color: #00ff87; font-size: 0.77rem; }
+        .gauge-track { background: rgba(255,255,255,0.05); height: 6px; border-radius: 3px; overflow: hidden; margin-top: 2px; border: 1px solid rgba(255,255,255,0.03); }
+        .gauge-bar { background: #00ff87; width: 100%; height: 100%; transition: width 0.15s ease, background-color 0.15s ease; }
+        .thermo-badge { padding: 4px 8px; border-radius: 4px; font-weight: bold; text-align: center; margin-top: 2px; font-size: 0.73rem; }
+.phase-pill { padding: 2px 6px; border-radius: 10px; font-size: 0.61rem; font-weight: bold; letter-spacing: 0.3px; border: 1px solid currentColor; white-space: nowrap; }
+        .spec-track { position: relative; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #00d2ff 0%, #00ff87 50%, #ffb703 75%, #ff3333 100%); margin: 3px 0 1px 0; border: 1px solid rgba(255,255,255,0.08); }
+        .spec-marker { position: absolute; top: -3px; left: 50%; width: 4px; height: 10px; background: #fff; border-radius: 2px; transform: translateX(-50%); box-shadow: 0 0 6px #fff; transition: left 0.15s ease, background-color 0.15s ease; }
+        .system-status-msg { font-size: 0.73rem; font-weight: bold; text-align: center; margin-top: 2px; padding: 4px; border-radius: 4px; background: rgba(0, 255, 135, 0.05); color: #00ff87; letter-spacing: 0.4px; }
+        .ticker-panel { background: #090c14; border: 1px solid rgba(0, 210, 255, 0.25); border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 7px; }
+        .ticker-header { font-size: 0.72rem; font-weight: bold; color: #00d2ff; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+        .ticker-clocks { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+        .clock-box { background: #000; border: 1px solid #1e293b; border-radius: 5px; padding: 7px 6px; text-align: center; }
+        .clock-lbl { font-size: 0.65rem; color: #94a3b8; font-family: monospace; }
+        .clock-time { font-size: 1.04rem; font-weight: bold; color: #ffb703; font-family: monospace; margin-top: 2px; }
+        .ticker-status { font-size: 0.7rem; color: #ffb703; text-align: center; font-family: monospace; font-weight: bold; background: rgba(255, 183, 3, 0.05); padding: 4px; border-radius: 4px; }
+        .sw-btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .sw-act-btn { background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.2); color: #00d2ff; font-family: monospace; font-size: 0.7rem; font-weight: bold; text-align: center; padding: 6px; border-radius: 4px; cursor: pointer; transition: 0.15s; user-select: none; }
+        .sw-act-btn:hover { background: rgba(0, 210, 255, 0.16); }
+        .sw-act-btn.reset { background: rgba(255, 255, 255, 0.03); border-color: #1e293b; color: #94a3b8; }
+        .obs-accent { border-left: 3px solid #00d2ff; background: rgba(0, 210, 255, 0.03); padding-left: 10px; }
+        .sim-accent { border-left: 3px solid #00ff87; background: rgba(0, 255, 135, 0.03); padding-left: 10px; }
+        .elevator-group { border-left: 3px solid #bd00ff; background: rgba(189, 0, 255, 0.04); padding-left: 10px; }
+.tool-row { display: flex; gap: 5px; align-items: center; }
+        .tool-btn { background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.25); color: #00d2ff; font-family: monospace; font-size: 0.67rem; font-weight: bold; padding: 4px 7px; border-radius: 4px; cursor: pointer; transition: 0.15s; white-space: nowrap; }
+        .tool-btn:hover { background: rgba(0, 210, 255, 0.2); color: #fff; }
+        .tool-btn.green { background: rgba(0, 255, 135, 0.08); border-color: rgba(0, 255, 135, 0.25); color: #00ff87; }
+        .tool-btn.green:hover { background: rgba(0, 255, 135, 0.2); color: #fff; }
+        .save-bar { display: none; flex-direction: column; gap: 6px; background: #090c14; border: 1px solid rgba(0, 255, 135, 0.3); border-radius: 5px; padding: 8px; margin-bottom: 4px; }
+        .save-bar input { background: #000; border: 1px solid #334155; color: #f1f5f9; font-family: monospace; font-size: 0.72rem; padding: 5px 7px; border-radius: 4px; outline: none; }
+        .save-bar input:focus { border-color: #00ff87; }
+        .del-x { color: #ff3333; font-weight: bold; padding: 0 4px; margin-left: 4px; border-radius: 3px; }
+        .del-x:hover { background: rgba(255, 51, 51, 0.25); }
+        .bottom-stage { display: grid; grid-template-columns: 1.5fr 1.3fr 1.1fr; gap: 15px; width: 100%; align-items: stretch; }
+        .canvas-panel { background: #121824; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        canvas { background: radial-gradient(circle, #182032 0%, #090c14 100%); border-radius: 6px; border: 1px solid #1e293b; width: 100%; height: 350px; cursor: grab; display: block; }
+        canvas:active { cursor: grabbing; }
+        .geo-stack { display: flex; flex-direction: column; gap: 8px; justify-content: center; flex: 1; }
+        .geo-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 9px 11px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 0.77rem; }
+        .legend-item { background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.05); padding: 7px 9px; border-radius: 6px; display: flex; flex-direction: column; gap: 3px; }
+        .legend-hdr { display: flex; align-items: center; gap: 7px; font-family: monospace; font-size: 0.73rem; font-weight: bold; }
+        .swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+        .footer-card { background: #121824; border: 1px solid #1e293b; border-radius: 8px; padding: 15px 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        .sigma-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .sigma-pillar { background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.04); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; }
+        .support-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; border-top: 1px solid #1e293b; padding-top: 10px; margin-top: 2px; font-size: 0.76rem; color: #94a3b8; }
+        .support-btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .sup-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 5px; font-family: monospace; font-size: 0.72rem; font-weight: bold; text-decoration: none; color: #fff; transition: opacity 0.15s; }
+        .sup-btn:hover { opacity: 0.88; }
+        @media (max-width: 1450px) { .control-row { grid-template-columns: 1fr 1fr; } .bottom-stage, .sigma-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 900px) { .control-row, .bottom-stage, .sigma-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="grid-master">
+    <div style="background:#121824; border:1px solid #1e293b; border-radius:8px; padding:12px 18px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; box-shadow:0 4px 12px rgba(0,0,0,0.4);">
+        <div style="display:flex; flex-direction:column; gap:2px;">
+            <span style="font-size:1.05rem; font-weight:bold; color:#00d2ff; font-family:monospace; letter-spacing:0.6px;">AEON-Tμν: COVARIANT KERR–NEWMAN QFTCS &amp; SEMICLASSICAL BACK-REACTION OBSERVATORY</span>
+            <span style="font-size:0.75rem; color:#94a3b8; font-family:sans-serif;">6-Panel Polar Boyer–Lindquist Stress-Energy (⟨T_μν⟩_ren), Schwinger Discharge, Operational Simultaneity &amp; Cross-Panel Invariants (10⁻³⁵ m to 10²³ m)</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; font-family:monospace; font-size:0.68rem;">
+            <span style="padding:3px 8px; border-radius:4px; background:rgba(0,255,135,0.08); color:#00ff87; border:1px solid rgba(0,255,135,0.25);">● ZAMO LAPSE N²(θ)</span>
+            <span style="padding:3px 8px; border-radius:4px; background:rgba(0,210,255,0.08); color:#00d2ff; border:1px solid rgba(0,210,255,0.25);">● SIMULTANEITY &amp; LOCALITY</span>
+            <span style="padding:3px 8px; border-radius:4px; background:rgba(255,183,3,0.08); color:#ffb703; border:1px solid rgba(255,183,3,0.25);">● PANEL 6 INVARIANTS &amp; Ξ_QG</span>
+        </div>
+    </div>
+<div class="control-row">
+        <div class="col-stack">
+            <div class="panel">
+                <div style="font-size:0.75rem; font-weight:bold; color:#00d2ff; font-family:monospace; letter-spacing:0.5px; border-bottom:1px solid #1e293b; padding-bottom:5px;">PANEL 1: KERR–NEWMAN QFTCS &amp; METRIC</div>
+                <div class="group">
+                    <div class="lbl">Characteristic Radius [Log₁₀(L / 1 m)] <span id="l-a" style="color:#00d2ff;">-34.7915</span></div>
+                    <input type="range" id="i-a" min="-34.7915" max="24.0000" step="0.0001" value="-34.7915">
+                    <div class="sub-lbl" id="desc-a">Scale L = 1.62e-35 m [ρ_matter = 0.0000e+0 GeV/m³]</div>
+                </div>
+                <div class="group">
+                    <div class="lbl">Lorentz Boost Factor [γ] <span id="l-v" style="color:#00d2ff;">1.000000</span></div>
+                    <input type="range" id="i-v" min="0" max="1" step="0.0001" value="0.5000">
+                    <div class="sub-lbl" id="desc-b" style="color:#00ff87;">Lorentz Factor γ = 1.000 [0.00%c · Timelike Rest Frame]</div>
+                </div>
+                <div class="dual-row">
+                    <div class="group">
+                        <div class="lbl" style="font-size:0.72rem;">Kerr Spin [a_*] <span id="l-spin" style="color:#ff9100;">0.0000</span></div>
+                        <input type="range" id="i-spin" min="0.0000" max="0.9998" step="0.0001" value="0.0000">
+                        <div class="sub-lbl" id="desc-spin">ω_FD: 0.0000e+0 rad/s</div>
+                    </div>
+                    <div class="group">
+                        <div class="lbl" style="font-size:0.72rem; align-items:center;">
+                            <span>Charge [Q_*]</span>
+                            <span style="display:flex; gap:4px; align-items:center;">
+                                <button class="tool-btn" id="btn-schwinger" style="padding:1px 4px; font-size:0.55rem; background:rgba(0,255,135,0.1); color:#00ff87; border-color:rgba(0,255,135,0.3);" title="Enforce QED Schwinger pair-production discharge when E_H > 1.323e18 V/m">SCHWINGER: ON</button>
+                                <span id="l-charge" style="color:#38bdf8;">0.0000</span>
+                            </span>
+                        </div>
+                        <input type="range" id="i-charge" min="0.0000" max="0.9998" step="0.0001" value="0.0000">
+                        <div class="sub-lbl" id="desc-charge">E_H: 0.0000e+0 V/m</div>
+                    </div>
+                </div>
+<div class="dual-row">
+                    <div class="group">
+                        <div class="lbl" style="font-size:0.72rem;">Polar Latitude [θ] <span id="l-theta" style="color:#e879f9;">90.0°</span></div>
+                        <input type="range" id="i-theta" min="0.0" max="90.0" step="0.1" value="90.0">
+                        <div class="sub-lbl" id="desc-theta">Equatorial Plane [sin²θ = 1.00]</div>
+                    </div>
+                    <div class="group">
+                        <div class="lbl" style="font-size:0.72rem;">Vacuum [w_vac] <span id="l-c" style="color:#00d2ff;">0.0000</span></div>
+                        <input type="range" id="i-c" min="0.0000" max="2.0000" step="0.0001" value="0.0000">
+                        <div class="sub-lbl" id="desc-c">Boulware · p_r = 0.0000e+0</div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="lbl">
+                        <span>Bare Compactness [𝒞₀]</span>
+                        <span style="display:flex; gap:5px; align-items:center;">
+                            <button class="tool-btn" id="btn-kugelblitz" style="padding:1px 5px; font-size:0.58rem; background:rgba(0,255,135,0.1); color:#00ff87; border-color:rgba(0,255,135,0.3);" title="Couple thermal & vacuum energy density back into effective gravitating compactness 𝒞_eff">AUTO-BACKREACT: ON</button>
+                            <span id="l-d" style="color:#ff3333;">0.000000</span>
+                        </span>
+                    </div>
+                    <input type="range" id="i-d" min="0" max="2.0" step="0.000001" value="0">
+                    <div class="sub-lbl" id="desc-d">Flat Minkowski [𝒞₀ = 0.0000 → 𝒞_eff = 0.0000 · N² = 1.000000]</div>
+                    <div class="sub-lbl" id="desc-geodesic" style="color:#ffb703; margin-top:2px;">Geodesics: Photon Sphere r_ph = N/A │ Prograde ISCO r_ISCO = N/A</div>
+                </div>
+                <div class="group elevator-group">
+                    <div class="lbl" style="color:#bd00ff;">Conformal Preset Elevator [Scale &amp; Curvature Zoom] <span id="l-elev" style="color:#bd00ff;">Floor 1.00 / 24</span></div>
+                    <input type="range" id="i-elev" min="0" max="24" step="0.01" value="1" style="accent-color:#bd00ff;">
+                    <div class="sub-lbl" id="desc-elev-scale">Scale L: ∞ [Isentropic Vacuum] │ Weyl ζ = Log₁₀(L/ℓ_P): 0.00</div>
+                    <div class="sub-lbl" id="desc-elev-kappa" style="color:#00ff87; margin-top:2px;">Weyl Trace Anomaly [𝒜_W]: 0.0000e+0 │ FLAT MINKOWSKI TRACE-FREE</div>
+                </div>
+                <div class="out-box">
+                    <div style="font-size:0.7rem; color:#94a3b8; margin-bottom:2px;">ZAMO LAPSE FUNCTION [N²(θ) = Σ·Δ / A_BL]</div>
+                    <div class="big-val" id="v-d">1.0000000000</div>
+                    <div id="v-rhotot" style="font-size:0.67rem; color:#00d2ff; margin-top:4px; font-family:monospace;">N² = max(10⁻⁶, Σ·Δ/A_BL) │ -g_tt(θ) = 1.0000 │ ρ_tot: 0.0000e+0 GeV/m³</div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; border-bottom:1px solid #1e293b; padding-bottom:6px;">
+                    <span style="font-size:0.74rem; font-weight:bold; color:#00d2ff; font-family:monospace;">PANEL 4: OBJECT PRESETS</span>
+                    <div class="tool-row">
+                        <button class="tool-btn green" id="btn-toggle-save" title="Save current slider state as a custom preset">+ Save</button>
+                        <button class="tool-btn" id="btn-export-csv" title="Export all states and 42-column metrics as CSV">CSV</button>
+                        <button class="tool-btn" id="btn-export-json" title="Download current state snapshot as JSON">JSON</button>
+                        <button class="tool-btn" id="btn-import-json" title="Load a previously saved JSON state snapshot">Load</button>
+                        <input type="file" id="file-import-json" accept=".json" style="display:none;">
+                    </div>
+                </div>
+                <div class="save-bar" id="save-bar">
+                    <div style="font-size:0.68rem; color:#00ff87; font-family:monospace; font-weight:bold;">SAVE CUSTOM QUANTUM / SPACETIME STATE</div>
+                    <div style="display:grid; grid-template-columns: 1.5fr 1fr auto; gap:5px;">
+                        <input type="text" id="in-preset-name" placeholder="State Name (e.g. Ultralight Axion)">
+                        <input type="text" id="in-preset-mass" placeholder="m₀ GeV (e.g. 1e-27)">
+                        <button class="tool-btn green" id="btn-confirm-save">Save</button>
+                    </div>
+                </div>
+                <div class="scroll" id="dock"></div>
+            </div>
+        </div>
+<div class="col-stack">
+            <div class="panel">
+                <div style="font-size:0.75rem; font-weight:bold; color:#00d2ff; font-family:monospace; letter-spacing:0.5px; border-bottom:1px solid #1e293b; padding-bottom:5px;">PANEL 2: ZAMO CHRONOLOGICAL FLUX</div>
+                <div class="profiler-box">
+                    <div class="prof-row" style="border-bottom: 1px dashed rgba(0, 210, 255, 0.25); padding-bottom: 4px; margin-bottom: 2px;">
+                        <span class="prof-lbl" style="color:#94a3b8;">Inspected Baseline:</span>
+                        <span id="active-preset-lbl" class="prof-val" style="color:#00d2ff; font-size:0.75rem;">Quantum Vacuum Ground State (N²=1)</span>
+                    </div>
+                    <div class="prof-row"><span class="prof-lbl">ZAMO Lapse [N²(θ)]:</span><span id="sig-pre" class="prof-val" style="color:#00d2ff;">1.0000000000</span></div>
+                    <div class="prof-row"><span class="prof-lbl">Observer Lapse [-g₀₀_obs]:</span><span id="sig-obs" class="prof-val" style="color:#00d2ff;">1.0000000000</span></div>
+                    <div class="prof-row"><span class="prof-lbl">ZAMO Dilation Factor [ρτ]:</span><span id="f-density" class="prof-val" style="font-size:0.9rem;">1.0000000000</span></div>
+                    <div class="prof-row"><span class="prof-lbl">Clock Rate Delta [Δρτ]:</span><span id="f-delta" class="prof-val" style="color:#00ff87;">+0.0000e+0</span></div>
+                    <div class="prof-row" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 5px; margin-top: 1px;">
+                        <span class="prof-lbl">Causal Regime:</span><span id="f-regime" class="prof-val" style="color:#00ff87; font-size:0.73rem;">ISOMETRIC COVARIANT SYNC</span>
+                    </div>
+                </div>
+
+                <div class="group obs-accent" style="padding: 8px 10px;">
+                    <div class="lbl" style="color:#00d2ff; font-size:0.74rem; margin-bottom:2px;">Observer Velocity [β_obs = v/c] <span id="l-obs-b">0.000000</span></div>
+                    <input type="range" id="i-obs-b" min="0" max="0.9999" step="0.0001" value="0">
+                </div>
+                <div class="group obs-accent" style="padding: 8px 10px;">
+                    <div class="lbl" style="color:#00d2ff; font-size:0.74rem; margin-bottom:2px;">Observer Compactness [𝒞_obs] <span id="l-obs-d">0.000000</span></div>
+                    <input type="range" id="i-obs-d" min="0" max="0.999999" step="0.000001" value="0">
+                </div>
+<div class="ticker-panel">
+                    <div class="ticker-header">
+                        <span>⏱ COVARIANT TIMING RECORDERS</span>
+                        <span style="font-size:0.65rem; color:#64748b;">dτ = √N²(θ) dt</span>
+                    </div>
+                    <div>
+                        <div style="font-size:0.66rem; color:#94a3b8; font-family:monospace; margin-bottom:3px; display:flex; justify-content:space-between;">
+                            <span>Cosmological Time Scale:</span>
+                            <span style="color:#00ff87;">77 Orders</span>
+                        </div>
+                        <select id="i-timescale">
+                            <option value="1" data-unit="s">1.000 s (Lab Standard Second)</option>
+                            <option value="60" data-unit="min">60.00 s (1 Minute · Human Scale)</option>
+                            <option value="3600" data-unit="hr">3,600 s (1 Hour · Orbital Drift)</option>
+                            <option value="86400" data-unit="day">86,400 s (1 Day · GPS Relativity)</option>
+                            <option value="31557600" data-unit="yr">3.156×10⁷ s (1 Julian Year)</option>
+                            <option value="3.15576e10" data-unit="kyr">3.156×10¹⁰ s (1 Millennium · 10³ yr)</option>
+                            <option value="3.15576e13" data-unit="Myr">3.156×10¹³ s (1 Megayear · 10⁶ yr)</option>
+                            <option value="3.15576e16" data-unit="Gyr">3.156×10¹⁶ s (1 Gigayear · 10⁹ yr)</option>
+                            <option value="4.3549488e17" data-unit="H₀">4.355×10¹⁷ s (13.8 Gyr · Age of Universe)</option>
+                            <option value="3.15576e22" data-unit="Stell">3.156×10²² s (10¹⁵ yr · Stelliferous End)</option>
+                            <option value="3.15576e37" data-unit="p-Dec">3.156×10³⁷ s (10³⁰ yr · Proton Decay Era)</option>
+                            <option value="3.15576e52" data-unit="G-BH">3.156×10⁵² s (10⁴⁵ yr · Galactic BH Era)</option>
+                            <option value="3.15576e67" data-unit="Eon">3.156×10⁶⁷ s (10⁶⁰ yr · Black Hole Era)</option>
+                            <option value="3.15576e72" data-unit="SMBH">3.156×10⁷² s (10⁶⁵ yr · Supermassive BH)</option>
+                            <option value="3.15576e77" data-unit="Dark">3.156×10⁷⁷ s (10⁷⁰ yr · Dark Era Asymptote)</option>
+                        </select>
+                    </div>
+                    <div class="ticker-clocks">
+                        <div class="clock-box"><div class="clock-lbl">LAB OBSERVER [t_obs]</div><div class="clock-time" id="clk-obs">10.00 s</div></div>
+                        <div class="clock-box"><div class="clock-lbl">INSPECTED [t_pre]</div><div class="clock-time" id="clk-pre">10.00 s</div></div>
+                    </div>
+                    <div class="ticker-status" id="clk-rate-text">Rate Discrepancy (Δτ): 1.0000000000x [Frames Synchronized]</div>
+                    <div class="sw-btn-row">
+                        <div class="sw-act-btn" id="sw-toggle">▶ START STOPWATCH</div>
+                        <div class="sw-act-btn reset" id="sw-reset">↺ RESET</div>
+                    </div>
+                </div>
+
+                <div class="group sim-accent" style="padding: 9px 10px; display:flex; flex-direction:column; gap:6px;">
+                    <div class="lbl" style="color:#00ff87; font-size:0.73rem; margin-bottom:0;">
+                        <span>OPERATIONAL SIMULTANEITY [Δℓ]</span>
+                        <span id="l-baseline" style="color:#00ff87;">10.00 m</span>
+                    </div>
+                    <input type="range" id="i-baseline" min="0" max="21" step="0.001" value="1" style="accent-color:#00ff87;">
+                    <div class="dual-row">
+                        <div>
+                            <div class="lbl" style="font-size:0.68rem; margin-bottom:2px;">Medium [n_eff] <span id="l-neff" style="color:#00d2ff;">1.468</span></div>
+                            <select id="i-medium" style="padding:4px 6px; font-size:0.7rem;">
+                                <option value="1.468" selected>Telecom Fiber (1.468)</option>
+                                <option value="1.000">Vacuum Link (1.000)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div class="lbl" style="font-size:0.68rem; margin-bottom:2px;">Tech Noise [Γ_tech] <span id="l-gtech" style="color:#ffb703;">0 s⁻¹</span></div>
+                            <input type="range" id="i-gtech" min="0" max="10" step="0.01" value="0" style="accent-color:#ffb703;">
+                        </div>
+                    </div>
+                    <div class="prof-row"><span class="prof-lbl" style="font-size:0.71rem;">Round-Trip Delay [Δτ_sig]:</span><span id="sim-dtau" class="prof-val" style="color:#00d2ff; font-size:0.73rem;">97.93 ns</span></div>
+                    <div class="prof-row"><span class="prof-lbl" style="font-size:0.71rem;">Simultaneity Horizon [ℒ_sim(r)]:</span><span id="sim-lsim" class="prof-val" style="color:#00ff87; font-size:0.73rem;">∞ [Point-Local]</span></div>
+                    <div class="prof-row"><span class="prof-lbl" style="font-size:0.71rem;">Active Sync Fidelity [𝒮_sim]:</span><span id="sim-ssim" class="prof-val" style="color:#00ff87; font-size:0.73rem;">1.0000</span></div>
+                    <div class="prof-row"><span class="prof-lbl" style="font-size:0.71rem;">Post-Selected CHSH [S_CHSH]:</span><span id="sim-schsh" class="prof-val" style="color:#bd00ff; font-size:0.73rem;">2.8284</span></div>
+                    <div class="qft-desc">Separates real-time closed-loop phase locking (𝒮_sim, bounded by Δτ_sig) from distance-invariant post-selected Bell correlations (S_CHSH).</div>
+                </div>
+            </div>
+<div class="panel">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1e293b; padding-bottom:5px;">
+                    <span style="font-size:0.74rem; font-weight:bold; color:#00d2ff; font-family:monospace;">PANEL 3: THERMODYNAMICS &amp; PAGE CURVE</span>
+                    <button class="tool-btn" id="btn-evap" style="padding:1px 5px; font-size:0.58rem; background:rgba(0,255,135,0.1); color:#00ff87; border-color:rgba(0,255,135,0.3);" title="Evolve Hawking evaporation M(t) and Page Curve entanglement entropy over cosmological time">AUTO-EVAP: ON</button>
+                </div>
+                <div class="group" style="padding:8px 10px;">
+                    <div class="lbl" style="font-size:0.74rem;">Entropy [Log₁₀ S] <span id="l-temp" style="color:#ff9100;">0.00 k_B [Isentropic]</span></div>
+                    <input type="range" id="i-temp" min="0" max="121.0" step="0.1" value="0" style="accent-color:#ff9100;">
+                    <div class="prof-row" style="margin-top:4px;"><span class="prof-lbl" style="font-size:0.7rem;">Kerr–Newman Area Bound [Log₁₀ S_BH]:</span><span id="sbh-bound-txt" class="prof-val" style="color:#00d2ff; font-size:0.71rem;">0.50 k_B</span></div>
+                    <div class="prof-row"><span class="prof-lbl" style="font-size:0.7rem;">Page Curve Entanglement [Log₁₀ S_rad]:</span><span id="page-srad-txt" class="prof-val" style="color:#bd00ff; font-size:0.71rem;">0.00 k_B [Pre-Evap]</span></div>
+                    <div class="thermo-badge" id="t-badge" style="background:#1a2333; color:#94a3b8; margin-top:4px;">Regime: Pure Quantum Vacuum / Coherent Ground State</div>
+                </div>
+                <div class="profiler-box">
+                    <div class="prof-row"><span class="prof-lbl">Local ZAMO Temp [T_eff]:</span><span id="teff-val" class="prof-val" style="color:#00d2ff;">0.00 K</span></div>
+                    <div class="prof-row"><span class="prof-lbl">Observer Temp [T_obs]:</span><span id="tobs-val" class="prof-val" style="color:#38bdf8;">0.00 K</span></div>
+                    <div class="prof-row"><span class="prof-lbl">Thermodynamic Phase:</span><span id="phase-pill" class="phase-pill" style="color:#00d2ff; background:rgba(0,210,255,0.1);">ISENTROPIC / BEC GROUND</span></div>
+                    <div class="prof-row" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 4px;"><span class="prof-lbl">Decoherence Action [Ω]:</span><span id="action-txt" class="prof-val" style="color:#ffb703;">0.0000</span></div>
+                    <div class="prof-row"><span class="prof-lbl">Weyl Conformal Purity [χ]:</span><span id="cohere-txt" class="prof-val" style="color:#00d2ff;">1.0000000000</span></div>
+                    <div class="prof-row"><span class="prof-lbl">Timeline Integrity [Φτ]:</span><span id="phitau-txt" class="prof-val">1.0000</span></div>
+                    <div class="gauge-track"><div class="gauge-bar" id="gauge-bar"></div></div>
+                    <div class="system-status-msg" id="status-alert-txt">UNITARY EVOLUTION: ZERO ENTROPIC DECOHERENCE</div>
+                </div>
+            </div>
+        </div>
+<div class="col-stack">
+            <div class="panel">
+                <div class="profiler-box" style="border-color: rgba(189, 0, 255, 0.25);">
+                    <div style="font-size:0.72rem; font-weight:bold; color:#bd00ff; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px dashed rgba(189,0,255,0.2); padding-bottom:4px;">PANEL 5: QFT DISPERSION &amp; SUPERRADIANCE</div>
+                    <div style="font-size:0.65rem; color:#94a3b8; line-height:1.2; margin-bottom:2px;">Natural Units (c = ħ = 1) │ Relativistic Dispersion: E² − p² = m₀²</div>
+
+                    <div class="profiler-box" style="border-color: rgba(0, 255, 135, 0.28); background: linear-gradient(180deg, rgba(0,255,135,0.03) 0%, #0f1322 100%); margin: 4px 0;">
+                        <div style="font-size:0.72rem; font-weight:bold; color:#00ff87; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px dashed rgba(0,255,135,0.2); padding-bottom:4px;">⟨T_μν⟩_ren BACK-REACTION &amp; SUPERRADIANCE</div>
+                        <div style="font-size:0.65rem; color:#94a3b8; line-height:1.2; margin-bottom:2px;">Coupling Stress-Energy, ZAMO Lapse N²(θ), Spin a_*, &amp; Charge Q_*</div>
+
+                        <div class="qft-card" style="border-color: rgba(0, 255, 135, 0.16);">
+                            <div class="prof-row"><span class="prof-lbl">Dressed / Evaporating Mass [M_eff(t)]:</span><span id="qft-meff" class="prof-val" style="color:#00d2ff;">0.0000 GeV</span></div>
+                            <div style="font-size:0.65rem; color:#94a3b8; font-family:monospace;">Formula: M(t) = max(M_P, (M₀³ − 3α_H t_pre)¹/³) + ΔM_vac</div>
+                            <div class="qft-desc">Effective gravitating mass renormalized by vacuum/thermal energy and evolving via Hawking luminosity over cosmological time.</div>
+                        </div>
+
+                        <div class="qft-card" style="border-color: rgba(0, 255, 135, 0.16);">
+                            <div class="prof-row"><span class="prof-lbl">ZAMO Horizon Compression [ℋ_Q,obs]:</span><span id="qft-hq" class="prof-val" style="color:#ffb703;">1.000000</span></div>
+                            <div style="font-size:0.65rem; color:#94a3b8; font-family:monospace;">Formula: ℋ_Q,obs = √(N²_pre(θ)) / γ_pre</div>
+                            <div class="qft-desc">ZAMO lapse compression factor measuring Kerr–Newman horizon trapping and causal redshift relative to asymptotic infinity.</div>
+                        </div>
+
+                        <div class="qft-card" style="border-color: rgba(0, 255, 135, 0.16);">
+                            <div class="prof-row"><span class="prof-lbl">Kerr–Newman Superradiance [f_local vs f_H]:</span><span id="qft-superrad" class="prof-val" style="color:#00d2ff;">INACTIVE [a_* = 0]</span></div>
+                            <div style="font-size:0.65rem; color:#94a3b8; font-family:monospace;">Formula: f_H = Ω_H / 2π = c·a_* / (4π·r_+)</div>
+                            <div class="qft-desc">Zel'dovich–Misner rotational energy extraction occurs when bosonic wave frequency f_local falls below horizon frequency f_H.</div>
+                        </div>
+
+                        <div class="qft-card" style="border-color: rgba(0, 255, 135, 0.28); background: rgba(0, 255, 135, 0.04);">
+                            <div class="prof-row"><span class="prof-lbl" style="color:#f1f5f9;">Coherent Phase Cycles [𝒩_eff / 𝒩_φ]:</span><span id="qft-neff" class="prof-val" style="color:#00ff87;">0.0000 cycles</span></div>
+                            <div style="font-size:0.65rem; color:#00ff87; font-family:monospace;" id="qft-nphi">Total Unscattered Cycles 𝒩_φ = f_local · t_pre: 0.0000</div>
+                            <div class="qft-desc">Net unitary quantum phase cycles (𝒩_eff = 𝒩_φ · Φτ) surviving Caldeira–Leggett and Penrose–Diósi decoherence down to Φ_floor.</div>
+                        </div>
+                    </div>
+<div class="qft-card">
+                        <div class="prof-row"><span class="prof-lbl">Rest Mass [m₀]:</span><span id="qft-m0" class="prof-val" style="color:#00d2ff;">0.0000 GeV</span></div>
+                        <div class="qft-desc">Lorentz-invariant mass energy (√(E² − p²)); defines the particle's bare rest-frame inertia before vacuum self-energy dressing.</div>
+                    </div>
+                    <div class="qft-card">
+                        <div class="prof-row"><span class="prof-lbl">Total Relativistic Energy [E]:</span><span id="qft-e" class="prof-val" style="color:#ffb703;">0.0000 GeV</span></div>
+                        <div class="qft-desc">Total mass-energy plus kinetic boost (E = γm₀); temporal component of the 4-momentum vector.</div>
+                    </div>
+                    <div class="qft-card">
+                        <div class="prof-row"><span class="prof-lbl">3-Momentum Magnitude [p]:</span><span id="qft-p" class="prof-val" style="color:#bd00ff;">0.0000 GeV</span></div>
+                        <div class="qft-desc">Spatial component of 4-momentum (p = γβm₀); governs spatial translation and de Broglie phase gradient.</div>
+                    </div>
+                    <div class="qft-card">
+                        <div class="prof-row"><span class="prof-lbl">Local Proper Frequency [f_local]:</span><span id="qft-freq" class="prof-val" style="color:#00ff87;">0.0000 Hz</span></div>
+                        <div class="qft-desc">Planck–Einstein matter-wave frequency (ν = E/h); intrinsic rate of quantum phase oscillation in proper time.</div>
+                    </div>
+                    <div class="qft-card">
+                        <div class="prof-row"><span class="prof-lbl">Observed Redshifted Freq [f_obs]:</span><span id="qft-fobs" class="prof-val" style="color:#00ff87;">0.0000 Hz</span></div>
+                        <div class="qft-desc">Lab-frame detected wave frequency (f_obs = f_local / ρτ); stretches downward as ZAMO lapse N²(θ) pinches near horizons.</div>
+                    </div>
+                    <div class="qft-card">
+                        <div class="prof-row"><span class="prof-lbl">Spectral Redshift Factor [z]:</span><span id="qft-z" class="prof-val" style="color:#00ff87;">+0.0000e+0 [SYNC]</span></div>
+                        <div class="spec-track"><div class="spec-marker" id="qft-z-marker"></div></div>
+                        <div class="qft-desc">Fractional wavelength elongation (z = Δλ/λ₀ = ρτ − 1); quantifies gravitational potential well depth and relativistic Doppler shift.</div>
+                    </div>
+                    <div class="qft-card">
+                        <div class="prof-row"><span class="prof-lbl">Reduced Compton Scale [ƛ]:</span><span id="qft-lambda" class="prof-val" style="color:#00d2ff;">∞ [Non-Localized Vacuum]</span></div>
+                        <div class="qft-desc">Quantum spatial localization limit (ƛ = ħc/E); scale below which particle-antiparticle pair production occurs.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="col-stack">
+            <div class="panel">
+                <div class="profiler-box" style="border-color: rgba(255, 183, 3, 0.28);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed rgba(255,183,3,0.25); padding-bottom:4px;">
+                        <span style="font-size:0.72rem; font-weight:bold; color:#ffb703; text-transform:uppercase; letter-spacing:0.5px;">PANEL 6: CROSS-PANEL INVARIANTS &amp; BOUNDS</span>
+                        <span style="font-size:0.61rem; color:#64748b;">SYNTHESIS</span>
+                    </div>
+
+                    <div class="inv-card" style="border-color: rgba(0, 210, 255, 0.2);">
+                        <div class="prof-row"><span class="prof-lbl">1. Lloyd–Bekenstein [η_Lloyd]:</span><span id="inv-lloyd-val" class="prof-val" style="color:#00d2ff;">0.0000e+0</span></div>
+                        <div class="prof-row"><span class="formula-line">η_Lloyd = 𝒩_eff / (S_BH / k_B)</span><span id="inv-lloyd-pill" class="phase-pill" style="color:#00ff87; background:rgba(0,255,135,0.1);">BOUNDED</span></div>
+                        <div class="gauge-track"><div class="gauge-bar" id="inv-lloyd-bar" style="width:0%; background:#00d2ff;"></div></div>
+                        <div class="qft-desc">Coherent cycles per holographic bit (Panels 3 &amp; 5); verifies Seth Lloyd's fundamental quantum computation bound.</div>
+                    </div>
+
+                    <div class="inv-card" style="border-color: rgba(0, 255, 135, 0.2);">
+                        <div class="prof-row"><span class="prof-lbl">2. Tolman–Ehrenfest [Ξ_thermal]:</span><span id="inv-tolman-val" class="prof-val" style="color:#00ff87;">0.0000e+0</span></div>
+                        <div class="prof-row"><span class="formula-line">Ξ_th = k_B·T_obs / h·f_obs ≡ k_B·T_eff / h·f_local</span><span id="inv-tolman-pill" class="phase-pill" style="color:#00ff87; background:rgba(0,255,135,0.1);">INVARIANT</span></div>
+                        <div class="qft-desc">Frame-invariant thermal photon occupancy preserved under gravitational redshift (ρτ) across Panels 2, 3 &amp; 5.</div>
+                    </div>
+
+                    <div class="inv-card" style="border-color: rgba(255, 183, 3, 0.22);">
+                        <div class="prof-row"><span class="prof-lbl">3. Penrose–Zel'dovich [ℰ_Penrose]:</span><span id="inv-penrose-val" class="prof-val" style="color:#ffb703;">0.00%</span></div>
+                        <div class="prof-row"><span class="formula-line">ℰ_P = max(0, 1 − f_local/f_H)·sin²θ·η_NT(r_ISCO)</span><span id="inv-penrose-pill" class="phase-pill" style="color:#94a3b8; background:rgba(148,163,184,0.1);">INACTIVE</span></div>
+                        <div class="gauge-track"><div class="gauge-bar" id="inv-penrose-bar" style="width:0%; background:#ffb703;"></div></div>
+                        <div class="qft-desc">Rotational energy extraction efficiency combining superradiant gain, latitude drag (sin²θ), and ISCO binding.</div>
+                    </div>
+
+                    <div class="inv-card" style="border-color: rgba(189, 0, 255, 0.22);">
+                        <div class="prof-row"><span class="prof-lbl">4. Gravity/Thermal Ratio [ℛ_DP]:</span><span id="inv-dp-val" class="prof-val" style="color:#bd00ff;">0.0000e+0</span></div>
+                        <div class="prof-row"><span class="formula-line">ℛ_DP = Γ_grav / Γ_th</span><span id="inv-dp-pill" class="phase-pill" style="color:#00d2ff; background:rgba(0,210,255,0.1);">UNITARY</span></div>
+                        <div class="dual-track"><div class="dual-marker" id="inv-dp-marker" style="left:50%; background:#00d2ff; color:#00d2ff;"></div></div>
+                        <div class="qft-desc">Compares Penrose–Diósi gravitational self-energy collapse (right) against Caldeira–Leggett thermal noise (left).</div>
+                    </div>
+
+                    <div class="inv-card" style="border-color: rgba(255, 145, 0, 0.22);">
+                        <div class="prof-row"><span class="prof-lbl">5. MSS Chaos Bound [λ_L / λ_MSS]:</span><span id="inv-mss-val" class="prof-val" style="color:#ff9100;">0.0000</span></div>
+                        <div class="prof-row"><span class="formula-line">λ_L / λ_MSS = (Ω / t_pre) / (2π k_B T_eff / ħ)</span><span id="inv-mss-pill" class="phase-pill" style="color:#00ff87; background:rgba(0,255,135,0.1);">SUB-CHAOTIC</span></div>
+                        <div class="gauge-track"><div class="gauge-bar" id="inv-mss-bar" style="width:0%; background:linear-gradient(90deg, #00ff87, #ffb703, #ff3333);"></div></div>
+                        <div class="qft-desc">Maldacena–Shenker–Stanford quantum scrambling ratio; horizons saturate at 1.0000 as maximal scramblers.</div>
+                    </div>
+<div class="inv-card" style="border-color: rgba(255, 51, 51, 0.28); background: rgba(255, 51, 51, 0.04);">
+                        <div class="prof-row"><span class="prof-lbl" style="color:#f8fafc;">6. Quantum-Gravity Wall [Ξ_QG]:</span><span id="inv-qg-val" class="prof-val" style="color:#00ff87;">0.0000</span></div>
+                        <div class="prof-row"><span class="formula-line">Ξ_QG = max(ℓ_P/L, 10⁻⁶/N², (a_*²+Q_*²)/0.9998, T_eff/T_P)</span><span id="inv-qg-pill" class="phase-pill" style="color:#00ff87; background:rgba(0,255,135,0.1);">EXACT QFTCS</span></div>
+                        <div class="qg-mini-grid">
+                            <div class="qg-cell"><div style="color:#94a3b8;">ℓ_P / L</div><div id="qg-c1" style="color:#00d2ff; font-weight:bold;">0.0%</div></div>
+                            <div class="qg-cell"><div style="color:#94a3b8;">10⁻⁶/N²</div><div id="qg-c2" style="color:#00d2ff; font-weight:bold;">0.0%</div></div>
+                            <div class="qg-cell"><div style="color:#94a3b8;">Extremal</div><div id="qg-c3" style="color:#00d2ff; font-weight:bold;">0.0%</div></div>
+                            <div class="qg-cell"><div style="color:#94a3b8;">T_eff/T_P</div><div id="qg-c4" style="color:#00d2ff; font-weight:bold;">0.0%</div></div>
+                        </div>
+                        <div id="qg-state-line" style="font-size:0.64rem; color:#00d2ff; font-family:monospace; margin-top:2px;">STATE: Smooth flat manifold; all 4 semiclassical regulators inactive.</div>
+                        <div id="qg-ahead-line" style="font-size:0.64rem; color:#94a3b8; font-family:sans-serif; line-height:1.25;">AHEAD: No UV vacuum blow-up, horizon redshift divergence, or spacetime foam breakdown.</div>
+                    </div>
+
+                    <div class="inv-card" style="border-color: rgba(0, 255, 135, 0.25);">
+                        <div class="prof-row"><span class="prof-lbl">7. Spatial Locality Decay [𝒟_loc]:</span><span id="inv-dloc-val" class="prof-val" style="color:#00ff87;">1.0000</span></div>
+                        <div class="prof-row"><span class="formula-line">𝒟_loc = exp(−Δℓ / ℒ_sim(r)) │ ℱ_QRF = ½(1 + 𝒟_loc)</span><span id="inv-dloc-pill" class="phase-pill" style="color:#00ff87; background:rgba(0,255,135,0.1);">POINT-LOCAL</span></div>
+                        <div class="gauge-track"><div class="gauge-bar" id="inv-dloc-bar" style="width:100%; background:#00ff87;"></div></div>
+                        <div class="qft-desc" id="inv-qrf-desc">QRF Channel Fidelity ℱ_QRF = 1.0000; governs spatial quantum frame shifts (Paper 11) and horizon dissolution (Paper 13).</div>
+                    </div>
+
+                    <div class="inv-card" style="border-color: rgba(0, 210, 255, 0.25);">
+                        <div class="prof-row"><span class="prof-lbl">8. Null Visibility [V_null]:</span><span id="inv-vnull-val" class="prof-val" style="color:#00d2ff;">1.0000</span></div>
+                        <div class="prof-row"><span class="formula-line">V_null(Ω, Δℓ) = Φτ(Ω)·𝒟_loc</span><span id="inv-vnull-pill" class="phase-pill" style="color:#00d2ff; background:rgba(0,210,255,0.1);">CLASSICAL SYNC</span></div>
+                        <div class="qft-desc">Baseline interferometric visibility (Paper 12); separates signaling-decoherence roll-off from Tier-2 Ξ_QG anomalies.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="bottom-stage">
+        <div class="canvas-panel">
+            <div style="font-size:0.74rem; font-weight:bold; color:#00d2ff; font-family:monospace; letter-spacing:0.5px; display:flex; justify-content:space-between; align-items:center;">
+                <span>3D KERR–NEWMAN CAUSAL STAGE</span>
+                <span style="font-size:0.66rem; color:#64748b;">Drag to Orbit (ax, ay)</span>
+            </div>
+            <canvas id="c" width="640" height="360"></canvas>
+        </div>
+
+        <div class="canvas-panel">
+            <div style="font-size:0.74rem; font-weight:bold; color:#ffb703; font-family:monospace; letter-spacing:0.5px; border-bottom:1px solid #1e293b; padding-bottom:5px;">3D GEOMETRIC &amp; VISUAL KEY</div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+                <div class="legend-item">
+                    <div class="legend-hdr" style="color:#00d2ff;"><span class="swatch" style="background:#00d2ff;"></span>ZAMO Causal Light Cone [θ_cone = arctan√N²]</div>
+                    <div class="qft-desc" id="leg-cone-desc">Aperture angle measures local causal openness; pinches toward 0.06° at horizons and twists azimuthally under frame-dragging (ω_FD).</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-hdr" style="color:#00ff87;"><span class="swatch" style="background:#00ff87;"></span>Proper Worldline Vector [t_ZAMO]</div>
+                    <div class="qft-desc" id="leg-vec-desc">Connects origin event (amber) to elapsed proper-time tip (green); tilts radially with Lorentz boost (γ) and azimuthally with spin drag.</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-hdr" style="color:#ff9100;"><span class="swatch" style="background:#ff9100;"></span>Ergosphere Static Limit [r_E(θ)] &amp; Horizon [r_+]</div>
+                    <div class="qft-desc" id="leg-ergo-desc">Outer orange silhouette marks static limit (-g_tt = 0), swelling at the equator (90°) and pinching to the inner red event horizon (r_+) at the poles (0°).</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-hdr" style="color:#bd00ff;"><span class="swatch" style="background:#bd00ff;"></span>Renormalized Stress Ellipsoid [⟨T_μν⟩_ren]</div>
+                    <div class="qft-desc" id="leg-stress-desc">Equatorial hull comparing radial (p_r) vs. tangential (p_⊥) quantum pressure; turns coral-red when negative radial tension violates the Null Energy Condition.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-panel">
+            <div style="font-size:0.74rem; font-weight:bold; color:#00d2ff; font-family:monospace; letter-spacing:0.5px; border-bottom:1px solid #1e293b; padding-bottom:5px;">COVARIANT TENSOR &amp; METRIC DIMENSIONS</div>
+            <div class="geo-stack">
+                <div class="geo-item"><span style="color:#94a3b8;">Total Energy Density (ρ_tot):</span> <span id="ts-a" style="color:#00ff87; font-weight:bold;">0.0000e+0</span></div>
+                <div class="geo-item"><span style="color:#94a3b8;">Radial Stress (p_r):</span> <span id="ts-b" style="color:#00d2ff; font-weight:bold;">0.0000e+0</span></div>
+                <div class="geo-item"><span style="color:#94a3b8;">Tangential Stress (p_⊥):</span> <span id="ts-c" style="color:#bd00ff; font-weight:bold;">0.0000e+0</span></div>
+                <div class="geo-item"><span style="color:#94a3b8;">Weyl Trace Anomaly (𝒜_W):</span> <span id="ts-d" style="color:#ffb703; font-weight:bold;">0.0000e+0</span></div>
+                <div class="geo-item" style="border-color:rgba(255,51,51,0.2);"><span style="color:#94a3b8;">ZAMO Metric Lapse [N²(θ)]:</span> <span id="t-sig" style="color:#ff3333; font-weight:bold;">1.0000000000</span></div>
+            </div>
+        </div>
+    </div>
+<div class="footer-card">
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px;">
+            <span style="font-size:0.74rem; font-weight:bold; color:#00d2ff; font-family:monospace; letter-spacing:0.6px;">OBSERVATORY METHODOLOGY &amp; 6-PANEL KERR–NEWMAN QFTCS SCOPE</span>
+            <div style="display:flex; flex-wrap:wrap; gap:6px; font-family:monospace; font-size:0.64rem;">
+                <span style="padding:2px 7px; border-radius:4px; background:rgba(0,210,255,0.08); color:#00d2ff; border:1px solid rgba(0,210,255,0.2);">G_μν = 8πG ⟨T_μν⟩_ren</span>
+                <span style="padding:2px 7px; border-radius:4px; background:rgba(255,145,0,0.08); color:#ff9100; border:1px solid rgba(255,145,0,0.2);">N²(θ) = Σ·Δ / A_BL</span>
+                <span style="padding:2px 7px; border-radius:4px; background:rgba(0,255,135,0.08); color:#00ff87; border:1px solid rgba(0,255,135,0.2);">ℒ_sim(r) &amp; 𝒟_loc HORIZON</span>
+                <span style="padding:2px 7px; border-radius:4px; background:rgba(255,51,51,0.08); color:#ff3333; border:1px solid rgba(255,51,51,0.2);">Ξ_QG BREAKDOWN MONITOR</span>
+            </div>
+        </div>
+        <p style="margin:0; font-size:0.76rem; color:#94a3b8; line-height:1.45; font-family:sans-serif;">
+            <strong>AEON-Tμν</strong> evaluates polar Boyer–Lindquist Kerr–Newman geometry, Hadamard-renormalized stress-energy, open quantum decoherence, and coherence-bounded operational locality across <strong>6 coupled panels</strong> spanning 120 orders of magnitude (<strong>1.62 × 10⁻³⁵ m</strong> to <strong>1.00 × 10²³ m</strong>). <strong>Panel 6</strong> synthesizes cross-panel dimensionless invariants and tracks the <strong>Semiclassical Breakdown Index (Ξ_QG)</strong> across four explicit quantum-gravity cutoffs alongside Papers 9–13 operational locality horizons.
+        </p>
+        <div class="sigma-grid">
+            <div class="sigma-pillar">
+                <span style="font-size:0.72rem; font-weight:bold; color:#00d2ff; font-family:monospace;">1. POLAR KERR–NEWMAN &amp; GEODESICS</span>
+                <span style="font-size:0.72rem; color:#cbd5e1; line-height:1.4;">Separates static ergosphere limits (<strong>-g_tt(θ) = 0</strong>) from ZAMO event horizons (<strong>N²(θ) → 0</strong>) alongside prograde photon-sphere (<strong>r_ph</strong>) and ISCO (<strong>r_ISCO</strong>) radii.</span>
+            </div>
+            <div class="sigma-pillar">
+                <span style="font-size:0.72rem; font-weight:bold; color:#00ff87; font-family:monospace;">2. SCHWINGER &amp; PAGE EVAPORATION</span>
+                <span style="font-size:0.72rem; color:#cbd5e1; line-height:1.4;">Couples QED Schwinger vacuum pair screening (<strong>E_H &gt; 1.323×10¹⁸ V/m</strong>), Kugelblitz radiation collapse, and unitary <strong>Page Curve</strong> entanglement (<strong>Log₁₀ S_rad</strong>).</span>
+            </div>
+            <div class="sigma-pillar">
+                <span style="font-size:0.72rem; font-weight:bold; color:#ffb703; font-family:monospace;">3. CROSS-PANEL INVARIANTS (PANEL 6)</span>
+                <span style="font-size:0.72rem; color:#cbd5e1; line-height:1.4;">Computes <strong>Lloyd–Bekenstein</strong> gate limits (<strong>η_Lloyd</strong>), <strong>Tolman–Ehrenfest</strong> thermal invariance (<strong>Ξ_th</strong>), <strong>Penrose</strong> extraction gain (<strong>ℰ_P</strong>), and <strong>MSS</strong> chaos saturation.</span>
+            </div>
+            <div class="sigma-pillar">
+                <span style="font-size:0.72rem; font-weight:bold; color:#ff3333; font-family:monospace;">4. QUANTUM-GRAVITY WALL (Ξ_QG)</span>
+                <span style="font-size:0.72rem; color:#cbd5e1; line-height:1.4;">Exposes exact proximity to UV length, stretched-horizon, extremal, and Planck temperature cutoffs alongside the divergence each regulator prevents.</span>
+            </div>
+            <div class="sigma-pillar">
+                <span style="font-size:0.72rem; font-weight:bold; color:#38bdf8; font-family:monospace;">5. OPERATIONAL SIMULTANEITY &amp; LOCALITY</span>
+                <span style="font-size:0.72rem; color:#cbd5e1; line-height:1.4;">Separates active Einstein–Poincaré phase locking (<strong>𝒮_sim</strong>, bounded by <strong>ℒ_sim(r)</strong> and <strong>𝒟_loc</strong>) from baseline-invariant Bell correlations (<strong>S_CHSH</strong>) and <strong>V_null</strong> calibration.</span>
+            </div>
+        </div>
+        <div class="support-bar">
+            <div>
+                If you're enjoying <strong>AEON-T<sub>&mu;&nu;</sub></strong>, please consider funding the author and the associated ongoing research &mdash;
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color:#00d2ff; font-family:monospace; text-decoration:underline;">https://github.com</a>
+            </div>
+            <div class="support-btns">
+                <a class="sup-btn" style="background:#FF5E5B;" href="https://ko-fi.com" target="_blank" rel="noopener noreferrer">&#9749; Support on Ko-fi</a>
+                <a class="sup-btn" style="background:#00457C;" href="https://paypal.me" target="_blank" rel="noopener noreferrer">&#128179; Support via PayPal</a>
+            </div>
+        </div>
+        <div style="font-size:0.7rem; color:#64748b; font-family:monospace; display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px;">
+            <span>Copyright &copy; 2026 luipimentadamasio (Lu&iacute;s Pimenta Dam&aacute;sio). All rights reserved.</span>
+            <span>ORCID: 0009-0001-7606-7557 &bull; Master Compendium DOI: 10.5281/zenodo.24163322</span>
+        </div>
+    </div>
+</div>
+<script>
+    const cv = document.getElementById('c'), cx = cv.getContext('2d'), dk = document.getElementById('dock');
+    const ia = document.getElementById('i-a'), iv = document.getElementById('i-v'), ic = document.getElementById('i-c');
+    const ispin = document.getElementById('i-spin'), icharge = document.getElementById('i-charge'), itheta = document.getElementById('i-theta'), id = document.getElementById('i-d');
+    const ielev = document.getElementById('i-elev'), itemp = document.getElementById('i-temp');
+    const iobsb = document.getElementById('i-obs-b'), iobsd = document.getElementById('i-obs-d');
+    const itimescale = document.getElementById('i-timescale');
+    const ibaseline = document.getElementById('i-baseline'), imedium = document.getElementById('i-medium'), igtech = document.getElementById('i-gtech');
+    const la = document.getElementById('l-a'), lv = document.getElementById('l-v'), lc = document.getElementById('l-c');
+    const lspin = document.getElementById('l-spin'), lcharge = document.getElementById('l-charge'), ltheta = document.getElementById('l-theta'), ld = document.getElementById('l-d');
+    const lelev = document.getElementById('l-elev'), ltemp = document.getElementById('l-temp');
+    const tbadge = document.getElementById('t-badge'), sbhboundtxt = document.getElementById('sbh-bound-txt'), pagesradtxt = document.getElementById('page-srad-txt');
+    const lobsb = document.getElementById('l-obs-b'), lobsd = document.getElementById('l-obs-d');
+    const lbaseline = document.getElementById('l-baseline'), lneff = document.getElementById('l-neff'), lgtech = document.getElementById('l-gtech');
+    const simdtau = document.getElementById('sim-dtau'), simlsim = document.getElementById('sim-lsim'), simssim = document.getElementById('sim-ssim'), simschsh = document.getElementById('sim-schsh');
+    const vd = document.getElementById('v-d'), vrhotot = document.getElementById('v-rhotot');
+    const tsa = document.getElementById('ts-a'), tsb = document.getElementById('ts-b'), tsc = document.getElementById('ts-c'), tsd = document.getElementById('ts-d'), tsig = document.getElementById('t-sig');
+    const da = document.getElementById('desc-a'), db = document.getElementById('desc-b'), dc = document.getElementById('desc-c');
+    const dspin = document.getElementById('desc-spin'), dcharge = document.getElementById('desc-charge'), dtheta = document.getElementById('desc-theta'), dd = document.getElementById('desc-d');
+    const dgeodesic = document.getElementById('desc-geodesic');
+    const descelevscale = document.getElementById('desc-elev-scale'), descelevkappa = document.getElementById('desc-elev-kappa');
+    const sigpre = document.getElementById('sig-pre'), sigobs = document.getElementById('sig-obs');
+    const fdensity = document.getElementById('f-density'), fdelta = document.getElementById('f-delta'), fregime = document.getElementById('f-regime');
+    const teffval = document.getElementById('teff-val'), tobsval = document.getElementById('tobs-val'), phasepill = document.getElementById('phase-pill');
+    const actiontxt = document.getElementById('action-txt'), coheretxt = document.getElementById('cohere-txt'), phitautxt = document.getElementById('phitau-txt');
+    const gaugebar = document.getElementById('gauge-bar'), statusalerttxt = document.getElementById('status-alert-txt');
+    const clkobs = document.getElementById('clk-obs'), clkpre = document.getElementById('clk-pre'), clkratetext = document.getElementById('clk-rate-text');
+    const swtoggle = document.getElementById('sw-toggle'), swreset = document.getElementById('sw-reset');
+    const activepresetlbl = document.getElementById('active-preset-lbl');
+    const qftm0 = document.getElementById('qft-m0'), qfte = document.getElementById('qft-e'), qftp = document.getElementById('qft-p');
+    const qftfreq = document.getElementById('qft-freq'), qftfobs = document.getElementById('qft-fobs');
+    const qftz = document.getElementById('qft-z'), qftzmarker = document.getElementById('qft-z-marker');
+    const qftlambda = document.getElementById('qft-lambda'), qftmeff = document.getElementById('qft-meff');
+    const qftsuperrad = document.getElementById('qft-superrad'), qfthq = document.getElementById('qft-hq'), qftneff = document.getElementById('qft-neff'), qftnphi = document.getElementById('qft-nphi');
+    const invlloydval = document.getElementById('inv-lloyd-val'), invlloydpill = document.getElementById('inv-lloyd-pill'), invlloydbar = document.getElementById('inv-lloyd-bar');
+    const invtolmanval = document.getElementById('inv-tolman-val'), invtolmanpill = document.getElementById('inv-tolman-pill');
+    const invpenroseval = document.getElementById('inv-penrose-val'), invpenrosepill = document.getElementById('inv-penrose-pill'), invpenrosebar = document.getElementById('inv-penrose-bar');
+    const invdpval = document.getElementById('inv-dp-val'), invdppill = document.getElementById('inv-dp-pill'), invdpmarker = document.getElementById('inv-dp-marker');
+    const invmssval = document.getElementById('inv-mss-val'), invmsspill = document.getElementById('inv-mss-pill'), invmssbar = document.getElementById('inv-mss-bar');
+    const invqgval = document.getElementById('inv-qg-val'), invqgpill = document.getElementById('inv-qg-pill');
+    const invdlocval = document.getElementById('inv-dloc-val'), invdlocpill = document.getElementById('inv-dloc-pill'), invdlocbar = document.getElementById('inv-dloc-bar'), invqrfdesc = document.getElementById('inv-qrf-desc');
+    const invvnullval = document.getElementById('inv-vnull-val'), invvnullpill = document.getElementById('inv-vnull-pill');
+    const qgc1 = document.getElementById('qg-c1'), qgc2 = document.getElementById('qg-c2'), qgc3 = document.getElementById('qg-c3'), qgc4 = document.getElementById('qg-c4');
+    const qgstateline = document.getElementById('qg-state-line'), qgaheadline = document.getElementById('qg-ahead-line');
+    const legconedesc = document.getElementById('leg-cone-desc'), legstressdesc = document.getElementById('leg-stress-desc');
+const H_GEVS = 4.135667696e-24;
+    const HBAR_C_GEVM = 1.973269804e-16;
+    const KB_GEVK = 8.617333262e-14;
+    const PLANCK_LEN = 1.616255e-35;
+    const PLANCK_TEMP = 1.416784e32;
+    const PLANCK_MASS_GEV = 1.220890e19;
+    const SOLAR_MASS_GEV = 1.115747e57;
+    const C_MS = 2.99792458e8;
+    const SCHWINGER_ECRIT_VM = 1.323285e18;
+    const EFIELD_UNIT_VM = 3.0470e61;
+    const ALPHA_HAWKING = 3.8904e53;
+
+    let ax = 0.45, ay = -0.65, isDrag = false, px, py;
+    let swActive = false, swLocked = false, swElapsedSec = 0, lastStamp = 0;
+    let activePreset = null, lastSelectedPresetName = "Quantum Vacuum Ground State (N²=1)";
+    let currentMassGeV = 0, currentMassMode = "vacuum";
+    let currentBaseTempK = 0, currentBaseLogS = 0, currentBaseV = 1.0, currentBaseSpin = 0, currentBaseCharge = 0, currentBaseC0 = 0, currentTEffK = 0;
+    let autoBackreactD = true, autoSchwinger = true, autoEvap = true;
+
+    // Bidirectional piecewise mapping: slider [0, 1] <-> Lorentz gamma [0.01, 1e4] with exact rest at 0.5000
+    function sliderToGamma(s) {
+        const u = Math.max(0, Math.min(1, s));
+        if (Math.abs(u - 0.5) < 1e-6) return 1.0;
+        if (u > 0.5) {
+            const t = (u - 0.5) / 0.5;
+            return 1.0 + Math.pow(10, 10.0 * t - 6.0) - 1e-6;
+        }
+        const t = u / 0.5;
+        return 0.01 + 0.99 * Math.pow(t, 1.5);
+    }
+
+    function gammaToSlider(g) {
+        if (!Number.isFinite(g) || Math.abs(g - 1.0) < 1e-9) return 0.5;
+        if (g > 1.0) {
+            const val = Math.max(1e-6, (g - 1.0) + 1e-6);
+            const t = Math.max(0, Math.min(1, (Math.log10(val) + 6.0) / 10.0));
+            return 0.5 + 0.5 * t;
+        }
+        const clamped = Math.max(0.01, Math.min(0.999999, g));
+        return 0.5 * Math.pow((clamped - 0.01) / 0.99, 1.0 / 1.5);
+    }
+const btnKugelblitz = document.getElementById('btn-kugelblitz');
+    const btnSchwinger = document.getElementById('btn-schwinger');
+    const btnEvap = document.getElementById('btn-evap');
+
+    function syncToggleBtn(btn, state, labelOn, labelOff) {
+        btn.textContent = state ? labelOn : labelOff;
+        btn.style.background = state ? "rgba(0,255,135,0.1)" : "rgba(148,163,184,0.08)";
+        btn.style.color = state ? "#00ff87" : "#94a3b8";
+        btn.style.borderColor = state ? "rgba(0,255,135,0.3)" : "rgba(148,163,184,0.2)";
+    }
+
+    btnKugelblitz.addEventListener('click', () => { autoBackreactD = !autoBackreactD; syncToggleBtn(btnKugelblitz, autoBackreactD, "AUTO-BACKREACT: ON", "AUTO-BACKREACT: OFF"); loop(); });
+    btnSchwinger.addEventListener('click', () => { autoSchwinger = !autoSchwinger; syncToggleBtn(btnSchwinger, autoSchwinger, "SCHWINGER: ON", "SCHWINGER: OFF"); loop(); });
+    btnEvap.addEventListener('click', () => { autoEvap = !autoEvap; syncToggleBtn(btnEvap, autoEvap, "AUTO-EVAP: ON", "AUTO-EVAP: OFF"); if (swLocked) masterReset(); else loop(); });
+
+    function computeCompactness(mGeV, scaleM) {
+        if (!mGeV || mGeV <= 0) return 0;
+        const effScale = Math.max(PLANCK_LEN, scaleM);
+        return (2.0 * PLANCK_LEN * PLANCK_LEN * mGeV) / (HBAR_C_GEVM * effScale);
+    }
+
+    function computeKerrNewmanHorizonC(spinA, chargeQ) {
+        const a = Math.max(0, Math.min(0.9998, spinA));
+        const q = Math.max(0, Math.min(0.9998, chargeQ));
+        const disc = Math.sqrt(Math.max(2e-4, 1.0 - a * a - q * q));
+        return 2.0 / (1.0 + disc);
+    }
+
+    function computeGeodesicRadii(spinA, chargeQ) {
+        const a = Math.max(0, Math.min(0.9998, spinA));
+        const q2 = Math.min(0.9998 - a * a, chargeQ * chargeQ);
+        const effSpin = Math.min(0.9998, Math.sqrt(a * a + 0.5 * q2));
+        const rPh = 2.0 * (1.0 + Math.cos((2.0 / 3.0) * Math.acos(-effSpin))) - 0.5 * q2;
+        const z1 = 1.0 + Math.cbrt(1.0 - effSpin * effSpin) * (Math.cbrt(1.0 + effSpin) + Math.cbrt(1.0 - effSpin));
+        const z2 = Math.sqrt(3.0 * effSpin * effSpin + z1 * z1);
+        const rIsco = Math.max(1.02, 3.0 + z2 - Math.sqrt(Math.max(0, (3.0 - z1) * (3.0 + z1 + 2.0 * z2))) - 0.4 * q2);
+        return { rPh: Math.max(1.01, rPh), rIsco };
+    }
+const data = [
+        { name: "Planck Black Hole Limit (a*=0.999, Q*=0)", logL: -34.7915, v: 2.000000, wVac: 2.0000, spin: 0.9990, charge: 0.0000, thetaDeg: 90.0, c0: 1.9144, initLogS: 0.5, m0_GeV: 1.1686e19, massMode: "massive", scale_m: 1.616255e-35, baseT_K: 4.3510e30 },
+        { name: "Quantum Vacuum Ground State (N²=1)", logL: -34.7915, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 0.000000, initLogS: 0.0, m0_GeV: 0, massMode: "vacuum", scale_m: 1.616255e-35, baseT_K: 0 },
+        { name: "Quantum Tachyonic Field (Spacelike)", logL: -6.4038, v: 0.500000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 1.3396e-53, initLogS: 0.0, m0_GeV: 1.0000e-9, massMode: "tachyonic", scale_m: 3.9465e-7, baseT_K: 0 },
+        { name: "Top Quark (Heaviest Quark Variant)", logL: -17.9921, v: 1.120100, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 9.0132e-37, initLogS: 0.0, m0_GeV: 1.7300e2, massMode: "massive", scale_m: 1.0183e-18, baseT_K: 0 },
+        { name: "Higgs Boson (Scalar Vacuum)", logL: -17.8511, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 4.7160e-37, initLogS: 0.0, m0_GeV: 1.2510e2, massMode: "massive", scale_m: 1.4090e-18, baseT_K: 0 },
+        { name: "Z Boson (Weak Neutral Current)", logL: -17.6651, v: 1.015000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 2.2389e-37, initLogS: 0.0, m0_GeV: 9.1188e1, massMode: "massive", scale_m: 2.1622e-18, baseT_K: 0 },
+        { name: "W± Boson (Weak Charged Current)", logL: -17.6095, v: 1.018000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 1.7366e-37, initLogS: 0.0, m0_GeV: 8.0377e1, massMode: "massive", scale_m: 2.4575e-18, baseT_K: 0 },
+        { name: "Proton (Hadronic Baryon Core)", logL: -15.0757, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 5.9324e-42, initLogS: 0.0, m0_GeV: 9.3827e-1, massMode: "massive", scale_m: 8.4000e-16, baseT_K: 0 },
+        { name: "Muon (Unstable Lepton Gen-2)", logL: -14.7286, v: 1.004500, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 3.0038e-43, initLogS: 0.0, m0_GeV: 1.0566e-1, massMode: "massive", scale_m: 1.8676e-15, baseT_K: 0 },
+        { name: "Electron (Relativistic Lepton)", logL: -12.4132, v: 1.511900, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 7.0320e-48, initLogS: 0.0, m0_GeV: 5.1100e-4, massMode: "massive", scale_m: 3.8616e-13, baseT_K: 0 },
+        { name: "Electron Neutrino (Flavor Eigenstate)", logL: -6.7049, v: 100.0000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 2.6798e-56, initLogS: 0.0, m0_GeV: 1.0000e-11, massMode: "massive", scale_m: 1.9733e-7, baseT_K: 1.95 },
+        { name: "Photon (CMB Null Packet)", logL: -3.0000, v: 1.000000, wVac: 1.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 0.000000, initLogS: 0.0, m0_GeV: 0, massMode: "photon", scale_m: 1.0000e-3, baseT_K: 2.7255 },
+        { name: "Water Molecule (H₂O Polar Liquid)", logL: -9.5607, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 3.2414e-46, initLogS: 0.0, m0_GeV: 1.6780e1, massMode: "massive", scale_m: 2.7500e-10, baseT_K: 298.15 },
+        { name: "C₆₀ Molecule (Quantum Fullerene)", logL: -9.1549, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 5.0836e-45, initLogS: 0.0, m0_GeV: 6.7060e2, massMode: "massive", scale_m: 7.0000e-10, baseT_K: 77.36 },
+        { name: "Virus Strain (Nanoscale Capsid)", logL: -7.0000, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 1.4840e-33, initLogS: 9.0, m0_GeV: 5.6096e13, massMode: "massive", scale_m: 1.0000e-7, baseT_K: 310.15 },
+        { name: "Bacterium (E. coli Prokaryote)", logL: -6.0000, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 1.4840e-30, initLogS: 12.0, m0_GeV: 5.6096e17, massMode: "massive", scale_m: 1.0000e-6, baseT_K: 310.15 },
+        { name: "Sand Grain (Macroscopic Silica)", logL: -3.3010, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 2.9681e-22, initLogS: 20.0, m0_GeV: 5.6096e28, massMode: "massive", scale_m: 5.0000e-4, baseT_K: 288.15 },
+        { name: "Human Being (Biological Macro)", logL: -0.0706, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 1.2221e-17, initLogS: 26.0, m0_GeV: 3.9267e36, massMode: "massive", scale_m: 8.5000e-1, baseT_K: 310.15 },
+        { name: "Earth (Planetary Crust Gravity)", logL: 6.8042, v: 1.000000, wVac: 0.0000, spin: 0.0000, charge: 0.0000, thetaDeg: 90.0, c0: 1.3910e-9, initLogS: 41.0, m0_GeV: 3.3501e51, massMode: "massive", scale_m: 6.3710e6, baseT_K: 288.15 },
+        { name: "The Sun (G2V Main Sequence)", logL: 8.8424, v: 1.000001, wVac: 0.2000, spin: 0.0002, charge: 0.0000, thetaDeg: 90.0, c0: 4.2463e-6, initLogS: 57.5, m0_GeV: 1.1157e57, massMode: "massive", scale_m: 6.9570e8, baseT_K: 5778 },
+        { name: "R136a1 (Hypergiant Star)", logL: 10.4450, v: 1.005000, wVac: 0.8000, spin: 0.0250, charge: 0.0000, thetaDeg: 90.0, c0: 2.3376e-5, initLogS: 60.0, m0_GeV: 2.4546e59, massMode: "massive", scale_m: 2.7870e10, baseT_K: 46000 },
+        { name: "Omega Centauri IMBH (a*=0.40)", logL: 7.7753, v: 1.004000, wVac: 1.1000, spin: 0.4000, charge: 0.0100, thetaDeg: 90.0, c0: 1.0436, initLogS: 86.2, m0_GeV: 4.4630e61, massMode: "massive", scale_m: 5.9613e7, baseT_K: 1.4100e-12 },
+        { name: "Sagittarius A* (Kerr a*=0.90)", logL: 9.9599, v: 1.064800, wVac: 1.3500, spin: 0.9000, charge: 0.0200, thetaDeg: 90.0, c0: 1.3929, initLogS: 90.7, m0_GeV: 4.7977e63, massMode: "massive", scale_m: 9.1173e9, baseT_K: 8.6700e-15 },
+        { name: "TON 618 (Ultramassive Kerr a*=0.99)", logL: 14.0320, v: 1.240000, wVac: 1.6500, spin: 0.9900, charge: 0.0500, thetaDeg: 90.0, c0: 1.7669, initLogS: 99.1, m0_GeV: 7.3639e67, massMode: "massive", scale_m: 1.0764e14, baseT_K: 2.3100e-19 },
+        { name: "El Gordo (ACT-CL J0102-4915)", logL: 22.9760, v: 1.000050, wVac: 0.9500, spin: 0.0100, charge: 0.0000, thetaDeg: 90.0, c0: 9.3935e-4, initLogS: 103.5, m0_GeV: 3.3472e72, massMode: "massive", scale_m: 9.4607e22, baseT_K: 1.6800e8 }
+    ];
+
+    let customPresets = [];
+    try { customPresets = JSON.parse(localStorage.getItem('aeon_t_custom_presets_v1') || '[]'); } catch (e) { customPresets = []; }
+
+    cv.addEventListener('mousedown', e => { isDrag = true; px = e.clientX; py = e.clientY; });
+    window.addEventListener('mouseup', () => isDrag = false);
+    window.addEventListener('mousemove', e => {
+        if (!isDrag) return;
+        ay += (e.clientX - px) * 0.008; ax += (e.clientY - py) * 0.008;
+        px = e.clientX; py = e.clientY; loop();
+    });
+
+    function project(x, y, z) {
+        let x1 = x * Math.cos(ay) - z * Math.sin(ay);
+        let z1 = z * Math.cos(ay) + x * Math.sin(ay);
+        let y2 = y * Math.cos(ax) - z1 * Math.sin(ax);
+        let z2 = z1 * Math.cos(ax) + y * Math.sin(ax);
+        let sc = 400 / (6.8 + z2);
+        return { x: cv.width / 2 + x1 * sc * 0.72, y: cv.height / 2 + 52 - y2 * sc * 0.72 };
+    }
+function getColorForRatio(ratio) {
+        if (ratio >= 0.9900) return '#ffb703';
+        if (ratio >= 0.5000) return '#ff9100';
+        return '#ff3333';
+    }
+
+    function computeCovariantStressEnergy(scaleL, gammaAxis, wVac, spinA, chargeQ, thetaDeg, c0Input, tempK, baseMGeV, lockedMassGeV) {
+        const vol = (4.0 / 3.0) * Math.PI * Math.pow(scaleL, 3);
+        const a = Math.max(0, Math.min(0.9998, spinA));
+        const q = Math.max(0, Math.min(0.9998, chargeQ));
+        const thetaRad = (Math.max(0, Math.min(90, thetaDeg)) * Math.PI) / 180.0;
+        const sin2Theta = thetaDeg <= 0.01 ? 0 : (thetaDeg >= 89.99 ? 1.0 : Math.pow(Math.sin(thetaRad), 2));
+        const cos2Theta = 1.0 - sin2Theta;
+        const cHor = computeKerrNewmanHorizonC(a, q);
+        const knFactor = 1.0 + 0.5 * a * a + 0.5 * q * q;
+
+        // Tachyonic spacelike fields (gamma < 1) do not contribute positive timelike rest-mass back-reaction
+        const effGammaMatter = gammaAxis >= 1.0 ? gammaAxis : 0;
+        let rhoMatter = (baseMGeV > 0 && effGammaMatter > 0) ? ((effGammaMatter * baseMGeV) / vol) : 0;
+        let rhoTh = 0;
+        if (tempK > 0) {
+            const kBT = KB_GEVK * tempK;
+            rhoTh = (Math.PI * Math.PI / 15.0) * Math.pow(kBT, 4) / Math.pow(HBAR_C_GEVM, 3);
+        }
+
+        const isFlatEmpty = (c0Input === 0 && a === 0 && q === 0 && tempK === 0 && baseMGeV === 0);
+        const curvBoost = 1.0 + Math.min(10.0, c0Input * c0Input) * knFactor;
+        const rhoVac = isFlatEmpty ? 0 : ((HBAR_C_GEVM / (240.0 * Math.PI * Math.PI * Math.pow(scaleL, 4))) * curvBoost * (1.0 + 0.5 * wVac));
+        const rhoTot = rhoMatter + rhoTh + rhoVac;
+
+        const mRad = vol * (rhoTh + rhoVac);
+        const mEff = lockedMassGeV > 0 ? lockedMassGeV : (baseMGeV > 0 ? (baseMGeV + mRad) : mRad);
+        const cRad = computeCompactness(mRad, scaleL);
+        const cEff = autoBackreactD ? Math.min(2.0, c0Input + cRad) : c0Input;
+
+        const u = Math.min(1.0, cEff / cHor);
+        const u2 = u * u;
+        const aNorm = a / cHor;
+        const qNorm = q / cHor;
+
+        const deltaNorm = Math.max(0, 1.0 - 2.0 * u + (aNorm * aNorm + qNorm * qNorm) * u2);
+        const sigmaNorm = 1.0 + (aNorm * aNorm * cos2Theta) * u2;
+        const aBLNorm = Math.pow(1.0 + aNorm * aNorm * u2, 2) - deltaNorm * aNorm * aNorm * sin2Theta * u2;
+
+        const zamoN2 = Math.max(1e-6, (sigmaNorm * deltaNorm) / Math.max(1e-9, aBLNorm));
+        const staticGtt = (deltaNorm - aNorm * aNorm * sin2Theta * u2) / Math.max(1e-9, sigmaNorm);
+        const omegaFD = (C_MS / scaleL) * ((2.0 * aNorm * u - qNorm * qNorm * aNorm * u2) * u2) / Math.max(1e-9, aBLNorm);
+
+        const chiExt = Math.sqrt(Math.max(2e-4, 1.0 - a * a - q * q));
+        const rPlus = scaleL * 0.5 * cEff * (1.0 + chiExt);
+        const freqH = (a > 0 && rPlus > 0) ? ((C_MS * a) / (4.0 * Math.PI * rPlus)) : 0;
+        const eFieldH = (q > 0 && mEff > 0) ? (((q * EFIELD_UNIT_VM) / ((mEff / PLANCK_MASS_GEV) * Math.pow(1.0 + chiExt, 2))) * u2) : 0;
+
+        const pRad = (1.0 / 3.0) * rhoTh - rhoVac * (1.0 - 0.5 * wVac);
+        const pTan = (1.0 / 3.0) * rhoTh + rhoVac * (0.5 + 0.25 * wVac * knFactor);
+        const cClamped = Math.min(cHor, cEff);
+        const weylAnom = (cClamped * cClamped) / (60.0 * Math.PI * Math.PI);
+
+        return { rhoMatter, rhoTh, rhoVac, rhoTot, pRad, pTan, weylAnom, mEff, cEff, cHor, zamoN2, staticGtt, omegaFD, freqH, eFieldH };
+    }
+function computeEffectiveTemp(logS, gammaAxis, cEff, scaleL, mEffGeV, spinA, chargeQ) {
+        if (logS <= 0 && cEff < 0.01 && currentBaseTempK === 0) return 0;
+        const a = Math.max(0, Math.min(0.9998, spinA));
+        const q = Math.max(0, Math.min(0.9998, chargeQ));
+        const chiExt = Math.sqrt(Math.max(2e-4, 1.0 - a * a - q * q));
+        const knCool = (2.0 * chiExt) / (1.0 + chiExt);
+        const cHor = computeKerrNewmanHorizonC(a, q);
+
+        let tTh = 0;
+        if (cEff >= cHor - 1e-4) {
+            const effM = mEffGeV > 0 ? mEffGeV : Math.max(PLANCK_MASS_GEV, (0.5 * cEff * HBAR_C_GEVM * scaleL) / (PLANCK_LEN * PLANCK_LEN));
+            tTh = 6.169e-8 * (SOLAR_MASS_GEV / effM) * knCool;
+        } else if (currentBaseTempK > 0) {
+            const sRef = currentBaseLogS > 0 ? currentBaseLogS : 1.0;
+            if (logS <= 0) tTh = 0;
+            else tTh = currentBaseTempK * Math.pow(10, 0.25 * (logS - sRef));
+        } else if (logS > 0) {
+            tTh = Math.pow(10, 0.265 * logS - 4.0);
+        }
+
+        const strain = Math.sqrt(Math.max(0, gammaAxis * gammaAxis - 1.0) + Math.max(0, cEff - currentBaseC0));
+        const tUnruh = strain > 0 ? ((HBAR_C_GEVM / (2.0 * Math.PI * scaleL * KB_GEVK)) * strain) : 0;
+        return Math.min(PLANCK_TEMP, Math.sqrt(tTh * tTh + tUnruh * tUnruh));
+    }
+
+    function updateEntropyAndPageCurve(logS, scaleL, spinA, chargeQ, cEff, initMGeV, curMGeV, isHor) {
+        const a = Math.max(0, Math.min(0.9998, spinA));
+        const q = Math.max(0, Math.min(0.9998, chargeQ));
+        const chiExt = Math.sqrt(Math.max(2e-4, 1.0 - a * a - q * q));
+        const rPlus = isHor ? (scaleL * 0.5 * cEff * (1.0 + chiExt)) : scaleL;
+        const aKn = isHor ? (scaleL * 0.5 * cEff * a) : 0;
+        const area = 4.0 * Math.PI * (rPlus * rPlus + aKn * aKn);
+        const sBH = Math.max(1.0, area / (4.0 * PLANCK_LEN * PLANCK_LEN));
+        const logSBH = Math.log10(sBH);
+
+        sbhboundtxt.textContent = logSBH.toFixed(2) + " k_B";
+        if (logS > logSBH + 0.05) {
+            ltemp.textContent = `${logS.toFixed(2)} k_B [HOLOGRAPHIC BOUND SATURATED]`;
+            ltemp.style.color = "#ff3333";
+        } else if (logS === 0) {
+            ltemp.textContent = "0.00 k_B [Isentropic]";
+            ltemp.style.color = "#00d2ff";
+        } else {
+            ltemp.textContent = `${logS.toFixed(2)} k_B`;
+            ltemp.style.color = "#ff9100";
+        }
+
+        if (isHor && initMGeV > PLANCK_MASS_GEV && curMGeV < initMGeV * 0.999999) {
+            const frac = Math.pow(curMGeV / initMGeV, 2);
+            const sBHInit = sBH / Math.max(1e-30, frac);
+            const sRad = Math.max(1.0, Math.min(sBHInit - sBH, sBH));
+            const logSRad = Math.log10(sRad);
+            const isPostPage = frac < 0.5;
+            const atRelic = curMGeV <= PLANCK_MASS_GEV * 1.001;
+            const stageTag = atRelic ? "Planck Relic End" : isPostPage ? "Post-Page Purifying" : "Rising Entanglement";
+            pagesradtxt.textContent = `${logSRad.toFixed(2)} k_B [${stageTag}]`;
+            pagesradtxt.style.color = isPostPage ? "#00ff87" : "#bd00ff";
+        } else {
+            pagesradtxt.textContent = isHor ? "0.00 k_B [Pre-Evap Horizon]" : "0.00 k_B [No Horizon]";
+            pagesradtxt.style.color = "#94a3b8";
+        }
+        return logSBH;
+    }
+function updateThermoReadout(tEff, zamoN2, lapseObs, cEff, cHor) {
+        currentTEffK = tEff;
+        const fmtT = t => t === 0 ? "0.00 K" : (t < 1e-2 || t > 1e5) ? t.toExponential(4) + " K" : t.toFixed(2) + " K";
+        const tObs = tEff * Math.sqrt(zamoN2 / lapseObs);
+        teffval.textContent = fmtT(tEff);
+        tobsval.textContent = fmtT(tObs);
+
+        let phase = "ISENTROPIC / BEC GROUND", col = "#00d2ff", bg = "rgba(0, 210, 255, 0.1)", desc = "Regime: Pure Quantum Vacuum / Coherent Ground State";
+        if (cEff >= cHor - 1e-4) {
+            phase = "KERR–NEWMAN HAWKING RADIATION"; col = "#ffb703"; bg = "rgba(255, 183, 3, 0.12)";
+            desc = "Regime: Horizon Thermal Flux [T_H = κ / 2πk_B]";
+        } else if (tEff === 0) {
+            phase = "ISENTROPIC / BEC GROUND"; col = "#00d2ff"; bg = "rgba(0, 210, 255, 0.1)";
+            desc = "Regime: Zero-Kelvin Coherent Condensate (S = 0)";
+        } else if (tEff < 4.0) {
+            phase = "CRYOGENIC / CMB RELIC"; col = "#38bdf8"; bg = "rgba(56, 189, 248, 0.1)";
+            desc = "Regime: Cryogenic Quantum / Cosmic Background Bath";
+        } else if (tEff < 4000) {
+            phase = "CONDENSED / MOLECULAR"; col = "#00ff87"; bg = "rgba(0, 255, 135, 0.1)";
+            desc = "Regime: Classical Condensed & Molecular Thermal Phase";
+        } else if (tEff < 1e8) {
+            phase = "IONIZED PLASMA"; col = "#ffb703"; bg = "rgba(255, 183, 3, 0.12)";
+            desc = "Regime: Stellar & Magnetospheric Ionized Plasma";
+        } else if (tEff < 1.7e12) {
+            phase = "RELATIVISTIC PAIR PLASMA"; col = "#ff9100"; bg = "rgba(255, 145, 0, 0.12)";
+            desc = "Regime: Relativistic e⁺e⁻ Pair-Production Plasma";
+        } else if (tEff < 1e31) {
+            phase = "QGP / ELECTROWEAK PHASE"; col = "#bd00ff"; bg = "rgba(189, 0, 255, 0.12)";
+            desc = "Regime: Quark–Gluon Plasma & Electroweak Symmetry";
+        } else {
+            phase = "PLANCK HAGEDORN FOAM"; col = "#ff3333"; bg = "rgba(255, 51, 51, 0.15)";
+            desc = "Regime: Quantum-Gravity Spacetime Foam Ceiling";
+        }
+
+        phasepill.textContent = phase; phasepill.style.color = col; phasepill.style.background = bg;
+        tbadge.textContent = desc; tbadge.style.color = col;
+        return tObs;
+    }
+
+    function updateQFTTelemetry(gammaAxis, rhotau, tensor, activeBaseM, isEvap) {
+        const fmtSci = x => x === 0 ? "0.0000" : (x < 1e-3 || x >= 1e5) ? x.toExponential(4) : x.toFixed(4);
+        let energyGeV = 0, momGeV = 0;
+
+        if (currentMassMode === "vacuum" && activeBaseM === 0) {
+            qftm0.textContent = "0.0000 GeV [Vacuum]";
+        } else if (currentMassMode === "photon") {
+            energyGeV = 2.0e-9 * gammaAxis;
+            momGeV = energyGeV;
+            qftm0.textContent = "0.0000 GeV [Null Boson]";
+        } else if (currentMassMode === "tachyonic" || gammaAxis < 1.0) {
+            const effM0 = activeBaseM > 0 ? activeBaseM : 1.0e-9;
+            energyGeV = gammaAxis * effM0;
+            momGeV = Math.sqrt(energyGeV * energyGeV + effM0 * effM0);
+            qftm0.textContent = `${fmtSci(effM0)} i GeV [Spacelike]`;
+        } else {
+            const effM0 = activeBaseM > 0 ? activeBaseM : 1.0;
+            energyGeV = gammaAxis * effM0;
+            momGeV = Math.sqrt(Math.max(0, energyGeV * energyGeV - effM0 * effM0));
+            qftm0.textContent = `${fmtSci(effM0)} GeV` + (isEvap ? " [EVAP]" : "");
+        }
+
+        qfte.textContent = `${fmtSci(energyGeV)} GeV`;
+        qftp.textContent = `${fmtSci(momGeV)} GeV` + (momGeV > energyGeV ? " [p > E]" : "");
+
+        const fLocal = energyGeV / H_GEVS;
+        const fObs = fLocal / rhotau;
+        qftfreq.textContent = fLocal === 0 ? "0.0000 Hz [Static]" : `${fLocal.toExponential(4)} Hz`;
+        qftfobs.textContent = fObs === 0 ? "0.0000 Hz [Static]" : `${fObs.toExponential(4)} Hz`;
+
+        const zShift = rhotau - 1.0;
+        let markerPct = 50.0 + 48.0 * Math.tanh(Math.log10(Math.max(1e-12, rhotau)));
+        if (Math.abs(zShift) < 1e-13) {
+            qftz.textContent = "+0.0000e+0 [SYNC]"; qftz.style.color = "#00ff87"; qftzmarker.style.backgroundColor = "#00ff87";
+            markerPct = 50.0;
+        } else if (zShift > 0) {
+            qftz.textContent = `+${zShift.toExponential(4)} [REDSHIFT]`; qftz.style.color = "#ff3333"; qftzmarker.style.backgroundColor = "#ff3333";
+        } else {
+            qftz.textContent = `${zShift.toExponential(4)} [BLUESHIFT]`; qftz.style.color = "#00d2ff"; qftzmarker.style.backgroundColor = "#00d2ff";
+        }
+        qftzmarker.style.left = Math.max(2, Math.min(98, markerPct)).toFixed(2) + "%";
+
+        if (energyGeV > 0) {
+            qftlambda.textContent = `${(HBAR_C_GEVM / energyGeV).toExponential(4)} m`;
+        } else {
+            qftlambda.textContent = "∞ [Non-Localized Vacuum]";
+        }
+
+        const mTag = (currentMassMode === "tachyonic" || gammaAxis < 1.0) ? " i GeV" : " GeV";
+        qftmeff.textContent = `${fmtSci(tensor.mEff)}${mTag}`;
+        return fLocal;
+    }
+function updateCoupledTelemetry(tensor, spinA, gammaAxis, fLocal, properSec, phitau, phiFloor) {
+        const hQ = Math.sqrt(tensor.zamoN2) / Math.max(1e-6, gammaAxis);
+        qfthq.textContent = hQ.toFixed(6);
+
+        if (spinA > 0 && tensor.freqH > 0) {
+            if (fLocal > 0 && fLocal < tensor.freqH) {
+                qftsuperrad.textContent = `SUPERRADIANT AMPLIFICATION [f < ${tensor.freqH.toExponential(2)} Hz]`;
+                qftsuperrad.style.color = "#00ff87";
+            } else {
+                qftsuperrad.textContent = `ABSORPTIVE [f_H = ${tensor.freqH.toExponential(2)} Hz]`;
+                qftsuperrad.style.color = "#ffb703";
+            }
+        } else {
+            qftsuperrad.textContent = "INACTIVE [a_* = 0]";
+            qftsuperrad.style.color = "#94a3b8";
+        }
+
+        const nPhi = fLocal * properSec;
+        const nEff = nPhi * phitau;
+        const fmtCyc = c => c === 0 ? "0.0000" : (c < 1e-2 || c >= 1e5) ? c.toExponential(4) : c.toFixed(4);
+        qftnphi.textContent = `Total Unscattered Cycles 𝒩_φ: ${fmtCyc(nPhi)} (Floor: ${phiFloor.toExponential(2)})`;
+        qftneff.textContent = `${fmtCyc(nEff)} cycles`;
+        qftneff.style.color = phitau < 0.35 ? "#ff3333" : phitau < 0.75 ? "#ffb703" : "#00ff87";
+        return { hQ, nPhi, nEff };
+    }
+
+    function updateCrossPanelInvariants(scaleL, spinA, chargeQ, thetaDeg, tensor, tEff, tObs, fLocal, rhotau, logSBH, nEff, gammaTh, gammaGrav, gammaTot, omega, properSec, isFlatEmpty) {
+        const sBH = Math.pow(10, logSBH);
+        const etaLloyd = nEff / Math.max(1.0, sBH);
+        invlloydval.textContent = etaLloyd === 0 ? "0.0000e+0" : etaLloyd.toExponential(4);
+        if (etaLloyd === 0) {
+            invlloydpill.textContent = "STATIC / ZERO CYCLES"; invlloydpill.style.color = "#94a3b8"; invlloydbar.style.width = "0%";
+        } else if (etaLloyd <= 1.0) {
+            invlloydpill.textContent = "HOLOGRAPHICALLY BOUNDED"; invlloydpill.style.color = "#00ff87";
+            invlloydbar.style.width = Math.min(100, Math.max(4, (1.0 + Math.log10(Math.max(1e-30, etaLloyd)) / 30.0) * 100)) + "%";
+        } else {
+            invlloydpill.textContent = "FREE-SPACE UNBOUNDED"; invlloydpill.style.color = "#00d2ff"; invlloydbar.style.width = "100%";
+        }
+
+        const fObs = fLocal / Math.max(1e-18, rhotau);
+        const xiThermal = fLocal > 0 ? ((KB_GEVK * tEff) / (H_GEVS * fLocal)) : 0;
+        const xiThermalObs = fObs > 0 ? ((KB_GEVK * tObs) / (H_GEVS * fObs)) : 0;
+        invtolmanval.textContent = xiThermal === 0 ? "0.0000e+0" : xiThermal.toExponential(4);
+        invtolmanpill.textContent = xiThermal > 0 ? `INVARIANT [Δ=${Math.abs(xiThermal - xiThermalObs).toExponential(1)}]` : "ZERO-T / STATIC";
+        invtolmanpill.style.color = xiThermal > 0 ? "#00ff87" : "#94a3b8";
+
+        const sin2Theta = Math.pow(Math.sin((thetaDeg * Math.PI) / 180.0), 2);
+        const geo = computeGeodesicRadii(spinA, chargeQ);
+        const etaNT = Math.max(0, 1.0 - Math.sqrt(Math.max(0, 1.0 - 2.0 / (3.0 * geo.rIsco))));
+        const superGain = (tensor.freqH > 0 && fLocal > 0 && fLocal < tensor.freqH) ? (1.0 - fLocal / tensor.freqH) : 0;
+        const ePenrose = superGain * sin2Theta * etaNT;
+        invpenroseval.textContent = (ePenrose * 100).toFixed(2) + "%";
+        invpenrosebar.style.width = Math.min(100, (ePenrose / 0.4226) * 100) + "%";
+        if (ePenrose > 0) {
+            invpenrosepill.textContent = "ACTIVE EXTRACTION"; invpenrosepill.style.color = "#ffb703";
+        } else {
+            invpenrosepill.textContent = spinA === 0 ? "NO SPIN [a_*=0]" : sin2Theta < 1e-4 ? "POLAR NULL [θ=0°]" : "ABOVE f_H";
+            invpenrosepill.style.color = "#94a3b8";
+        }
+
+        let rDP = 0;
+        if (gammaTh === 0 && gammaGrav === 0) {
+            invdpval.textContent = "0.0000e+0"; invdppill.textContent = "UNITARY GROUND"; invdppill.style.color = "#00d2ff"; invdpmarker.style.left = "50%";
+        } else if (gammaTh === 0 && gammaGrav > 0) {
+            rDP = Infinity; invdpval.textContent = "∞ [PURE GRAV]"; invdppill.textContent = "CURVATURE COLLAPSE"; invdppill.style.color = "#bd00ff"; invdpmarker.style.left = "96%";
+        } else {
+            rDP = gammaGrav / gammaTh;
+            invdpval.textContent = rDP === 0 ? "0.0000e+0" : rDP.toExponential(4);
+            const logR = rDP > 0 ? Math.max(-12, Math.min(12, Math.log10(rDP))) : -12;
+            invdpmarker.style.left = (50 + (logR / 12.0) * 46) + "%";
+            if (rDP > 1.0) {
+                invdppill.textContent = "CURVATURE DOMINATED"; invdppill.style.color = "#bd00ff"; invdpmarker.style.background = "#bd00ff";
+            } else {
+                invdppill.textContent = "THERMAL DOMINATED"; invdppill.style.color = "#00d2ff"; invdpmarker.style.background = "#00d2ff";
+            }
+        }
+const gammaIntrinsic = gammaTh + gammaGrav;
+        const lambdaMSS = tEff > 0 ? ((2.0 * Math.PI * KB_GEVK * tEff) / (H_GEVS / (2.0 * Math.PI))) : 0;
+        let mssRatio = 0;
+        if (lambdaMSS === 0 && gammaIntrinsic === 0) {
+            invmssval.textContent = "0.0000"; invmsspill.textContent = "NON-CHAOTIC"; invmsspill.style.color = "#00ff87"; invmssbar.style.width = "0%";
+        } else if (lambdaMSS === 0 && gammaIntrinsic > 0) {
+            mssRatio = Infinity; invmssval.textContent = "∞ [T = 0 K]"; invmsspill.textContent = "GRAV DECOHERENCE"; invmsspill.style.color = "#ff9100"; invmssbar.style.width = "100%";
+        } else {
+            const isHor = (tensor.cEff >= tensor.cHor - 1e-4);
+            mssRatio = isHor ? 1.0 : Math.min(1.0, gammaIntrinsic / lambdaMSS);
+            invmssval.textContent = mssRatio < 1e-3 ? mssRatio.toExponential(3) : mssRatio.toFixed(4);
+            invmssbar.style.width = Math.min(100, mssRatio * 100) + "%";
+            if (mssRatio >= 0.999) {
+                invmsspill.textContent = "MAXIMAL SCRAMBLER"; invmsspill.style.color = "#ff3333";
+            } else if (mssRatio > 0.1) {
+                invmsspill.textContent = "FAST SCRAMBLER"; invmsspill.style.color = "#ff9100";
+            } else {
+                invmsspill.textContent = "SUB-CHAOTIC MATTER"; invmsspill.style.color = "#00ff87";
+            }
+        }
+
+        const r1 = isFlatEmpty ? 0 : Math.min(1.0, PLANCK_LEN / scaleL);
+        const r2 = Math.min(1.0, 1e-6 / tensor.zamoN2);
+        const r3 = Math.min(1.0, (spinA * spinA + chargeQ * chargeQ) / 0.9998);
+        const r4 = Math.min(1.0, tEff / PLANCK_TEMP);
+        const xiQG = Math.max(r1, r2, r3, r4);
+
+        const fmtPct = x => x === 0 ? "0.0%" : x < 0.001 ? x.toExponential(1) : (x * 100).toFixed(1) + "%";
+        qgc1.textContent = fmtPct(r1); qgc2.textContent = fmtPct(r2); qgc3.textContent = fmtPct(r3); qgc4.textContent = fmtPct(r4);
+        invqgval.textContent = xiQG < 1e-3 && xiQG > 0 ? xiQG.toExponential(4) : xiQG.toFixed(4);
+
+        const channels = [
+            { val: r1, state: `STATE: Scale L sits at ${(scaleL / PLANCK_LEN).toFixed(2)}× ℓ_P (ℓ_P/L = ${(r1 * 100).toFixed(1)}%).`, ahead: "AHEAD: Prevents ℏc/L⁴ ultraviolet vacuum blow-up & breakdown of smooth differential manifolds." },
+            { val: r2, state: `STATE: ZAMO lapse N²(θ) compressed to ${tensor.zamoN2.toExponential(2)} (Membrane = ${(r2 * 100).toFixed(1)}%).`, ahead: "AHEAD: Prevents infinite gravitational redshift (ρτ → ∞) & divergent Tolman horizon heat." },
+            { val: r3, state: `STATE: Extremal spin-charge saturation at ${(r3 * 100).toFixed(2)}% of cosmic censor ceiling.`, ahead: "AHEAD: Prevents imaginary horizon radii √(1 − a_*² − Q_*²) & naked curvature singularities." },
+            { val: r4, state: `STATE: Effective temperature at ${(r4 * 100).toFixed(2)}% of Planck Hagedorn ceiling T_P.`, ahead: "AHEAD: Prevents spacetime foam metric fluctuations (δg_μν ~ 1) from invalidating G_μν = 8πG⟨T_μν⟩." }
+        ];
+        channels.sort((a, b) => b.val - a.val);
+        const topCh = channels[0];
+
+        if (xiQG >= 0.999) {
+            invqgpill.textContent = "REGULATOR ACTIVE [WALL]"; invqgpill.style.color = "#ff3333"; qgstateline.style.color = "#ff3333";
+            qgstateline.textContent = topCh.state; qgaheadline.textContent = topCh.ahead;
+        } else if (xiQG >= 0.1) {
+            invqgpill.textContent = "APPROACHING CUTOFF"; invqgpill.style.color = "#ffb703"; qgstateline.style.color = "#ffb703";
+            qgstateline.textContent = topCh.state; qgaheadline.textContent = topCh.ahead;
+        } else {
+            invqgpill.textContent = "EXACT QFTCS"; invqgpill.style.color = "#00ff87"; qgstateline.style.color = "#00d2ff";
+            qgstateline.textContent = topCh.val > 0 ? topCh.state : "STATE: Smooth flat manifold; all 4 semiclassical regulators inactive.";
+            qgaheadline.textContent = topCh.val > 0 ? topCh.ahead : "AHEAD: No UV vacuum blow-up, horizon redshift divergence, or spacetime foam breakdown.";
+        }
+
+        return { etaLloyd, xiThermal, ePenrose, rDP, mssRatio, xiQG };
+    }
+function applyElevatorFloor(floorVal) {
+        const allList = [...data, ...customPresets];
+        const maxIdx = allList.length - 1;
+        const f = Math.max(0, Math.min(maxIdx, floorVal));
+        const idx0 = Math.floor(f);
+        const idx1 = Math.min(maxIdx, idx0 + 1);
+        const t = f - idx0;
+
+        const p0 = allList[idx0];
+        const p1 = allList[idx1];
+
+        ia.value = (p0.logL + (p1.logL - p0.logL) * t).toFixed(4);
+        const gInterp = p0.v + (p1.v - p0.v) * t;
+        iv.value = gammaToSlider(gInterp).toFixed(4);
+        ic.value = (p0.wVac + (p1.wVac - p0.wVac) * t).toFixed(4);
+
+        const s0 = p0.spin || 0, s1 = p1.spin || 0;
+        const q0 = p0.charge || 0, q1 = p1.charge || 0;
+        const th0 = p0.thetaDeg !== undefined ? p0.thetaDeg : 90.0;
+        const th1 = p1.thetaDeg !== undefined ? p1.thetaDeg : 90.0;
+        let sInterp = s0 + (s1 - s0) * t;
+        let qInterp = q0 + (q1 - q0) * t;
+        if (sInterp * sInterp + qInterp * qInterp > 0.9998) {
+            qInterp = Math.sqrt(Math.max(0, 0.9998 - sInterp * sInterp));
+        }
+        ispin.value = sInterp.toFixed(4);
+        icharge.value = qInterp.toFixed(4);
+        itheta.value = (th0 + (th1 - th0) * t).toFixed(1);
+
+        const interpC0 = p0.c0 + (p1.c0 - p0.c0) * t;
+        id.value = interpC0.toFixed(6);
+        itemp.value = (p0.initLogS + (p1.initLogS - p0.initLogS) * t).toFixed(2);
+
+        const basePreset = t < 0.5 ? p0 : p1;
+        currentMassMode = basePreset.massMode;
+        const m0_a = p0.m0_GeV, m0_b = p1.m0_GeV;
+        if (m0_a > 0 && m0_b > 0) {
+            currentMassGeV = Math.pow(10, Math.log10(m0_a) + (Math.log10(m0_b) - Math.log10(m0_a)) * t);
+        } else {
+            currentMassGeV = m0_a + (m0_b - m0_a) * t;
+        }
+
+        const t0 = p0.baseT_K || 0, t1 = p1.baseT_K || 0;
+        currentBaseTempK = t0 + (t1 - t0) * t;
+        currentBaseLogS = p0.initLogS + (p1.initLogS - p0.initLogS) * t;
+        currentBaseV = gInterp;
+        currentBaseSpin = sInterp;
+        currentBaseCharge = qInterp;
+        currentBaseC0 = interpC0;
+
+        document.querySelectorAll('.btn').forEach(x => x.classList.remove('active'));
+        if (Math.abs(t) < 0.015) {
+            activePreset = p0; lastSelectedPresetName = p0.name;
+            activepresetlbl.textContent = p0.name; activepresetlbl.style.color = "#00d2ff";
+            const btns = document.querySelectorAll('.btn');
+            if (btns[idx0]) btns[idx0].classList.add('active');
+        } else if (Math.abs(t - 1.0) < 0.015) {
+            activePreset = p1; lastSelectedPresetName = p1.name;
+            activepresetlbl.textContent = p1.name; activepresetlbl.style.color = "#00d2ff";
+            const btns = document.querySelectorAll('.btn');
+            if (btns[idx1]) btns[idx1].classList.add('active');
+        } else {
+            activePreset = null;
+            const interpName = `${p0.name.split(' (')[0]} → ${p1.name.split(' (')[0]} [${(t * 100).toFixed(0)}%]`;
+            lastSelectedPresetName = interpName;
+            activepresetlbl.textContent = interpName; activepresetlbl.style.color = "#bd00ff";
+        }
+        if (swLocked) masterReset(); else loop();
+    }
+
+    function formatDistSI(m) {
+        if (!Number.isFinite(m)) return "∞ [Point-Local]";
+        if (m < 1e-3) return `${(m * 1e6).toFixed(2)} µm`;
+        if (m < 1) return `${(m * 1e3).toFixed(2)} mm`;
+        if (m < 1e3) return `${m.toFixed(2)} m`;
+        if (m < 1e6) return `${(m / 1e3).toFixed(2)} km`;
+        if (m < 1e12) return `${(m / 1e6).toFixed(2)} Mm`;
+        return `${m.toExponential(2)} m`;
+    }
+
+    function formatTimeSI(s) {
+        if (!Number.isFinite(s)) return "∞";
+        if (s < 1e-9) return `${(s * 1e12).toFixed(2)} ps`;
+        if (s < 1e-6) return `${(s * 1e9).toFixed(2)} ns`;
+        if (s < 1e-3) return `${(s * 1e6).toFixed(2)} µs`;
+        if (s < 1) return `${(s * 1e3).toFixed(2)} ms`;
+        if (s < 3600) return `${s.toFixed(3)} s`;
+        return `${s.toExponential(2)} s`;
+    }
+function loop() {
+        let logL = parseFloat(ia.value), gammaAxis = sliderToGamma(parseFloat(iv.value)), wVac = parseFloat(ic.value);
+        let spinA = parseFloat(ispin.value), chargeQ = parseFloat(icharge.value), thetaDeg = parseFloat(itheta.value);
+        let logS = parseFloat(itemp.value);
+        let obsBeta = parseFloat(iobsb.value), obsComp = parseFloat(iobsd.value);
+
+        const timeScale = parseFloat(itimescale.value);
+        const isRunningOrRan = (swActive || swLocked || swElapsedSec > 0);
+        const rawLabUnits = isRunningOrRan ? swElapsedSec : 10.0;
+
+        let activeScaleL = Math.max(PLANCK_LEN, Math.pow(10, logL));
+        let activeBaseM = currentMassGeV;
+        let isEvaporating = false;
+        let schwingerScreened = false;
+
+        if (autoSchwinger && chargeQ > 0) {
+            const chiPre = Math.sqrt(Math.max(2e-4, 1.0 - spinA * spinA - chargeQ * chargeQ));
+            const estM = activeBaseM > 0 ? activeBaseM : Math.max(PLANCK_MASS_GEV, (0.5 * currentBaseC0 * HBAR_C_GEVM * activeScaleL) / (PLANCK_LEN * PLANCK_LEN));
+            const estEField = (chargeQ * EFIELD_UNIT_VM) / ((estM / PLANCK_MASS_GEV) * Math.pow(1.0 + chiPre, 2));
+            if (estEField > SCHWINGER_ECRIT_VM) {
+                const maxQ = Math.min(chargeQ, (SCHWINGER_ECRIT_VM * (estM / PLANCK_MASS_GEV) * Math.pow(1.0 + chiPre, 2)) / EFIELD_UNIT_VM);
+                chargeQ = maxQ < 1e-4 ? 0 : Number(maxQ.toFixed(4));
+                icharge.value = chargeQ.toFixed(4);
+                schwingerScreened = true;
+            }
+        }
+
+        const cHorInit = computeKerrNewmanHorizonC(spinA, chargeQ);
+        if (autoEvap && isRunningOrRan && currentBaseC0 >= cHorInit - 1e-4 && activeBaseM > PLANCK_MASS_GEV) {
+            const chiExt = Math.sqrt(Math.max(2e-4, 1.0 - spinA * spinA - chargeQ * chargeQ));
+            const knCool = (2.0 * chiExt) / (1.0 + chiExt);
+            const approxRate = Math.max(1e-6, gammaAxis) / 1e-3;
+            const estPreSec = (rawLabUnits / approxRate) * timeScale;
+            const mCubed = Math.max(Math.pow(PLANCK_MASS_GEV, 3), Math.pow(activeBaseM, 3) - 3.0 * ALPHA_HAWKING * knCool * knCool * estPreSec);
+            activeBaseM = Math.cbrt(mCubed);
+            const massRatio = activeBaseM / currentMassGeV;
+            activeScaleL = Math.max(PLANCK_LEN, Math.pow(10, logL) * massRatio);
+            logL = Math.log10(activeScaleL);
+            isEvaporating = (massRatio < 0.999999);
+        }
+
+        let estT = computeEffectiveTemp(logS, gammaAxis, currentBaseC0, activeScaleL, activeBaseM, spinA, chargeQ);
+        let lockedMass = isEvaporating ? activeBaseM : 0;
+        let tensor = computeCovariantStressEnergy(activeScaleL, gammaAxis, wVac, spinA, chargeQ, thetaDeg, currentBaseC0, estT, activeBaseM, lockedMass);
+        estT = computeEffectiveTemp(logS, gammaAxis, tensor.cEff, activeScaleL, tensor.mEff, spinA, chargeQ);
+        tensor = computeCovariantStressEnergy(activeScaleL, gammaAxis, wVac, spinA, chargeQ, thetaDeg, currentBaseC0, estT, activeBaseM, lockedMass);
+
+        const isFlatEmpty = (currentBaseC0 === 0 && spinA === 0 && chargeQ === 0 && estT === 0 && activeBaseM === 0);
+        const isHorizon = (tensor.cEff >= tensor.cHor - 1e-4);
+        const zamoN2 = tensor.zamoN2;
+        const staticGtt = tensor.staticGtt;
+        const lapseObs = Math.max(1e-6, 1.0 - obsComp);
+
+        la.textContent = logL.toFixed(4);
+        lv.textContent = gammaAxis >= 100 ? gammaAxis.toExponential(3) : gammaAxis.toFixed(6);
+        lspin.textContent = spinA.toFixed(4); lcharge.textContent = chargeQ.toFixed(4);
+        ltheta.textContent = thetaDeg.toFixed(1) + "°"; lc.textContent = wVac.toFixed(4);
+        ld.textContent = tensor.cEff.toFixed(6); lobsb.textContent = obsBeta.toFixed(6); lobsd.textContent = obsComp.toFixed(6);
+
+        const maxElev = Math.max(1, data.length + customPresets.length - 1);
+        lelev.textContent = `Floor ${parseFloat(ielev.value).toFixed(2)} / ${maxElev}`;
+        const zetaWeyl = Math.max(0, Math.log10(activeScaleL / PLANCK_LEN));
+        descelevscale.textContent = isFlatEmpty ? "Scale L: ∞ [Isentropic Vacuum] │ Weyl ζ = Log₁₀(L/ℓ_P): 0.00" : `Scale L: ${activeScaleL.toExponential(2)} m │ Weyl ζ = Log₁₀(L/ℓ_P): ${zetaWeyl.toFixed(2)}`;
+        descelevkappa.textContent = isFlatEmpty ? "Weyl Trace Anomaly [𝒜_W]: 0.0000e+0 │ FLAT MINKOWSKI TRACE-FREE" : `Weyl Trace Anomaly [𝒜_W]: ${tensor.weylAnom.toExponential(4)} │ ${isHorizon ? "HORIZON TRACE SATURATED" : "CONFORMAL CURVATURE"}`;
+        descelevkappa.style.color = isHorizon ? "#ff3333" : tensor.weylAnom > 1e-4 ? "#ffb703" : "#00ff87";
+
+        const vacName = wVac < 0.35 ? "Boulware" : wVac < 1.35 ? "Unruh" : "Hartle–Hawking";
+        dc.textContent = `${vacName} · p_r = ${tensor.pRad.toExponential(2)}`; dc.style.color = tensor.pRad < 0 ? "#ff3333" : "#00d2ff";
+        dspin.textContent = `ω_FD: ${tensor.omegaFD.toExponential(3)} rad/s`; dspin.style.color = spinA > 0 ? "#ff9100" : "#94a3b8";
+        dcharge.textContent = schwingerScreened ? `E_H: ${tensor.eFieldH.toExponential(2)} V/m [SCREENED]` : chargeQ > 0 ? `E_H: ${tensor.eFieldH.toExponential(2)} V/m [Stable]` : "E_H: 0.0000e+0 V/m";
+        dcharge.style.color = schwingerScreened ? "#ff3333" : chargeQ > 0 ? "#38bdf8" : "#94a3b8";
+
+        const sin2Th = Math.pow(Math.sin((thetaDeg * Math.PI) / 180.0), 2);
+        const latTag = thetaDeg >= 89.5 ? "Equatorial Plane" : thetaDeg <= 0.5 ? "Rotation Pole" : "Mid-Latitude";
+        dtheta.textContent = `${latTag} [sin²θ = ${sin2Th.toFixed(2)}]`; dtheta.style.color = staticGtt <= 0 ? "#ff9100" : "#e879f9";
+
+        if (tensor.cEff > 0.05) {
+            const geo = computeGeodesicRadii(spinA, chargeQ);
+            dgeodesic.textContent = `Geodesics: Photon Sphere r_ph = ${geo.rPh.toFixed(2)} r_g │ Prograde ISCO r_ISCO = ${geo.rIsco.toFixed(2)} r_g`;
+            dgeodesic.style.color = "#ffb703";
+        } else {
+            dgeodesic.textContent = "Geodesics: Photon Sphere r_ph = N/A │ Prograde ISCO r_ISCO = N/A";
+            dgeodesic.style.color = "#64748b";
+        }
+
+        const necViolated = (tensor.rhoTot + tensor.pRad < -1e-30);
+        vrhotot.textContent = `N²(θ) = ${zamoN2.toFixed(4)} │ -g_tt(θ) = ${staticGtt.toFixed(4)} │ ρ_tot: ${tensor.rhoTot.toExponential(3)} GeV/m³` + (necViolated ? " [NEC Violated]" : "");
+        vrhotot.style.color = (staticGtt <= 0 && !isHorizon) ? "#ff9100" : necViolated ? "#ff3333" : "#00d2ff";
+        da.textContent = isFlatEmpty ? "Scale L = ∞ [Isentropic Vacuum · ρ_matter = 0.0000e+0 GeV/m³]" : `Scale L = ${activeScaleL.toExponential(2)} m [ρ_matter = ${tensor.rhoMatter.toExponential(3)} GeV/m³]`;
+
+        const betaPct = gammaAxis >= 1 ? (Math.sqrt(1.0 - 1.0 / (gammaAxis * gammaAxis)) * 100.0).toFixed(4) : "SPACELIKE";
+        db.textContent = gammaAxis < 1.0 ? `Lorentz Factor γ = ${gammaAxis.toFixed(6)} [Tachyonic Spacelike Sector: p > E]` : Math.abs(gammaAxis - 1.0) < 1e-6 ? `Lorentz Factor γ = 1.000 [0.00%c · Timelike Rest Frame]` : `Lorentz Factor γ = ${gammaAxis >= 100 ? gammaAxis.toExponential(3) : gammaAxis.toFixed(4)} [${betaPct}%c · Relativistic Boost]`;
+        db.style.color = gammaAxis < 1.0 ? "#ff3333" : Math.abs(gammaAxis - 1.0) < 1e-6 ? "#00ff87" : "#00d2ff";
+
+        const kugelblitzTriggered = (autoBackreactD && currentBaseC0 < tensor.cHor - 1e-4 && isHorizon);
+        dd.textContent = kugelblitzTriggered ? `KUGELBLITZ COLLAPSE [𝒞₀=${currentBaseC0.toFixed(3)} → 𝒞_eff=${tensor.cEff.toFixed(4)} ≥ 𝒞_hor]` : isHorizon ? `Kerr–Newman Horizon [𝒞_eff = ${tensor.cEff.toFixed(4)} ≥ 𝒞_hor(${tensor.cHor.toFixed(4)}) · N²=10⁻⁶]` : staticGtt <= 0 ? `Ergosphere Interior [-g_tt(θ) = ${staticGtt.toFixed(4)} ≤ 0 · ZAMO N² = ${zamoN2.toFixed(4)}]` : `Sub-Horizon Metric [𝒞₀ = ${currentBaseC0.toFixed(4)} → 𝒞_eff = ${tensor.cEff.toFixed(4)} · N² = ${zamoN2.toFixed(4)}]`;
+        dd.style.color = (kugelblitzTriggered || isHorizon) ? "#ff3333" : staticGtt <= 0 ? "#ff9100" : tensor.cEff > 0.5 ? "#ffb703" : "#94a3b8";
+const gammaObs = 1.0 / Math.sqrt(Math.max(1e-12, 1.0 - obsBeta * obsBeta));
+        const ratePre = Math.max(1e-6, gammaAxis) / Math.sqrt(zamoN2);
+        const rateObs = gammaObs / Math.sqrt(lapseObs);
+        const rhotau = ratePre / rateObs;
+        const deltaRho = rhotau - 1.0;
+
+        sigpre.textContent = zamoN2.toFixed(10); sigobs.textContent = lapseObs.toFixed(10);
+        fdensity.textContent = rhotau.toFixed(10); fdelta.textContent = (deltaRho >= 0 ? "+" : "") + deltaRho.toExponential(4);
+        fregime.textContent = gammaAxis < 1.0 ? "TACHYONIC CAUSALITY VIOLATION" : isHorizon ? "STRETCHED HORIZON DILATION" : Math.abs(deltaRho) < 1e-11 ? "ISOMETRIC COVARIANT SYNC" : rhotau > 1.0 ? "GRAVITATIONAL / KINEMATIC DILATION" : "INVERSE DILATION (OBSERVER FASTER)";
+        fregime.style.color = fdensity.style.color = (gammaAxis < 1.0 || isHorizon) ? "#ff3333" : Math.abs(deltaRho) < 1e-11 ? "#00ff87" : rhotau > 1.0 ? "#ffb703" : "#00d2ff";
+
+        const selOpt = itimescale.options[itimescale.selectedIndex];
+        const unitLabel = selOpt ? selOpt.getAttribute('data-unit') : 's';
+        const labDisplayUnits = rawLabUnits, preDisplayUnits = labDisplayUnits / rhotau, properSec = preDisplayUnits * timeScale;
+        const fmtClock = (u, unit) => u === 0 ? `0.00 ${unit}` : (u < 1e-3 || u >= 1e6) ? `${u.toExponential(3)} ${unit}` : `${u.toFixed(2)} ${unit}`;
+        clkobs.textContent = fmtClock(labDisplayUnits, unitLabel); clkpre.textContent = fmtClock(preDisplayUnits, unitLabel);
+        clkratetext.textContent = Math.abs(deltaRho) < 1e-11 ? `Rate Discrepancy (Δτ): 1.0000000000x [Frames Synchronized]` : `Rate Discrepancy (Δτ): ${rhotau.toFixed(6)}x [${rhotau > 1 ? "Inspected Slower" : "Observer Slower"}]`;
+
+        const logSBH = updateEntropyAndPageCurve(logS, activeScaleL, spinA, chargeQ, tensor.cEff, currentMassGeV, activeBaseM, isHorizon);
+        const tObs = updateThermoReadout(estT, zamoN2, lapseObs, tensor.cEff, tensor.cHor);
+        const fLocal = updateQFTTelemetry(gammaAxis, rhotau, tensor, activeBaseM, isEvaporating);
+
+        const kBT_eff = KB_GEVK * estT;
+        const hbarGeVs = H_GEVS / (2.0 * Math.PI);
+        const gammaTh = (logS > 0 && kBT_eff > 0) ? (activeScaleL * activeScaleL * Math.pow(kBT_eff, 3)) / (HBAR_C_GEVM * HBAR_C_GEVM * hbarGeVs) : 0;
+        const isUnitaryGround = (logS === 0 && !isHorizon && currentMassGeV < 1.0);
+        const gammaGrav = isUnitaryGround ? 0 : (tensor.mEff > 0 ? Math.pow(tensor.mEff / PLANCK_MASS_GEV, 2) * (C_MS / activeScaleL) : 0);
+        const rawGTech = parseFloat(igtech.value);
+        const gammaTech = rawGTech > 0 ? Math.pow(10, rawGTech - 3.0) : 0;
+        const gammaTot = gammaTh + gammaGrav + gammaTech;
+
+        const omega = gammaTot === 0 ? 0 : Math.min(1e12, gammaTot * properSec);
+        const phiFloor = 1.0 / (1.0 + Math.PI * Math.pow(10, Math.min(300, 2.0 * zetaWeyl)));
+        const phitau = omega === 0 ? 1.0 : phiFloor + (1.0 - phiFloor) * Math.exp(-omega);
+
+        const deltaL = Math.pow(10, parseFloat(ibaseline.value));
+        const nEffIdx = parseFloat(imedium.value);
+        const dTauSig = (2.0 * deltaL) / (C_MS * nEffIdx);
+        const rhoProperFrame = Math.sqrt(zamoN2) / Math.max(1e-6, gammaAxis);
+        const lSimR = gammaTot > 0 ? ((C_MS * nEffIdx * rhoProperFrame) / (2.0 * gammaTot)) : Infinity;
+        const dLoc = Number.isFinite(lSimR) ? Math.exp(-deltaL / Math.max(1e-18, lSimR)) : 1.0;
+        const sSim = phitau * dLoc;
+        const sCHSH = 2.0 * Math.SQRT2 * phitau;
+        const fQRF = 0.5 * (1.0 + dLoc);
+        const vNull = phitau * dLoc;
+
+        lbaseline.textContent = formatDistSI(deltaL);
+        lneff.textContent = nEffIdx.toFixed(3);
+        lgtech.textContent = gammaTech === 0 ? "0 s⁻¹" : `${gammaTech.toExponential(2)} s⁻¹`;
+        simdtau.textContent = formatTimeSI(dTauSig);
+        simlsim.textContent = formatDistSI(lSimR);
+        simssim.textContent = sSim.toFixed(4);
+        simssim.style.color = sSim > 0.7071 ? "#00ff87" : sSim > 0.25 ? "#ffb703" : "#ff3333";
+        simschsh.textContent = sCHSH.toFixed(4) + (sCHSH > 2.0 ? " [Bell Violation]" : " [Classical]");
+
+        invdlocval.textContent = dLoc.toFixed(4);
+        invdlocbar.style.width = (dLoc * 100).toFixed(1) + "%";
+        invdlocbar.style.background = dLoc > 0.7071 ? "#00ff87" : dLoc > 0.1 ? "#ffb703" : "#ff3333";
+        invdlocpill.textContent = dLoc > 0.7071 ? "POINT-LOCAL" : dLoc > 0.1 ? "HORIZON CROSSING" : "POST-SELECTED";
+        invdlocpill.style.color = dLoc > 0.7071 ? "#00ff87" : dLoc > 0.1 ? "#ffb703" : "#ff3333";
+        invqrfdesc.textContent = `QRF Channel Fidelity ℱ_QRF = ${fQRF.toFixed(4)}; governs spatial quantum frame shifts (Paper 11) and horizon dissolution (Paper 13).`;
+
+        invvnullval.textContent = vNull.toFixed(4);
+        invvnullpill.textContent = dLoc < 0.7071 ? "CLASSICAL SYNC LAG" : "NOMINAL BASELINE";
+        invvnullpill.style.color = dLoc < 0.7071 ? "#ffb703" : "#00d2ff";
+
+        if (swActive && phitau <= phiFloor * 1.0001 && omega > 0) {
+            swActive = false; swLocked = true;
+            swtoggle.textContent = "⛔ HORIZON LOCKED"; swtoggle.style.background = "rgba(255, 51, 51, 0.15)";
+            swtoggle.style.color = "#ff3333"; swtoggle.style.borderColor = "rgba(255, 51, 51, 0.4)";
+        }
+
+        const coupled = updateCoupledTelemetry(tensor, spinA, gammaAxis, fLocal, properSec, phitau, phiFloor);
+        updateCrossPanelInvariants(activeScaleL, spinA, chargeQ, thetaDeg, tensor, estT, tObs, fLocal, rhotau, logSBH, coupled.nEff, gammaTh, gammaGrav, gammaTot, omega, properSec, isFlatEmpty);
+
+        const weylPurity = 1.0 / (1.0 + tensor.weylAnom * 60.0);
+        actiontxt.textContent = omega > 1e5 ? omega.toExponential(4) : omega.toFixed(4);
+        coheretxt.textContent = weylPurity.toFixed(10); phitautxt.textContent = phitau.toFixed(6);
+        gaugebar.style.width = (phitau * 100).toFixed(2) + "%";
+        gaugebar.style.backgroundColor = (gammaAxis < 1.0 || swLocked || phitau <= phiFloor * 1.001) ? "#ff3333" : phitau < 0.5 ? "#ffb703" : "#00ff87";
+        statusalerttxt.textContent = gammaAxis < 1.0 ? "CAUSALITY VIOLATION: SPACELIKE TACHYONIC INSTABILITY" : (swLocked || phitau <= phiFloor * 1.001) ? "HOLOGRAPHIC DECOHERENCE FLOOR REACHED [Φτ = Φ_floor]" : phitau < 0.5 ? "PARTIAL LINDBLAD DECOHERENCE IN PROGRESS" : omega === 0 ? "UNITARY EVOLUTION: ZERO ENTROPIC DECOHERENCE" : "COHERENT QUANTUM PHASE PRESERVED";
+        statusalerttxt.style.color = gaugebar.style.backgroundColor;
+
+        const coneDeg = (Math.atan(Math.sqrt(zamoN2)) * 180.0 / Math.PI);
+        legconedesc.textContent = `Current cone aperture: ${coneDeg.toFixed(2)}° (pinches toward 0.06° at horizons; twists azimuthally at ω_FD = ${tensor.omegaFD.toExponential(2)} rad/s).`;
+        legstressdesc.textContent = tensor.pRad < 0 ? `CORAL-RED ACTIVE: Negative radial vacuum tension (p_r = ${tensor.pRad.toExponential(2)}) violates Null Energy Condition.` : `MAGENTA ACTIVE: Positive radial/tangential stress balance (p_r = ${tensor.pRad.toExponential(2)} GeV/m³).`;
+        vd.textContent = zamoN2.toFixed(10); vd.style.color = isHorizon ? "#ff3333" : staticGtt <= 0 ? "#ff9100" : "#00ff87";
+        tsa.textContent = tensor.rhoTot === 0 ? "0.0000e+0" : tensor.rhoTot.toExponential(4);
+        tsb.textContent = tensor.pRad === 0 ? "0.0000e+0" : tensor.pRad.toExponential(4); tsb.style.color = tensor.pRad < 0 ? "#ff3333" : "#00d2ff";
+        tsc.textContent = tensor.pTan === 0 ? "0.0000e+0" : tensor.pTan.toExponential(4);
+        tsd.textContent = tensor.weylAnom === 0 ? "0.0000e+0" : tensor.weylAnom.toExponential(4);
+        tsig.textContent = zamoN2.toFixed(10); tsig.style.color = isHorizon ? "#ff3333" : "#00d2ff";
+cx.clearRect(0, 0, cv.width, cv.height);
+        cx.strokeStyle = 'rgba(255, 255, 255, 0.04)'; cx.lineWidth = 1;
+        for (let g = -2.5; g <= 2.5; g += 0.5) {
+            let p1 = project(g, 0, -2.5), p2 = project(g, 0, 2.5);
+            cx.beginPath(); cx.moveTo(p1.x, p1.y); cx.lineTo(p2.x, p2.y); cx.stroke();
+            let p3 = project(-2.5, 0, g), p4 = project(2.5, 0, g);
+            cx.beginPath(); cx.moveTo(p3.x, p3.y); cx.lineTo(p4.x, p4.y); cx.stroke();
+        }
+        const cRatio = Math.min(1.0, tensor.cEff / tensor.cHor);
+        if (cRatio > 0.05) {
+            const rHorVis = 0.45 + 0.75 * cRatio;
+            const chiE = Math.sqrt(Math.max(2e-4, 1.0 - spinA * spinA - chargeQ * chargeQ));
+            cx.strokeStyle = 'rgba(255, 145, 0, 0.45)'; cx.lineWidth = 1.6; cx.beginPath();
+            for (let k = 0; k <= 64; k++) {
+                const ang = (k / 64) * Math.PI * 2, sinLat = Math.abs(Math.sin(ang));
+                const rErgo = rHorVis * ((1.0 + Math.sqrt(Math.max(0, 1.0 - spinA * spinA * (1.0 - sinLat * sinLat) - chargeQ * chargeQ))) / (1.0 + chiE));
+                const pt = project(Math.cos(ang) * rErgo, Math.sin(ang) * rErgo, 0);
+                k === 0 ? cx.moveTo(pt.x, pt.y) : cx.lineTo(pt.x, pt.y);
+            }
+            cx.stroke();
+            cx.strokeStyle = isHorizon ? 'rgba(255, 51, 51, 0.85)' : 'rgba(255, 51, 51, 0.4)'; cx.lineWidth = 1.5; cx.beginPath();
+            for (let k = 0; k <= 64; k++) {
+                const ang = (k / 64) * Math.PI * 2, pt = project(Math.cos(ang) * rHorVis, Math.sin(ang) * rHorVis, 0);
+                k === 0 ? cx.moveTo(pt.x, pt.y) : cx.lineTo(pt.x, pt.y);
+            }
+            cx.stroke();
+        }
+        const stressRatio = tensor.rhoTot > 0 ? Math.max(-1.0, Math.min(2.0, tensor.pRad / tensor.rhoTot)) : 0;
+        const rStress = 1.15 + 0.35 * stressRatio;
+        cx.strokeStyle = tensor.pRad < 0 ? 'rgba(255, 51, 51, 0.35)' : 'rgba(189, 0, 255, 0.35)'; cx.lineWidth = 1.3; cx.beginPath();
+        for (let k = 0; k <= 48; k++) {
+            const ang = (k / 48) * Math.PI * 2, pt = project(Math.cos(ang) * rStress, 0, Math.sin(ang) * rStress);
+            k === 0 ? cx.moveTo(pt.x, pt.y) : cx.lineTo(pt.x, pt.y);
+        }
+        cx.stroke();
+const coneH = 2.3, coneR = coneH * Math.sqrt(zamoN2), dragTwist = spinA * Math.pow(Math.sin((thetaDeg * Math.PI) / 180.0), 2) * 0.85;
+        let orig = project(0, 0, 0);
+        cx.strokeStyle = isHorizon ? 'rgba(255, 51, 51, 0.7)' : 'rgba(0, 210, 255, 0.5)'; cx.lineWidth = 1.6; cx.beginPath();
+        for (let i = 0; i <= 48; i++) {
+            let ang = (i / 48) * Math.PI * 2, p = project(Math.cos(ang) * coneR, coneH, Math.sin(ang) * coneR);
+            i === 0 ? cx.moveTo(p.x, p.y) : cx.lineTo(p.x, p.y);
+        }
+        cx.stroke();
+        cx.strokeStyle = 'rgba(0, 210, 255, 0.25)'; cx.lineWidth = 1;
+        for (let i = 0; i < 8; i++) {
+            let ang = (i / 8) * Math.PI * 2 + dragTwist, pTop = project(Math.cos(ang) * coneR, coneH, Math.sin(ang) * coneR);
+            cx.beginPath(); cx.moveTo(orig.x, orig.y); cx.lineTo(pTop.x, pTop.y); cx.stroke();
+        }
+        const betaTilt = gammaAxis >= 1 ? Math.sqrt(1.0 - 1.0 / (gammaAxis * gammaAxis)) : Math.min(1.45, 1.0 / Math.max(0.2, gammaAxis));
+        const wTip = project(betaTilt * coneR * Math.cos(dragTwist), coneH, betaTilt * coneR * Math.sin(dragTwist));
+        cx.strokeStyle = gammaAxis < 1.0 ? '#ff3333' : '#00ff87'; cx.lineWidth = 2.6; cx.beginPath(); cx.moveTo(orig.x, orig.y); cx.lineTo(wTip.x, wTip.y); cx.stroke();
+        cx.fillStyle = '#ffb703'; cx.beginPath(); cx.arc(orig.x, orig.y, 4.5, 0, Math.PI * 2); cx.fill();
+        cx.fillStyle = gammaAxis < 1.0 ? '#ff3333' : '#00ff87'; cx.beginPath(); cx.arc(wTip.x, wTip.y, 4.5, 0, Math.PI * 2); cx.fill();
+        cx.fillStyle = '#94a3b8'; cx.font = 'bold 11px monospace';
+        cx.fillText(`ZAMO LAPSE N²(${thetaDeg.toFixed(0)}°) = ${zamoN2.toFixed(6)} │ -g_tt = ${staticGtt.toFixed(4)}`, 14, 22);
+        cx.fillStyle = '#ff9100';
+        cx.fillText(`SPIN a_* = ${spinA.toFixed(4)} │ CHARGE Q_* = ${chargeQ.toFixed(4)} │ ω_FD = ${tensor.omegaFD.toExponential(2)} rad/s`, 14, 38);
+        cx.fillStyle = '#00ff87';
+        cx.fillText(`CONE APERTURE = ${(Math.atan(Math.sqrt(zamoN2)) * 180 / Math.PI).toFixed(2)}° │ ρτ = ${rhotau.toFixed(4)}x │ 𝒟_loc = ${dLoc.toFixed(4)}`, 14, 54);
+    }
+function stepLoop(now) {
+        if (!swActive) return;
+        swElapsedSec += Math.min(0.1, (now - lastStamp) / 1000.0); lastStamp = now; loop();
+        if (swActive) requestAnimationFrame(stepLoop);
+    }
+    function masterReset() {
+        swActive = false; swLocked = false; swElapsedSec = 0;
+        swtoggle.textContent = "▶ START STOPWATCH"; swtoggle.style.background = "rgba(0, 210, 255, 0.08)";
+        swtoggle.style.color = "#00d2ff"; swtoggle.style.borderColor = "rgba(0, 210, 255, 0.2)"; loop();
+    }
+    swtoggle.addEventListener('click', () => {
+        if (swLocked) return;
+        swActive = !swActive;
+        if (swActive) {
+            lastStamp = performance.now(); swtoggle.textContent = "⏸ PAUSE"; swtoggle.style.background = "rgba(255, 183, 3, 0.15)";
+            swtoggle.style.color = "#ffb703"; swtoggle.style.borderColor = "rgba(255, 183, 3, 0.35)"; requestAnimationFrame(stepLoop);
+        } else {
+            swtoggle.textContent = "▶ RESUME"; swtoggle.style.background = "rgba(0, 255, 135, 0.12)";
+            swtoggle.style.color = "#00ff87"; swtoggle.style.borderColor = "rgba(0, 255, 135, 0.3)";
+        }
+    });
+    swreset.addEventListener('click', masterReset);
+    itimescale.addEventListener('change', () => swLocked ? masterReset() : loop());
+
+    function enforceSubExtremal(changed) {
+        let a = parseFloat(ispin.value), q = parseFloat(icharge.value);
+        if (a * a + q * q > 0.9998) {
+            if (changed === 'spin') { q = Math.sqrt(Math.max(0, 0.9998 - a * a)); icharge.value = q.toFixed(4); }
+            else { a = Math.sqrt(Math.max(0, 0.9998 - q * q)); ispin.value = a.toFixed(4); }
+        }
+        currentBaseSpin = a; currentBaseCharge = q;
+    }
+    function markCustomBaseline(tag) {
+        activePreset = null; document.querySelectorAll('.btn').forEach(x => x.classList.remove('active'));
+        activepresetlbl.textContent = `${lastSelectedPresetName} [${tag}]`; activepresetlbl.style.color = "#ffb703";
+    }
+    [ia, iv, ic, itheta, itemp].forEach((el, idx) => el.addEventListener('input', () => {
+        if (el === iv) currentBaseV = sliderToGamma(parseFloat(iv.value));
+        markCustomBaseline(["Scale Tuned", "Boost Tuned", "Vacuum Tuned", "Latitude Tuned", "Entropy Tuned"][idx]);
+        swLocked ? masterReset() : loop();
+    }));
+ispin.addEventListener('input', () => { enforceSubExtremal('spin'); markCustomBaseline("Spin Tuned"); swLocked ? masterReset() : loop(); });
+    icharge.addEventListener('input', () => { enforceSubExtremal('charge'); markCustomBaseline("Charge Tuned"); swLocked ? masterReset() : loop(); });
+    id.addEventListener('input', () => { currentBaseC0 = parseFloat(id.value); markCustomBaseline("Compactness Tuned"); swLocked ? masterReset() : loop(); });
+    ielev.addEventListener('input', () => applyElevatorFloor(parseFloat(ielev.value)));
+    [iobsb, iobsd, ibaseline, imedium, igtech].forEach(el => {
+        el.addEventListener('input', () => swLocked ? masterReset() : loop());
+        el.addEventListener('change', () => swLocked ? masterReset() : loop());
+    });
+
+    function selectPreset(o, btnEl, idx) {
+        ia.value = o.logL; iv.value = gammaToSlider(o.v).toFixed(4); ic.value = o.wVac;
+        const spinVal = o.spin || 0, chargeVal = o.charge || 0, thetaVal = o.thetaDeg !== undefined ? o.thetaDeg : 90.0;
+        ispin.value = spinVal; icharge.value = chargeVal; itheta.value = thetaVal; id.value = o.c0; itemp.value = o.initLogS; ielev.value = idx;
+        activePreset = o; lastSelectedPresetName = o.name; currentMassGeV = o.m0_GeV; currentMassMode = o.massMode;
+        currentBaseTempK = o.baseT_K || 0; currentBaseLogS = o.initLogS; currentBaseV = o.v; currentBaseSpin = spinVal; currentBaseCharge = chargeVal; currentBaseC0 = o.c0;
+        activepresetlbl.textContent = o.name; activepresetlbl.style.color = "#00d2ff";
+        document.querySelectorAll('.btn').forEach(x => x.classList.remove('active'));
+        if (btnEl) btnEl.classList.add('active');
+        masterReset();
+    }
+    function renderPresets() {
+        dk.innerHTML = ''; const allList = [...data, ...customPresets]; ielev.max = Math.max(1, allList.length - 1);
+        allList.forEach((o, i) => {
+            const isCustom = i >= data.length; let b = document.createElement('button');
+            b.className = 'btn' + (activePreset && activePreset.name === o.name ? ' active' : '');
+            const cHorBtn = computeKerrNewmanHorizonC(o.spin || 0, o.charge || 0);
+            const tagColor = o.c0 >= cHorBtn - 1e-4 ? '#ff3333' : o.c0 === 0 ? '#00ff87' : getColorForRatio(o.c0 / cHorBtn);
+            b.innerHTML = `<span>${o.name}</span><span style="font-family:monospace; font-size:0.74rem; color:${tagColor}; display:flex; align-items:center;">𝒞:${o.c0 >= 0.01 ? o.c0.toFixed(2) : o.c0.toExponential(1)}${isCustom ? '<span class="del-x">×</span>' : ''}</span>`;
+            b.onclick = (e) => {
+                if (e.target && e.target.classList.contains('del-x')) {
+                    e.stopPropagation(); customPresets.splice(i - data.length, 1);
+                    try { localStorage.setItem('aeon_t_custom_presets_v1', JSON.stringify(customPresets)); } catch (err) {}
+                    renderPresets(); return;
+                }
+                selectPreset(o, b, i);
+            };
+            dk.appendChild(b);
+        });
+    }
+const saveBar = document.getElementById('save-bar');
+    document.getElementById('btn-toggle-save').addEventListener('click', () => { saveBar.style.display = saveBar.style.display === 'flex' ? 'none' : 'flex'; });
+    document.getElementById('btn-confirm-save').addEventListener('click', () => {
+        const name = document.getElementById('in-preset-name').value.trim() || `Custom State #${customPresets.length + 1}`;
+        const massRaw = parseFloat(document.getElementById('in-preset-mass').value.trim()), m0 = (!isNaN(massRaw) && massRaw >= 0) ? massRaw : currentMassGeV;
+        const logL = parseFloat(ia.value), v = sliderToGamma(parseFloat(iv.value)), wVac = parseFloat(ic.value), spin = parseFloat(ispin.value), charge = parseFloat(icharge.value), thetaDeg = parseFloat(itheta.value), c0 = parseFloat(id.value), initLogS = parseFloat(itemp.value);
+        const mode = v < 1.0 ? "tachyonic" : (m0 === 0 ? (c0 === 0 && initLogS === 0 ? "vacuum" : "photon") : "massive");
+        const newObj = { name, logL, v, wVac, spin, charge, thetaDeg, c0, initLogS, m0_GeV: m0, massMode: mode, scale_m: Math.max(PLANCK_LEN, Math.pow(10, logL)), baseT_K: currentTEffK };
+        customPresets.push(newObj); try { localStorage.setItem('aeon_t_custom_presets_v1', JSON.stringify(customPresets)); } catch (e) {}
+        document.getElementById('in-preset-name').value = ''; document.getElementById('in-preset-mass').value = ''; saveBar.style.display = 'none'; renderPresets();
+        const btns = document.querySelectorAll('.btn'); selectPreset(newObj, btns[btns.length - 1], data.length + customPresets.length - 1);
+    });
+    document.getElementById('btn-export-csv').addEventListener('click', () => {
+        const headers = ["Name", "MassMode", "m0_GeV", "Log10_L_m", "Gamma", "Spin_a", "Charge_Q", "Theta_deg", "w_Vac", "C0_Bare", "Log10_S_kB", "ZAMO_N2", "Static_gtt", "Rho_tot_GeVm3", "p_rad", "p_tan", "Weyl_AW", "Rho_tau", "Delta_l_m", "n_eff", "Gamma_tech_Hz", "dTau_sig_s", "L_sim_r_m", "S_sim", "S_CHSH", "D_loc", "F_QRF", "V_null", "Xi_QG"];
+        const dL = Math.pow(10, parseFloat(ibaseline.value)), nIdx = parseFloat(imedium.value), gT = parseFloat(igtech.value) > 0 ? Math.pow(10, parseFloat(igtech.value) - 3.0) : 0;
+        const rows = [...data, ...customPresets].map(o => {
+            const sL = Math.max(PLANCK_LEN, Math.pow(10, o.logL));
+            const ten = computeCovariantStressEnergy(sL, o.v, o.wVac, o.spin || 0, o.charge || 0, o.thetaDeg ?? 90, o.c0, o.baseT_K || 0, o.m0_GeV, 0);
+            const rt = Math.max(1e-6, o.v) / Math.sqrt(ten.zamoN2);
+            const dts = (2.0 * dL) / (C_MS * nIdx);
+            const lsr = gT > 0 ? (C_MS * nIdx * (Math.sqrt(ten.zamoN2) / Math.max(1e-6, o.v))) / (2.0 * gT) : Infinity;
+            const dl = Number.isFinite(lsr) ? Math.exp(-dL / Math.max(1e-18, lsr)) : 1.0;
+            const xq = Math.max(o.c0 === 0 ? 0 : PLANCK_LEN / sL, 1e-6 / ten.zamoN2, ((o.spin || 0) ** 2 + (o.charge || 0) ** 2) / 0.9998, (o.baseT_K || 0) / PLANCK_TEMP);
+            return [`"${o.name.replace(/"/g, '""')}"`, o.massMode, o.m0_GeV, o.logL, o.v, o.spin || 0, o.charge || 0, o.thetaDeg ?? 90, o.wVac, o.c0, o.initLogS, ten.zamoN2, ten.staticGtt, ten.rhoTot, ten.pRad, ten.pTan, ten.weylAnom, rt, dL, nIdx, gT, dts, lsr, dl, 2 * Math.SQRT2, dl, 0.5 * (1 + dl), dl, xq].join(",");
+        });
+        const link = document.createElement("a"); link.href = encodeURI("data:text/csv;charset=utf-8," + [headers.join(","), ...rows].join("\n"));
+        link.download = "aeon_t_kerr_newman_telemetry.csv"; document.body.appendChild(link); link.click(); document.body.removeChild(link);
+    });
+    document.getElementById('btn-export-json').addEventListener('click', () => {
+        const snap = { version: "AEON-T_v5.1_Unified", timestamp: new Date().toISOString(), name: activepresetlbl.textContent, logL: parseFloat(ia.value), v: sliderToGamma(parseFloat(iv.value)), spin: parseFloat(ispin.value), charge: parseFloat(icharge.value), thetaDeg: parseFloat(itheta.value), wVac: parseFloat(ic.value), c0: currentBaseC0, initLogS: parseFloat(itemp.value), m0_GeV: currentMassGeV, massMode: currentMassMode, baseT_K: currentBaseTempK, obsBeta: parseFloat(iobsb.value), obsComp: parseFloat(iobsd.value), timeScale: parseFloat(itimescale.value), logBaseline: parseFloat(ibaseline.value), nEffIndex: parseFloat(imedium.value), logGTech: parseFloat(igtech.value), autoBackreactD, autoSchwinger, autoEvap };
+        const a = document.createElement("a"), url = URL.createObjectURL(new Blob([JSON.stringify(snap, null, 2)], { type: "application/json" }));
+        a.href = url; a.download = "aeon_t_snapshot.json"; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    });
+    const fileInput = document.getElementById('file-import-json');
+    document.getElementById('btn-import-json').addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            try {
+                const s = JSON.parse(ev.target.result);
+                if (s.logL !== undefined) ia.value = s.logL; if (s.v !== undefined) iv.value = gammaToSlider(s.v).toFixed(4); if (s.spin !== undefined) ispin.value = s.spin;
+                if (s.charge !== undefined) icharge.value = s.charge; if (s.thetaDeg !== undefined) itheta.value = s.thetaDeg; if (s.wVac !== undefined) ic.value = s.wVac;
+                if (s.c0 !== undefined) { id.value = s.c0; currentBaseC0 = s.c0; } if (s.initLogS !== undefined) { itemp.value = s.initLogS; currentBaseLogS = s.initLogS; }
+                if (s.m0_GeV !== undefined) currentMassGeV = s.m0_GeV; if (s.massMode) currentMassMode = s.massMode; if (s.baseT_K !== undefined) currentBaseTempK = s.baseT_K;
+                if (s.obsBeta !== undefined) iobsb.value = s.obsBeta; if (s.obsComp !== undefined) iobsd.value = s.obsComp; if (s.timeScale !== undefined) itimescale.value = s.timeScale;
+                if (s.logBaseline !== undefined) ibaseline.value = s.logBaseline; if (s.nEffIndex !== undefined) imedium.value = s.nEffIndex; if (s.logGTech !== undefined) igtech.value = s.logGTech;
+                activePreset = null; lastSelectedPresetName = s.name || "Imported JSON Snapshot"; activepresetlbl.textContent = lastSelectedPresetName; activepresetlbl.style.color = "#00ff87";
+                document.querySelectorAll('.btn').forEach(x => x.classList.remove('active')); masterReset();
+            } catch (err) { alert("Invalid AEON-T JSON snapshot file."); }
+        };
+        reader.readAsText(file); fileInput.value = '';
+    });
+    renderPresets();
+    const initialButtons = document.querySelectorAll('.btn');
+    selectPreset(data[1], initialButtons[1], 1);
+</script>
+</body>
+</html>
