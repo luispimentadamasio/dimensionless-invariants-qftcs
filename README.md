@@ -46,7 +46,7 @@ This Master Compendium (v2.0) unifies a four-part mathematical foundation and te
 
 ## 2. Architecture of the Metric Framework: Meaning & Operational Usage
 
-The Compendium organizes all physical observables into a hierarchical four-tier pipeline implemented directly inside the `aeon-t.html` diagnostic simulator. Rather than treating relativistic geometry, open-system decoherence, and quantum communication as isolated domains, each tier feeds its invariants directly into the next:
+The Compendium organizes all physical observables into a hierarchical four-tier pipeline implemented directly inside the `AEON-T14.html` diagnostic simulator. Rather than treating relativistic geometry, open-system decoherence, and quantum communication as isolated domains, each tier feeds its invariants directly into the next:
 
 ### Tier 1: Relativistic Kinematics & Frame Foliation ($\rho_\tau, \Delta\rho_\tau, H_Q$)
 * **What they measure:** How local proper time flows for an observer relative to a target emitter in curved, rotating spacetime (ADM $3+1$ / Kerr–Newman ZAMO foliation).
