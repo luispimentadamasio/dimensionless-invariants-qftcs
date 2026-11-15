@@ -1,0 +1,87 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\title{\textbf{Clockless Temporal Cadence, the Immediate Pool of Possibilities, and the Physical Mechanism of Conformal Cyclic Cosmology}}
+\author{Luís Pimenta Damásio\thanks{Independent Researcher, Lisbon, Portugal. ORCID: \href{https://orcid.org}{0009-0001-7606-7557}. Master Compendium DOI: \href{https://doi.org}{10.5281/zenodo.24163322}. Companion Observatory: \texttt{AEON-T14.html} (v14.0.0).}}
+\date{November 15, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In Conformal Cyclic Cosmology (CCC), Sir Roger Penrose demonstrated that the infinitely expanded, cold de Sitter future of one cosmic aeon is conformally equivalent to the hot, dense Big Bang of a subsequent aeon---provided that all rest-frame mass and extensive clocks vanish at the crossover hypersurface, leaving exclusively scale-invariant massless radiation. Yet standard physics struggles to explain the physical and thermodynamic mechanism by which a high-entropy, diluted void resets into a low-entropy origin without violating the Second Law of Thermodynamics. Drawing on a coherence-bounded ontology of time tested via the \texttt{AEON-T14.html} observatory, this paper provides the missing physical foundation for Penrose's cyclic crossover. By distinguishing \textbf{intensive temporal cadence} from \textbf{extensive clock duration}, we show that black hole Hawking evaporation and cosmic expansion progressively shed all localized rest frames, dissolving the \textbf{Operational Simultaneity Horizon} ($\mathcal{L}_{\mathrm{sim}}(r)$) and eliminating every macroscopic plane of interaction. Once all observer planes dissolve, spent classical scaffolding returns to an \textbf{instant, immediate pool of possibilities}---allowing a fresh phase-locking cascade ($\mathcal{L}_{\mathrm{sim}} > 0$) to unfold a new aeon without carrying forward the thermal entropy of its predecessor.
+\end{abstract}
+
+\section{Introduction: Penrose's Conformal Insight and Its Physical Gap}
+
+\subsection{The Genius of Conformal Cyclic Cosmology (CCC)}
+Sir Roger Penrose's Conformal Cyclic Cosmology \cite{penrose2010} rests on a remarkable geometric truth of general relativity: null light cones---which define causal structure---are completely invariant under conformal rescalings of the spacetime metric ($g_{\mu\nu} \to \Omega^2 g_{\mu\nu}$). Only rest mass ($m_0 > 0$) introduces a physical scale via Compton frequency ($f_{\mathrm{local}} = m_0 c^2 / h$), anchoring localized clocks that measure extensive proper duration ($d\tau > 0$). Penrose recognized that if all massive particles decay or evaporate into massless radiation in the remote future of an accelerating universe, the metric loses all sense of spatial and temporal scale---allowing the remote future infinity ($\mathscr{I}^+$) of one aeon to join smoothly onto the Big Bang boundary ($\mathscr{B}$) of the next.
+
+\subsection{The Two Open Questions Facing CCC}
+Despite its mathematical elegance, CCC faces two persistent objections: (1) \emph{Why does ``infinitely large and cold'' physically behave identically to ``infinitely small and hot''?} and (2) \emph{How does thermodynamic entropy reset at the crossover without violating conservation laws?} Using the operational spacetime framework of \texttt{AEON-T14.html} \cite{damasio_compendium,damasio_aeont14,damasio_p15,damasio_p16}, we show that both questions resolve naturally once time is understood as intensive cadence rather than extensive clock duration.
+
+\section{Shedding Clocks at Both Cosmic Boundaries}
+
+\subsection{Why Mass Anchors Duration While Massless Cadence Remains Scale-Free}
+In \texttt{AEON-T14.html}, an extensive rest-frame clock exists only when a field possesses non-zero rest mass ($m_0 > 0$) or localized confinement, generating a proper Compton oscillation rate $f_{\mathrm{local}} = m_0 c^2 / h$ and projecting a finite \textbf{Operational Simultaneity Horizon} ($\mathcal{L}_{\mathrm{sim}}(r) > 0$). By contrast, a massless photon ($m_0 = 0, \gamma_{\mathrm{pre}} \to \infty$) travels from emission to absorption with zero proper duration ($d\tau = 0$) and zero spatial simultaneity plane ($\mathcal{L}_{\mathrm{sim}} \to 0$), yet retains pure, scale-invariant \textbf{temporal cadence} ($\Phi_\tau = 1$).
+
+\subsection{The Far-Future de Sitter Limit ($L \to L_H$): Shedding All Localized Clocks}
+As a cosmic aeon evolves into its late accelerating de Sitter phase \cite{gh1977}, two processes systematically strip away every physical clock in the universe:
+\begin{enumerate}
+    \item \textbf{Black Hole Hawking Evaporation (\texttt{AUTO-EVAP}):} Over cosmological timescales ($t \sim 10^{67}\text{--}10^{106}\text{ yr}$), all stellar and supermassive black holes evaporate into massless thermal radiation via Hadamard vacuum flux ($p_r  0$) where coarse-grained states are distinguished from microstates:
+\begin{enumerate}
+    \item \textbf{Disappearance of Coarse-Graining Planes:} When Hawking evaporation eliminates all black hole horizons ($A_+ \to 0$) and cosmic expansion strips away all massive clocks ($\mathcal{L}_{\mathrm{sim}} \to 0$), \textbf{no plane of interaction remains to sustain coarse-grained macroscopic entropy}. Spent classical scaffolding dissolves back into pre-metric potential.
+    \item \textbf{Drawing Fresh Cadence From the Immediate Pool:} Reality does not recycle worn-out thermal debris from a finite past; rather, every actualized state crystallizes directly out of an \textbf{instant, immediate pool of possibilities (a functional infinity)} governed by invariant conservation rails ($\mathcal{N}_{\mathrm{eff}}$ and $\rho_\tau \cdot \mathcal{L}_{\mathrm{sim}} = \mathrm{const.}$) \cite{damasio_p16}. When a new phase-locking cascade opens $\mathcal{L}_{\mathrm{sim}} > 0$ at the onset of the next aeon, it draws fresh, low-entropy temporal cadence immediately from that unbounded potential pool.
+\end{enumerate}
+
+\section{Hawking Points and Operational Imprints Across the Crossover}
+
+In CCC, the final Hawking evaporation of supermassive black holes concentrates immense energy into conformally invariant radiation pulses that cross the aeon boundary as \textbf{Hawking points}---anomalous circular temperature rings in the Cosmic Microwave Background (CMB) of the subsequent aeon \cite{gp2013,an2020}. Within \texttt{AEON-T14.html}, this energy transfer is governed directly by the \textbf{Weyl trace anomaly} ($\mathcal{A}_W \propto \mathcal{C}^2 / 60\pi^2$) and \textbf{Tolman--Ehrenfest thermal invariance} ($\Xi_{\mathrm{thermal}} = k_B T_{\mathrm{obs}} / h f_{\mathrm{obs}} = \mathrm{const.}$): because massless radiation preserves $\Xi_{\mathrm{thermal}}$ across arbitrary conformal rescalings, the final evaporation burst of a black hole in Aeon $n$ imprints directly onto the initial decoupling surface ($z \approx 1100$) of Aeon $n+1$ without requiring massive clocks to survive the boundary.
+
+\section{Summary of the Conformal Crossover Mechanism}
+
+\begin{table}[h!]
+\centering
+\caption{Conformal Crossover Regimes, Clock Status, and Operational Horizons in \texttt{AEON-T14.html}.}
+\vspace{0.5em}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Cosmic Regime} & \textbf{Clock \& Mass Status} & \textbf{Horizon ($\mathcal{L}_{\mathrm{sim}}$)} & \textbf{Cadence \& Entropy State} \\
+\midrule
+Big Bang Origin ($L \to \ell_P$) & No massive clocks; $\Xi_{\mathrm{QG}} \to 1$ & $\mathcal{L}_{\mathrm{sim}} \to 0$ & Peak cadence ($f_P$), $\Phi_{\mathrm{floor}} \approx 0.241$ \\
+Matter/Radiation Era (CMB) & Bound atoms form ($T < 3000\text{ K}$) & $\mathcal{L}_{\mathrm{sim}}$ opens & Readable dials ($^{14}\text{C}$, CMB $\Xi_{\mathrm{thermal}}$) \\
+Late de Sitter Void ($L \to L_H$) & Black holes evaporate; mass decays & $\mathcal{L}_{\mathrm{sim}} \to 0$ & Clockless radiation ($\Phi_\tau = 1, d\tau = 0$) \\
+Aeon Crossover ($\mathscr{I}^+ \cong \mathscr{B}$) & Zero rest frames; scale-free & Planes vanish & Scaffolding returns to immediate pool \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Observational Tests and Future Work}
+
+\begin{enumerate}
+    \item \textbf{CMB Hawking-Point \& Circular Anisotropy Searches:} Testing anomalous concentric rings and localized temperature spikes in high-resolution CMB polarization maps against Weyl trace anomaly ($\mathcal{A}_W$) evaporation profiles \cite{an2020}.
+    \item \textbf{Dark-Energy Vacuum Floor \& Neutrino Mass Bounds:} Constraining the asymptotic clock-shedding timescale through precision neutrino-mass and proton-decay experiments.
+    \item \textbf{Conformal Numerical Simulation in \texttt{AEON-T$\mu\nu$}:} Extending the \texttt{AUTO-EVAP} module in \texttt{AEON-T14.html} to track complete black hole evaporation into pure Hadamard radiation states ($m_0 \to 0, w_{\mathrm{vac}} \to 1$).
+\end{enumerate}
+
+\section*{AI Collaboration \& Authorship Transparency Statement}
+Philosophical ontology, temporal cadence formulation, the immediate-pool entropy resolution, and conceptual synthesis were originated and directed by \textbf{Luís Pimenta Damásio}. Symbolic verification, numerical benchmarking in \texttt{AEON-T14.html}, and manuscript structuring support were provided by \textbf{Gemini} (Google AI) under the author's direct supervision. Copyright \copyright\ 2026 Luís Pimenta Damásio (\texttt{luipimentadamasio}). All rights reserved.
+
+\bibliographystyle{unsrt}
+\bibliography{Paper_17_Clockless_Temporal_Cadence_and_Conformal_Cyclic_Cosmology}
+
+\end{document}
