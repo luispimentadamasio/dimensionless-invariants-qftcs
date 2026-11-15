@@ -1,1 +1,20 @@
-You can configure your repository's citation metadata and documentation by adding a CITATION.cff file with your project details, author information, and DOI (such as 10.5281/zenodo.24163322), alongside updating your README.md with badges, an overview of the archive structure, and licensing details.
+cff-version: 1.2.0
+title: "AEON-Tμν: Covariant Kerr–Newman QFTCS & Semiclassical Back-Reaction Observatory"
+message: "If you use this software in your research, please cite it using the metadata below."
+type: software
+authors:
+  - given-names: "Luís"
+    family-names: "Pimenta Damásio"
+    orcid: "https://orcid.org"
+    affiliation: "Independent Researcher, Lisbon, Portugal"
+repository-code: "https://github.com"
+version: "14.0.0"
+date-released: "2026-11-15"
+references:
+  - type: article
+    title: "Foundations of Operational Spacetime & Quantum Decoherence: Master Compendium"
+    authors:
+      - given-names: "Luís"
+        family-names: "Pimenta Damásio"
+        orcid: "https://orcid.org"
+    doi: "10.5281/zenodo.24163322"You can configure your repository's citation metadata and documentation by adding a CITATION.cff file with your project details, author information, and DOI (such as 10.5281/zenodo.24163322), alongside updating your README.md with badges, an overview of the archive structure, and licensing details.
