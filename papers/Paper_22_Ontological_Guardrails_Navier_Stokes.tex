@@ -1,0 +1,81 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\title{Ontological Guardrails for Automated Theorem Proving and Mathematical Physics: Functional Infinity, Irreversible Time, and the Navier--Stokes Singularity}
+\author{Lu\'is Pimenta Dam\'asio\thanks{Independent Researcher, Lisbon, Portugal. ORCID: \href{https://orcid.org}{0009-0001-7606-7557}. Master Compendium DOI: \href{https://doi.org}{10.5281/zenodo.24163322}. Observatory DOI: \href{https://doi.org}{10.5281/zenodo.24244501}.}}
+\date{November 17, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Recent advances in automated theorem proving and neural-symbolic mathematics have produced multi-hundred-page analytical proofs---most notably finite-time blowup constructions for forced three-dimensional Navier--Stokes equations---that verify formally yet resist human physical intuition. Grounded in the \textsc{AEON}-$T_{\mu\nu}$ ontology of intensive time ($\rho_\tau$) and diachronic identity ($A_s^v$), this paper diagnoses why unguided symbolic search generates opaque proofs and continuum artifacts: formal mathematical equality (`=') operates in an anachronic, time-symmetric plane ($dt \to 0$) devoid of physical horizon floors. To bridge automated formal verification with physical reality, we propose three ontological guardrails for AI proof systems: (1) \textbf{Functional Infinity} as a law-disciplined forward bundle of $100\%$-whole potentials; (2) \textbf{One-Way Entropic Dissipation} ($\Phi_\tau(\Omega)$) enforcing thermodynamic irreversibility against backward-engineered forcing cancellations; and (3) \textbf{Operational Simultaneity Horizon Floors} ($\mathcal{L}_{\text{sim}} \ge \ell_{\text{floor}} > 0$) preventing zero-radius point singularities. Applying these guardrails to the 3D Navier--Stokes problem resolves the tension between formal PDE blowups and the regularity of real fluids, while offering a general methodological filter across general relativity, quantum field theory, and quantum hardware scaling.
+\end{abstract}
+
+\section{The Crisis of Opaque Proofs and Continuum Mirages}
+Automated theorem proving has reached a decisive inflection point. Large-scale ensembles of neural-symbolic reasoning agents can now assemble 100+ page analytical proofs and formalize them in Lean, yet leading mathematicians have noted that brute-force symbolic search often yields results akin to ``strip mining''---the formal theorem is verified, while the underlying physical mechanism remains opaque.
+
+The root of this opacity lies in a category error diagnosed in Paper 20 (\href{https://doi.org}{10.5281/zenodo.24285508}) and \emph{Time as the Plane of Contraries} (\href{https://doi.org}{10.5281/zenodo.24225794}): formal mathematical equality (`=') is completely symmetric and anachronic. Because symbolic equations treat forward evolution ($t_{\text{obs}} \to +t_{\text{obs}}$) and backward reversal ($t_{\text{obs}} \to -t_{\text{obs}}$) identically, an unguided AI solver can reverse-engineer external forcing terms to cancel viscous damping or concentrate finite energy into zero-width filaments ($r \to 0, dt \to 0$). Without ontological guardrails distinguishing physical actualization from continuum idealizations, automated solvers waste vast compute exploring non-physical regions of function space.
+
+\section{The Three Ontological Guardrails}
+To anchor automated theorem provers and mathematical physics in physical reality, every dynamical equation must pass through three ontological filters derived from intensive time ($\rho_\tau$) and diachronic identity ($A_s^v$):
+\begin{enumerate}
+  \item \textbf{Guardrail I --- Functional Infinity (Law-Disciplined Forward Potentials):} Physical existence never accommodates actualized infinities (\emph{``if it exists, it is not infinite in any way''}). From any thick present ($A_s^v$), conservation and interaction laws filter unbounded mathematical infinity into a \textbf{functional infinity}: a bounded, forward-directed maximal entropic bundle of $100\%$-whole permitted next states.
+  \item \textbf{Guardrail II --- One-Way Entropic Dissipation ($\Phi_\tau(\Omega)$):} Real actualization ($A_1^1 \to A_1^2$ or $A_2^1$) is strictly irreversible and sheds fine-grained kinetic coherence into thermodynamic heat ($\Phi_\tau(\Omega)$). Any symbolic maneuver that cancels dissipative operators (such as kinematic viscosity $\nu \nabla^2 \mathbf{u}$) via fine-tuned external forcing violates one-way ontic reason.
+  \item \textbf{Guardrail III --- Operational Simultaneity Horizon Floors ($\mathcal{L}_{\text{sim}} \ge \ell_{\text{floor}} > 0$):} Zero-width instants ($dt \to 0$) and zero-radius points ($r \to 0$) are representational artifacts. Every physical medium is bounded below by an Operational Simultaneity Horizon floor ($\ell_{\text{floor}}$), below which continuum differential equations cease to describe the discrete substrate.
+\end{enumerate}
+
+\section{Case Study: Diagnosing the 3D Navier--Stokes Singularity}
+The 3D incompressible Navier--Stokes equations, $\partial_t \mathbf{u} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\nabla p + \nu \nabla^2 \mathbf{u} + \mathbf{f}$ with $\nabla \cdot \mathbf{u} = 0$, illustrate how formal continuum math diverges from physical fluid dynamics:
+
+\begin{center}
+\begin{tabular}{p{3.0cm}p{5.4cm}p{5.6cm}}
+\toprule
+\textbf{Dimension} & \textbf{Unguided Continuum PDE (Formal `=')} & \textbf{Horizon-Regularized Physical Fluid (\textsc{AEON}-$T_{\mu\nu}$)} \\
+\midrule
+\textbf{Temporal Step} & Infinitesimal $dt \to 0$, reversible via $\mathbf{f}(x,t)$ & Thick present $\Delta t_{\text{pre}} > 0$, strictly one-way ($A_s^v$) \\
+\textbf{Spatial Scale} & Unbounded collapse $r \to 0$ (vortex filament blowup) & Bounded below by horizon floor $\mathcal{L}_{\text{sim}} \ge \eta_{\text{Kolmogorov}}$ \\
+\textbf{Viscosity ($\nu$)} & Algebraic damping term cancellable by forcing & Irreversible heat shedding $\Phi_\tau(\Omega)$ erasing micro-vortices \\
+\textbf{Physical Status} & Valid mathematical artifact of anachronic continuum & Regular, finite-vorticity physical flow across all times \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Architecture for Ontologically Guided AI Proof Systems}
+Recent AI-assisted PDE breakthroughs rely on brute-force exploration across unconstrained function spaces, producing 166-page proofs whose cancellation lemmas obscure physical intuition. Embedding the three ontological guardrails directly into neural-symbolic proof assistants (such as Lean-integrated search agents) transforms automated discovery through three structural priors:
+\begin{itemize}
+  \item \textbf{Forward-Only Causal Masking:} Restricts candidate state transitions to forward-evolving trajectories ($A_s^v \to A_s^{v+1}$ or $A_{s+1}^1$), blocking backward-engineered forcing schedules that start from an assumed singularity and algebraically cancel resisting terms.
+  \item \textbf{Monotone Dissipation Invariants:} Requires candidate energy and enstrophy functionals to respect irreversible thermodynamic heat shedding ($\Phi_\tau(\Omega)$) at every step, immediately pruning unphysical anti-damping trajectories from the search tree.
+  \item \textbf{Scale-Floor Regularization ($\mathcal{L}_{\text{sim}} \ge \ell_{\text{floor}}$):} Flags any shrinking vortex tube or energy-concentration sequence approaching $r \to 0$ as a \textbf{continuum boundary violation} rather than a physical blowup, guiding the prover toward shorter, human-interpretable regularity bounds.
+\end{itemize}
+
+\section{Beyond Fluid Dynamics: A General Filter for Singularities and Complexity}
+The Navier--Stokes diagnosis exemplifies a universal methodological rule across theoretical physics and computational science: whenever a formal equation diverges into an infinity or an intractable combinatorial explosion, an unphysical continuum idealization (`=') has been pushed past its Operational Simultaneity Horizon:
+\begin{itemize}
+  \item \textbf{General Relativity:} Point singularities ($r = 0$) dissolve once bounded by the gravitational horizon floor $\Phi_{\text{floor}} = [1 + \pi(L/\ell_P)^2]^{-1}$ (Paper 19).
+  \item \textbf{Quantum Field Theory:} Ultraviolet loop divergences arise from integrating down to zero-width instants ($dt \to 0$) rather than thick-moment Coherent Temporal Action bounds ($h \cdot \mathcal{N}_{\text{eff}}$).
+  \item \textbf{Quantum Computing Architectures:} Idealized global-clock scaling collapses once spatial control loops incur the Synchronization Tax $I_{\text{sync}} = \Delta\ell / \mathcal{L}_{\text{sim}}$ (Paper 21).
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem{navier1822} C.-L.~Navier (1822), ``M\'emoire sur les lois du mouvement des fluides,'' \emph{M\'emoires de l'Acad\'emie Royale des Sciences de l'Institut de France} \textbf{6}, 389--440.
+\bibitem{stokes1845} G.~G.~Stokes (1845), ``On the Theories of the Internal Friction of Fluids in Motion,'' \emph{Transactions of the Cambridge Philosophical Society} \textbf{8}, 287--319.
+\bibitem{leray1934} J.~Leray (1934), ``Sur le mouvement d'un liquide visqueux emplissant l'espace,'' \emph{Acta Mathematica} \textbf{63}, 193--248.
+\bibitem{kolmogorov1941} A.~N.~Kolmogorov (1941), ``The Local Structure of Turbulence in Incompressible Viscous Fluid for Very Large Reynolds Numbers,'' \emph{Doklady Akademii Nauk SSSR} \textbf{30}, 301--305.
+\bibitem{fefferman2006} C.~L.~Fefferman (2006), ``Existence and Smoothness of the Navier--Stokes Equation,'' in \emph{The Millennium Prize Problems} (Clay Mathematics Institute / AMS), 57--67.
+\bibitem{tao2016} T.~Tao (2016), ``Finite time blowup for an averaged three-dimensional Navier--Stokes equation,'' \emph{Journal of the American Mathematical Society} \textbf{29}, 601--674.
+\bibitem{prigogine1980} I.~Prigogine (1980), \emph{From Being to Becoming: Time and Complexity in the Physical Sciences} (W.~H.~Freeman).
+\bibitem{damasio2026a} L.~Pimenta Dam\'asio (2026a), \emph{\textsc{AEON}-$T_{\mu\nu}$ \& Philosophy of Time Master Compendium}, Zenodo, DOI: \href{https://doi.org}{10.5281/zenodo.24163322}.
+\bibitem{damasio2026b} L.~Pimenta Dam\'asio (2026b), \emph{Time as the Plane of Contraries: Diachronic Identity, Functional Infinity, and Operational Finitude Across Metaphysics and Physics}, Zenodo, DOI: \href{https://doi.org}{10.5281/zenodo.24225794}.
+\bibitem{damasio2026c} L.~Pimenta Dam\'asio (2026c), \emph{\textsc{AEON}-$T_{\mu\nu}$: Covariant Kerr--Newman QFTCS \& Semiclassical Back-Reaction Observatory (\texttt{AEON-T14.html})}, Zenodo, DOI: \href{https://doi.org}{10.5281/zenodo.24244501}.
+\bibitem{damasio2026d} L.~Pimenta Dam\'asio (2026d), \emph{The Topography and Topology of Time: Coherent Temporal Action ($h \cdot \mathcal{N}_{\text{eff}}$), the Higgs Condensate, and Clockless Null Transit} (Paper 18), Zenodo, DOI: \href{https://doi.org}{10.5281/zenodo.24279981}.
+\bibitem{damasio2026e} L.~Pimenta Dam\'asio (2026e), \emph{Relativity, Quantum Mechanics, Black Hole Singularities, and Quantum Gravity Under an Ontology of Intensive Time} (Paper 19), Zenodo, DOI: \href{https://doi.org}{10.5281/zenodo.24280496}.
+\bibitem{damasio2026f} L.~Pimenta Dam\'asio (2026f), \emph{The Ontology of Objective Time: Temporal Intensity, Diachronic Identity, and the Metaphysical Foundations of the \textsc{AEON}-$T_{\mu\nu}$ Framework} (Paper 20), Zenodo, DOI: \href{https://doi.org}{10.5281/zenodo.24285508}.
+\bibitem{damasio2026g} L.~Pimenta Dam\'asio (2026g), \emph{Operational Simultaneity Horizons, Synchronization Taxes, and Fundamental Scaling Limits in Quantum Computing Architectures} (Paper 21), Zenodo, DOI: \href{https://doi.org}{10.5281/zenodo.24286390}.
+\end{thebibliography}
+
+\end{document}
