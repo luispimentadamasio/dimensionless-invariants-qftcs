@@ -1,0 +1,270 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    urlcolor=blue!70!black,
+    citecolor=blue!60!black,
+    pdftitle={AEON-Tmunu Executive Manifesto: Front-Door Reader's Guide},
+    pdfauthor={Luis Pimenta Damasio}
+}
+
+\title{\textbf{AEON-$T_{\mu\nu}$ \& The Ontology of Objective Time}\\[0.4em]
+\large Executive Manifesto \& Front-Door Reader's Guide to the 27-Paper Corpus and Computational Observatory}
+\author{\textbf{Luís Pimenta Damásio}\\
+Independent Researcher, Lisbon, Portugal\\
+ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}}
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{tcolorbox}[colback=gray!6,colframe=gray!50,title=\textbf{Epistemic Status \& AI Collaboration Disclaimer}]
+\small
+\textbf{Theoretical Status:} The AEON-$T_{\mu\nu}$ framework presented herein is an original, speculative theoretical and philosophical proposal developed by Luís Pimenta Damásio. While it incorporates established mathematical tools from general relativity, quantum field theory in curved spacetime (QFTCS), and open quantum systems (such as the GKSL/Lindblad formalism and Boyer--Lindquist metrics), its core postulates regarding intrinsic proper clocks ($t_{\text{pre}}$), objective temporal intensity ($\rho_\tau$), and coherence-bounded operational simultaneity horizons ($\mathcal{L}_{\text{sim}}$) represent unverified hypotheses awaiting empirical testing and peer-reviewed falsification.\\[0.4em]
+\textbf{AI Assistance Disclosure:} In accordance with transparent scholarly practice, artificial intelligence tools were utilized during the preparation of this manuscript to assist with mathematical notation formatting, LaTeX typesetting, structural organization, and editorial refinement under the direct conceptual direction and critical review of the author.
+\end{tcolorbox}
+
+\begin{abstract}
+\noindent Mainstream theoretical physics treats time as an external, passive coordinate parameter ($t_{\text{obs}}$) laid across a static four-dimensional manifold, leaving the lived flow of duration, quantum measurement actualization, and subjective interiority as unresolved anomalies. This Executive Manifesto serves as the conceptual and mathematical entry point to the \textbf{AEON-$T_{\mu\nu}$} research program, bridging twenty-four published Zenodo works (\textit{Papers 1--22}, Master Compendiums v1.0/v2.0, and the interactive \texttt{AEON-T14.html} Computational Observatory) with five forthcoming domain applications (\textit{Papers 23--27}). By inverting the traditional priority of coordinate geometry over duration, we introduce the \textbf{object-as-subject} ontology, formalize the \textbf{Covariant Objective-Time Master Equation} alongside a dissipative, horizon-bounded reformulation of the \textbf{Standard Model--Einstein--Hilbert Action} ($\mathcal{S}_{\text{AEON}}$), and trace interiority across fifty-eight orders of conformal scale ($\zeta = \log_{10}(L/\ell_P)$). Finally, we contrast the framework against six established paradigms and explicitly delimit four structural boundaries where the semiclassical formalism reaches its operational limits.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Ontological Inversion: From Block Universe to Object-as-Subject}
+
+\subsection{The Foundational Postulates}
+Standard relativistic and quantum formalisms begin with a pre-existing coordinate manifold or Hilbert space and introduce time as an external bookkeeping index. The \textbf{AEON-$T_{\mu\nu}$} program reverses this foundational order through two axioms:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{First Foundational Postulate (Existence as Localized Duration):} Physical existence entails both finite duration and spatial localization. Nothing physical exists instantaneously at a zero-measure temporal slice; to exist is to actively integrate change across a non-vanishing proper interval.
+    \item \textbf{Second Postulate of Time (Intrinsic Clockhood):} Every dynamically coherent whole functions as an intrinsic internal clock ($t_{\text{pre}}$). Rather than merely moving through an external coordinate grid ($t_{\text{obs}}$), a coherent system generates its own proper temporal progression ($d\tau = \sqrt{N^2(\theta)}\,dt$), weighted relative to asymptotic observers by its \textbf{objective temporal intensity} ($\rho_\tau$).
+\end{enumerate}
+
+\subsection{Object-as-Subject and Diachronic Identity ($A_s^v$)}
+In classical and orthodox quantum mechanics, physical systems are modeled strictly as \textit{objects-as-objects}---passive trajectories viewed from an idealized "nowhere." Under the Second Postulate of Time, any system that maintains dynamical phase coherence over a finite duration constitutes an \textbf{object-as-subject}: a physical structure possessing an intrinsic, first-person temporal perspective ($t_{\text{pre}}$).
+
+This perspective is not an anthropocentric projection, nor does it require reflective human thought. It is \textit{proto-interiority} grounded in \textbf{diachronic identity} ($A_s^v$): a system persists as a unified subject across time strictly insofar as its internal phase coherence survives environmental and gravitational scattering. When its \textbf{timeline integrity} ($\Phi_\tau$) remains above its holographic decoherence floor ($\Phi_{\text{floor}}$), the system sustains an unbroken thread of intrinsic duration.
+
+\subsection{The Einstein Synthesis: Deconstructing the ``Stubbornly Persistent Illusion''}
+In March 1955, Albert Einstein famously wrote that the distinction between past, present, and future is merely a ``stubbornly persistent illusion.'' Evaluated through \textbf{AEON-$T_{\mu\nu}$}, Einstein's insight splits cleanly into an accurate relativistic prohibition and an incomplete ontological conclusion:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Where Einstein Was Right (No Global Cosmic ``Now''):} In a relativistic spacetime manifold, there is no universal, Newton-style master clock ticking simultaneously across megaparsecs. Operational phase-locking ($\mathcal{S}_{\text{sim}}$) decays exponentially beyond a finite \textbf{Operational Simultaneity Horizon} ($\mathcal{L}_{\text{sim}}(r)$). Projecting a single global present across the entire cosmos is indeed an illusion.
+    \item \textbf{Where Einstein Was Incomplete (Local Proper Duration Is Real):} Because global coordinate slicing is conventional, the block-universe interpretation concludes that temporal passage itself is unreal. Yet an illusion cannot persist unless something \textit{persists}---and persistence requires real diachronic identity ($A_s^v$) and real proper cycles ($\mathcal{N}_{\text{eff}}$). Inside $\mathcal{L}_{\text{sim}}(r)$, local proper duration ($t_{\text{pre}}$) is an irreducible physical reality.
+\end{itemize}
+
+\section{Governing Mathematical Architecture}
+
+To unify covariant spacetime geometry, quantum field theory in curved spacetime (QFTCS), open-system decoherence, and operational simultaneity into a single deductive structure, the framework specializes standard open-system and variational laws into two coupled master relations.
+
+\subsection{The Covariant Objective-Time Master Equation}
+In standard open quantum systems, the Gorini--Kossakowski--Sudarshan--Lindblad (GKSL) master equation evolves a reduced density matrix $\hat{\rho}$ with respect to a fixed, external classical lab clock $t$:
+\begin{equation}
+\frac{d\hat{\rho}}{dt} = -\frac{i}{\hbar}[\hat{H}, \hat{\rho}] + \sum_k \gamma_k \left(\hat{L}_k \hat{\rho} \hat{L}_k^\dagger - \frac{1}{2}\{\hat{L}_k^\dagger \hat{L}_k, \hat{\rho}\}\right).
+\end{equation}
+To eliminate dependence on an unphysical external clock and incorporate semiclassical gravitational back-reaction, \textbf{AEON-$T_{\mu\nu}$} reformulates open-system evolution along the system's intrinsic Zero-Angular-Momentum Observer (ZAMO) proper clock ($t_{\text{pre}}$):
+\begin{equation}
+\frac{d\hat{\rho}}{dt_{\text{pre}}} = -\frac{i}{\hbar}\left[\hat{H}_{\text{eff}}\!\left(\langle \hat{T}_{\mu\nu}\rangle_{\text{ren}}\right), \hat{\rho}\right] + \mathcal{D}_{\text{th}}[\hat{\rho}] + \mathcal{D}_{\text{grav}}[\hat{\rho}].
+\label{eq:master_aeon}
+\end{equation}
+
+\subsubsection*{Term-by-Term Physical Breakdown of Equation (\ref{eq:master_aeon})}
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Intrinsic Proper Clock Differential ($dt_{\text{pre}} = \sqrt{N^2(\theta)}\,dt$):} Evolution is parameterized by the local ZAMO lapse function in polar Boyer--Lindquist Kerr--Newman coordinates:
+    \begin{equation}
+    N^2(\theta) = \max\!\left(10^{-6},\, \frac{\Sigma(r,\theta)\,\Delta(r)}{A_{\text{BL}}(r,\theta)}\right),
+    \end{equation}
+    where $\Sigma = r^2 + a^2\cos^2\theta$, $\Delta = r^2 - 2Mr + a^2 + Q^2$, and $A_{\text{BL}} = (r^2+a^2)^2 - \Delta a^2 \sin^2\theta$. The clock rate discrepancy relative to an arbitrary observer is governed by \textbf{objective temporal intensity}:
+    \begin{equation}
+    \rho_\tau = \frac{\gamma_{\text{pre}} / \sqrt{N^2_{\text{pre}}(\theta)}}{\gamma_{\text{obs}} / \sqrt{-g_{00,\text{obs}}}}, \qquad z = \rho_\tau - 1.
+    \end{equation}
+    \item \textbf{Back-Reacting Unitary Generator ($\hat{H}_{\text{eff}}(\langle \hat{T}_{\mu\nu}\rangle_{\text{ren}})$):} Generates coherent unitary phase oscillations at proper frequency $f_{\text{local}} = E/h$, coupled self-consistently to spacetime curvature via the semiclassical Einstein field equations:
+    \begin{equation}
+    G_{\mu\nu} = 8\pi G \langle \hat{T}_{\mu\nu}\rangle_{\text{ren}},
+    \end{equation}
+    incorporating matter density ($\rho_{\text{matter}}$), thermal radiation ($\rho_{\text{th}}$), and Hadamard-renormalized vacuum polarization ($\rho_{\text{vac}}$) across Boulware, Unruh, and Hartle--Hawking vacuum states, including QED Schwinger pair-production screening ($E_H > 1.323 \times 10^{18}\text{ V/m}$).
+    \item \textbf{Caldeira--Leggett Thermal Dissipation Channel ($\mathcal{D}_{\text{th}}[\hat{\rho}]$):} Models environmental scattering against local thermal bath temperature $T_{\text{eff}}$ at characteristic scale $L$:
+    \begin{equation}
+    \Gamma_{\text{th}} = \frac{L^2 (k_B T_{\text{eff}})^3}{\hbar^3 c^2}.
+    \end{equation}
+    \item \textbf{Penrose--Diósi Gravitational Self-Energy Channel ($\mathcal{D}_{\text{grav}}[\hat{\rho}]$):} Models intrinsic gravitational self-energy phase damping for effective gravitating mass $M_{\text{eff}}(t)$ (incorporating Hawking mass loss and bound-matter compactness form factor $f_{\text{DP}}$):
+    \begin{equation}
+    \Gamma_{\text{grav}} = \left(\frac{M_{\text{eff}}}{M_P}\right)^2 \left(\frac{c}{L}\right) f_{\text{DP}}.
+    \end{equation}
+    \item \textbf{Decoherence Action ($\Omega$) and Timeline Integrity ($\Phi_\tau$):} Combining thermal, gravitational, and technical noise rates ($\Gamma_{\text{tot}} = \Gamma_{\text{th}} + \Gamma_{\text{grav}} + \Gamma_{\text{tech}}$) over proper duration yields the dimensionless decoherence action $\Omega = \int \Gamma_{\text{tot}}\,dt_{\text{pre}}$, which governs unitary phase survival down to the Weyl conformal floor $\Phi_{\text{floor}} = [1 + \pi (L/\ell_P)^2]^{-1}$:
+    \begin{equation}
+    \Phi_\tau(\Omega) = \Phi_{\text{floor}} + \left(1 - \Phi_{\text{floor}}\right)e^{-\Omega}, \qquad \mathcal{N}_{\text{eff}} = \mathcal{N}_\phi \cdot \Phi_\tau.
+    \end{equation}
+\end{enumerate}
+
+\subsection{The Rewritten Standard Model--Einstein--Hilbert Action ($\mathcal{S}_{\text{AEON}}$)}
+In standard particle physics and general relativity, dynamics are derived by integrating the Standard Model Lagrangian ($\mathcal{L}_{\text{SM}}$) and Einstein--Hilbert curvature scalar ($R$) over an unbounded, passive coordinate volume $\int d^4x\,\sqrt{-g}\,(\frac{R - 2\Lambda}{16\pi G} + \mathcal{L}_{\text{SM}})$. In \textbf{AEON-$T_{\mu\nu}$}, this variational principle is localized to an operational simultaneity domain and weighted by phase-coherence survival:
+\begin{equation}
+\mathcal{S}_{\text{AEON}} = \int_{\mathcal{L}_{\text{sim}}} dt_{\text{pre}}\, d^3x\,\sqrt{\gamma_{\theta}} \left[ \frac{R - 2\Lambda}{16\pi G} + \Phi_\tau(\Omega)\,\mathcal{D}_{\text{loc}}(\Delta\ell)\,\mathcal{L}_{\text{SM}}^{\text{ren}}\!\left(\langle \hat{T}_{\mu\nu}\rangle\right) \right] - i\hbar\,\Omega(\Gamma_{\text{th}}, \Gamma_{\text{grav}}).
+\label{eq:action_aeon}
+\end{equation}
+
+\subsubsection*{Term-by-Term Physical Breakdown of Equation (\ref{eq:action_aeon})}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Operational Simultaneity Horizon ($\mathcal{L}_{\text{sim}}(r)$):} Sets the maximum spatial radius within which separated sub-components can exchange round-trip phase-locking signals ($\Delta\tau_{\text{sig}} = 2\Delta\ell / c n_{\text{eff}}$) faster than total decoherence:
+    \begin{equation}
+    \mathcal{L}_{\text{sim}}(r) = \frac{c\,n_{\text{eff}}\,\sqrt{N^2(\theta)}}{2\,\gamma\,\Gamma_{\text{tot}}}.
+    \end{equation}
+    \item \textbf{Spatial Locality Decay ($\mathcal{D}_{\text{loc}}(\Delta\ell)$) and Null Visibility ($V_{\text{null}}$):} Quantifies exponential attenuation of closed-loop synchronization across baseline separation $\Delta\ell$:
+    \begin{equation}
+    \mathcal{D}_{\text{loc}}(\Delta\ell) = \exp\!\left(-\frac{\Delta\ell}{\mathcal{L}_{\text{sim}}(r)}\right), \qquad \mathcal{S}_{\text{sim}} = V_{\text{null}} = \Phi_\tau(\Omega)\,\mathcal{D}_{\text{loc}}(\Delta\ell).
+    \end{equation}
+    This explicitly separates real-time operational phase locking ($\mathcal{S}_{\text{sim}}$) from distance-invariant, post-selected Bell correlations ($S_{\text{CHSH}} = 2\sqrt{2}\,\Phi_\tau$).
+    \item \textbf{Imaginary Dissipation Functional ($-i\hbar\,\Omega$):} Encodes open-system unitarity loss directly within the effective action, ensuring that classical pointer-state selection emerges dynamically when $\Omega \gg 1$ rather than being imposed via an external projection postulate.
+\end{itemize}
+
+\section{The Conformal Elevator and Stratified Interiority}
+
+By sweeping characteristic scale $L$ across the Weyl conformal coordinate $\zeta = \log_{10}(L / \ell_P)$ from the Planck length ($1.62 \times 10^{-35}\text{ m}$) to galaxy superclusters ($10^{23}\text{ m}$), the \textbf{Conformal Preset Elevator} in \texttt{AEON-T14.html} reveals how \textbf{object-as-subject} interiority stratifies across five physical regimes:
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l l l X@{}}
+\toprule
+\textbf{Conformal Regime} & \textbf{Scale ($\zeta$)} & \textbf{Representative Systems} & \textbf{Status of Object-as-Subject ($t_{\text{pre}}$ vs. $\mathcal{L}_{\text{sim}}$)} \\
+\midrule
+\textbf{1. Quantum Micro-Subjects} & $\zeta \approx 0$--$32$ & Vacuum, Quarks, Higgs, Proton, Electron, CMB Photon & \textbf{Pure Unitary Interiority:} $\Gamma_{\text{tot}} \approx 0$, $\Phi_\tau = 1$, $\mathcal{L}_{\text{sim}} \to \infty$. Indivisible phase oscillator ($f_{\text{local}} = E/h$). \\
+\addlinespace[0.4em]
+\textbf{2. Mesoscopic Threshold} & $\zeta \approx 25$--$29$ & $\text{H}_2\text{O}$, $\text{C}_{60}$ Fullerene, Virus Capsid, \textit{E. coli} & \textbf{Emergent Thermal Boundary:} $\Gamma_{\text{th}}$ activates. Living cells expend free energy to keep intracellular signaling inside $\mathcal{L}_{\text{sim}}$. \\
+\addlinespace[0.4em]
+\textbf{3. Macro-Biological Bifurcation} & $\zeta \approx 31$--$35$ & Sand Grain vs. Living Organism / Cortex & \textbf{Active Phase-Locking Divide:} Both occupy similar scale $\zeta$, yet inert matter fragments ($\mathcal{L}_{\text{sim}} \ll L$) while metabolic organisms synchronize ($\mathcal{L}_{\text{sim}} \ge L$). \\
+\addlinespace[0.4em]
+\textbf{4. Planetary \& Stellar Aggregates} & $\zeta \approx 41$--$45$ & Earth, The Sun, R136a1 Hypergiant & \textbf{Fragmented Macro-Aggregates:} High $T_{\text{eff}}$ and mass drive $\Gamma_{\text{tot}}$ sky-high, shrinking $\mathcal{L}_{\text{sim}}$ to micro-scales; an ensemble of local clocks, not one global subject. \\
+\addlinespace[0.4em]
+\textbf{5. Horizons \& Cosmic Web} & $\zeta = 0$ \& $42$--$58$ & Planck BH, Sgr A*, TON 618, El Gordo Cluster & \textbf{Horizon Saturation \& Cosmic Dissolution:} At horizons ($N^2 \to 10^{-6}$), $t_{\text{pre}}$ freezes and MSS chaos saturates ($\lambda_L/\lambda_{\text{MSS}} \to 1$). At cluster scales, $\Delta\tau_{\text{sig}}$ spans megayears. \\
+\bottomrule
+\end{tabularx}
+\caption{Stratification of object-as-subject across the 58-order-of-magnitude Conformal Elevator.}
+\end{table}
+
+Crucially, in flat Minkowski space ($\mathcal{C}_0 = 0$), the Weyl trace anomaly vanishes ($\mathcal{A}_W = 0$) and all floors tick isometrically ($\rho_\tau = 1$). As compactness $\mathcal{C}_{\text{eff}}$ increases, $\mathcal{A}_W > 0$ breaks conformal invariance, imprinting local curvature so each coherent system acquires an irreducible proper clock rate.
+
+\section{Quantum Foundations, Cosmology, and Consciousness}
+
+\subsection{Real Waves Inhabiting Functional Infinity}
+In \textbf{AEON-$T_{\mu\nu}$}, the quantum wave function is neither a mere epistemic ledger in a physicist's mind nor an engine splitting reality into unobservable parallel worlds. A wave is a \textbf{real physical oscillation} occupying its Compton/de Broglie coherence envelope in unitary phase ($\Phi_\tau = 1$). Prior to dissipative coupling ($\Omega \approx 0$), this real wave inhabits \textbf{functional infinity}: an open, continuous manifold of unactualized phase paths.
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{The Double-Slit Experiment:} With open slits and no path detector, $\Phi_\tau = 1$ and $\mathcal{D}_{\text{loc}} = 1$ across slit separation $\Delta\ell_{\text{slits}} \ll \mathcal{L}_{\text{sim}}$, yielding maximal interference visibility ($V_{\text{null}} = 1$). Introducing a macroscopic which-path detector couples the wave to a warm \textbf{object-as-subject} ($\Gamma_{\text{th}} \gg 1$), driving $\Omega \gg 1 \Rightarrow \Phi_\tau \to \Phi_{\text{floor}}$ and condensing functional infinity into a single localized trajectory ($V_{\text{null}} \to 0$) without human intervention or retrocausality.
+    \item \textbf{Schrödinger's Cat and Informational Multiplicity:} Inside the sealed box, the cat is already a warm, metabolically phase-locked \textbf{object-as-subject} ($\zeta \approx 34.7$) with its own internal clock ($t_{\text{pre}}$). The Geiger counter's avalanche drives $\Phi_\tau \to \Phi_{\text{floor}}$ in femtoseconds, anchoring the outcome in the cat's proper duration long before the door opens. For the external scientist separated by an opaque wall ($\mathcal{D}_{\text{loc}} \to 0$), the remote state remains in \textit{epistemic functional infinity} (maximal informational multiplicity, $S_{\text{info}}$) until causal contact ($\mathcal{D}_{\text{loc}} \to 1$) condenses ignorance into a single shared record---strictly preserving the Second Law of Thermodynamics ($S_{\text{th}}$) without invoking ``reverse entropy.''
+    \item \textbf{Primordial Galaxy Localization:} Addressing the cosmological measurement problem highlighted in recent critiques of inflationary decoherence, Equation (\ref{eq:master_aeon}) shows that even in a collisionless, zero-temperature primordial field ($\Gamma_{\text{th}} \approx 0$), inflationary expansion stretches mass-energy fluctuations across scale $L$ until intrinsic gravitational self-energy dissipation ($\Gamma_{\text{grav}}$) drives $\Phi_\tau \to \Phi_{\text{floor}}$. Primordial wave fluctuations condense into single localized galaxies without requiring external observers or CMB-violating thermal kicks.
+\end{itemize}
+
+\subsection{The Epigenetic Metaphysics of Consciousness}
+Within this ontology, consciousness is defined as the \textbf{pre-mathematical experiential plane of duration}: at every lived moment, it opens an unbounded temporal continuum without discrete ticks, which continually condenses from functional infinity into whichever intentional object (``this'' or ``that'') is held under attentional focus. Extrapolated past and future timelines are imagined projections constructed inside consciousness when applying physical laws to observed objects, rather than pre-existing static coordinates.
+
+Consciousness is \textbf{epigenetic} to physical reality, requiring two joint physical preconditions while remaining distinct from a mere physical object:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Adequate Physical Substrate:} A complex, metabolically active coherent whole (Conformal Floor 17, $\zeta \approx 35$, such as a mammalian organism) capable of sustaining diachronic identity ($A_s^v$).
+    \item \textbf{Special Dynamical Phase-Locking ($\mathcal{L}_{\text{sim}} > L_{\text{cortex}}$):} Long-range electromagnetic and metabolic synchronization across cortical assemblies must keep active sync fidelity $\mathcal{S}_{\text{sim}} \to 1$. Under general anesthesia, the biological substrate remains intact, but long-range phase-locking collapses ($\mathcal{D}_{\text{loc}} \to 0$), dissolving the unified conscious plane while autonomic cellular clocks persist.
+\end{enumerate}
+
+\section{Comparative Positioning and Structural Limitations}
+
+\begin{table}[h!]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}p{2.6cm} p{2.7cm} p{2.7cm} X@{}}
+\toprule
+\textbf{Paradigm} & \textbf{Ontology of Time} & \textbf{Status of Subject} & \textbf{Core Limitation vs. AEON-$T_{\mu\nu}$} \\
+\midrule
+\textbf{Newtonian Absolute Time} & Universal external container flowing equably. & Detached spectator outside mechanics. & Refuted by relativity; replaces infinite simultaneity with finite $\mathcal{L}_{\text{sim}}(r)$. \\
+\addlinespace[0.3em]
+\textbf{Einsteinian Block Universe} & Static 4D manifold; temporal flow is illusory. & Worldline geometry; interiority epiphenomenal. & Cannot account for lived duration or measurement actualization; AEON restores $t_{\text{pre}}$ covariantly. \\
+\addlinespace[0.3em]
+\textbf{Orthodox / Copenhagen QM} & External classical clock parameter outside Hilbert space. & External classical observer triggering collapse. & Relies on an arbitrary Heisenberg cut; AEON replaces it with continuous $\Phi_\tau(\Omega)$ and $\mathcal{L}_{\text{sim}}$. \\
+\addlinespace[0.3em]
+\textbf{Relational QM / Thermal Time} & Emergent statistically from correlations or KMS states. & Any interacting physical subsystem. & Conflates passive thermal gases with phase-locked wholes; AEON separates them via $\rho_\tau$ and $A_s^v$. \\
+\addlinespace[0.3em]
+\textbf{Panpsychism / Process Philosophy} & Reality composed of experiential occasions. & Ubiquitous across all matter. & Lacks mathematical cutoffs or falsifiable metrics; AEON bounds interiority via $\Gamma_{\text{tot}}$ and $\Xi_{\text{QG}}$. \\
+\addlinespace[0.3em]
+\textbf{AEON-$T_{\mu\nu}$ (This Work)} & \textbf{Localized duration is primary; coherent wholes are clocks ($t_{\text{pre}}$).} & \textbf{Scale-stratified coherent systems inside $\mathcal{L}_{\text{sim}}$.} & \textbf{Explicitly bounded by four semiclassical cutoffs ($\Xi_{\text{QG}} < 1$) and decoherence limits.} \\
+\bottomrule
+\end{tabularx}
+\caption{Comparative positioning of AEON-$T_{\mu\nu}$ across foundational paradigms.}
+\end{table}
+
+\subsection*{Four Explicit Structural Limitations}
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Structural Temporal Binding vs. Qualitative Qualia:} The framework explains the physical conditions for a unified temporal perspective ($\mathcal{L}_{\text{sim}} > L_{\text{cortex}}$), but does not reduce qualitative phenomenal character (qualia) to equations.
+    \item \textbf{The Quantum-Gravity Wall ($\Xi_{\text{QG}} \to 1$):} Monitored continuously in Panel 6 of \texttt{AEON-T14.html} via
+    \begin{equation}
+    \Xi_{\text{QG}} = \max\!\left(\frac{\ell_P}{L},\, \frac{10^{-6}}{N^2(\theta)},\, \frac{a_*^2 + Q_*^2}{0.9998},\, \frac{T_{\text{eff}}}{T_P}\right),
+    \end{equation}
+    the formalism relies on a smooth semiclassical manifold. As $\Xi_{\text{QG}} \to 1$, classical worldlines dissolve into spacetime foam and single-clock trajectories break down.
+    \item \textbf{Fragility Under Environmental Decoherence:} Whenever thermal or gravitational scattering shrinks $\mathcal{L}_{\text{sim}}(r) \ll L$, unified subjectivity dissolves into an incoherent aggregate of microscopic clocks.
+    \item \textbf{Coarse-Graining Boundary Specification:} Defining the effective radius $L$ of an open biological or neural system requires domain-specific physical modeling of its dominant coupling channel.
+\end{enumerate}
+
+\section{The Computational Observatory \& 27-Paper Corpus Map}
+
+\subsection{The Six-Panel Computational Observatory (\texttt{AEON-T14.html})}
+The interactive browser observatory (\texttt{DOI: 10.5281/zenodo.24244501}) operationalizes Equations (\ref{eq:master_aeon})--(\ref{eq:action_aeon}) across six coupled telemetry panels and a real-time 3D Kerr--Newman causal light-cone stage:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Panel 1 (Kerr--Newman QFTCS \& Metric):} Computes ZAMO lapse $N^2(\theta)$, static ergosphere limit $-g_{tt}(\theta)$, frame-dragging $\omega_{\text{FD}}$, Schwinger screening, photon-sphere/ISCO geodesics, and the 25-floor Conformal Preset Elevator.
+    \item \textbf{Panel 2 (ZAMO Chronological Flux \& Operational Simultaneity):} Tracks 77 orders of cosmological clock discrepancy ($t_{\text{obs}}$ vs. $t_{\text{pre}}$), $\rho_\tau$, round-trip lag $\Delta\tau_{\text{sig}}$, $\mathcal{L}_{\text{sim}}(r)$, $\mathcal{S}_{\text{sim}}$, and $S_{\text{CHSH}}$.
+    \item \textbf{Panel 3 (Thermodynamics \& Page Curve):} Evaluates Bekenstein--Hawking entropy bounds ($\log_{10} S_{\text{BH}}$), Hawking mass evaporation $M(t)$, unitary Page curve entanglement ($\log_{10} S_{\text{rad}}$), decoherence action $\Omega$, and timeline integrity $\Phi_\tau$.
+    \item \textbf{Panel 4 (Object Presets \& Telemetry Export):} Provides 25 calibrated presets from the Planck limit to El Gordo alongside custom state persistence and 29-column CSV/JSON export.
+    \item \textbf{Panel 5 (QFT Dispersion \& Superradiance):} Computes relativistic dispersion ($E^2 - p^2 = m_0^2$), gravitational redshift $z$, Zel'dovich--Misner superradiant amplification ($f_{\text{local}} < f_H$), and surviving coherent cycles $\mathcal{N}_{\text{eff}}$.
+    \item \textbf{Panel 6 (Cross-Panel Invariants \& Quantum-Gravity Wall):} Monitors eight dimensionless invariants: Lloyd--Bekenstein bound ($\eta_{\text{Lloyd}}$), Tolman--Ehrenfest thermal invariance ($\Xi_{\text{th}}$), Penrose extraction efficiency ($\mathcal{E}_P$), gravity-to-thermal ratio ($\mathcal{R}_{\text{DP}}$), Maldacena--Shenker--Stanford chaos saturation ($\lambda_L/\lambda_{\text{MSS}}$), the 4-channel Quantum-Gravity Wall ($\Xi_{\text{QG}}$), spatial locality decay ($\mathcal{D}_{\text{loc}}$ / $\mathcal{F}_{\text{QRF}}$), and null interferometric visibility ($V_{\text{null}}$).
+\end{itemize}
+
+\subsection{Corpus Architecture (Papers 1--27)}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Foundational Core \& Compendiums (Published Zenodo Archive):} \textit{Master Compendiums v1.0 \& v2.0} establish the postulates, covariant kinematics, and mathematical invariants.
+    \item \textbf{Relativistic QFTCS, Horizons \& Decoherence (Papers 1--16, Published):} Derive polar Kerr--Newman back-reaction, open-system Lindblad/Penrose--Diósi damping, Page curve unitarity, superradiance, and operational simultaneity horizons.
+    \item \textbf{Extended Field Applications \& Guardrails (Papers 17--22, Published):} Formalize quantum reference frame fidelity ($\mathcal{F}_{\text{QRF}}$), null visibility calibration ($V_{\text{null}}$), horizon dissolution, and ontological guardrails for continuum fluid dynamics.
+    \item \textbf{Forthcoming Domain Synthesis (Papers 23--27):}
+    \begin{itemize}
+        \item \textbf{Paper 23 (Neuroscience \& the Binding Problem):} Cortical phase-locking at Conformal Floor 17 ($\mathcal{L}_{\text{sim}} > L_{\text{cortex}}$) and the wakefulness--anesthesia transition.
+        \item \textbf{Paper 24 (Biology):} Living organisms as dissipative structures preserving diachronic identity ($A_s^v$) against thermal scattering ($\Gamma_{\text{th}}$).
+        \item \textbf{Paper 25 (Optical Geodesy):} Falsifiable precision fiber and satellite clock metrology testing $\mathcal{D}_{\text{loc}}$ and $V_{\text{null}}$ across gravitational gradients.
+        \item \textbf{Paper 26 (Slow Metaphysics):} Comprehensive ontological synthesis of duration, functional infinity, and relational spacetime.
+        \item \textbf{Paper 27 (The Illuminated Room):} Step-by-step phenomenological and optical derivation (propagation, diffraction, refractive index, reflection, polarization, shadows, and retinal persistence) inside a 3-meter room.
+    \end{itemize}
+\end{itemize}
+
+\begin{thebibliography}{99}
+\small
+\bibitem{damasio_mc1} Damásio, L. P. (2026). \textit{Master Compendium: Foundations of Temporal Metrology and Operational Quantum Mechanics (v1.0)}. Zenodo. \url{https://doi.org/10.5281/zenodo.24163322}
+\bibitem{damasio_mc2} Damásio, L. P. (2026). \textit{Master Compendium: Covariant Objective Time and Semiclassical Back-Reaction (v2.0)}. Zenodo. \url{https://doi.org/10.5281/zenodo.24190229}
+\bibitem{damasio_obs} Damásio, L. P. (2026). \textit{AEON-T14.html: Covariant Kerr--Newman QFTCS \& Semiclassical Back-Reaction Observatory}. Zenodo. \url{https://doi.org/10.5281/zenodo.24244501}
+\bibitem{damasio_p10} Damásio, L. P. (2026). \textit{Coherence-Bounded Operational Locality: Simultaneous Phase Synchronization vs. Bell Correlations (Paper 10)}. Zenodo Archive.
+\bibitem{damasio_p11_13} Damásio, L. P. (2026). \textit{Quantum Reference Frame Fidelity, Null Interferometric Visibility, and Horizon Dissolution (Papers 11--13)}. Zenodo Archive.
+\bibitem{einstein1905} Einstein, A. (1905). Zur Elektrodynamik bewegter Körper. \textit{Annalen der Physik}, 322(10), 891--921.
+\bibitem{einstein1955} Einstein, A. (1955). Letter to the family of Michele Besso (March 21, 1955). In \textit{Albert Einstein--Michele Besso Correspondence 1903--1955}. Hermann.
+\bibitem{kerr1963} Kerr, R. P. (1963). Gravitational field of a spinning mass as an example of algebraically special metrics. \textit{Physical Review Letters}, 11(5), 237--238.
+\bibitem{newman1965} Newman, E. T., et al. (1965). Metric of a rotating, charged mass. \textit{Journal of Mathematical Physics}, 6(6), 918--919.
+\bibitem{bardeen1972} Bardeen, J. M., Press, W. H., \& Teukolsky, S. A. (1972). Rotating black holes: Locally nonrotating frames, energy extraction, and scalar synchrotron radiation. \textit{The Astrophysical Journal}, 178, 347--369.
+\bibitem{birrell1982} Birrell, N. D., \& Davies, P. C. W. (1982). \textit{Quantum Fields in Curved Space}. Cambridge University Press.
+\bibitem{schwinger1951} Schwinger, J. (1951). On gauge invariance and vacuum polarization. \textit{Physical Review}, 82(5), 664--679.
+\bibitem{lindblad1976} Lindblad, G. (1976). On the generators of quantum dynamical semigroups. \textit{Communications in Mathematical Physics}, 48(2), 119--130.
+\bibitem{caldeira1983} Caldeira, A. O., \& Leggett, A. J. (1983). Path integral approach to quantum Brownian motion. \textit{Physica A}, 121(3), 587--616.
+\bibitem{diosi1989} Diósi, L. (1989). Models for universal reduction of macroscopic quantum fluctuations. \textit{Physical Review A}, 40(3), 1165--1174.
+\bibitem{penrose1996} Penrose, R. (1996). On gravity's role in quantum state reduction. \textit{General Relativity and Gravitation}, 28(5), 581--600.
+\bibitem{page1993} Page, D. N. (1993). Information in black hole radiation. \textit{Physical Review Letters}, 71(23), 3743--3746.
+\bibitem{lloyd2000} Lloyd, S. (2000). Ultimate physical limits to computation. \textit{Nature}, 406(6799), 1047--1054.
+\bibitem{tolman1930} Tolman, R. C., \& Ehrenfest, P. (1930). Temperature equilibrium in a static gravitational field. \textit{Physical Review}, 36(12), 1791--1798.
+\bibitem{mss2016} Maldacena, J., Shenker, S. H., \& Stanford, D. (2016). A bound on chaos. \textit{Journal of High Energy Physics}, 2016(8), 106.
+\bibitem{rovelli1996} Rovelli, C. (1996). Relational quantum mechanics. \textit{International Journal of Theoretical Physics}, 35(8), 1637--1678.
+\end{thebibliography}
+
+\end{document}
