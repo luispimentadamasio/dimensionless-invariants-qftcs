@@ -1,0 +1,302 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\title{\textbf{Coherence-Bounded Precision Optical Geodesy: Operational Simultaneity Horizons, Spatial Locality Decay, and Relativistic Clock Networks in AEON-$T_{\mu\nu}$}}
+
+\author{
+  \textbf{Luís Pimenta Damásio}\\
+  Independent Researcher, Lisbon, Portugal\\
+  ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}
+}
+
+\date{November 18, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Precision optical atomic clocks linked by phase-stabilized terrestrial fibers and free-space laser terminals have elevated relativistic geodesy into a direct probe of Earth's gravitational potential at the sub-centimeter level. In standard metrological practice, long-baseline clock networks are analyzed via coordinate-based Einstein--Poincaré synchronization conventions and post-Newtonian frequency-shift expansions, while residual phase noise is modeled empirically as classical servo lag or environmental fiber perturbation. In this paper, we specialize the covariant open-system timing formalism of \textbf{AEON-$T_{\mu\nu}$} to weak-field relativistic geodesy and interferometric clock networks. Starting from the \emph{Covariant Objective-Time Master Equation} and weak-field Zero-Angular-Momentum Observer (ZAMO) lapse geometry, we derive the baseline-dependent \emph{Operational Simultaneity Horizon} $\mathcal{L}_{\mathrm{sim}}(r)$, \emph{spatial locality decay} $\mathcal{D}_{\mathrm{loc}}(\Delta\ell)$, and \emph{active synchronization fidelity} $\mathcal{S}_{\mathrm{sim}}$. We show that closed-loop optical phase-locking across continental fiber links and satellite baselines is bounded by the competition between round-trip signaling latency $\Delta\tau_{\mathrm{sig}}$ and total channel dissipation $\Gamma_{\mathrm{tot}}$, yielding an observable null interferometric visibility roll-off $V_{\mathrm{null}} = \Phi_\tau \cdot \mathcal{D}_{\mathrm{loc}}$ that is mathematically distinct from gravitational redshift $(\rho_\tau - 1)$ and post-selected quantum correlations ($S_{\mathrm{CHSH}}$). Evaluating four concrete metrological regimes---benchtop optical lattice links, continental phase-stabilized fibers, ground-to-orbit laser terminals, and deep-space Time-Delay Interferometry (TDI)---we demonstrate how pairing $(\rho_\tau - 1)$ with $V_{\mathrm{null}}$ resolves geopotential height ambiguity, contrasts our approach against classical control theory and entangled clock networks, delimits four explicit physical boundaries, and proposes two falsifiable experiments.
+\end{abstract}
+
+\begin{tcolorbox}[colback=gray!6,colframe=gray!50!black,title=\textbf{Epistemic Status \& AI Collaboration Disclosure},fonttitle=\small\bfseries,boxrule=0.6pt]
+\small
+\textbf{Epistemic Status:} Standard general-relativistic gravitational redshift, post-Newtonian proper-time expansions, Sagnac phase corrections, two-way optical time transfer, and Time-Delay Interferometry (TDI) represent established physical and metrological science. The \textbf{AEON-$T_{\mu\nu}$} constructs---including intrinsic proper duration ($t_{\mathrm{pre}}$), objective temporal intensity ($\rho_\tau$), the Operational Simultaneity Horizon ($\mathcal{L}_{\mathrm{sim}}(r)$), spatial locality decay ($\mathcal{D}_{\mathrm{loc}}$), and null visibility roll-off ($V_{\mathrm{null}}$)---constitute a speculative theoretical and philosophical synthesis proposed to formalize coherence-bounded signaling limits across extended baselines.\\[4pt]
+\textbf{AI Collaboration Note:} AI assistance was utilized for mathematical typesetting, structural organization, and document preparation under the author's ontological and conceptual direction.
+\end{tcolorbox}
+
+\section{Introduction: From Coordinate Slicing to Operational Metrology}
+
+Modern optical lattice and trapped-ion atomic clocks have reached fractional frequency instabilities and systematic uncertainties at or below $10^{-18}$ \cite{bloom2014,mcgrew2018,bothwell2022}. Because a fractional frequency offset of $\Delta\nu / \nu \approx 1.09 \times 10^{-18}$ corresponds to a terrestrial geopotential height difference of approximately $1\,\mathrm{cm}$ near Earth's surface, networks of optical clocks linked by phase-stabilized optical fibers \cite{predehl2012,lisdat2016} and free-space laser links \cite{giorgetta2013,cacciapuoti2020} now operate as direct relativistic geodetic instruments \cite{bjerhammar1985,mehlstaubler2018}.
+
+In standard relativistic geodesy, comparison between spatially separated clocks relies on two foundational conventions:
+\begin{enumerate}[leftmargin=1.6em]
+    \item \textbf{Coordinate Time Parameterization:} Proper time intervals $d\tau_A$ and $d\tau_B$ along worldlines $\gamma_A$ and $\gamma_B$ are mapped onto a global Geocentric Celestial Reference System (GCRS) coordinate time $t$ via post-Newtonian metric expansions \cite{soffel2003,petit2010}.
+    \item \textbf{Einstein--Poincaré Synchronization:} Distant clocks are treated as operationally simultaneous whenever two-way light-time delays $\Delta\tau_{\mathrm{sig}} = 2\Delta\ell / (c\,n_{\mathrm{eff}})$ are subtracted post-hoc from phase-comparator records, while residual link instability is modeled as classical servo bandwidth roll-off \cite{williams2008}.
+\end{enumerate}
+
+While this coordinate-based formalism performs accurately within established metrological bounds, it obscures a fundamental operational distinction: \emph{when do two spatially separated optical nodes actually constitute a single, real-time phase-locked system, and when does finite signaling latency plus channel dissipation sever closed-loop phase coherence?}
+
+In \emph{AEON-$T_{\mu\nu}$ \& Philosophy of Time: Executive Manifesto and Front-Door Reader's Guide} \cite{damasio2026manifesto}, the \emph{Master Compendium} \cite{damasio2026compendium2}, and the interactive \emph{AEON-T14.html Computational Observatory} \cite{damasio2026observatory}, we proposed an operational reformulation of temporal metrology grounded in two core postulates: physical existence entails finite duration and spatial localization, and every dynamically coherent whole functions as its own intrinsic proper clock ($t_{\mathrm{pre}}$). In companion applications to cortical neural synchronization in \emph{Coherence-Bounded Temporal Binding: Cortical Operational Simultaneity, Object-as-Subject Interiority, and the Epigenetics of Consciousness in AEON-$T_{\mu\nu}$} \cite{damasio2026neuro} and organismic persistence in \emph{Metabolic Coherence and Diachronic Identity: Biological Operational Simultaneity, Nested Organismic Clocks, and Thermodynamic Persistence in AEON-$T_{\mu\nu}$} \cite{damasio2026bio}, we demonstrated how active rhythmic coupling expands the \emph{Operational Simultaneity Horizon} $\mathcal{L}_{\mathrm{sim}}$ across biological structures.
+
+In this paper, we bring that same operational machinery back to its home turf in precision physical metrology. By specializing the \emph{Covariant Objective-Time Master Equation} to weak-field terrestrial and orbital spacetimes, we derive an exact quantitative criterion separating real-time closed-loop phase synchronization ($\mathcal{S}_{\mathrm{sim}}$) from post-selected coordinate comparison, and show how joint measurement of gravitational redshift $(\rho_\tau - 1)$ and null interferometric visibility ($V_{\mathrm{null}}$) yields an orthogonal diagnostic for precision optical geodesy.
+
+\section{Weak-Field ZAMO Lapse Geometry and the Master Equation}
+
+\subsection{Post-Newtonian Boyer--Lindquist / GCRS Metric Reduction}
+
+Consider a terrestrial or near-Earth orbital optical network embedded in the weak-field, slowly rotating gravitational field of a central mass $M$ with angular momentum $J = a_* G M^2 / c$ and dimensionless compactness $\mathcal{C}_{\mathrm{eff}} = 2 G M / (c^2 r) \ll 1$ (where $\mathcal{C}_{\mathrm{eff}} \approx 1.39 \times 10^{-9}$ at Earth's surface, $r_\oplus \approx 6.371 \times 10^6\,\mathrm{m}$). In Boyer--Lindquist / GCRS coordinates $(t, r, \theta, \phi)$, the Zero-Angular-Momentum Observer (ZAMO) lapse function $N^2(r,\theta) = \Sigma \Delta / A_{\mathrm{BL}}$ reduces to the post-Newtonian form:
+\begin{equation}
+N^2(r,\theta) = 1 - \frac{2 U_{\mathrm{eff}}(r,\theta)}{c^2} + \mathcal{O}\!\left(\frac{U^2}{c^4},\, a_*^2 \mathcal{C}_{\mathrm{eff}}^3\right),
+\label{eq:zamo_weak}
+\end{equation}
+where $U_{\mathrm{eff}}(r,\theta) = U_{\mathrm{grav}}(r,\theta) + \frac{1}{2}\omega_\oplus^2 r^2 \sin^2\theta$ denotes the total geopotential (gravitational plus centrifugal) at geocentric radius $r$ and colatitude $\theta$, and frame-dragging angular velocity $\omega_{\mathrm{FD}} \approx 2 G J / (c^2 r^3)$ enters at order $10^{-14}\,\mathrm{rad/s}$ near Earth.
+
+For an inspected optical node $A$ moving with coordinate velocity $\beta_A = v_A / c$ at potential $U_A$, its intrinsic proper clock rate $dt_{\mathrm{pre}}$ advances relative to coordinate time $t$ as:
+\begin{equation}
+\frac{dt_{\mathrm{pre}}}{dt} = \frac{\sqrt{N^2(r_A,\theta_A)}}{\gamma_A} \approx 1 - \frac{U_A}{c^2} - \frac{v_A^2}{2c^2}.
+\label{eq:tpre_rate}
+\end{equation}
+Comparing node $A$ against a reference laboratory observer $O$ at potential $U_O$ and velocity $\beta_O$, the \emph{objective temporal intensity} $\rho_\tau$ (implemented in Panel~2 of \emph{AEON-T14.html} \cite{damasio2026observatory}) is defined as the ratio of proper clock rates:
+\begin{equation}
+\rho_\tau \equiv \frac{(dt/dt_{\mathrm{pre}})_A}{(dt/dt_{\mathrm{pre}})_O} = \frac{\gamma_A}{\gamma_O}\sqrt{\frac{N^2(r_O,\theta_O)}{N^2(r_A,\theta_A)}} \approx 1 + \frac{U_A - U_O}{c^2} + \frac{v_A^2 - v_O^2}{2c^2}.
+\label{eq:rhotau}
+\end{equation}
+In the static terrestrial limit ($v_A = v_O = 0$), Eq.~\eqref{eq:rhotau} recovers the standard gravitational redshift relation $z \equiv \rho_\tau - 1 = \Delta U / c^2 = g\,\Delta h / c^2$, where $g \approx 9.80665\,\mathrm{m/s^2}$ and $\Delta h$ is the orthometric height difference relative to the geoid.
+
+\subsection{Specialization of the Covariant Objective-Time Master Equation}
+
+To incorporate finite signaling latency and open-channel phase dissipation across an optical link of proper baseline $\Delta\ell$, we specialize the \emph{Covariant Objective-Time Master Equation} \cite{damasio2026manifesto} to the optical carrier density operator $\hat{\rho}_{\mathrm{opt}}$ evolving in node $A$'s intrinsic proper time $t_{\mathrm{pre}}$:
+\begin{equation}
+\frac{d\hat{\rho}_{\mathrm{opt}}}{dt_{\mathrm{pre}}} = -\frac{i}{\hbar}\left[\hat{H}_{\mathrm{opt}}\!\left(\langle \hat{T}_{\mu\nu}\rangle_{\mathrm{ren}}\right),\, \hat{\rho}_{\mathrm{opt}}\right] + \mathcal{D}_{\mathrm{th}}[\hat{\rho}_{\mathrm{opt}}] + \mathcal{D}_{\mathrm{grav}}[\hat{\rho}_{\mathrm{opt}}] + \mathcal{D}_{\mathrm{tech}}[\hat{\rho}_{\mathrm{opt}}].
+\label{eq:master_opt}
+\end{equation}
+Here:
+\begin{itemize}[leftmargin=1.6em]
+    \item $\hat{H}_{\mathrm{opt}}(\langle \hat{T}_{\mu\nu}\rangle_{\mathrm{ren}})$ governs unitary optical phase evolution at local proper frequency $f_{\mathrm{local}} = E/h \sim 2 \times 10^{14}\,\mathrm{Hz}$ ($\lambda \approx 1550\,\mathrm{nm}$ telecom C-band or $\lambda \approx 1064\,\mathrm{nm}$ Nd:YAG), including weak-field Shapiro delay and Sagnac rotation terms sourced by $\langle \hat{T}_{\mu\nu}\rangle_{\mathrm{ren}}$.
+    \item $\mathcal{D}_{\mathrm{th}}[\hat{\rho}_{\mathrm{opt}}]$ models thermal phonon-induced phase diffusion in dielectric fiber cores or atmospheric turbulence, contributing thermal decoherence rate $\Gamma_{\mathrm{th}}$.
+    \item $\mathcal{D}_{\mathrm{grav}}[\hat{\rho}_{\mathrm{opt}}]$ represents gravitational self-energy and tidal phase-gradient dissipation $\Gamma_{\mathrm{grav}}$ across separated optical paths (negligible for single-photon energy packets at terrestrial scales, $\Gamma_{\mathrm{grav}} \ll 10^{-30}\,\mathrm{s^{-1}}$, but tracked consistently across the 120-order-of-magnitude scale ladder).
+    \item $\mathcal{D}_{\mathrm{tech}}[\hat{\rho}_{\mathrm{opt}}]$ captures residual laser linewidth, acoustic fiber strain, and transponder phase jitter $\Gamma_{\mathrm{tech}}$.
+\end{itemize}
+
+Integrating the total dissipation rate $\Gamma_{\mathrm{tot}} = \Gamma_{\mathrm{th}} + \Gamma_{\mathrm{grav}} + \Gamma_{\mathrm{tech}}$ over the local phase-integration window $t_{\mathrm{pre}}$ yields the dimensionless \emph{decoherence action} $\Omega = \Gamma_{\mathrm{tot}}\,t_{\mathrm{pre}}$ and the local \emph{timeline integrity}:
+\begin{equation}
+\Phi_\tau(\Omega) = \Phi_{\mathrm{floor}} + \left(1 - \Phi_{\mathrm{floor}}\right)e^{-\Omega}, \qquad \Phi_{\mathrm{floor}} = \frac{1}{1 + \pi \cdot 10^{2\zeta}},
+\label{eq:phitau}
+\end{equation}
+where $\zeta = \log_{10}(L / \ell_P)$ is the Weyl conformal scale coordinate. At macroscopic optical baselines ($\zeta \gtrsim 35$), $\Phi_{\mathrm{floor}} < 10^{-70}$, so $\Phi_\tau(\Omega) \approx e^{-\Omega}$.
+
+\section{Operational Simultaneity Horizons and Spatial Locality Decay}
+
+\subsection{Round-Trip Signaling Lag and the Horizon Radius $\mathcal{L}_{\mathrm{sim}}(r)$}
+
+Consider two optical clock stations $A$ and $B$ separated by proper distance $\Delta\ell$ through an optical medium of effective group/phase refractive index $n_{\mathrm{eff}}$ ($n_{\mathrm{eff}} \approx 1.468$ in standard SMF-28 silica telecom fiber; $n_{\mathrm{eff}} = 1.000$ in vacuum). The proper round-trip signaling delay measured in the local frame is:
+\begin{equation}
+\Delta\tau_{\mathrm{sig}} = \frac{2\,\Delta\ell}{c\,n_{\mathrm{eff}}\,\rho_{\mathrm{frame}}}, \qquad \rho_{\mathrm{frame}} \equiv \frac{\sqrt{N^2(r,\theta)}}{\gamma}.
+\label{eq:dtausig}
+\end{equation}
+For closed-loop active phase stabilization (such as Doppler-canceled fiber noise cancellation \cite{ma1994}), corrective phase feedback emitted from station $A$ cannot arrive at station $B$ and return before $\Delta\tau_{\mathrm{sig}}$ has elapsed. Defining the \emph{Operational Simultaneity Horizon} $\mathcal{L}_{\mathrm{sim}}(r)$ as the characteristic baseline at which round-trip signaling latency equals the coherent phase-retention timescale $(2\Gamma_{\mathrm{tot}})^{-1}$ (matching Panel~2 of \emph{AEON-T14.html} \cite{damasio2026observatory}), we obtain:
+\begin{equation}
+\mathcal{L}_{\mathrm{sim}}(r) = \frac{c\,n_{\mathrm{eff}}\,\rho_{\mathrm{frame}}}{2\,\Gamma_{\mathrm{tot}}}.
+\label{eq:lsim}
+\end{equation}
+
+\subsection{Spatial Locality Decay $\mathcal{D}_{\mathrm{loc}}$, Sync Fidelity $\mathcal{S}_{\mathrm{sim}}$, and Null Visibility $V_{\mathrm{null}}$}
+
+Across any baseline $\Delta\ell$, real-time phase coherence between nodes $A$ and $B$ decays exponentially with the ratio $\Delta\ell / \mathcal{L}_{\mathrm{sim}}(r)$ via the \emph{spatial locality decay} factor:
+\begin{equation}
+\mathcal{D}_{\mathrm{loc}}(\Delta\ell) = \exp\!\left(-\frac{\Delta\ell}{\mathcal{L}_{\mathrm{sim}}(r)}\right) = \exp\!\left(-\Gamma_{\mathrm{tot}}\,\Delta\tau_{\mathrm{sig}}\right).
+\label{eq:dloc}
+\end{equation}
+Combining local timeline integrity $\Phi_\tau(\Omega)$ with spatial locality decay $\mathcal{D}_{\mathrm{loc}}(\Delta\ell)$ yields the two core operational observables tracked in Panel~2 and Panel~6 of \emph{AEON-T14.html} \cite{damasio2026observatory}:
+\begin{align}
+\mathcal{S}_{\mathrm{sim}}(\Omega, \Delta\ell) &= \Phi_\tau(\Omega)\,\mathcal{D}_{\mathrm{loc}}(\Delta\ell), \label{eq:ssim}\\
+V_{\mathrm{null}}(\Omega, \Delta\ell) &= \Phi_\tau(\Omega)\,\mathcal{D}_{\mathrm{loc}}(\Delta\ell), \label{eq:vnull}
+\end{align}
+where $\mathcal{S}_{\mathrm{sim}}$ quantifies \emph{active closed-loop synchronization fidelity} (whether stations $A$ and $B$ operate as a single, phase-locked \emph{object-as-subject} sharing one operational present) and $V_{\mathrm{null}}$ quantifies the \emph{baseline interferometric fringe visibility} prior to post-selection.
+
+Crucially, Eqs.~\eqref{eq:ssim}--\eqref{eq:vnull} enforce a sharp operational separation between real-time causal phase locking and post-selected quantum correlations:
+\begin{itemize}[leftmargin=1.6em]
+    \item \textbf{Within the Horizon ($\Delta\ell \ll \mathcal{L}_{\mathrm{sim}}(r)$, $\mathcal{D}_{\mathrm{loc}} \to 1$):} Round-trip feedback arrives well within the phase-coherence lifetime. Active Doppler cancellation locks the optical carrier phase across both stations ($\mathcal{S}_{\mathrm{sim}} \approx 1$), forming a unified, point-local metrological manifold.
+    \item \textbf{At the Horizon Threshold ($\Delta\ell = \mathcal{L}_{\mathrm{sim}}(r)$, $\mathcal{D}_{\mathrm{loc}} = e^{-1} \approx 0.3679$):} Causal feedback lag matches the stochastic phase-drift timescale. Real-time phase lock degrades rapidly, marking the transition from continuous closed-loop synchronization to discrete horizon-crossing handshakes.
+    \item \textbf{Beyond the Horizon ($\Delta\ell \gg \mathcal{L}_{\mathrm{sim}}(r)$, $\mathcal{D}_{\mathrm{loc}} \to 0$):} Active real-time phase locking vanishes ($\mathcal{S}_{\mathrm{sim}} \to 0$, $V_{\mathrm{null}} \to 0$). Stations $A$ and $B$ evolve along decoupled local proper clocks ($t_{\mathrm{pre},A}$ and $t_{\mathrm{pre},B}$) and can only be compared via \emph{post-selected classical data reconciliation} (or post-selected Bell coincidence filtering $S_{\mathrm{CHSH}} = 2\sqrt{2}\,\Phi_\tau$, which remains invariant under $\Delta\ell$ once classical time-tags are exchanged).
+\end{itemize}
+
+\section{Four Metrological Regimes in Precision Optical Geodesy}
+
+To evaluate how Eqs.~\eqref{eq:rhotau}--\eqref{eq:vnull} govern real-world geodetic architectures, Table~\ref{tab:geodesy_regimes} classifies four operational regimes spanning 11 orders of magnitude in baseline $\Delta\ell$.
+
+\begin{table}[htbp]
+\centering
+\caption{Operational Simultaneity Regimes Across Precision Optical Geodesy Architectures}
+\label{tab:geodesy_regimes}
+\small
+\begin{tabularx}{\textwidth}{L{2.5cm} L{2.0cm} L{2.1cm} L{2.3cm} Y}
+\toprule
+\textbf{Metrological Regime} & \textbf{Baseline $\Delta\ell$} & \textbf{Round-Trip Lag $\Delta\tau_{\mathrm{sig}}$} & \textbf{Typical $\Gamma_{\mathrm{tot}}$ & $\mathcal{L}_{\mathrm{sim}}(r)$} & \textbf{Operational Status ($\mathcal{D}_{\mathrm{loc}}$, $\mathcal{S}_{\mathrm{sim}}$)} \\
+\midrule
+\textbf{1. Benchtop / Campus Fiber} ($n_{\mathrm{eff}} = 1.468$) & $10^0$--$10^3\,\mathrm{m}$ & $9.8\,\mathrm{ns}$--$9.8\,\mu\mathrm{s}$ & $\Gamma_{\mathrm{tot}} \sim 10^1\,\mathrm{s^{-1}}$ \newline $\mathcal{L}_{\mathrm{sim}} \sim 10^7\,\mathrm{m}$ & \textbf{Point-Local Sync:} $\mathcal{D}_{\mathrm{loc}} \approx 1.0000$; continuous closed-loop optical phase-lock; resolves $\Delta h \sim 1\,\mathrm{mm}$--$1\,\mathrm{cm}$. \\
+\addlinespace[4pt]
+\textbf{2. Continental Fiber Link} (e.g., PTB--SYRTE, $n_{\mathrm{eff}} = 1.468$) & $10^5$--$2 \times 10^6\,\mathrm{m}$ & $0.98\,\mathrm{ms}$--$19.6\,\mathrm{ms}$ & $\Gamma_{\mathrm{tot}} \sim 50\,\mathrm{s^{-1}}$ \newline $\mathcal{L}_{\mathrm{sim}} \sim 2.0 \times 10^6\,\mathrm{m}$ & \textbf{Horizon-Crossing Regime:} $\mathcal{D}_{\mathrm{loc}} \approx 0.37$--$0.95$; requires repeater stations to partition $\Delta\ell$ into sub-horizon cells. \\
+\addlinespace[4pt]
+\textbf{3. Ground-to-LEO / GEO Optical Link} ($n_{\mathrm{eff}} = 1.000$) & $4 \times 10^5$--$3.6 \times 10^7\,\mathrm{m}$ & $2.67\,\mathrm{ms}$--$240\,\mathrm{ms}$ & $\Gamma_{\mathrm{tot}} \sim 10^2\,\mathrm{s^{-1}}$ \newline $\mathcal{L}_{\mathrm{sim}} \sim 1.5 \times 10^6\,\mathrm{m}$ & \textbf{Post-Selected / Two-Way:} $\mathcal{D}_{\mathrm{loc}} \to 0$ at GEO; active lock breaks; requires two-way carrier-phase time-tag reconciliation. \\
+\addlinespace[4pt]
+\textbf{4. Deep-Space Interferometry} (e.g., LISA, $n_{\mathrm{eff}} = 1.000$) & $2.5 \times 10^9\,\mathrm{m}$ & $16.68\,\mathrm{s}$ & $\Gamma_{\mathrm{tot}} \sim 10^{-1}\,\mathrm{s^{-1}}$ \newline $\mathcal{L}_{\mathrm{sim}} \sim 1.5 \times 10^9\,\mathrm{m}$ & \textbf{Beyond Horizon ($\Delta\ell > \mathcal{L}_{\mathrm{sim}}$):} $\mathcal{D}_{\mathrm{loc}} \approx 0.19$; direct optical lock impossible; mandates Time-Delay Interferometry (TDI). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Why Continental Fiber Repeaters and Space TDI Are Horizon Partitioning}
+
+Two cornerstone techniques in modern optical metrology find an immediate physical explanation under Eq.~\eqref{eq:lsim}:
+\begin{enumerate}[leftmargin=1.6em]
+    \item \textbf{Fiber Brillouin / Regenerator Repeaters as Sub-Horizon Cells:} In continental fiber links exceeding $1000\,\mathrm{km}$ (such as the PTB--SYRTE link \cite{lisdat2016}), uncompensated acoustic fiber phase noise ($\Gamma_{\mathrm{tech}} \sim 10^2\,\mathrm{s^{-1}}$) shrinks the single-span horizon to $\mathcal{L}_{\mathrm{sim}} \sim 10^6\,\mathrm{m}$. Installing phase-coherent repeater stations every $100$--$300\,\mathrm{km}$ partitions a single trans-horizon baseline into a chain of sub-horizon segments ($\Delta\ell_{\mathrm{cell}} \ll \mathcal{L}_{\mathrm{sim}}$), preserving $\mathcal{D}_{\mathrm{loc}} > 0.9$ across each cell.
+    \item \textbf{Time-Delay Interferometry (TDI) as Post-Selected Horizon Reconstruction:} In space-based gravitational-wave interferometers such as LISA ($\Delta\ell = 2.5 \times 10^9\,\mathrm{m}$, $\Delta\tau_{\mathrm{sig}} \approx 16.7\,\mathrm{s}$) \cite{tinto2021}, arm lengths vary by thousands of kilometers and exceed $\mathcal{L}_{\mathrm{sim}}(r)$, driving direct real-time interferometric visibility $V_{\mathrm{null}}$ below unity. TDI solves this by recording local laser phase against onboard proper clocks ($t_{\mathrm{pre}}$) and synthetically time-shifting data streams post-hoc to synthesize an equal-arm interferometer---the exact metrological realization of post-selected reconciliation beyond $\mathcal{L}_{\mathrm{sim}}(r)$.
+\end{enumerate}
+
+\section{Orthogonal Geopotential Diagnostics: Separating Redshift from Link Decoherence}
+
+A persistent challenge in relativistic geodesy is distinguishing a genuine time-varying geopotential anomaly $\Delta U(t)$ (caused by subterranean magma intrusion, hydrological mass loading, or seismic strain) from transient channel phase degradation along the optical link.
+
+In \textbf{AEON-$T_{\mu\nu}$}, joint telemetry of \emph{objective temporal intensity} ($\rho_\tau$) and \emph{null interferometric visibility} ($V_{\mathrm{null}}$) provides an orthogonal two-channel diagnostic:
+\begin{equation}
+\begin{aligned}
+\text{Channel 1 (Curvature / Potential):}\quad & z(t) = \rho_\tau(t) - 1 \approx \frac{\Delta U(t)}{c^2} + \frac{\Delta(v^2)}{2c^2}, \\
+\text{Channel 2 (Horizon / Dissipation):}\quad & -\ln V_{\mathrm{null}}(t) = \Omega(t) + \frac{\Delta\ell(t)}{\mathcal{L}_{\mathrm{sim}}(r,t)} = \Gamma_{\mathrm{tot}}(t)\left(t_{\mathrm{pre}} + \Delta\tau_{\mathrm{sig}}(t)\right).
+\end{aligned}
+\label{eq:orthogonal_diag}
+\end{equation}
+As summarized in Eq.~\eqref{eq:orthogonal_diag}:
+\begin{itemize}[leftmargin=1.6em]
+    \item A pure \textbf{sub-surface mass redistribution} shifts $N^2(r,\theta)$ and $\rho_\tau(t)$ while leaving $\Gamma_{\mathrm{tot}}(t)$ and $V_{\mathrm{null}}(t)$ unchanged (up to $\mathcal{O}(\Delta U/c^2) \sim 10^{-18}$).
+    \item A pure \textbf{channel thermal or acoustic perturbation} spikes $\Gamma_{\mathrm{tot}}(t)$, driving an exponential drop in $V_{\mathrm{null}}(t)$ and $\mathcal{S}_{\mathrm{sim}}(t)$ without altering the underlying geopotential offset $\rho_\tau - 1$.
+    \item A \textbf{tectonic baseline strain event} ($\delta(\Delta\ell) \neq 0$ coupled with elevation change $\delta h \neq 0$) produces correlated shifts in both $\Delta\tau_{\mathrm{sig}}(t)$ (via $V_{\mathrm{null}}$ phase-slope) and $\rho_\tau(t)$ (via $g\,\delta h / c^2$), enabling clean separation of vertical uplift from horizontal crustal extension.
+\end{itemize}
+
+\section{Comparative Positioning Against Existing Metrological Frameworks}
+
+To evaluate the explanatory scope of \textbf{AEON-$T_{\mu\nu}$} in optical geodesy, Table~\ref{tab:geodesy_comparison} contrasts our operational formalism against three established paradigms.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparative Matrix of Relativistic Geodesy and Clock-Network Paradigms}
+\label{tab:geodesy_comparison}
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm} L{3.2cm} L{3.3cm} Y}
+\toprule
+\textbf{Paradigm} & \textbf{Treatment of Time \& Synchronization} & \textbf{Model of Link Phase Degradation} & \textbf{Key Limitation Addressed by AEON-$T_{\mu\nu}$} \\
+\midrule
+\textbf{Standard IAU / GCRS Coordinate Geodesy} \cite{soffel2003,petit2010} & Global coordinate time $t$ with post-Newtonian proper-time corrections and Einstein--Poincaré light-time subtraction. & Treats link noise as external engineering error separate from spacetime geometry. & Lacks an intrinsic operational boundary distinguishing real-time phase-locked systems from decoupled clocks. \\
+\addlinespace[4pt]
+\textbf{Classical Servo & Fiber Noise Theory} \cite{ma1994,williams2008} & Feedback loop bandwidth limited by round-trip delay $f_{\mathrm{BW}} \le (4\Delta\tau_{\mathrm{sig}})^{-1}$. & Power-spectral-density integration of acoustic/thermal fiber phase noise $S_\phi(f)$. & Purely technical control model; does not connect link coherence limits to open-system quantum decoherence ($\Phi_\tau$) or ZAMO lapse ($N^2$). \\
+\addlinespace[4pt]
+\textbf{Quantum Entangled Clock Networks} \cite{komar2014} & Uses distributed GHZ entangled states across optical links to achieve Heisenberg-limited frequency comparison. & Assumes unitary entanglement distribution across arbitrary continental or orbital distances. & Underestimates real-time closed-loop decay $\mathcal{D}_{\mathrm{loc}} = \exp(-\Delta\ell / \mathcal{L}_{\mathrm{sim}})$ prior to classical post-selection ($S_{\mathrm{CHSH}}$). \\
+\addlinespace[4pt]
+\textbf{AEON-$T_{\mu\nu}$ Operational Geodesy} & Intrinsic proper clocks ($t_{\mathrm{pre}}$) coupled via ZAMO lapse $N^2(r,\theta)$ and $\rho_\tau$ inside $\mathcal{L}_{\mathrm{sim}}(r)$. & Unified open-system dissipation $\Gamma_{\mathrm{tot}}$ governing both $\Phi_\tau(\Omega)$ and $\mathcal{D}_{\mathrm{loc}}(\Delta\ell)$. & Explicitly delimits closed-loop sync ($\mathcal{S}_{\mathrm{sim}}$) from post-selected reconciliation while monitoring $\Xi_{\mathrm{QG}} < 1$. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Explicit Structural Boundaries and Falsifiable Predictions}
+
+\subsection{Four Structural Limitations}
+
+In accordance with our commitment to explicit boundary conditions \cite{damasio2026manifesto}, the weak-field geodetic specialization of \textbf{AEON-$T_{\mu\nu}$} is bounded by four strict limits:
+\begin{enumerate}[leftmargin=1.6em]
+    \item \textbf{Semiclassical & Weak-Field Regime ($\Xi_{\mathrm{QG}} \ll 1$):} Near Earth and within the Solar System ($\mathcal{C}_{\mathrm{eff}} \lesssim 10^{-5}$, $N^2 \approx 1$), all four quantum-gravity breakdown channels monitored in Panel~6 of \emph{AEON-T14.html} ($\ell_P/L$, $10^{-6}/N^2$, extremality, and $T_{\mathrm{eff}}/T_P$) remain below $10^{-25}$. This paper makes no claim of Planck-scale quantum-gravity corrections in terrestrial fiber links.
+    \item \textbf{Dominance of Technical & Thermal Noise over Gravitational Collapse:} At terrestrial optical energies ($h\nu \sim 1\,\mathrm{eV}$), Penrose--Diósi gravitational dissipation $\Gamma_{\mathrm{grav}}$ is over 30 orders of magnitude smaller than thermal and acoustic fiber noise ($\Gamma_{\mathrm{th}} + \Gamma_{\mathrm{tech}}$). Empirical tests in optical geodesy therefore probe the \emph{operational signaling horizon} $\mathcal{L}_{\mathrm{sim}}(r)$ governed by $\Gamma_{\mathrm{tot}}$, not intrinsic gravitational wave-function collapse.
+    \item \textbf{No Superluminal Signaling:} Spatial locality decay $\mathcal{D}_{\mathrm{loc}}(\Delta\ell)$ strictly enforces relativistic causality. Post-selected entanglement correlations ($S_{\mathrm{CHSH}}$) across trans-horizon baselines require classical light-speed reconciliation ($\Delta\tau_{\mathrm{sig}}$) and never transmit superluminal geodetic data.
+    \item \textbf{Medium Dispersion & Non-Reciprocity Corrections:} Eq.~\eqref{eq:dtausig} assumes symmetric bidirectional propagation with effective index $n_{\mathrm{eff}}$. High-precision continental links ($\Delta\ell > 10^6\,\mathrm{m}$) must incorporate chromatic dispersion, polarization-mode dispersion, and Sagnac non-reciprocity corrections alongside $\mathcal{D}_{\mathrm{loc}}$.
+\end{enumerate}
+
+\subsection{Two Falsifiable Metrological Predictions}
+
+To anchor this framework in empirical testability, we formulate two concrete predictions for existing and near-term optical clock networks:
+\begin{itemize}[leftmargin=1.6em]
+    \item \textbf{Prediction 1 (Exponential Visibility Roll-Off at the Horizon Crossover $\Delta\ell \sim \mathcal{L}_{\mathrm{sim}}$):} In an unrepeatered, variable-length phase-stabilized fiber loop (spanning $\Delta\ell = 10\,\mathrm{km}$ to $1500\,\mathrm{km}$) with controlled thermal/acoustic phase noise $\Gamma_{\mathrm{tot}}$, the real-time closed-loop heterodyne beat-note visibility $V_{\mathrm{null}}(\Delta\ell)$ will follow the exponential decay law $V_{\mathrm{null}}(\Delta\ell) = \Phi_\tau(\Omega)\exp(-2\Gamma_{\mathrm{tot}}\Delta\ell / c n_{\mathrm{eff}})$ across the crossover $\Delta\ell = \mathcal{L}_{\mathrm{sim}}$, whereas post-selected two-way frequency comparison $(\rho_\tau - 1)$ remains unbiased to the $10^{-18}$ level.
+    \item \textbf{Prediction 2 (Orthogonal Separation of Geopotential Shift vs. Link Degradation):} During controlled local heating or acoustic perturbation of an intermediate fiber spool connecting two vertically separated optical clocks ($\Delta h \neq 0$), $V_{\mathrm{null}}(t)$ will exhibit a sharp exponential dip proportional to $\exp(-\Delta\Gamma_{\mathrm{tot}}(t)\Delta\tau_{\mathrm{sig}})$, while the time-averaged fractional frequency offset $\langle \rho_\tau(t) - 1 \rangle$ will remain invariant within statistical uncertainty, cleanly decoupling environmental channel noise from geopotential elevation changes.
+\end{itemize}
+
+\section{Conclusion}
+
+By specializing the \emph{Covariant Objective-Time Master Equation} to weak-field ZAMO lapse geometry, this paper establishes an operational foundation for precision optical geodesy. Rather than treating spatially extended clock networks as infinitely rigid coordinate grids, the \emph{Operational Simultaneity Horizon} $\mathcal{L}_{\mathrm{sim}}(r)$ and \emph{spatial locality decay} $\mathcal{D}_{\mathrm{loc}}(\Delta\ell)$ quantify the exact physical boundary within which distributed optical nodes maintain real-time closed-loop phase coherence ($\mathcal{S}_{\mathrm{sim}} \to 1$). Jointly measuring gravitational redshift $(\rho_\tau - 1)$ and null interferometric visibility ($V_{\mathrm{null}}$) equips continental fiber networks and space-based laser terminals with an orthogonal diagnostic separating true geopotential structure from signaling-horizon dissipation.
+
+\begin{thebibliography}{99}
+
+\bibitem{damasio2026manifesto}
+L. Pimenta Damásio, \emph{AEON-$T_{\mu\nu}$ \& Philosophy of Time: Executive Manifesto and Front-Door Reader's Guide}, Zenodo Preprint (2026), DOI: \href{https://doi.org/10.5281/zenodo.24339158}{10.5281/zenodo.24339158}.
+
+\bibitem{damasio2026compendium2}
+L. Pimenta Damásio, \emph{Master Compendium --- Foundations of Temporal Metrology and Operational Quantum Mechanics (v2.0)}, Zenodo (2026), DOI: \href{https://doi.org/10.5281/zenodo.24190229}{10.5281/zenodo.24190229}.
+
+\bibitem{damasio2026observatory}
+L. Pimenta Damásio, \emph{AEON-T14.html: Covariant Kerr--Newman QFTCS \& Semiclassical Back-Reaction Computational Observatory}, Zenodo Software (2026), DOI: \href{https://doi.org/10.5281/zenodo.24244501}{10.5281/zenodo.24244501}.
+
+\bibitem{damasio2026neuro}
+L. Pimenta Damásio, \emph{Coherence-Bounded Temporal Binding: Cortical Operational Simultaneity, Object-as-Subject Interiority, and the Epigenetics of Consciousness in AEON-$T_{\mu\nu}$}, Zenodo Preprint (2026), DOI: \href{https://doi.org/10.5281/zenodo.24339942}{10.5281/zenodo.24339942}.
+
+\bibitem{damasio2026bio}
+L. Pimenta Damásio, \emph{Metabolic Coherence and Diachronic Identity: Biological Operational Simultaneity, Nested Organismic Clocks, and Thermodynamic Persistence in AEON-$T_{\mu\nu}$}, Zenodo Preprint (2026), DOI: \href{https://doi.org/10.5281/zenodo.24345945}{10.5281/zenodo.24345945}.
+
+\bibitem{bloom2014}
+B. J. Bloom et al., ``An optical lattice clock with accuracy and stability at the $10^{-18}$ level,'' \emph{Nature} \textbf{506}, 71--75 (2014).
+
+\bibitem{mcgrew2018}
+W. F. McGrew et al., ``Atomic clock performance enabling geodesy below the centimetre level,'' \emph{Nature} \textbf{564}, 87--90 (2018).
+
+\bibitem{bothwell2022}
+T. Bothwell et al., ``Resolving the gravitational redshift across a millimetre-scale atomic sample,'' \emph{Nature} \textbf{602}, 420--424 (2022).
+
+\bibitem{predehl2012}
+K. Predehl et al., ``A 920-kilometer optical fiber link for frequency metrology at the 19th decimal place,'' \emph{Science} \textbf{336}, 441--444 (2012).
+
+\bibitem{lisdat2016}
+C. Lisdat et al., ``A clock network for geodesy and fundamental science,'' \emph{Nature Communications} \textbf{7}, 12443 (2016).
+
+\bibitem{giorgetta2013}
+F. R. Giorgetta et al., ``Optical two-way time and frequency transfer over free space,'' \emph{Nature Photonics} \textbf{7}, 434--438 (2013).
+
+\bibitem{cacciapuoti2020}
+L. Cacciapuoti et al., ``Testing gravity with cold-atom clocks in space: The ACES mission,'' \emph{European Physical Journal D} \textbf{74}, 164 (2020).
+
+\bibitem{bjerhammar1985}
+A. Bjerhammar, ``On a relativistic geodesy,'' \emph{Bulletin Géodésique} \textbf{59}, 207--220 (1985).
+
+\bibitem{mehlstaubler2018}
+T. E. Mehlstäubler, G. Grosche, C. Lisdat, P. O. Schmidt, and H. Denker, ``Atomic clocks for geodesy,'' \emph{Reports on Progress in Physics} \textbf{81}, 064401 (2018).
+
+\bibitem{soffel2003}
+M. Soffel et al., ``The IAU 2000 resolutions for astrometry, celestial mechanics, and metrology in the relativistic framework,'' \emph{The Astronomical Journal} \textbf{126}, 2687--2706 (2003).
+
+\bibitem{petit2010}
+G. Petit and B. Luzum (eds.), \emph{IERS Conventions (2010)}, IERS Technical Note No. 36 (Verlag des Bundesamts für Kartographie und Geodäsie, 2010).
+
+\bibitem{ma1994}
+L.-S. Ma, P. Jungner, J. Ye, and J. L. Hall, ``Delivering the same optical frequency at two places: accurate cancellation of phase noise introduced by an optical fiber or other time-varying path,'' \emph{Optics Letters} \textbf{19}, 1777--1779 (1994).
+
+\bibitem{williams2008}
+P. A. Williams, W. C. Swann, and N. R. Newbury, ``High-stability transfer of an optical frequency over long fiber-optic links,'' \emph{Journal of the Optical Society of America B} \textbf{25}, 1284--1293 (2008).
+
+\bibitem{tinto2021}
+M. Tinto and S. V. Dhurandhar, ``Time-delay interferometry,'' \emph{Living Reviews in Relativity} \textbf{24}, 1 (2021).
+
+\bibitem{komar2014}
+P. Kómár et al., ``A quantum network of clocks,'' \emph{Nature Physics} \textbf{10}, 582--587 (2014).
+
+\end{thebibliography}
+
+\end{document}
