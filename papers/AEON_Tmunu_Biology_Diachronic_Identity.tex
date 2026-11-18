@@ -1,0 +1,278 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\definecolor{aeonblue}{HTML}{0B3D91}
+\definecolor{aeonslate}{HTML}{334155}
+\definecolor{aeonbg}{HTML}{F8FAFC}
+\definecolor{aeonborder}{HTML}{CBD5E1}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=aeonblue,
+    citecolor=aeonblue,
+    urlcolor=aeonblue,
+    pdftitle={Metabolic Coherence and Diachronic Identity: Biological Operational Simultaneity, Vegetative Interiority, and Nested Intrinsic Clocks in AEON-Tmunu},
+    pdfauthor={Luís Pimenta Damásio}
+}
+
+\newtcolorbox{disclosurebox}{
+    colback=aeonbg,
+    colframe=aeonborder,
+    boxrule=0.8pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    fonttitle=\bfseries\small\color{aeonblue},
+    title={Epistemic Status \& AI Collaboration Disclosure}
+}
+
+\newtcolorbox{formulabox}{
+    colback=aeonbg,
+    colframe=aeonblue,
+    boxrule=0.8pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=6pt,
+    bottom=6pt
+}
+
+\title{\textbf{\Large Metabolic Coherence and Diachronic Identity: Biological Operational Simultaneity, Vegetative Interiority, and Nested Intrinsic Clocks in AEON-$T_{\mu\nu}$}}
+\author{\textbf{Luís Pimenta Damásio}\\
+\small Independent Researcher, Lisbon, Portugal\\
+\small ORCID: \href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}}
+\date{November 18, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{disclosurebox}
+\small
+This manuscript integrates established non-equilibrium thermodynamics, bioelectric morphogenesis, and circadian physiology with the speculative philosophical and mathematical models of the \textbf{AEON-$T_{\mu\nu}$ \& Philosophy of Time} framework. Constructs such as the \emph{biological operational simultaneity horizon} ($L_{\mathrm{sim}}^{\mathrm{bio}}$), \emph{diachronic identity} ($A_s^v$), \emph{intrinsic proper duration} ($t_{\mathrm{pre}}$), and \emph{vegetative object-as-subject interiority} represent theoretical overlays proposed for conceptual synthesis and empirical falsification, rather than established physical or biological laws. Artificial intelligence assistance was utilized for mathematical typesetting, structural organization, and document preparation; all foundational postulates, ontological commitments, and philosophical interpretations originate with the author.
+\end{disclosurebox}
+
+\begin{abstract}
+\noindent How does a living organism preserve a continuous, unified identity across decades when its constituent atoms are replaced thousands of times and its warm, wet environment rapidly destroys microscopic quantum phase coherence? Standard molecular biology explains the local chemistry of replication and metabolism, while non-equilibrium thermodynamics describes organisms as open dissipative structures exporting entropy. Yet neither framework provides a quantitative criterion distinguishing a unified living subject from an inert macroscopic aggregate of identical size and temperature. This paper extends the \textbf{AEON-$T_{\mu\nu}$} operational-time framework to theoretical biology. By specializing the \emph{Covariant Objective-Time Master Equation} to terrestrial biological scales ($\zeta = \log_{10}(L/\ell_P) \approx 27\text{--}35$), we show how continuous metabolic free-energy flux suppresses effective inter-cellular phase slip ($\Gamma_{\mathrm{eff}}^{\mathrm{bio}}$) to sustain a mesoscopic \emph{biological operational simultaneity horizon} ($L_{\mathrm{sim}}^{\mathrm{bio}} \ge L_{\mathrm{org}}$). Within this horizon, spatially distributed biochemical, bioelectric, and mechanical oscillators lock into a shared intrinsic proper clock ($t_{\mathrm{pre}}$) and preserve \emph{diachronic identity} ($A_s^v$) despite continuous material turnover. We map life-history transitions---morphogenesis, homeostatic maintenance, cryptobiosis versus biological death, and senescence---as dynamical regimes of $L_{\mathrm{sim}}^{\mathrm{bio}}$, contrast our model against genetic reductionism, classical dissipative structures, autopoiesis, and bioelectric morphogenesis, state four explicit structural boundaries separating vegetative coherence from phenomenal consciousness, and propose two falsifiable biophysical predictions.
+\end{abstract}
+
+\section{Introduction: The Scale Bifurcation of Living Matter}
+
+At terrestrial temperatures ($T \approx 288\text{--}310\,\mathrm{K}$) and macroscopic length scales ($L \sim 10^{-6}\,\mathrm{m}$ to $1\,\mathrm{m}$, corresponding to conformal scale coordinates $\zeta = \log_{10}(L/\ell_P) \approx 29\text{--}35$), environmental thermal scattering overwhelms microscopic quantum coherence within femtoseconds. In any passive macroscopic aggregate---such as a silica sand grain or a droplet of saline---thermal collisions scramble phase correlations across sub-nanometer distances. The object behaves purely as an \emph{object-as-object}: an external statistical ensemble of decoupled microscopic degrees of freedom.
+
+Living organisms occupy the exact same conformal scale and thermal bath, yet exhibit an opposite dynamical regime. A single prokaryotic cell, a regenerating planarian, or a multicellular vertebrate maintains long-range morphological, bioelectric, and metabolic coordination across its entire spatial span over years or decades. Even more remarkably, this organizational unity persists while the organism's material substrate is continuously replaced: nearly every atom in a human body turns over within a few years, yet the organism retains an unbroken \emph{diachronic identity} ($A_s^v$).
+
+Building on the foundational postulates introduced in the \emph{Master Compendium} (DOI: \href{https://doi.org/10.5281/zenodo.24190229}{10.5281/zenodo.24190229}) and synthesized in the \emph{AEON-$T_{\mu\nu}$ \& Philosophy of Time: Executive Manifesto and Front-Door Reader's Guide} (DOI: \href{https://doi.org/10.5281/zenodo.24339158}{10.5281/zenodo.24339158}), this paper addresses the biological persistence problem through two core axioms:
+\begin{enumerate}
+    \item \textbf{Foundational Postulate of Existence:} Physical existence entails both finite duration and definite spatial localization.
+    \item \textbf{Second Postulate of Time:} Every dynamically coherent whole functions as an intrinsic proper clock ($t_{\mathrm{pre}}$), weaving its own internal temporal perspective rather than merely advancing along an external coordinate parameter ($t_{\mathrm{obs}}$).
+\end{enumerate}
+
+In the companion study on cortical dynamics, \emph{Coherence-Bounded Temporal Binding: Cortical Operational Simultaneity, Object-as-Subject Interiority, and the Epigenetics of Consciousness in AEON-$T_{\mu\nu}$} (DOI: \href{https://doi.org/10.5281/zenodo.24339942}{10.5281/zenodo.24339942}), this architecture was applied to thalamocortical phase-locking and conscious wakefulness. Here, we generalize the mechanism downward across the conformal ladder to the whole living organism, demonstrating how metabolic free-energy turnover establishes \emph{vegetative interiority}---a non-conscious, structural form of \emph{object-as-subject} coherence that precedes and underwrites nervous systems.
+
+\section{Specialization of the Master Equation to Living Systems}
+
+In the \textbf{AEON-$T_{\mu\nu}$} framework, the evolution of an open physical system is governed by the \emph{Covariant Objective-Time Master Equation}, parameterized by the system's intrinsic ZAMO proper clock ($dt_{\mathrm{pre}} = \sqrt{N^2(\theta)}\,dt$):
+\begin{formulabox}
+\begin{equation}
+\frac{d\hat{\rho}}{dt_{\mathrm{pre}}} = -\frac{i}{\hbar}\left[\hat{H}_{\mathrm{eff}}\left(\langle \hat{T}_{\mu\nu}\rangle_{\mathrm{ren}}\right), \hat{\rho}\right] + \mathcal{D}_{\mathrm{th}}[\hat{\rho}] + \mathcal{D}_{\mathrm{grav}}[\hat{\rho}]
+\label{eq:master}
+\end{equation}
+\end{formulabox}
+
+On Earth's surface, spacetime curvature is weak ($N^2(\theta) \approx 1 - 1.39 \times 10^{-9}$, $\Xi_{\mathrm{QG}} \ll 10^{-25}$), so local proper time ticks nearly isometrically with laboratory coordinate time ($\rho_\tau \approx 1$). However, at biological temperatures ($T_{\mathrm{eff}} \approx 310\,\mathrm{K}$), microscopic Caldeira--Leggett thermal dissipation ($\Gamma_{\mathrm{th}} \propto L^2 (k_B T_{\mathrm{eff}})^3 / \hbar^3 c^2$) drives microscopic quantum timeline integrity $\Phi_\tau(\Omega) = \Phi_{\mathrm{floor}} + (1 - \Phi_{\mathrm{floor}})e^{-\Omega}$ immediately down to its holographic floor ($\Phi_{\mathrm{floor}} \approx 10^{-70}$).
+
+A living organism does not defeat thermal decoherence by maintaining fragile macroscopic quantum superpositions. Instead, it establishes a \textbf{mesoscopic classical-bioelectric synchronization regime}. Coarse-graining Eq.~(\ref{eq:master}) over cellular and tissue-level oscillatory modes (metabolic redox cycles, transmembrane voltage gradients, gap-junction currents, and cytoskeletal mechanics), the effective biological phase-slip rate $\Gamma_{\mathrm{eff}}^{\mathrm{bio}}$ is governed by the competition between thermal-stochastic noise and active ATP-driven phase restoration:
+\begin{equation}
+\Gamma_{\mathrm{eff}}^{\mathrm{bio}}(J_{\mathrm{ATP}}) = \Gamma_{\mathrm{noise}}(T_{\mathrm{eff}}) - \eta_{\mathrm{met}}\,\frac{J_{\mathrm{ATP}}}{k_B T_{\mathrm{eff}}} \ge \Gamma_{\mathrm{min}} > 0
+\label{eq:gamma_bio}
+\end{equation}
+where $J_{\mathrm{ATP}}$ denotes the local free-energy flux (metabolic power density) expended on ion pumps, molecular motors, and enzymatic feedback loops, and $\eta_{\mathrm{met}}$ is the coupling efficiency converting chemical free energy into phase-locked oscillatory stability.
+
+\subsection{The Biological Operational Simultaneity Horizon ($L_{\mathrm{sim}}^{\mathrm{bio}}$)}
+
+Across an organism of characteristic anatomical radius $L_{\mathrm{org}}$, intercellular coordination relies on physical signaling channels (electrotonic gap junctions, calcium waves, endocrine diffusion, and mechanical stress propagation) traveling at effective signal velocity $v_{\mathrm{sig}} = c_{\mathrm{eff}} \ll c$. The round-trip signaling lag across span $\Delta\ell$ is $\Delta\tau_{\mathrm{sig}}(\Delta\ell) = 2\Delta\ell / v_{\mathrm{sig}}$.
+
+Substituting $\Gamma_{\mathrm{eff}}^{\mathrm{bio}}$ and $v_{\mathrm{sig}}$ into the operational simultaneity formalism implemented in the \texttt{AEON-T14.html} Computational Observatory (DOI: \href{https://doi.org/10.5281/zenodo.24244501}{10.5281/zenodo.24244501}), we obtain the \textbf{biological operational simultaneity horizon}:
+\begin{formulabox}
+\begin{equation}
+L_{\mathrm{sim}}^{\mathrm{bio}}(J_{\mathrm{ATP}}) = \frac{v_{\mathrm{sig}}\,\rho_{\mathrm{proper}}}{2\,\Gamma_{\mathrm{eff}}^{\mathrm{bio}}(J_{\mathrm{ATP}})}
+\label{eq:lsim_bio}
+\end{equation}
+\end{formulabox}
+Spatial locality decay across any anatomical baseline $\Delta\ell$ within the organism is then:
+\begin{equation}
+\mathcal{D}_{\mathrm{loc}}^{\mathrm{bio}}(\Delta\ell) = \exp\!\left(-\frac{\Delta\ell}{L_{\mathrm{sim}}^{\mathrm{bio}}}\right), \qquad \mathcal{S}_{\mathrm{sim}}^{\mathrm{bio}} = \Phi_{\mathrm{macro}} \cdot \mathcal{D}_{\mathrm{loc}}^{\mathrm{bio}}
+\label{eq:dloc_bio}
+\end{equation}
+where $\Phi_{\mathrm{macro}} \in [0, 1]$ measures the local phase-locking purity of the cellular oscillators.
+
+\begin{itemize}
+    \item \textbf{Inert Macroscopic Aggregate ($J_{\mathrm{ATP}} = 0$):} Without metabolic free-energy turnover, $\Gamma_{\mathrm{eff}}^{\mathrm{bio}} = \Gamma_{\mathrm{noise}}$ is large, shrinking $L_{\mathrm{sim}}^{\mathrm{bio}}$ to molecular scales ($\sim 10^{-9}\,\mathrm{m} \ll L_{\mathrm{org}}$). Consequently, $\mathcal{D}_{\mathrm{loc}}^{\mathrm{bio}} \to 0$ and $\mathcal{S}_{\mathrm{sim}}^{\mathrm{bio}} \to 0$: the object has no global internal clock.
+    \item \textbf{Viable Living Organism ($J_{\mathrm{ATP}} > J_{\mathrm{crit}}$):} Continuous metabolic work suppresses $\Gamma_{\mathrm{eff}}^{\mathrm{bio}}$ until $L_{\mathrm{sim}}^{\mathrm{bio}} \ge L_{\mathrm{org}}$, keeping $\mathcal{D}_{\mathrm{loc}}^{\mathrm{bio}} \ge e^{-1}$ across the entire body plan. Spatially separated cells phase-lock into a single coherent whole, realizing a unified \emph{object-as-subject} ticking along a shared intrinsic clock ($t_{\mathrm{pre}}$).
+\end{itemize}
+
+\section{Conformal Scale Bifurcation and Nested Biological Clocks}
+
+On the Conformal Elevator ($\zeta = \log_{10}(L/\ell_P)$), floors 14 through 17 ($\zeta \approx 27\text{--}35$) mark the \emph{mesoscopic coherence bifurcation} where passive thermodynamics and living organization diverge:
+
+\begin{table}[htbp]
+\centering
+\caption{Conformal Scale Stratification of Biological Organization and Operational Simultaneity}
+\label{tab:conformal_bio}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm} >{\centering\arraybackslash}p{1.6cm} >{\raggedright\arraybackslash}p{3.2cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Biological Rung} & \textbf{Scale $\zeta$} & \textbf{Primary Signaling Channel ($v_{\mathrm{sig}}$)} & \textbf{Horizon Status ($L_{\mathrm{sim}}^{\mathrm{bio}}$ vs. $L_{\mathrm{org}}$) \& Interiority} \\
+\midrule
+Virion / Capsid ($L \sim 10^{-7}\,\mathrm{m}$) & $\approx 28.0$ & Dormant ($J_{\mathrm{ATP}} = 0$ outside host) & $L_{\mathrm{sim}}^{\mathrm{bio}} \ll L_{\mathrm{org}}$ outside host; latent structural template activated only upon coupling to host metabolic $t_{\mathrm{pre}}$. \\
+\addlinespace
+Prokaryotic Cell ($L \sim 10^{-6}\,\mathrm{m}$) & $\approx 29.0$ & Cytoplasmic diffusion \& membrane potential ($10^{-3}\text{--}10^{-1}\,\mathrm{m/s}$) & $L_{\mathrm{sim}}^{\mathrm{bio}} > 10^{-6}\,\mathrm{m}$; minimal autonomous \emph{object-as-subject} with single cellular proper clock. \\
+\addlinespace
+Multicellular Tissue / Organoid ($L \sim 10^{-2}\,\mathrm{m}$) & $\approx 33.0$ & Gap-junction bioelectric & calcium waves ($10^{-4}\text{--}10^{-2}\,\mathrm{m/s}$) & $L_{\mathrm{sim}}^{\mathrm{bio}} \ge 10^{-2}\,\mathrm{m}$; morphogenetic field coordinates target anatomy via shared bioelectric phase. \\
+\addlinespace
+Macroscopic Organism ($L \sim 1\,\mathrm{m}$) & $\approx 35.0$ & Vascular, endocrine, mechanical \& neural pathways ($10^{-2}\text{--}10^{2}\,\mathrm{m/s}$) & Hierarchical nested clocks: fast neural horizon ($L_{\mathrm{sim}}^{\mathrm{cortex}}$) embedded within slower somatic/circadian $L_{\mathrm{sim}}^{\mathrm{bio}}$. \\
+\addlinespace
+Inert Sand Grain ($L \sim 5 \times 10^{-4}\,\mathrm{m}$) & $\approx 31.7$ & Acoustic lattice phonons only ($J_{\mathrm{ATP}} = 0$) & $L_{\mathrm{sim}}^{\mathrm{bio}} \sim 10^{-9}\,\mathrm{m} \ll L_{\mathrm{org}}$; passive thermal aggregate (\emph{object-as-object}) with zero global phase unity. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Nested Intrinsic Clocks Across Biological Timescales}
+
+Unlike a simple quartz oscillator, a multicellular organism does not tick at a single frequency. Rather, its intrinsic proper time $t_{\mathrm{pre}}$ is structured as a \textbf{nested hierarchy of coupled oscillatory layers}:
+\begin{enumerate}
+    \item \textbf{Ultradian & Metabolic Oscillators ($\tau \sim 10^{-2}\text{--}10^{3}\,\mathrm{s}$):} Glycolytic cycles, mitochondrial membrane potential oscillations, cardiac pacemakers, and respiratory rhythms establish rapid local phase-locking across organs.
+    \item \textbf{Circadian & Endocrine Pacemakers ($\tau \sim 8.64 \times 10^{4}\,\mathrm{s}$):} Transcriptional--translational feedback loops (TTFLs) synchronized by the suprachiasmatic nucleus (in vertebrates) or peripheral light/temperature entrainers align cellular gene expression across the entire body plan.
+    \item \textbf{Morphogenetic & Ontogenetic Arc ($\tau \sim 10^{6}\text{--}10^{9}\,\mathrm{s}$):} Bioelectric resting-potential ($V_{\mathrm{mem}}$) gradients and epigenetic chromatin states encode long-term anatomical memory, guiding embryogenesis, wound healing, and limb regeneration.
+\end{enumerate}
+
+\section{Diachronic Identity ($A_s^v$) and Life-History Phase Transitions}
+
+A central philosophical puzzle in biology is \textbf{Ship-of-Theseus persistence}: how an organism remains numerically the same living individual ($A_s^v$) while continuously shedding and replacing its constituent molecules. In \textbf{AEON-$T_{\mu\nu}$}, material atoms are merely transient excitations passing through a persistent dynamical topology. We formalize \textbf{diachronic identity} ($A_s^v$) as the time-integrated preservation of active sync fidelity along the organism's proper worldline:
+\begin{formulabox}
+\begin{equation}
+A_s^v(t_1, t_2) = \exp\!\left(-\int_{t_{\mathrm{pre}}(t_1)}^{t_{\mathrm{pre}}(t_2)} \frac{1 - \mathcal{S}_{\mathrm{sim}}^{\mathrm{bio}}(t')}{\tau_{\mathrm{mem}}}\,dt'\right)
+\label{eq:diachronic}
+\end{equation}
+\end{formulabox}
+where $\tau_{\mathrm{mem}}$ is the characteristic structural relaxation time of the organism's morphogenetic and epigenetic memory architecture. As long as metabolic phase-locking keeps $\mathcal{S}_{\mathrm{sim}}^{\mathrm{bio}} \approx 1$ across $L_{\mathrm{org}}$, incoming molecules are entrained into the existing phase pattern before old molecules depart, holding $A_s^v \approx 1$.
+
+This formulation maps the four fundamental transitions of biological existence as sharp dynamical regimes of $L_{\mathrm{sim}}^{\mathrm{bio}}$ and $A_s^v$:
+
+\begin{itemize}
+    \item \textbf{Morphogenesis & Regeneration (Horizon Expansion):} During embryonic development or planarian regeneration, bioelectric and biochemical signaling expands $L_{\mathrm{sim}}^{\mathrm{bio}}$ across proliferating cells, locking newly divided tissue into a single anatomical target state. Severing a planarian splits one coherent horizon into two autonomous domains, each re-establishing $L_{\mathrm{sim}}^{\mathrm{bio}} \ge L_{\mathrm{frag}}$ and regenerating a complete organism.
+    \item \textbf{Cryptobiosis & Anhydrobiosis (Suspended Proper Duration):} In tardigrades or desiccated seeds, extreme cooling or dehydration halts metabolic turnover ($J_{\mathrm{ATP}} \to 0$) while vitrifying the cellular matrix so that structural thermal noise also drops ($\Gamma_{\mathrm{noise}} \to 0$). Because both numerator and denominator in Eq.~(\ref{eq:lsim_bio}) approach zero proportionally while structural phase relations are locked in glass, internal clock progression $dt_{\mathrm{pre}}$ pauses without erasing $A_s^v$---allowing full resumption upon rehydration.
+    \item \textbf{Biological Death (Irreversible Horizon Collapse):} When metabolic free-energy flux fails ($J_{\mathrm{ATP}} \to 0$) at physiological temperature ($T_{\mathrm{eff}} \approx 310\,\mathrm{K}$), $\Gamma_{\mathrm{eff}}^{\mathrm{bio}}$ surges to $\Gamma_{\mathrm{noise}}$. Within minutes, $L_{\mathrm{sim}}^{\mathrm{bio}}$ collapses from $\sim 1\,\mathrm{m}$ to $< 10^{-9}\,\mathrm{m}$, $\mathcal{D}_{\mathrm{loc}}^{\mathrm{bio}} \to 0$, and $A_s^v$ decays irreversibly to zero. The unified \emph{object-as-subject} dissolves back into a passive chemical aggregate.
+    \item \textbf{Senescence & Aging (Progressive Horizon Contraction):} Biological aging corresponds to accumulated epigenetic drift, mitochondrial inefficiency (declining $\eta_{\mathrm{met}}$), and extracellular matrix stiffening (reduced $v_{\mathrm{sig}}$). Together, these factors gradually contract $L_{\mathrm{sim}}^{\mathrm{bio}}(t)$ and introduce inter-organ phase desynchronization, eroding $\mathcal{S}_{\mathrm{sim}}^{\mathrm{bio}}$ until homeostatic recovery fails.
+\end{itemize}
+
+\section{Comparative Positioning and Structural Limitations}
+
+\begin{table}[htbp]
+\centering
+\caption{Comparative Positioning of AEON-$T_{\mu\nu}$ Against Major Paradigms in Theoretical Biology}
+\label{tab:bio_comparison}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm} >{\raggedright\arraybackslash}p{3.1cm} >{\raggedright\arraybackslash}p{3.1cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Paradigm} & \textbf{Core Mechanism of Life} & \textbf{Account of Persistence} & \textbf{Contrast with AEON-$T_{\mu\nu}$} \\
+\midrule
+Genetic Reductionism (Neo-Darwinian) & DNA sequence replication \& molecular transcription & Fidelity of nucleic acid template copying & Explains molecular heredity, but omits real-time macroscopic spatial binding ($L_{\mathrm{sim}}^{\mathrm{bio}}$) and epigenetic regeneration. \\
+\addlinespace
+Non-Equilibrium Thermodynamics (Prigogine) & Open dissipative structures exporting entropy & Steady-state energy-matter throughput & Establishes thermodynamic necessity, but lacks a quantitative spatial coherence horizon separating life from convection cells. \\
+\addlinespace
+Autopoiesis (Maturana \& Varela) & Operational closure \& self-producing network & Recursive boundary self-maintenance & Captures organizational self-reference conceptually, but lacks covariant physical metrics ($\Gamma_{\mathrm{eff}}^{\mathrm{bio}}$, $\mathcal{D}_{\mathrm{loc}}^{\mathrm{bio}}$). \\
+\addlinespace
+Bioelectric Morphogenesis (Levin) & Non-neural $V_{\mathrm{mem}}$ networks encoding target morphology & Collective cellular goal-directedness & Directly compatible; \textbf{AEON-$T_{\mu\nu}$} supplies the underlying operational-time metric ($t_{\mathrm{pre}}$, $L_{\mathrm{sim}}^{\mathrm{bio}}$) governing bioelectric scaling. \\
+\addlinespace
+\textbf{AEON-$T_{\mu\nu}$ Biological Coherence} & \textbf{Metabolic suppression of $\Gamma_{\mathrm{eff}}^{\mathrm{bio}}$ keeping $L_{\mathrm{sim}}^{\mathrm{bio}} \ge L_{\mathrm{org}}$} & \textbf{Diachronic identity ($A_s^v$) via nested intrinsic clocks ($t_{\mathrm{pre}}$)} & \textbf{Unifies thermodynamic throughput, bioelectric synchronization, and scale-stratified interiority under one master law.} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Four Explicit Structural Boundaries}
+
+To maintain rigorous epistemic discipline, this framework states four explicit limits where its biological claims stop:
+\begin{enumerate}
+    \item \textbf{Vegetative Interiority Is Not Phenomenal Consciousness:} Sustaining $L_{\mathrm{sim}}^{\mathrm{bio}} \ge L_{\mathrm{org}}$ establishes structural, vegetative \emph{object-as-subject} coherence (unified physiological self-maintenance), not reflective awareness or qualitative qualia. As established in our neurobiological companion paper (\emph{Coherence-Bounded Temporal Binding}, DOI: \href{https://doi.org/10.5281/zenodo.24339942}{10.5281/zenodo.24339942}), conscious experience requires an additional specialized thalamocortical phase-locking horizon ($L_{\mathrm{sim}}^{\mathrm{cortex}}$) and an adequate neural substrate.
+    \item \textbf{No Macroscopic Quantum Superpositions in Warm Tissue:} Unlike quantum-vitalist proposals, \textbf{AEON-$T_{\mu\nu}$} affirms that quantum timeline integrity $\Phi_\tau$ sits at $\Phi_{\mathrm{floor}}$ across macroscopic tissue. Biological coherence operates via classical-bioelectric and biochemical phase-locking fed by metabolic free energy, never by violating environmental thermal decoherence bounds.
+    \item \textbf{Ecological & Symbiotic Boundary Coarse-Graining:} Defining $L_{\mathrm{org}}$ in holobionts (e.g., host plus gut microbiome) or eusocial colonies depends on the coupling channel analyzed: strong gap-junction and vascular coupling defines the individual organismal horizon, whereas weaker chemical/behavioral signaling defines nested ecological horizons with lower $\mathcal{S}_{\mathrm{sim}}$.
+    \item \textbf{Semiclassical Regime Validity ($\Xi_{\mathrm{QG}} \ll 1$):} All terrestrial biological processes operate deep inside the flat-spacetime semiclassical limit ($\Xi_{\mathrm{QG}} \sim 10^{-26}$), where gravitational self-energy decoherence $\Gamma_{\mathrm{grav}}$ is negligible compared to $\Gamma_{\mathrm{noise}}(T_{\mathrm{eff}})$.
+\end{enumerate}
+
+\section{Falsifiable Biophysical Predictions and Outlook}
+
+The biological operational simultaneity formalism generates two concrete, testable predictions for experimental biophysics:
+\begin{enumerate}
+    \item \textbf{Bioelectric Horizon Threshold in Regeneration and Tumorigenesis:} In regenerating tissues (such as planaria or amphibian limb buds) and oncogenic transformation, the transition from normal morphogenetic control to autonomous tumor growth should correlate quantitatively with a measurable contraction of intercellular gap-junction phase-locking length ($L_{\mathrm{sim}}^{\mathrm{bio}} < L_{\mathrm{tissue}}$), detectable via wide-field voltage-sensitive dye imaging and cross-spectral coherence decay.
+    \item \textbf{Metabolic Scaling of Inter-Organ Phase Coherence During Aging:} Across vertebrate lifespans, longitudinal multi-organ telemetry (simultaneous ECG, continuous glucose/redox monitoring, and core thermal circadian tracking) should reveal a progressive decline in cross-system phase-locking fidelity ($\mathcal{S}_{\mathrm{sim}}^{\mathrm{bio}}$) that predicts mortality risk more sensitively than single-organ mean biomarkers alone.
+\end{enumerate}
+
+Together with our companion investigations into cortical temporal binding, precision optical geodesy, everyday optical wave condensation, and the overarching ontology of objective duration, this work demonstrates how a single operational-time principle bridges non-equilibrium physics and the persistence of living form.
+
+\begin{thebibliography}{99}
+
+\bibitem{damasio_compendium_v2}
+L.~Pimenta Damásio, \emph{Master Compendium --- Foundations of Temporal Metrology and Operational Quantum Mechanics (v2.0)}, Zenodo (2026), DOI: \href{https://doi.org/10.5281/zenodo.24190229}{10.5281/zenodo.24190229}.
+
+\bibitem{damasio_observatory}
+L.~Pimenta Damásio, \emph{AEON-T14.html: Covariant Kerr--Newman QFTCS \& Semiclassical Back-Reaction Computational Observatory}, Zenodo (2026), DOI: \href{https://doi.org/10.5281/zenodo.24244501}{10.5281/zenodo.24244501}.
+
+\bibitem{damasio_manifesto}
+L.~Pimenta Damásio, \emph{AEON-$T_{\mu\nu}$ \& Philosophy of Time: Executive Manifesto and Front-Door Reader's Guide}, Zenodo (2026), DOI: \href{https://doi.org/10.5281/zenodo.24339158}{10.5281/zenodo.24339158}.
+
+\bibitem{damasio_neuro}
+L.~Pimenta Damásio, \emph{Coherence-Bounded Temporal Binding: Cortical Operational Simultaneity, Object-as-Subject Interiority, and the Epigenetics of Consciousness in AEON-$T_{\mu\nu}$}, Zenodo (2026), DOI: \href{https://doi.org/10.5281/zenodo.24339942}{10.5281/zenodo.24339942}.
+
+\bibitem{schrodinger1944}
+E.~Schrödinger, \emph{What is Life? The Physical Aspect of the Living Cell}, Cambridge University Press (1944).
+
+\bibitem{prigogine1977}
+G.~Nicolis and I.~Prigogine, \emph{Self-Organization in Nonequilibrium Systems: From Dissipative Structures to Order through Fluctuations}, Wiley-Interscience (1977).
+
+\bibitem{maturana1980}
+H.~R. Maturana and F.~J. Varela, \emph{Autopoiesis and Cognition: The Realization of the Living}, D. Reidel Publishing (1980).
+
+\bibitem{levin2021}
+M.~Levin, ``Bioelectric signaling: Reprogrammable circuits underlying embryogenesis, regeneration, and cancer,'' \emph{Cell} \textbf{184}, 1971--1989 (2021).
+
+\bibitem{winfree2001}
+A.~T. Winfree, \emph{The Geometry of Biological Time}, 2nd ed., Springer (2001).
+
+\bibitem{takahashi2017}
+J.~S. Takahashi, ``Transcriptional architecture of the mammalian circadian clock,'' \emph{Nature Reviews Genetics} \textbf{18}, 164--179 (2017).
+
+\bibitem{kuramoto1984}
+Y.~Kuramoto, \emph{Chemical Oscillations, Waves, and Turbulence}, Springer-Verlag (1984).
+
+\bibitem{england2013}
+J.~L. England, ``Statistical physics of self-replication,'' \emph{Journal of Chemical Physics} \textbf{139}, 121923 (2013).
+
+\bibitem{clegg2001}
+J.~S. Clegg, ``Cryptobiosis --- a peculiar state of biological organization,'' \emph{Comparative Biochemistry and Physiology Part B} \textbf{128}, 613--624 (2001).
+
+\bibitem{tegemark2000}
+M.~Tegmark, ``Importance of quantum decoherence in brain processes,'' \emph{Physical Review E} \textbf{61}, 4194--4206 (2000).
+
+\bibitem{caldeira1983}
+A.~O. Caldeira and A.~J. Leggett, ``Path integral approach to quantum Brownian motion,'' \emph{Physica A} \textbf{121}, 587--616 (1983).
+
+\bibitem{west1997}
+G.~B. West, J.~H. Brown, and B.~J. Enquist, ``A general model for the origin of allometric scaling laws in biology,'' \emph{Science} \textbf{276}, 122--126 (1997).
+
+\end{thebibliography}
+
+\end{document}
