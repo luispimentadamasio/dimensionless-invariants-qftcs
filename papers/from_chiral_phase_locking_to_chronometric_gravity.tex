@@ -1,0 +1,739 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{From Chiral Phase-Locking to Chronometric Gravity: Higgs Mass
+Nucleation, Centers of Resolution, and Falsifiable Quantum-Gravity
+Signatures in the Theory of Objective
+Time}\label{from-chiral-phase-locking-to-chronometric-gravity-higgs-mass-nucleation-centers-of-resolution-and-falsifiable-quantum-gravity-signatures-in-the-theory-of-objective-time}
+
+\textbf{Author:} Luís Pimenta Damásio\\
+\textbf{ORCID:}
+\href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}\\
+\textbf{Affiliation:} Independent Researcher, Lisbon, Portugal\\
+\textbf{Series:} \(\text{AEON-T}_{\mu\nu}\) Theoretical Physics \&
+Philosophy of Time Research Series\\
+\textbf{Date:} November 21, 2026
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+A philosophical ontology of time crosses the threshold into empirical
+physics at the precise point where its foundational mechanisms generate
+sharp, quantitative falsifiability criteria. Working within the Theory
+of Objective Time (\(\text{AEON-T}_{\mu\nu}\)), this paper establishes
+an operational bridge between electroweak mass generation and
+gravitational curvature without quantizing four-dimensional background
+manifolds (\(\mathbb{R}^4\)) or invoking speculative spin-2 gravitons.
+Applying strict epistemological bracketing (\emph{epoché}) to
+unobservable sub-Higgs and superluminal projections, we reverse-engineer
+Functional Infinity (\(\Omega\)) as the maximal-entropy transcendental
+horizon required to sustain spontaneous electroweak symmetry breaking
+(\(v \approx 246\text{ GeV}\)). Through Two-Stage Condensation
+(\(\Phi_\tau(\Omega)\)), the Higgs condensate locks previously
+un-clocked chiral excitations (\(\psi_L \leftrightarrow \psi_R\)) into
+internal Compton oscillators (\(\omega_C = mc^2/\hbar\)), igniting the
+first irreversible diachronic clock-ticks (\(A = A_1^1 \to A_1^2\)) and
+instantiating localized \textbf{Centers of Resolution}
+(\emph{object-as-subject}), while leaving the photon (\(\gamma\))
+massless as the universal signaling messenger
+(\(\Delta\tau_{\mathrm{sig}}\)). We demonstrate that inertial mass
+(\(m_i\)) and gravitational mass (\(m_g\)) are necessarily identical
+because both arise from the exact same chiral phase-locking act:
+internal resistance to phase-shift (\(m_i\)) and external radial
+chronometric gradient (\(\nabla\rho_\tau\), \(n_{\mathrm{eff}} > 1\))
+induced across the temporal substrate (\(m_g\)). Because gravity
+responds strictly to differential gradients in clock-pacing
+(\(\nabla\rho_\tau \neq 0\)) rather than the uniform Higgs vacuum floor
+(\(\nabla v = 0\)), the \(10^{120}\) vacuum energy catastrophe dissolves
+naturally. Finally, we stress-test this chronometric gravity
+architecture against pre-Higgs radiation curvature, vacuum gravitational
+waves (\(\delta n_{\mathrm{eff}}\)), and superposed masses, concluding
+with three explicit experimental falsifiability kill-switches across
+table-top optomechanical superposition tests, sub-millimeter optical
+lattice clock interferometry, and post-merger gravitational-wave
+ringdown echoes.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction: Crossing from Temporal Ontology to
+Falsifiable
+Physics}\label{introduction-crossing-from-temporal-ontology-to-falsifiable-physics}
+
+For over a century, the unification of quantum mechanics and general
+relativity has stalled at a structural impasse. Standard approaches to
+quantum gravity attempt to quantize the spacetime metric tensor
+(\(g_{\mu\nu}\)) directly on a continuous four-dimensional manifold
+(\(\mathbb{R}^4\)), treating spacetime geometry as a fundamental
+physical substance while leaving time either frozen in timeless
+constraint equations or relegated to an external background parameter.
+Conversely, purely philosophical accounts of temporal becoming often
+remain detached from laboratory observables, lacking the operational
+metrics needed to confront empirical testing.
+
+In the \textbf{Theory of Objective Time (\(\text{AEON-T}_{\mu\nu}\))}
+{[}1, 2{]}, this impasse is resolved by reversing the order of
+construction:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Objective Time as the Transcendental Substrate:} Time is
+  neither an empty coordinate line (\(t\)) nor an illusion emergent from
+  timeless equations; it is the three-way self-referential
+  transcendental domain (\emph{before, after, and in-between}) within
+  which all existence occurs. Because nothing stands outside time, every
+  real process expresses time temporally as intrinsic \textbf{temporal
+  cadence} (\(\rho_\tau > 0\)).
+\item
+  \textbf{Pre-Metric Cadence vs.~Earned Metric Duration:} Prior to the
+  condensation of bound massive oscillators, quantitative scale
+  vanishes---one yoctosecond and trillions of years collapse into metric
+  equivalence (\(A_2^1\)) {[}2{]}. Earned metric duration
+  (\(dt_{\mathrm{pre}} = n_{\mathrm{eff}}\Delta\ell / c > 0\)) and
+  smooth coordinate geometry (\(g_{\mu\nu}\)) emerge only after symmetry
+  breaking condenses bound physical clocks (\emph{``If it is, it is a
+  clock''}).
+\item
+  \textbf{The Missing Hinge---Mass Nucleation and Gravity:} If bound
+  clocks are what survey and curve spacetime, then the physical
+  mechanism that grants elementary particles rest mass
+  (\(m > 0\))---\textbf{electroweak/Higgs symmetry breaking}---must
+  simultaneously serve as the operational engine of
+  \textbf{gravitational curvature}.
+\end{enumerate}
+
+To cross decisively from philosophical metaphysics into empirical
+physics, this paper formalizes that Higgs-to-gravity hinge and subjects
+it to Karl Popper's criterion of \textbf{falsifiability} {[}3{]}:
+specifying the exact experimental regimes where standard
+quantum-relativistic extrapolations and chronometric gravity diverge.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Epistemological Restraint and the Pre-Higgs
+Horizon}\label{epistemological-restraint-and-the-pre-higgs-horizon}
+
+\subsubsection{2.1 Bracketing Unobservable Sub-Higgs and Superluminal
+Projections}\label{bracketing-unobservable-sub-higgs-and-superluminal-projections}
+
+A rigorous philosophy of time must guard against reifying mathematical
+extrapolations that lie beyond the reach of any physical measuring
+instrument {[}4{]}. Prior to electroweak symmetry breaking
+(\(T > 100\text{ GeV}\)), Standard Model fermions and gauge bosons
+possess zero rest mass (\(m = 0\)), propagate along null trajectories
+(\(ds^2 = 0\)), and lack localized rest frames. Attempting to assign
+standalone ontic citizenship to un-clocked sub-Higgs field components or
+superluminal coordinate intervals (\(ds^2 > 0\)) commits the exact same
+category error as treating zero-width Euclidean points (\(x_0, t_0\)) as
+physical objects.
+
+Accordingly, we enforce strict philosophical bracketing (\emph{epoché}):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Operationally (\emph{Object-as-Subject}):} No direct
+  measurement or physical registration can occur below the
+  mass-nucleation threshold, because zero bound rest-frame clocks exist
+  there to register interactions.
+\item
+  \textbf{Transcendentally (\emph{Subject-as-Subject} Reverse
+  Engineering):} Because actualized, minimal-entropy bound clocks
+  (\(m > 0\)) undeniably exist after symmetry breaking, human reason can
+  execute a valid abductive (regressive) inference {[}5{]}. To avoid
+  creation \emph{ex nihilo}, our subject-as-subject projection
+  reverse-engineers \textbf{Functional Infinity (\(\Omega\))} as the
+  maximal-entropy, law-constrained transcendental horizon required to
+  sustain the transition into minimal-entropy Higgs actualizations.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{2.2 Two-Stage Condensation
+(\(\Phi_\tau(\Omega)\)) and Chiral
+Phase-Locking}{2.2 Two-Stage Condensation (\textbackslash Phi\_\textbackslash tau(\textbackslash Omega)) and Chiral Phase-Locking}}\label{two-stage-condensation-phi_tauomega-and-chiral-phase-locking}
+
+Within this abductive horizon, spontaneous electroweak symmetry breaking
+operates as a cosmic \textbf{Two-Stage Condensation Funnel
+(\(\Phi_\tau(\Omega)\))}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Stage 1 --- Law-Governed Filtering (The Funnel):} As cosmic
+  expansion dilutes ambient thermal cadence below the electroweak
+  critical threshold, conservation laws and gauge symmetries narrow the
+  degenerate, maximal-entropy potential (\(\Omega\)) into a finite set
+  of physically viable vacuum orientations.
+\item
+  \textbf{Stage 2 --- Irreversible Entropy Precipitation
+  (Condensation):} Driven by self-expressing temporal cadence
+  (\(\rho_\tau > 0\)), the Higgs field precipitates into a definite,
+  minimal-entropy vacuum expectation value
+  (\(v \approx 246\text{ GeV}\)).
+\end{enumerate}
+
+The operational consequence is \textbf{chiral phase-locking} {[}6{]}.
+Coupling to the condensed Higgs background continuously flips
+left-handed and right-handed fermion chiralities
+(\(\psi_L \leftrightarrow \psi_R\)). Rather than streaming unanchored at
+\(c\), the excitation is trapped in a self-sustaining internal periodic
+oscillation with Compton angular frequency:
+
+\[\omega_C = \frac{mc^2}{\hbar}, \qquad \lambda_C = \frac{\hbar}{mc}\]
+
+For the first time in cosmic history, an entity preserves its
+qualitative structural configuration (\(s = 1\)) across a complete
+internal cycle while advancing its irreversible ordinal counter
+(\(v = 1 \to 2\)) through open-system coupling (\(\Delta\Omega > 0\)):
+
+\[A = A_1^1 \longrightarrow A_1^2\]
+
+Simultaneously, the electroweak gauge sector partitions cleanly into two
+operational roles: * \textbf{Massive Gauge Bosons (\(W^\pm, Z^0\)):}
+Couple to the Higgs condensate, acquiring rest mass and restricting
+their \textbf{Operational Simultaneity Horizon
+(\(\mathcal{L}_{\mathrm{sim}}\))} to short nuclear ranges
+(\(\sim 10^{-18}\text{ m}\)). * \textbf{The Massless Photon
+(\(\gamma\)):} Remains decoupled from the Higgs vacuum (\(m = 0\)),
+preserving unbounded radiative reach so it can serve as the
+\textbf{universal signaling messenger (\(\Delta\tau_{\mathrm{sig}}\))}
+connecting distant massive clocks across the universe.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Formal Definition: The Center of
+Resolution}\label{formal-definition-the-center-of-resolution}
+
+Once chiral phase-locking ignites internal Compton clocks
+(\(A_1^1 \to A_1^2\)), physical reality acquires discrete receiving
+vertices. While \textbf{subject-as-subject} designates lived interiority
+projecting a qualitative \emph{now} outward across the transcendental
+horizon of time, \textbf{object-as-subject} designates any bound
+physical structure acting in the world according to physical law. We
+formalize this operational vertex as a \textbf{Center of Resolution}.
+
+\begin{quote}
+\textbf{Definition 1 (Center of Resolution):} \emph{An open-system,
+mass-anchored physical clock (\(m > 0\),
+\(L \le \mathcal{L}_{\mathrm{sim}}\)) operating in the mode of
+object-as-subject, which establishes a localized rest frame
+(\(\omega_C = mc^2/\hbar\)) and serves as the operational vertex where
+convergent causal interactions---regardless of spatial emission distance
+or cosmic epoch---funnel through physical law (\(\Phi_\tau(\Omega)\))
+and precipitate into a single, irreversible diachronic tick
+(\(A_s^v \to A_{s'}^{v+1}\)).}
+\end{quote}
+
+Three structural properties distinguish a Center of Resolution from both
+classical particles and massless fields:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Mass-Anchored Localization:} Massless photons in free flight
+  (\(m = 0\)) are messengers in transit, not Centers of Resolution; only
+  mass-anchored systems (\(m > 0\)) possess a rest frame capable of
+  resolving incoming signals into discrete ordinal steps.
+\item
+  \textbf{Convergent Plane of Simultaneity (\emph{``Everything That Is
+  Being to It''}):} A Center of Resolution's operational present is not
+  a fictitious global coordinate slice (\(t = \text{const}\)). At any
+  transition \(A_s^v \to A_{s'}^{v+1}\), it instantiates its own
+  structural persistence alongside the concrete physical resolution of
+  every interaction arriving at its boundary---whether a photon emitted
+  nanoseconds ago by a nearby lamp or a photon emitted ten billion years
+  ago by a long-dead star. Functional Infinity (\(\Omega\)) supplies
+  this relational availability instantaneously without requiring
+  external cosmic computation.
+\item
+  \textbf{Dual Horizon Architecture:} While \textbf{convergent
+  reception} gathers incoming signals from arbitrary past light-cone
+  distances, \textbf{mutual bidirectional phase-locking} between coupled
+  Centers of Resolution remains strictly bounded within their shared
+  \textbf{Operational Simultaneity Horizon}:
+  \[\mathcal{L}_{\mathrm{sim}} \sim \frac{c \, n_{\mathrm{eff}}^{-1}}{\Gamma_{\mathrm{tot}}}\]
+  where \(\Gamma_{\mathrm{tot}}\) is the total environmental
+  decoherence/tick-exchange rate {[}1{]}.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. From Chiral Phase-Locking to Chronometric
+Gravity}\label{from-chiral-phase-locking-to-chronometric-gravity}
+
+\subsubsection{\texorpdfstring{4.1 Necessary Identity of Inertial and
+Gravitational Mass
+(\(m_i \equiv m_g\))}{4.1 Necessary Identity of Inertial and Gravitational Mass (m\_i \textbackslash equiv m\_g)}}\label{necessary-identity-of-inertial-and-gravitational-mass-m_i-equiv-m_g}
+
+In classical and relativistic mechanics, the equality of
+\textbf{inertial mass (\(m_i\))} and \textbf{gravitational mass
+(\(m_g\))} is inserted empirically via the Equivalence Principle
+{[}7{]}. Within \(\text{AEON-T}_{\mu\nu}\), \(m_i \equiv m_g\) is an
+analytical necessity because both quantities are dual manifestations of
+the exact same chiral phase-locking event:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Internal Aspect (Inertial Mass \(m_i\)):} Anchoring an
+  internal Compton oscillation (\(\omega_C = mc^2/\hbar\)) via Higgs
+  coupling creates a self-consistent internal phase rhythm
+  (\(A_1^1 \to A_1^2\)). Accelerating this bound clock across space
+  requires shifting its internal phase-locking alignment against the
+  ambient substrate, manifesting locally as \textbf{inertial resistance
+  (\(m_i\))}.
+\item
+  \textbf{External Aspect (Gravitational Mass \(m_g\)):} Concentrating
+  local objective temporal intensity (\(\rho_\tau\)) inside a bound
+  Center of Resolution creates a smooth radial gradient in earned
+  clock-pacing (\(\nabla\rho_\tau \neq 0\)) and raises the effective
+  metric impedance (\(n_{\mathrm{eff}}(r) > 1\)) of the surrounding
+  temporal substrate:
+  \[n_{\mathrm{eff}}(r) \approx 1 + \frac{2GM}{rc^2} + \mathcal{O}\!\left(\frac{G^2M^2}{r^2c^4}\right)\]
+\item
+  \textbf{Geodesic Refraction as Chronometric Topography:} Neighboring
+  clocks and light wavefronts traversing a region with
+  \(\nabla\rho_\tau \neq 0\) experience slower earned metric lapse
+  (\(dt_{\mathrm{pre}}\)) on the side closer to the mass concentration,
+  causing trajectories to refract smoothly toward slower clock-pacing.
+  When surveyed with round-trip light signals, this variable
+  clock-pacing topography projects outward as four-dimensional
+  Riemannian curvature (\(G_{\mu\nu} = 8\pi G c^{-4} T_{\mu\nu}\))
+  {[}8{]}.
+\end{itemize}
+
+Because a system cannot acquire internal chiral phase-locking (\(m_i\))
+without simultaneously anchoring local temporal intensity
+(\(\nabla\rho_\tau \implies m_g\)), \textbf{inertial and gravitational
+mass are strictly identical by construction}.
+
+\subsubsection{\texorpdfstring{4.2 Dissolving the \(10^{120}\) Higgs
+Vacuum Energy
+Catastrophe}{4.2 Dissolving the 10\^{}\{120\} Higgs Vacuum Energy Catastrophe}}\label{dissolving-the-10120-higgs-vacuum-energy-catastrophe}
+
+Standard Quantum Field Theory predicts that the condensed Higgs vacuum
+(\(v \approx 246\text{ GeV}\))---together with zero-point field
+fluctuations---should generate an enormous uniform vacuum energy density
+\(\rho_{\mathrm{vac}} \sim v^4\), exceeding observed dark energy bounds
+by up to \(120\) orders of magnitude {[}9{]}.
+
+Chronometric gravity dissolves this divergence without fine-tuning:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Curvature Measures Differential Clock-Pacing
+  (\(\nabla\rho_\tau\)), Not Absolute Vacuum Floor:} Gravitational
+  curvature is the topographic gradient comparing how fast localized
+  Centers of Resolution tick relative to one another across space.
+\item
+  \textbf{Zero Spatial Gradient of the Uniform Higgs Floor
+  (\(\nabla v = 0\)):} Because the condensed Higgs vacuum expectation
+  value (\(v \approx 246\text{ GeV}\)) is spatially uniform across the
+  cosmos, it establishes the \textbf{shared baseline operational floor}
+  that allows massive clocks to exist everywhere equally---producing
+  zero differential clock-pacing between neighboring regions
+  (\(\nabla\rho_{\tau,\mathrm{vac}} = 0\)).
+\item
+  \textbf{Localization Criterion:} Only localized condensations of bound
+  Centers of Resolution (\(m > 0\)) and inhomogeneous energy-momentum
+  distributions generate non-vanishing chronometric gradients
+  (\(\nabla\rho_\tau \neq 0\)). Consequently, the uniform Higgs floor
+  does not curl the universe into a microscopic singularity.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Stress-Testing Chronometric Gravity Against
+Quantum-Gravity
+Objections}\label{stress-testing-chronometric-gravity-against-quantum-gravity-objections}
+
+To verify internal consistency, we test this architecture against four
+foundational objections raised against non-geometric theories of
+gravity:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Foundational Objection
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Standard Quantum-Gravity Dilemma
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\text{AEON-T}_{\mu\nu}\) Chronometric Resolution
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{1. Pre-Higgs Radiation Gravity} (\(10^{-43}\text{ s}\) to
+\(10^{-12}\text{ s}\)) & If Centers of Resolution require \(m > 0\), how
+does gravity act on massless radiation before electroweak symmetry
+breaking? & Inhomogeneous massless radiation still carries spatially
+varying temporal cadence (\(\nabla\rho_\tau \neq 0\)), generating smooth
+fluid impedance gradients (\(n_{\mathrm{eff}} > 1\)). Higgs nucleation
+adds \textbf{localized discrete quantum vertices} (\(m > 0\)), fusing
+quantum measurement and gravity at shared Centers of Resolution. \\
+\textbf{2. Superposed Quantum Masses} (\(|L\rangle + |R\rangle\)) & Does
+a mass in spatial superposition source two classical spacetime
+geometries simultaneously (Penrose--Diósi paradox) {[}10, 11{]}? & Prior
+to condensation (\(L \le \mathcal{L}_{\mathrm{sim}}\)), the particle's
+chronometric footprint is distributed smoothly across its uncondensed
+potential envelope (\(\Omega\)). Once differential pacing exceeds
+coherence capacity, Two-Stage Condensation (\(\Phi_\tau\)) precipitates
+a single definite tick (\(L\) \emph{or} \(R\)). \\
+\textbf{3. Vacuum Gravitational Waves} (LIGO Detections) & If gravity is
+induced by localized Centers of Resolution, what propagates across empty
+vacuum between merging black holes and LIGO? & Empty vacuum is an active
+temporal substrate (\(\rho_\tau > 0, n_{\mathrm{eff}} = 1\)). Violent
+mass acceleration launches transverse ripples of differential metric
+impedance (\(\delta n_{\mathrm{eff}}(x, t)\)) at speed \(c\), modulating
+round-trip signaling lapse (\(\Delta\tau_{\mathrm{sig}}\)) between
+LIGO's mirrors. \\
+\textbf{4. Absence of Spin-2 Gravitons} & Every other interaction
+quantizes into gauge bosons (\(\gamma, g, W^\pm, Z^0\)); why not a
+graviton? & Gauge fields are internal phase-bookkeeping connections
+(\(\mathcal{W}(C)\)) \emph{within} the substrate and thus quantize into
+force carriers. Gravity \emph{is} the pacing topography
+(\(\nabla\rho_\tau, n_{\mathrm{eff}}\)) of the substrate itself;
+discreteness enters via discrete Centers of Resolution and halts at the
+\textbf{Quantum-Gravity Wall (\(\Xi_{\mathrm{QG}} < 1\))} before UV
+graviton loop-infinities form. \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Empirical Falsifiability: Three Quantitative
+Kill-Switches}\label{empirical-falsifiability-three-quantitative-kill-switches}
+
+Within its validated classical envelope (\(\Xi_{\mathrm{QG}} \ll 1\),
+\(L \gg \mathcal{L}_{\mathrm{sim}}\)), chronometric gravity reproduces
+every post-Newtonian, binary-pulsar, gravitational-lensing, and LIGO
+waveform test of General Relativity. However, at the three operational
+boundaries where bound Centers of Resolution either remain uncondensed
+(\(L \le \mathcal{L}_{\mathrm{sim}}\)) or undergo tidal breakdown
+(\(\Xi_{\mathrm{QG}} \to 1\)), \(\text{AEON-T}_{\mu\nu}\) makes sharp,
+falsifiable predictions that diverge from standard theory.
+
+\subsubsection{6.1 Protocol I: Spontaneous Gravity-Induced Precipitation
+in Mesoscopic Superpositions (BMV
+Tests)}\label{protocol-i-spontaneous-gravity-induced-precipitation-in-mesoscopic-superpositions-bmv-tests}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Experimental Domain:} Table-top optomechanical nanosphere
+  interferometers and Bose--Marletto--Vedral (BMV) gravitational
+  entanglement experiments testing spatial superpositions of masses
+  \(m \sim 10^{-17}\text{ kg}\) to \(10^{-14}\text{ kg}\) over
+  separations \(\Delta x \sim 10\text{--}250\,\mu\text{m}\) {[}12,
+  13{]}.
+\item
+  \textbf{Chronometric Gravity Prediction:} A mesoscopic mass cannot
+  sustain a bifurcated gravitational pacing differential indefinitely.
+  When the gravitational self-pacing difference
+  \(\Delta E_G \sim G m^2 / \Delta x\) approaches the open-system
+  phase-locking rate \(\hbar \Gamma_{\mathrm{tot}}\) within
+  \(\mathcal{L}_{\mathrm{sim}}\), \textbf{Two-Stage Condensation
+  (\(\Phi_\tau(\Omega)\))} triggers spontaneous tick
+  precipitation---collapsing the spatial superposition into a single
+  localized Center of Resolution before long-range gravitational
+  entanglement can accumulate.
+\item
+  \textbf{Falsification Kill-Switch:} \emph{If mesoscopic masses
+  (\(m \ge 10^{-14}\text{ kg}\)) maintain coherent spatial
+  superpositions across \(\Delta x \ge 100\,\mu\text{m}\) for durations
+  exceeding the \(\Phi_\tau\) condensation threshold with zero excess
+  gravity-correlated decoherence, this mechanism is falsified.}
+\end{itemize}
+
+\subsubsection{6.2 Protocol II: Phase-Locking Rigidity in Sub-Millimeter
+Optical Lattice Clock
+Interferometry}\label{protocol-ii-phase-locking-rigidity-in-sub-millimeter-optical-lattice-clock-interferometry}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Experimental Domain:} Differential gravitational redshift
+  measurements using single coherent atomic wavepackets split vertically
+  across sub-millimeter height gradients
+  (\(\Delta h \sim 0.1\text{--}1.0\text{ mm}\)) in optical lattice
+  clocks {[}14{]}.
+\item
+  \textbf{Chronometric Gravity Prediction:} Textbook General Relativity
+  treats an extended quantum wavepacket as a continuum of independent
+  zero-width point worldlines, predicting smooth differential
+  proper-time phase accumulation
+  \(\Delta\phi_{\mathrm{GR}} = (g \Delta h / c^2)\omega_0 T\) down to
+  \(\Delta h \to 0\). Under \(\text{AEON-T}_{\mu\nu}\), as long as the
+  atomic wavepacket remains phase-locked as a single unified Center of
+  Resolution within its vertical Operational Simultaneity Horizon
+  (\(\Delta h < \mathcal{L}_{\mathrm{sim}}\)), it ticks with a
+  \textbf{single unified ordinal cadence (\(A_s^v\))}---exhibiting a
+  subtle \textbf{phase-locking rigidity} (suppression of internal
+  proper-time dephasing) below
+  \(\Delta h \sim \mathcal{L}_{\mathrm{sim}}\), followed by sharp
+  restoration of standard GR redshift once
+  \(\Delta h > \mathcal{L}_{\mathrm{sim}}\).
+\item
+  \textbf{Falsification Kill-Switch:} \emph{If single coherent atomic
+  wavepackets exhibit purely linear, unattenuated GR proper-time
+  dephasing across arbitrarily small vertical gradients
+  (\(\Delta h \ll \mathcal{L}_{\mathrm{sim}}\)) with no
+  coherence-horizon transition, the unified Center of Resolution
+  hypothesis is falsified.}
+\end{itemize}
+
+\subsubsection{\texorpdfstring{6.3 Protocol III: Post-Merger
+Gravitational-Wave Ringdown Echoes at the Quantum-Gravity Wall
+(\(\Xi_{\mathrm{QG}} \to 1\))}{6.3 Protocol III: Post-Merger Gravitational-Wave Ringdown Echoes at the Quantum-Gravity Wall (\textbackslash Xi\_\{\textbackslash mathrm\{QG\}\} \textbackslash to 1)}}\label{protocol-iii-post-merger-gravitational-wave-ringdown-echoes-at-the-quantum-gravity-wall-xi_mathrmqg-to-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Experimental Domain:} High signal-to-noise-ratio (SNR) black
+  hole merger ringdown observations with next-generation
+  gravitational-wave observatories (LISA, Einstein Telescope, Cosmic
+  Explorer) {[}15{]}.
+\item
+  \textbf{Chronometric Gravity Prediction:} Classical General Relativity
+  models the black hole horizon as an empty mathematical surface
+  permitting pure one-way absorption into an \(r = 0\) singularity,
+  yielding a clean damped quasinormal ringdown with zero secondary
+  reflections. Under \(\text{AEON-T}_{\mu\nu}\), extreme tidal and
+  rotational shear near the horizon drives matter and field modes across
+  the \textbf{Quantum-Gravity Wall (\(\Xi_{\mathrm{QG}} \to 1\))}, where
+  mass-anchored Centers of Resolution lose phase-locking stability and
+  generate a sharp \textbf{metric impedance transition
+  (\(\delta n_{\mathrm{eff}}\))}. This physical impedance boundary
+  partially reflects infalling ringdown radiation, producing faint,
+  frequency-dependent \textbf{post-merger gravitational-wave echoes}
+  separated by
+  \(\Delta t_{\mathrm{echo}} \sim (r_s / c) |\ln(1 - \Xi_{\mathrm{QG}})|\).
+\item
+  \textbf{Falsification Kill-Switch:} \emph{If high-SNR post-merger
+  ringdown spectra across LISA and Einstein Telescope observations
+  confirm pure Kerr black hole absorption down to the quantum noise
+  floor with complete absence of horizon-scale impedance echoes, the
+  \(\Xi_{\mathrm{QG}} \to 1\) chronometric boundary model is falsified.}
+\end{itemize}
+
+\subsubsection{Summary Falsifiability
+Matrix}\label{summary-falsifiability-matrix}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Experimental Regime
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Control Parameter
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Standard Quantum / GR Prediction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\text{AEON-T}_{\mu\nu}\) Prediction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Explicit Falsification Criterion
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{1. Mesoscopic Superposition (BMV / Optomechanics)} & Mass \(m\),
+separation \(\Delta x\), coherence time \(\tau\) & Unbounded linear
+superposition; gravity entangles branches without intrinsic collapse. &
+Spontaneous \(\Phi_\tau(\Omega)\) tick precipitation caps superposition
+at \(\Delta E_G \sim \hbar\Gamma_{\mathrm{tot}}\). & Persistent
+macroscopic superposition above threshold with zero excess
+decoherence. \\
+\textbf{2. Sub-Millimeter Optical Clock Interferometry} & Vertical
+wavepacket span \(\Delta h\) vs.~\(\mathcal{L}_{\mathrm{sim}}\) & Smooth
+linear redshift dephasing \(\Delta\phi \propto g\Delta h/c^2\) down to
+\(\Delta h \to 0\). & Phase-locking rigidity suppresses internal
+dephasing inside a unified Center of Resolution
+(\(\Delta h < \mathcal{L}_{\mathrm{sim}}\)). & Linear GR dephasing
+observed at \(\Delta h \ll \mathcal{L}_{\mathrm{sim}}\) with zero
+horizon transition. \\
+\textbf{3. Black Hole Merger Ringdowns (LISA / ET)} & Tidal shear
+parameter \(\Xi_{\mathrm{QG}} \to 1\) near \(r_s\) & Pure one-way
+horizon absorption; smooth exponential quasinormal decay. & Impedance
+boundary (\(\delta n_{\mathrm{eff}}\)) at \(\Xi_{\mathrm{QG}} \to 1\)
+produces delayed post-merger echoes. & High-SNR ringdowns show pure Kerr
+absorption with zero impedance reflection. \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Conclusion}\label{conclusion}
+
+By grounding mass nucleation in \textbf{Two-Stage Condensation
+(\(\Phi_\tau(\Omega)\))} and \textbf{chiral phase-locking
+(\(\psi_L \leftrightarrow \psi_R\))}, the Theory of Objective Time
+transforms the emergence of bound clocks (\(A = A_1^1 \to A_1^2\)) into
+the direct ontological foundation of gravity. Inertial mass (\(m_i\))
+and gravitational mass (\(m_g\)) coincide necessarily because anchoring
+an internal Compton oscillator simultaneously imprints a radial gradient
+in objective temporal cadence (\(\nabla\rho_\tau\)) and metric impedance
+(\(n_{\mathrm{eff}} > 1\)) across the substrate---establishing localized
+\textbf{Centers of Resolution} while leaving the uniform Higgs vacuum
+floor (\(\nabla v = 0\)) free of the \(10^{120}\) vacuum catastrophe.
+Most importantly, by isolating three precise experimental
+frontiers---mesoscopic superposition precipitation, sub-millimeter clock
+phase-locking rigidity, and near-horizon gravitational-wave
+echoes---this synthesis moves the philosophy of objective time squarely
+into the domain of falsifiable empirical science.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Damásio, L. P. (2026). \emph{The Theory of Objective Time: Axiomatic
+  Foundations of the \(\text{AEON-T}_{\mu\nu}\) Framework: Ontological
+  Postulates, Operational Metrics, and Fundamental Laws of Temporal
+  Actualization}. Zenodo. https://doi.org/10.5281/zenodo.24392857
+\item
+  Damásio, L. P. (2026). \emph{From Pre-Metric Cadence to Earned Cosmic
+  Time: A Diachronic Reconstruction of the Big Bang Across the Aeon
+  Crossover (\(A = A_1^1 \to A_2^1 \to A_3^1\))}. Zenodo.
+  https://doi.org/10.5281/zenodo.24420549
+\item
+  Popper, K. R. (1959). \emph{The Logic of Scientific Discovery}.
+  Hutchinson \& Co.
+\item
+  Damásio, L. P. (2026). \emph{Where Equations Break Down: Four
+  Pathologies of Modern Physics Resolved Through the Theory of Objective
+  Time}. Zenodo. https://doi.org/10.5281/zenodo.24421529
+\item
+  Kant, I. (1781/1787). \emph{Critique of Pure Reason} (Transcendental
+  Deduction \& Regressive Method).
+\item
+  Higgs, P. W. (1964). Broken Symmetries and the Masses of Gauge Bosons.
+  \emph{Physical Review Letters}, 13(16), 508--509.
+\item
+  Einstein, A. (1916). Die Grundlage der allgemeinen
+  Relativitätstheorie. \emph{Annalen der Physik}, 354(7), 769--822.
+\item
+  Penrose, R. (2010). \emph{Cycles of Time: An Extraordinary New View of
+  the Universe}. Bodley Head.
+\item
+  Weinberg, S. (1989). The Cosmological Constant Problem. \emph{Reviews
+  of Modern Physics}, 61(1), 1--23.
+\item
+  Penrose, R. (1996). On Gravity's Role in Quantum State Reduction.
+  \emph{General Relativity and Gravitation}, 28(5), 581--600.
+\item
+  Diósi, L. (1989). Models for Universal Reduction of Macroscopic
+  Quantum Fluctuations. \emph{Physical Review A}, 40(3), 1165--1174.
+\item
+  Bose, S., et al.~(2017). Spin Entanglement Witness for Quantum
+  Gravity. \emph{Physical Review Letters}, 119(24), 240401.
+\item
+  Marletto, C., \& Vedral, V. (2017). Gravitationally Induced
+  Entanglement between Two Massive Particles is Sufficient Evidence of
+  Quantum Effects in Gravity. \emph{Physical Review Letters}, 119(24),
+  240402.
+\item
+  Bothwell, T., et al.~(2022). Resolving the Gravitational Redshift
+  Across a Millimetre-Scale Atomic Sample. \emph{Nature}, 602(7897),
+  420--424.
+\item
+  Cardoso, V., Franzin, E., \& Pani, P. (2016). Is the
+  Gravitational-Wave Ringdown a Probe of the Event Horizon?
+  \emph{Physical Review Letters}, 116(17), 171101.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{AI Assistance \& Authorship
+Disclosure}\label{ai-assistance-authorship-disclosure}
+
+\emph{This manuscript was conceived, philosophically structured, and
+authorially directed by \textbf{Luís Pimenta Damásio} (ORCID:
+0009-0001-7606-7557) within the \(\text{AEON-T}_{\mu\nu}\) research
+program. An AI research assistant was utilized during drafting to
+formalize mathematical notation, organize comparative tables, verify
+bibliographic formatting, and structure the falsifiability protocols in
+alignment with the author's original ontological postulates. All
+theoretical claims, definitions, and philosophical commitments remain
+the sole intellectual responsibility of the human author.}
+
+\end{document}
