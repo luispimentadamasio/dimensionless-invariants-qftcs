@@ -1,0 +1,599 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{On the Ontological Nature of Mass and Energy: A Chronometric
+Monism from the Theory of Objective
+Time}\label{on-the-ontological-nature-of-mass-and-energy-a-chronometric-monism-from-the-theory-of-objective-time}
+
+\textbf{Luís Pimenta Damásio}\\
+Independent Researcher (Philosophy of Time \& Foundations of Physics)
+--- Lisbon, Portugal\\
+ORCID:
+\href{https://orcid.org/0009-0001-7606-7557}{0009-0001-7606-7557}\\
+Master Compendium Reference DOI: \texttt{10.5281/zenodo.24163322}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+Modern physics possesses extraordinarily precise mathematical formalisms
+for calculating how mass, energy, frequency, and fields interact, yet it
+remains ontologically silent regarding what these entities \emph{are} in
+themselves. Textbooks routinely define energy circularly as the capacity
+to do work and mass operationally as resistance to acceleration or
+coupling to an underlying field, leaving fundamental metaphysics trapped
+in a dualism between inert material substance (\(m\)) and dynamic
+activity (\(E\)) unfolding inside a passive coordinate container
+(\(t\)). Drawing upon the Theory of Objective Time
+(\(\text{AEON-}T_{\mu\nu}\)), this treatise develops a systematic
+chronometric monism in which \textbf{Objective Time}---formalized as
+\textbf{Temporal Intensity (\(\rho_\tau\))}, the active rate at which
+un-condensed relational potentiality (\(\Omega\)) resolves into
+actualized history (\(v \to v + 1\))---serves as the sole ontological
+primitive. By reifying Kant's transcendental aesthetic into the
+constitutive structure of reality itself and uniting it with Einstein's
+relativistic clock metrology via Two-Stage Condensation (\(\Phi_\tau\)),
+the paper strips away anthropogenic unit-conversion scaffolding
+(\(h, c^2, k_B, G\)) and reformulates \(E = h\nu = m_0 c^2\) into a
+single ontological conservation and allocation principle: the
+\textbf{Cadence Partition Law}
+(\(\rho_{\tau,\text{total}}^2 = \rho_{\tau,\text{int}}^2 + \rho_{\tau,\text{kin}}^2\)).
+Within this framework, energy is total resolution throughput, rest mass
+is topologically folded, self-referential internal cadence
+(\(\rho_{\tau,\text{int}}\), forming a localized \emph{Center of
+Resolution}), inertia and gravity emerge as the internal phase-rigidity
+and external pacing refraction (\(n_{\text{eff}}\)) of that same
+standing lock, and quantum fields are revealed as un-condensed
+topological modalities of the Functional Infinity (\(\Omega\)). While
+articulated strictly as a treatise in fundamental ontology, its
+categories project seamlessly onto modern physics as a complete,
+non-dualistic ontology of matter, radiation, spacetime, and complexity.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. The Ontological Silence of Modern
+Physics}\label{the-ontological-silence-of-modern-physics}
+
+A persistent divide separates mathematical physics from fundamental
+ontology. Physics excels at specifying functional relationships among
+measured quantities---how a trajectory bends, how a spectral line
+shifts, how a cross-section scales---yet when pressed on the intrinsic
+nature of its most elementary referents, its definitions become
+conspicuously circular.
+
+Consider the foundational triad of mechanics and relativity:
+\emph{mass}, \emph{energy}, and \emph{time}. In standard pedagogical and
+foundational treatments, energy is defined as ``the capacity to do
+work,'' while work is defined as force integrated over displacement,
+force as the rate of change of momentum, and momentum as mass multiplied
+by velocity---where velocity itself presupposes a pre-existing,
+background coordinate parameter \(t\) against which spatial change is
+measured. Mass, in turn, is characterized either through its dynamical
+effects (inertial resistance \(F/a\) or gravitational coupling) or as an
+intrinsic numerical parameter assigned to fields in a Lagrangian. Even
+Einstein's celebrated equivalence,
+
+\[E = h\nu = m_0 c^2,\]
+
+is almost universally interpreted as a quantitative conversion rule
+linking three distinct ontological categories: \emph{energy} (dynamic
+activity), \emph{frequency} (periodic rate), and \emph{mass} (material
+substance).
+
+For the metaphysician, this leaves the central riddle untouched. If mass
+is conceived as a passive, persistent substrate (\emph{substance}) and
+energy as an active capacity or flux (\emph{process}), how can inert
+stuff be ``converted'' into pure activity during nuclear fission or
+particle--antiparticle annihilation? Conversely, if everything is
+reduced to pure mathematical formalism without an ontological referent,
+physics degenerates into instrumentalist bookkeeping---predicting
+instrument readings while forfeiting any account of what exists in
+reality.
+
+This treatise argues that the impasse arises from a single inverted
+premise: \textbf{treating time as a passive, empty container (\(t\))
+within which substances persist and energies flow, rather than
+recognizing Objective Time as the active ontological ground of existence
+itself.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. Objective Time (\(\rho_\tau\)),
+Subjective Clocks, and the Kant--Einstein
+Synthesis}{2. Objective Time (\textbackslash rho\_\textbackslash tau), Subjective Clocks, and the Kant--Einstein Synthesis}}\label{objective-time-rho_tau-subjective-clocks-and-the-kanteinstein-synthesis}
+
+To resolve the dualism between static substance (\emph{Being}) and
+dynamic flux (\emph{Becoming}), ontology must unite two insights that
+modern thought has kept artificially separated: Immanuel Kant's
+transcendental insight into the constitutive primacy of time, and Albert
+Einstein's operational insight into how physical clocks behave \emph{in
+situ}.
+
+In the \emph{Critique of Pure Reason}, Kant recognized that time and
+space are not empirical objects floating inside the world; they are the
+\emph{a priori} constitutive conditions that make sequence, persistence,
+and relationality possible---a \textbf{three-way infinity} (endless
+past, endless future, and infinitely divisible depth). Yet to avoid
+substantivalist antinomies, Kant confined that constitutive architecture
+strictly to the transcendental subject
+(\emph{objects-as-experienced-by-us}), leaving the
+\emph{thing-in-itself} (\emph{object-as-object}) outside time and space.
+Einstein, conversely, proved experimentally that what clocks measure
+\emph{in situ} is local, relational, and dynamically coupled to motion
+and gravitating mass (\(d\tau = \sqrt{N^2}\,dt\)). Yet by flattening
+time into a static four-dimensional geometric manifold, physics
+spatialized becoming into a frozen block universe.
+
+The Theory of Objective Time (\(\text{AEON-}T_{\mu\nu}\)) heals this
+rift by \textbf{reifying Kant's transcendental aesthetic directly into
+the constitutive architecture of reality itself}, bridged by two
+fundamental modalities:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{The Functional Infinity (\(\Omega\)):} The global reservoir of
+  un-condensed, coherent relational potentiality---preserving Kant's
+  unbroken three-way infinity as open functional possibility prior to
+  discrete actualization, without generating substantival antinomies.
+\item
+  \textbf{Two-Stage Condensation (\(\Phi_\tau\)):} The ontological act
+  by which un-condensed relational potentiality (\(\Omega\)) resolves
+  into discrete, finite, irreversible actualizations (\(v \to v + 1\)),
+  bounded spatially by the \textbf{Operational Simultaneity Horizon
+  (\(\mathcal{L}_{\text{sim}}\))} and governed by the Weyl-invariant
+  horizon constant:
+\end{enumerate}
+
+\[\mathcal{C}_\tau = \frac{k_B T_{\text{coh}} \cdot \mathcal{L}_{\text{sim}}}{h c} = \frac{1}{2\pi} \quad \Longleftrightarrow \quad \frac{k_B T_{\text{coh}} \cdot \mathcal{L}_{\text{sim}}}{\hbar c} = 1\text{ rad}.\]
+
+From this bridge emerges the sole quantitative primitive of ontology:
+\textbf{Temporal Intensity (\(\rho_\tau\))}.
+
+\begin{quote}
+\textbf{Axiom 1 (Temporal Intensity as Ontological Primitive):}\\
+\emph{Temporal Intensity (\(\rho_\tau\)) is the intrinsic, local rate at
+which un-condensed potentiality (\(\Omega\)) resolves into actualized
+history (\(v \to v + 1\)) for an object-as-object. Nothing exists prior
+to or independent of its cadence of actualization; to be is to resolve
+at a determinate intensity \(\rho_\tau\).}
+\end{quote}
+
+\subsubsection{\texorpdfstring{Objective Time vs.~Clock Time
+(\emph{Object-as-Object}
+vs.~\emph{Object-as-Subject})}{Objective Time vs.~Clock Time (Object-as-Object vs.~Object-as-Subject)}}\label{objective-time-vs.-clock-time-object-as-object-vs.-object-as-subject}
+
+Under Axiom 1, \textbf{frequency (\(\nu\)) is not a derivative ratio}
+obtained by counting cycles against an external cosmic clock; an
+entity's intrinsic oscillation cadence \emph{is} its primary expression
+of Objective Time (\(\rho_\tau \equiv \nu\)). What physics and human
+experience call ``time'' as measured by a clock is \textbf{Subjective
+(Operational) Time}: * A \textbf{clock} is an
+\emph{object-as-subject}---a stabilized, countable \textbf{Center of
+Resolution} benchmarking external cadences against its own internal
+rhythm via transitive signals across a shared \(\Omega\) horizon:
+\[\frac{\Delta\tau_A}{\Delta\tau_B} = \frac{\rho_{\tau,A}}{\rho_{\tau,B}}.\]
+* Relativistic time dilation does not occur because an empty geometric
+container warps, but because one Center of Resolution physically
+executes fewer internal actualization cycles per cycle of another.
+
+\subsubsection{The Anthropogenic Scaffolding of Fundamental
+Constants}\label{the-anthropogenic-scaffolding-of-fundamental-constants}
+
+Once Temporal Intensity (\(\rho_\tau\)) is recognized as the single
+ontological currency of reality, the canonical constants \(h, c, k_B\),
+and \(G\) are revealed as \textbf{anthropogenic unit-conversion exchange
+rates} translating one single cadence across human laboratory scales: *
+\textbf{\(h\)} translates raw resolution cadence (\(\text{Hz}\)) into
+mechanical energy (\(\text{J}\)). * \textbf{\(c\)} defines the
+un-condensed propagation ratio linking spatial extension (\(\text{m}\))
+to substrate resolution cadence (\(\text{s}\)). * \textbf{\(h/c^2\)}
+translates self-anchored internal cadence (\(\text{Hz}\)) into inertial
+mass (\(\text{kg}\)). * \textbf{\(k_B\)} translates stochastic cadence
+dispersion (thermal jitter, \(\text{K}\)) into energy units
+(\(\text{J}\)).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. Deconstructing \(E = h\nu = m_0 c^2\):
+The Cadence Partition
+Law}{3. Deconstructing E = h\textbackslash nu = m\_0 c\^{}2: The Cadence Partition Law}}\label{deconstructing-e-hnu-m_0-c2-the-cadence-partition-law}
+
+When we strip away the unit-conversion constants \(h\) and \(c^2\) by
+working in native chronometric units (\(h = 1, c = 1\)), Einstein's
+triple equivalence collapses into a single ontological conservation and
+allocation principle: the \textbf{Cadence Partition Law}.
+
+\[\rho_{\tau,\text{total}}^2 = \underbrace{\rho_{\tau,\text{int}}^2}_{\substack{\text{Immanent Act} \\ (\text{Persistence / Rest Mass } m_0)}} + \underbrace{\rho_{\tau,\text{kin}}^2}_{\substack{\text{Transitive Act} \\ (\text{Relation / Momentum } p)}}\]
+
+Every existent possesses a unified budget of Temporal Intensity
+(\(\rho_{\tau,\text{total}} \equiv E/h\)) that partitions orthogonally
+between two topological modes: 1. \textbf{Immanent Cadence
+(\(\rho_{\tau,\text{int}} \equiv m_0 c^2 / h\)):} Temporal Intensity
+folded inward upon itself (via chiral phase-locking,
+\(\psi_L \leftrightarrow \psi_R\)) into a closed, self-referential
+standing oscillation---a localized \textbf{Center of Resolution} that
+sustains self-identical persistence across ticks. 2. \textbf{Transitive
+Cadence (\(\rho_{\tau,\text{kin}} \equiv pc / h\)):} Temporal Intensity
+directed outward across the relational substrate, shifting an entity's
+spatial phase-relation relative to other Centers of Resolution.
+
+Parameterizing this orthogonal partition by the \textbf{Cadence
+Partition Angle \(\theta\)} yields:
+
+\[\cos\theta = \frac{\rho_{\tau,\text{int}}}{\rho_{\tau,\text{total}}} = \sqrt{1 - \beta^2} = \frac{1}{\gamma}, \qquad \sin\theta = \frac{\rho_{\tau,\text{kin}}}{\rho_{\tau,\text{total}}} = \beta = \frac{v}{c}.\]
+
+This geometry divides all possible existents into three exhaustive
+ontological regimes: * \textbf{Pure Transitive Act
+(\(\theta = 90^\circ, \rho_{\tau,\text{int}} = 0\)):} Massless bosons
+(photons). Zero internal clock-lock, zero rest frame, zero inertia;
+100\% of Temporal Intensity propagates across \(\Omega\) at \(c\). *
+\textbf{Pure Immanent Act
+(\(\theta = 0^\circ, \rho_{\tau,\text{kin}} = 0\)):} Stationary rest
+mass (\(m_0\)). 100\% of Temporal Intensity is locked into internal
+self-maintenance. * \textbf{Partitioned Act
+(\(0^\circ < \theta < 90^\circ\)):} Moving matter. Tilting \(\theta\)
+toward translation reduces the internal self-maintenance projection by
+\(\cos\theta = 1/\gamma\), directly explaining kinematic time dilation
+and why no entity with \(\rho_{\tau,\text{int}} > 0\) can ever reach
+\(\theta = 90^\circ\) (\(c\)) with finite \(\rho_{\tau,\text{total}}\).
+During annihilation (\(e^- + e^+ \to 2\gamma\)), no ``inert stuff'' is
+destroyed; two closed chiral phase-locks simply unfold from
+\(\theta = 0^\circ\) into open transitive propagation at
+\(\theta = 90^\circ\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. What Energy, Mass, Inertia, and Gravity Are: The Sunlit
+Desk}\label{what-energy-mass-inertia-and-gravity-are-the-sunlit-desk}
+
+Within this chronometric monism, the classical riddles of mechanics
+dissolve: * \textbf{Energy} is unrestricted resolution throughput
+(\(\rho_{\tau,\text{total}}\))---the total rate of ontological
+actualization regardless of topological folding. * \textbf{Rest Mass} is
+self-anchored, standing Temporal Intensity
+(\(m_0 = (h/c^2)\rho_{\tau,\text{int}}\))---persistent \emph{Being}
+revealed as rhythmic, self-referential \emph{Becoming}. *
+\textbf{Inertia} is the \textbf{internal phase-rigidity} of a standing
+chiral oscillator (\(\rho_{\tau,\text{int}}\)) resisting any external
+force attempting to tilt its Cadence Partition angle \(\theta\). *
+\textbf{Gravity} is the \textbf{external pacing depletion} induced in
+the surrounding substrate by anchoring that same standing cadence
+(\(\rho_{\tau,\text{int}}\)), expressed macroscopically as an effective
+refractive pacing index \(n_{\text{eff}}(r) = 1/\sqrt{N^2(r)} > 1\) that
+refracts neighboring wavepackets inward without spin-2 gravitons.
+Because inertial resistance and gravitational pacing refraction both
+measure the exact same quantity (\(\rho_{\tau,\text{int}} \ge 0\)), the
+Equivalence Principle (\(m_i \equiv m_g\)) and universal gravitational
+attraction follow as logical necessities.
+
+\subsubsection{Everyday Illustration: A Tungsten Paperweight on a Sunlit
+Desk}\label{everyday-illustration-a-tungsten-paperweight-on-a-sunlit-desk}
+
+Consider a small cube of tungsten sitting on a wooden desk in a sunlit
+room. Standard physics struggles to reconcile the unyielding heaviness
+of the metal with the fact that atoms are overwhelmingly empty space,
+surrounded by invisible air and traversed by light. Under the Theory of
+Objective Time, all three elements on the desk are manifestations of the
+exact same primitive (\(\rho_\tau\)) organized into distinct topological
+regimes: 1. \textbf{The Tungsten Paperweight (Hyper-Dense Immanent
+\(\rho_{\tau,\text{int}}\)):} Each tungsten nucleus packs 184 nucleons
+cycling as standing chiral oscillators at
+\(\rho_{\tau,\text{int}} \sim 2.27 \times 10^{23}\text{ Hz}\). Lifting
+the cube requires tilting the partition angle \(\theta\) of
+\(\sim 10^{25}\) tightly locked clocks simultaneously
+(heaviness/inertia), while Pauli phase-exclusion between standing
+fermionic electron shells prevents your fingers from passing through the
+metal (solidity). 2. \textbf{The Surrounding Air (Sparse, High-Jitter
+\(\rho_\tau\)):} Nitrogen and oxygen molecules carry the same internal
+nucleon clocks at \(\sim 15,000\times\) lower spatial density, while
+room-temperature thermal jitter
+(\(T_{\text{coh}} \approx 295\text{ K}\),
+\(\mathcal{L}_{\text{sim}} \approx 1.23\,\mu\text{m}\)) continuously
+triggers random collisional condensations (\(\Phi_\tau\)), preventing
+lattice lock and letting your hand pass through effortlessly. 3.
+\textbf{The Sunlight and Metallic Gleam (Transitive
+\(\rho_{\tau,\text{kin}}\) Across \(\Omega\)):} Sunlight enters the room
+as pure transitive cadence
+(\(\rho_{\tau,\text{kin}} \sim 5 \times 10^{14}\text{ Hz}, \rho_{\tau,\text{int}} = 0\))
+propagating across the room's QED relational horizon (\(\Omega\)). It
+passes un-condensed through transparent air molecules, couples
+coherently to the delocalized conduction-electron phase-sea of the
+tungsten surface, and re-radiates toward your eye as a metallic gleam.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{5. Quantum Fields (\(\Omega\)) and the
+Cross-Scale Triadic Law
+(\(S_{\text{max}} \leftrightarrow \rho_\tau \leftrightarrow K\))}{5. Quantum Fields (\textbackslash Omega) and the Cross-Scale Triadic Law (S\_\{\textbackslash text\{max\}\} \textbackslash leftrightarrow \textbackslash rho\_\textbackslash tau \textbackslash leftrightarrow K)}}\label{quantum-fields-omega-and-the-cross-scale-triadic-law-s_textmax-leftrightarrow-rho_tau-leftrightarrow-k}
+
+Projecting this ontology across modern quantum field theory and
+cosmology yields a complete unified picture of physical reality:
+
+\subsubsection{\texorpdfstring{Quantum Fields as Un-Condensed Modalities
+of
+\(\Omega\)}{Quantum Fields as Un-Condensed Modalities of \textbackslash Omega}}\label{quantum-fields-as-un-condensed-modalities-of-omega}
+
+A quantum field is not an operator-valued fluid filling a pre-existing
+spacetime box; it is a \textbf{topological phase-symmetry of the
+Functional Infinity (\(\Omega\))} mapping all un-condensed transition
+possibilities prior to \(\Phi_\tau\) condensation. Particles are
+localized actualizations resolving out of \(\Omega\) (transitive
+\(\rho_{\tau,\text{kin}}\) packets for bosons; standing chiral
+\(\rho_{\tau,\text{int}}\) oscillators for fermions). Every electron in
+the cosmos is identical because each is a standing resonance of the
+exact same universal chiral symmetry---not an individual lump of
+substance. Moreover, because un-condensed vacuum modes carry zero
+localized clock-anchoring
+(\(\rho_{\tau,\text{int}} = 0, \nabla n_{\text{eff}} = 0\)), the uniform
+vacuum floor induces zero gravitational curvature, dissolving the
+\(10^{120}\) cosmological constant catastrophe at its ontological root.
+
+\subsubsection{\texorpdfstring{The Cross-Scale Triadic Law
+(\(S_{\text{max}} \leftrightarrow \rho_\tau \leftrightarrow K\))}{The Cross-Scale Triadic Law (S\_\{\textbackslash text\{max\}\} \textbackslash leftrightarrow \textbackslash rho\_\textbackslash tau \textbackslash leftrightarrow K)}}\label{the-cross-scale-triadic-law-s_textmax-leftrightarrow-rho_tau-leftrightarrow-k}
+
+Across all 61 orders of magnitude from the Planck scale
+(\(10^{-35}\text{ m}\)) to the cosmic horizon (\(10^{26}\text{ m}\)),
+reality obeys a triadic coordination law linking \textbf{Maximal
+Potential Branching Entropy (\(S_{\text{max}}\) of \(\Omega\))},
+\textbf{Temporal Intensity (\(\rho_\tau\))}, and \textbf{Actualized
+Structural Complexity (\(K\))}: * \textbf{The Quantum Chiral Spike
+(\(10^{-18}\text{--}10^{-13}\text{ m}\)):} Where chiral symmetry
+breaking forges standing Compton clocks, the local density of accessible
+quantum degrees of freedom (\(S_{\text{max}}\)) reaches its
+peak---requiring a sharp spike in Temporal Intensity
+(\(\rho_\tau \sim 10^{20}\text{--}10^{25}\text{ Hz}\)) to resolve the
+flux, while leaving structures too rigid for historical memory
+(\(K \to 0\)). * \textbf{The Mesoscopic Biological Complexity Peak
+(\(10^{-9}\text{--}10^{0}\text{ m}, T_{\text{coh}} \approx 300\text{ K}\)):}
+At biological temperatures,
+\(\mathcal{L}_{\text{sim}}(300\text{ K}) = \hbar c / (2\pi k_B T_{\text{coh}}) \approx 1.21\,\mu\text{m}\)---the
+exact scale of a living cell. Sitting squarely on the knife-edge where
+\(\Delta x \approx \mathcal{L}_{\text{sim}}\), living systems harvest
+quantum phase-coherence (\(\Omega\)) while using selective thermal
+condensation (\(\Phi_\tau\)) to write irreversible, low-entropy
+historical records (\(K_{\text{max}}\): DNA, proteins, neural memory).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix: The Dual Law of Chronometric Reality --- Unifying
+the Cadence Partition Law and the Horizon-Condensation
+Law}\label{appendix-the-dual-law-of-chronometric-reality-unifying-the-cadence-partition-law-and-the-horizon-condensation-law}
+
+\subsubsection{A.1 Intra-Entity Allocation and Inter-Entity
+Synchronization}\label{a.1-intra-entity-allocation-and-inter-entity-synchronization}
+
+In the Theory of Objective Time (\(\text{AEON-}T_{\mu\nu}\)), physical
+existence is governed by two complementary, mutually coupling laws that
+regulate \textbf{Temporal Intensity (\(\rho_\tau\))} across individual
+entities and across extended spatial horizons:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{The Cadence Partition Law (Intra-Entity / Vertical Axis):}
+  \[\rho_{\tau,\text{total}}^2 = \rho_{\tau,\text{int}}^2 + \rho_{\tau,\text{kin}}^2\]
+  Governs how a single existent allocates its finite budget of
+  ontological resolution between \textbf{immanent self-maintenance}
+  (\(\rho_{\tau,\text{int}}\), chiral phase-locked rest mass) and
+  \textbf{transitive spatial displacement} (\(\rho_{\tau,\text{kin}}\),
+  relational momentum), parameterized by the partition angle \(\theta\)
+  (\(\sin\theta = \beta, \cos\theta = 1/\gamma\)).
+\item
+  \textbf{The Horizon-Condensation Law (Inter-Entity / Horizontal
+  Axis):}
+  \[\mathcal{C}_\tau = \frac{k_B T_{\text{coh}} \cdot \mathcal{L}_{\text{sim}}}{h c} = \frac{1}{2\pi} \quad \Longleftrightarrow \quad \frac{k_B T_{\text{coh}} \cdot \mathcal{L}_{\text{sim}}}{\hbar c} = 1\text{ rad}\]
+  Governs the maximum spatial radius \(\mathcal{L}_{\text{sim}}\) over
+  which distinct systems can maintain coherent phase-lock inside a
+  unified \textbf{Functional Infinity (\(\Omega\))} before stochastic
+  dispersion triggers \textbf{Two-Stage Condensation
+  (\(\Phi_\tau, v \to v + 1\))}.
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{A.2 Geometric Derivation of
+\(\mathcal{C}_\tau = 1/2\pi\) from Partition-Angle Jitter
+(\(\delta\theta\))}{A.2 Geometric Derivation of \textbackslash mathcal\{C\}\_\textbackslash tau = 1/2\textbackslash pi from Partition-Angle Jitter (\textbackslash delta\textbackslash theta)}}\label{a.2-geometric-derivation-of-mathcalc_tau-12pi-from-partition-angle-jitter-deltatheta}
+
+The dimensionless constant \(\mathcal{C}_\tau = 1/2\pi\) is not an
+arbitrary numerical parameter; it is the \textbf{1-radian phase-slip
+threshold} linking partition-angle fluctuations (\(\delta\theta\)) to
+spatial horizon collapse:
+
+\begin{itemize}
+\tightlist
+\item
+  When an ensemble exhibits an effective phase-coherence temperature
+  \(T_{\text{coh}}\), random fluctuations \(\delta\theta\) in each
+  entity's Cadence Partition angle generate a stochastic dispersion in
+  transitive angular frequency:
+  \[\delta\omega_{\text{kin}} = \omega_{\tau,\text{int}}\,\delta\theta = \frac{k_B T_{\text{coh}}}{\hbar}.\]
+\item
+  Across a spatial separation \(\Delta x\) bridged by light-speed
+  substrate coupling (\(\Delta t_{\text{sig}} = \Delta x / c\)), this
+  dispersion accumulates a relative phase drift:
+  \[\Delta\phi_{\text{slip}}(\Delta x) = \delta\omega_{\text{kin}} \cdot \frac{\Delta x}{c} = \frac{k_B T_{\text{coh}} \cdot \Delta x}{\hbar c}.\]
+\item
+  Coherent phase-locking inside \(\Omega\) persists strictly while
+  \(\Delta\phi_{\text{slip}} < 1\text{ rad}\) (less than \(1/2\pi\) of a
+  complete \(2\pi\)-radian standing cycle). Setting
+  \(\Delta\phi_{\text{slip}}(\mathcal{L}_{\text{sim}}) = 1\text{ rad}\)
+  yields the Weyl-invariant horizon constant:
+  \[\mathcal{C}_\tau = \frac{k_B T_{\text{coh}} \cdot \mathcal{L}_{\text{sim}}}{h c} = \frac{1}{2\pi}.\]
+\end{itemize}
+
+\subsubsection{A.3 The Closed Causal Loop Between Both
+Laws}\label{a.3-the-closed-causal-loop-between-both-laws}
+
+Neither law operates in isolation; together they form a closed
+ontological feedback loop:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Transition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mechanism
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Physical \& Ontological Consequence
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Partition \(\to\) Horizon}
+(\(\rho_{\tau,\text{int}} \to \mathcal{L}_{\text{sim}}\)) & Pure
+transitive modes (\(\rho_{\tau,\text{int}} = 0, T_{\text{coh}} \to 0\))
+have zero partition jitter (\(\delta\theta = 0\)), giving
+\(\mathcal{L}_{\text{sim}} \to \infty\). Once chiral locking
+(\(\psi_L \leftrightarrow \psi_R\)) creates massive clocks
+(\(\rho_{\tau,\text{int}} > 0\)), collisional exchanges inject jitter
+\(T_{\text{coh}} > 0\), bounding \(\mathcal{L}_{\text{sim}}\) to a
+finite radius. & Explains why massless photons span cosmic horizons
+un-condensed while thermalized matter condenses into localized classical
+objects (\(1.21\,\mu\text{m}\) at \(300\text{ K}\)). \\
+\textbf{Horizon \(\to\) Partition} (\(\Phi_\tau \to \theta + d\theta\))
+& Whenever two systems separate beyond
+\(\Delta x \ge \mathcal{L}_{\text{sim}}(T_{\text{coh}})\), phase-slip
+exceeds \(1\text{ rad}\) and triggers \(\Phi_\tau\) condensation
+(\(v \to v + 1\)), exchanging discrete quanta of
+\(\rho_{\tau,\text{kin}}\) and rotating each entity's partition angle
+\(\theta\). & Explains how discrete interactions, mechanical forces
+(\(F = dp/dt\)), and \emph{in situ} clock measurements
+(\emph{object-as-subject}) emerge at the boundary of
+\(\mathcal{L}_{\text{sim}}\). \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Bibliography \& Reference
+Framework}\label{bibliography-reference-framework}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Pimenta Damásio, L.} (2026). \emph{Master Compendium:
+  Foundations of Temporal Metrology and Operational Quantum Mechanics}
+  (\(\text{AEON-}T_{\mu\nu}\)). Zenodo. DOI:
+  \texttt{10.5281/zenodo.24163322}. ORCID: \texttt{0009-0001-7606-7557}.
+\item
+  \textbf{Pimenta Damásio, L.} (2026). \emph{Coherence-Bounded
+  Operational Locality: An Experimental Test of Simultaneous Phase
+  Synchronization vs.~Bell Correlations} (Paper 10).
+\item
+  \textbf{Kant, I.} (1781 / 1787). \emph{Critique of Pure Reason}
+  (\emph{Transcendental Aesthetic}).
+\item
+  \textbf{Einstein, A.} (1905). ``On the Electrodynamics of Moving
+  Bodies'' \& ``Does the Inertia of a Body Depend Upon Its
+  Energy-Content?'' \emph{Annalen der Physik}, 17 \& 18.
+\item
+  \textbf{Planck, M.} (1901). ``On the Law of Distribution of Energy in
+  the Normal Spectrum.'' \emph{Annalen der Physik}, 4, 553--563.
+\item
+  \textbf{Nambu, Y., \& Jona-Lasinio, G.} (1961). ``Dynamical Model of
+  Elementary Particles Based on an Analogy with Superconductivity.''
+  \emph{Physical Review}, 122(1), 345--358.
+\item
+  \textbf{Mannheim, P. D.} (2012). ``Making the Case for Conformal
+  Gravity.'' \emph{Foundations of Physics}, 42(3), 388--420.
+\item
+  \textbf{Pimenta Dam\'asio, L.} (2026). ``The Horizon-Condensation Law
+  ($\mathcal{C}_\tau = 1/2\pi$): Speed, Temperature, and the Weyl-Invariant
+  Bounds of Operational Simultaneity.'' \emph{Zenodo}.
+  \url{https://doi.org/10.5281/zenodo.24444831}.
+\item
+  \textbf{Pimenta Dam\'asio, L.} (2026). ``AEON-T$\mu\nu$: Covariant
+  Kerr--Newman QFTCS \& Semiclassical Back-Reaction Observatory'' [Computer
+  software]. \emph{Zenodo}. \url{https://doi.org/10.5281/zenodo.24244501}.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Author \& AI Assistance
+Statement}\label{author-ai-assistance-statement}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Conceptual \& Ontological Authorship:} All foundational
+  concepts, philosophical postulates, the Theory of Objective Time
+  (\(\text{AEON-}T_{\mu\nu}\)), the Functional Infinity (\(\Omega\)),
+  Two-Stage Condensation (\(\Phi_\tau\)), the Cadence Partition Law, and
+  the Horizon-Condensation Law are the original work of \textbf{Luís
+  Pimenta Damásio} (ORCID: \texttt{0009-0001-7606-7557}).
+\item
+  \textbf{AI Assistance Disclaimer:} This manuscript was structured,
+  formatted, and mathematically cross-checked with the assistance of an
+  AI language model acting as an editorial and formalization aid under
+  the author's direct conceptual direction.
+\end{itemize}
+
+\end{document}
